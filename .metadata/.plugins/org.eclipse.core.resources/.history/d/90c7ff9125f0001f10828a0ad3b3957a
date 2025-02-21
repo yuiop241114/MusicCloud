@@ -1,0 +1,15 @@
+package com.musicCloud.common;
+
+import java.util.Properties;
+
+public class JDBCTemplate {
+	
+	private Properties prop = new Properties();
+	
+	String driverfilePath = JDBCTemplate.class.getResource("/db/driver/driver.properties").getPath();
+	
+	public JDBCTemplate() {
+		
+	}
+
+}

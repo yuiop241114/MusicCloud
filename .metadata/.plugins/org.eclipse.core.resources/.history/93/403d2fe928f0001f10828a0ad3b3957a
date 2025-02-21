@@ -1,0 +1,5 @@
+package com.musicCloud.member.model.dao;
+
+public class MemberDao {
+
+}

@@ -1,0 +1,22 @@
+package com.musicCloud.member.model.service;
+
+import static com.musicCloud.common.JDBCTemplate.*;
+
+import java.sql.Connection;
+
+import com.musicCloud.member.model.dao.MemberDao;
+import com.musicCloud.member.model.vo.Member;
+
+public class MemberSerivce {
+	
+	/**
+	 * @param loginId
+	 * @param loginPwd
+	 * 로그인 Service 메소드
+	 */
+	public void loginMember(String loginId, String loginPwd) {
+		Connection conn = getConnection();
+		Member m =  new MemberDao().loginMember(conn, loginId, loginPwd);
+	}
+
+}

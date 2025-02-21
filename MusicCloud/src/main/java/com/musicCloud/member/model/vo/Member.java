@@ -1,0 +1,60 @@
+package com.musicCloud.member.model.vo;
+
+public class Member {
+
+	private String loginId;
+	private String loginPwd;
+	private String memberName;
+	
+	public Member(String loginId, String loginPwd, String memberName) {
+		super();
+		this.loginId = loginId;
+		this.loginPwd = loginPwd;
+		this.memberName = memberName;
+	}
+
+	
+	
+	public String getLoginId() {
+		return loginId;
+	}
+
+
+
+	public void setLoginId(String loginId) {
+		this.loginId = loginId;
+	}
+
+
+
+	public String getLoginPwd() {
+		return loginPwd;
+	}
+
+
+
+	public void setLoginPwd(String loginPwd) {
+		this.loginPwd = loginPwd;
+	}
+
+
+
+	public String getMemberName() {
+		return memberName;
+	}
+
+
+
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Member [loginId=" + loginId + ", loginPwd=" + loginPwd + ", memberName=" + memberName + "]";
+	}
+	
+	
+}

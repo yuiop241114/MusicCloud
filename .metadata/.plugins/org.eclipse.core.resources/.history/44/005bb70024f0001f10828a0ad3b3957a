@@ -1,0 +1,7 @@
+package com.musicCloud.member.model.vo;
+
+public class Member {
+
+	private String loginId;
+	private String loginPwd;
+}

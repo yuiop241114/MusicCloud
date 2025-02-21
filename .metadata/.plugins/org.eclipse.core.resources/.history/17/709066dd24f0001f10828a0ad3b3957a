@@ -1,0 +1,7 @@
+package com.musicCloud.common;
+
+public class JDBCTemplate {
+	
+	
+
+}

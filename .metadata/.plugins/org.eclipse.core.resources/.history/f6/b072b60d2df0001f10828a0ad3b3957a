@@ -1,0 +1,19 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+	String contentPath = request.getContextPath();
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="<%= contentPath%>/login" method="post">
+	아이디 : <input type="text" name="loginId" required> <br>
+	비밀번호 : <input type="password" name="loginPwd" required> <br>
+	<button></button>
+	</form>
+</body>
+</html>

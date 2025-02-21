@@ -1,0 +1,13 @@
+package com.musicCloud.common;
+
+import java.util.Properties;
+
+public class JDBCTemplate {
+	
+	private Properties prop = new Properties();
+	
+	public JDBCTemplate() {
+		
+	}
+
+}

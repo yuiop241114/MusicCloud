@@ -1,0 +1,27 @@
+package com.musicCloud.common;
+
+import java.io.FileInputStream;
+import java.sql.Connection;
+import java.util.Properties;
+
+public class JDBCTemplate {
+	
+	/**
+	 * Connection 객체 생성 메소드
+	 */
+	public static void getConnection() {
+		
+		Connection conn = null;
+		
+		//driver 등록 정보가 들어 있는 파일 경로 저장
+		Properties prop = new Properties();
+		String driverFilePath = JDBCTemplate.class.getResource("/db/driver/driver.properties").getPath();
+		prop.load( new FileInputStream(driverfi));
+		
+		
+	}
+	
+	
+	
+
+}
