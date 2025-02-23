@@ -9,19 +9,35 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>MusicCloud</title>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
 	<% if(loginMember == null){ %>
-	<form action="<%= contentPath%>/login" method="post">
-	아이디 : <input type="text" name="loginId" required> <br>
-	비밀번호 : <input type="password" name="loginPwd" required> <br>
-	<button type="submit">로그인</button>
-	</form>
+	<h1><button type="button" onclick="loginFn()">로그인</button></h1>
 	<%}else { %>
 	<div>
 	<%= loginMember.getMemberName()%> 회원 로그인 중
+	<br>
+	<a href="<%= contentPath%>/logout" class="btn btn-sm btn-secondary">로그아웃</a>
 	</div>
 	<%} %>
+	
+	<script>
+		function loginFn(){
+			location.href = "<%= contentPath%>/loginForm";	
+		}
+	</script>
 </body>
 </html>

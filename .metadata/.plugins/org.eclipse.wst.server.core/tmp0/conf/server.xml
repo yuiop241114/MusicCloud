@@ -162,7 +162,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="C:\Project_MusicCloud\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\Project_MusicCloud\MusicCloud\WebContent" path="/MusicCloud" reloadable="true" source="org.eclipse.jst.jee.server:MusicCloud"><Resources><PreResources base="C:\Project_MusicCloud\MusicCloud\WebContent\WEB-INF\classes" classLoaderOnly="false" className="org.apache.catalina.webresources.DirResourceSet" internalPath="/" webAppMount="/WEB-INF/classes"/></Resources></Context></Host>
+      <Context docBase="C:\semi-project\MusicCloud\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\semi-project\MusicCloud\MusicCloud\WebContent" path="/musiccloud" reloadable="true" source="org.eclipse.jst.jee.server:MusicCloud"><Resources><PreResources base="C:\semi-project\MusicCloud\MusicCloud\WebContent\WEB-INF\classes" classLoaderOnly="false" className="org.apache.catalina.webresources.DirResourceSet" internalPath="/" webAppMount="/WEB-INF/classes"/></Resources></Context></Host>
     </Engine>
   </Service>
 </Server>
