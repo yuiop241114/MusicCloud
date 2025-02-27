@@ -1,5 +1,0 @@
-INDEX VERSION 1.4+C:\MusicCloud\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-3746421657.index
-4104746503.index
-925509279.index
-2789356539.index
