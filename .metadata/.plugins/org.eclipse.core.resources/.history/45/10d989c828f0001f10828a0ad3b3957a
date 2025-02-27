@@ -1,9 +1,0 @@
-package com.musicCloud.member.model.service;
-
-public class MemberSerivce {
-	
-	public void loginMember(String loginId, String loginPwd) {
-		
-	}
-
-}
