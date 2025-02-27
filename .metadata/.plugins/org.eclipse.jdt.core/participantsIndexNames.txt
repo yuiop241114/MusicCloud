@@ -1,5 +1,0 @@
-INDEX VERSION 1.131
-C:\semi-project\MusicCloud\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\635221199.index
-\MusicCloud\src\main\java
-C:\semi-project\MusicCloud\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2892779569.index
-\MusicCloud\src\main\java

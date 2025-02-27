@@ -2,7 +2,7 @@
     <wb-module deploy-name="MusicCloud">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
-        <property name="context-root" value="MusicCloud"/>
+        <property name="context-root" value="music"/>
         <property name="java-output-path" value="/MusicCloud/WebContent/WEB-INF/classes"/>
     </wb-module>
 </project-modules>
