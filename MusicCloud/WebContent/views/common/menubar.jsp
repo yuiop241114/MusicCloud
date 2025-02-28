@@ -24,20 +24,16 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
+
 	<% if(loginMember == null){ %>
-	<h1><button type="button" onclick="loginFn()">로그인</button></h1>
+		<h1><button type="button" onclick="location.href='<%= contentPath%>/loginForm'">로그인</button></h1>
 	<%}else { %>
-	<div>
-	<%= loginMember.getMemberName()%> 회원 로그인 중
-	<br>
-	<a href="<%= contentPath%>/logout" class="btn btn-sm btn-secondary">로그아웃</a>
-	</div>
+		<div>
+		<%= loginMember.getMemberName()%> 회원 로그인 중
+		<br>
+		<a href="<%= contentPath%>/logout" class="btn btn-sm btn-secondary">로그아웃</a>
+		</div>
 	<%} %>
 	
-	<script>
-		function loginFn(){
-			location.href = "<%= contentPath%>/loginForm";	
-		}
-	</script>
 </body>
 </html>
