@@ -36,7 +36,7 @@
 	
 	<script>
 		function loginFn(){
-			location.href = "<%= contentPath%>/loginForm";	
+			location.href = "<%= contentPath%>/loginForm";
 		}
 	</script>
 </body>

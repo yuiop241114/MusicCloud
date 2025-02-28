@@ -54,7 +54,7 @@ public class MemberDao {
 						   	  , rset.getString("member_name")
 							  );
 			}
-		} catch (SQLException e) {
+		} catch (SQLException e) { 
 			e.printStackTrace();
 		}finally {
 			close(pstmt);
