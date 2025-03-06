@@ -25,7 +25,7 @@
 <style>
 	.wrapper{
 	    box-sizing: border-box;
-	    height: 150px;
+	    height: 170px;
 	}
 	.wrapper *{
 	    box-sizing: border-box;
@@ -48,7 +48,7 @@
 		background-color: #1587d0;
 		width: 80%;
 		line-height: 40px;
-		margin-top: 30px
+		margin-top: 40px
 	}
 	#login-box a{
 		color: black;
@@ -59,8 +59,8 @@
 	    width: 55%; 
 	    float: right;
 	    line-height: 50px;
-	    margin-top: 45px;
-	    margin-right: 15px;
+	    margin-top: 50px;
+	    margin-right: 30px;
 	}
 	.search-bar *{
 	    height: 50px;
@@ -77,6 +77,9 @@
 	    width: 20%;
 	    background-color: #1587d0;
 	    color: white;
+			font-weight: bolder;
+			font-size: larger;
+			line-height: 10px;
 	
 	    border-top-right-radius: 30px;
 	    border-bottom-right-radius: 30px;
@@ -126,7 +129,7 @@
 	</style> 
 <body>
 	<div class="wrapper">
-       <img src="../../resources/image/mainlogo.png" id="logo">
+       <img src="resources/image/mainlogo.png" id="logo">
        <div id="login-box">   
 				<% if(loginMember == null){ %>
 					<h1><button type="button" onclick="location.href='<%= contentPath%>/loginForm'" class="btn btn-primary btn-lg" id="login-btn">뮤직 클라우드 로그인</button></h1>
@@ -150,23 +153,23 @@
         <button type="button" id="side-btn" class="btn btn-primary btn-lg">퀵 메뉴</button>
         <table id="side-btn-list">
             <tr>
-                <th width="30%"><img src="<%= contextPath%>/resources/image/cartlogo.jpg" alt=""></th>
+                <th width="30%"><img src="resources/image/cartlogo.jpg" alt=""></th>
                 <th width="70%">전체음원목록</th>
             </tr>
             <tr>
-                <th><img src="../../resources/image/cartlogo.jpg" alt=""></th>
+                <th><img src="resources/image/cartlogo.jpg" alt=""></th>
                 <th>마이페이지</th>
             </tr>
             <tr>
-                <th><img src="../../resources/image/cartlogo.jpg" alt=""></th>
+                <th><img src="resources/image/cartlogo.jpg" alt=""></th>
                 <th>게시판</th>
             </tr>
             <tr>
-                <th><img src="../../resources/image/cartlogo.jpg" alt=""></th>
+                <th><img src="resources/image/cartlogo.jpg" alt=""></th>
                 <th>장바구니</th>
             </tr>
             <tr>
-                <th><img src="../../resources/image/cartlogo.jpg" alt=""></th>
+                <th><img src="resources/image/cartlogo.jpg" alt=""></th>
                 <th>플레이 리스트</th>
             </tr>
         </table>
