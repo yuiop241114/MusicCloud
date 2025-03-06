@@ -21,11 +21,11 @@
 
 <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
 <style>
 	.wrapper{
 	    box-sizing: border-box;
 	    height: 150px;
-	    border: 1px solid;
 	}
 	.wrapper *{
 	    box-sizing: border-box;
@@ -40,7 +40,20 @@
 	    width: 25%;
 	    height: 100%;
 	    float: right;
+			text-align: center;
+			border: 1px solid #1587d0;
+			border-radius: 30px;
 	}
+	#login-btn{
+		background-color: #1587d0;
+		width: 80%;
+		line-height: 40px;
+		margin-top: 30px
+	}
+	#login-box a{
+		color: black;
+	}
+
 	
 	.wrapper .search-bar{ 
 	    width: 55%; 
@@ -80,21 +93,28 @@
 	    text-align: center;
 	    margin-right: 30px;
 	    box-sizing: border-box;
-	
+			margin-top: 20px;
+			border: none;
 	    /*스크롤 움직임에 따라 같이움직이는 코드*/
 	    position: sticky;
 	    top: 20px;
 	}
 	.navigator #side-btn, .navigator #side-btn-list{
-	    width: 100%;
+	  	width: 100%;
+			line-height: 20px;
 	}
 	#side-btn{
 	    height: 40px;
+			background-color: #1587d0;
 	}
 	#side-btn-list{
 	    display: none;
 	    width: 100%;
 	    font-size: small;
+			border-radius: 10px;
+			background-color: #1587d0;
+			margin-top: 5px;
+			color: white;
 	}
 	#side-btn-list th{
 	    height: 50px;
@@ -106,10 +126,11 @@
 	</style> 
 <body>
 	<div class="wrapper">
-       <img src="../../resources/image/KakaoTalk_20250303_214556499.jpg" id="logo">
+       <img src="../../resources/image/mainlogo.png" id="logo">
        <div id="login-box">   
 				<% if(loginMember == null){ %>
-					<h1><button type="button" onclick="location.href='<%= contentPath%>/loginForm'">로그인</button></h1>
+					<h1><button type="button" onclick="location.href='<%= contentPath%>/loginForm'" class="btn btn-primary btn-lg" id="login-btn">뮤직 클라우드 로그인</button></h1>
+					<a href="">회원가입</a> | <a href="">아이디 찾기</a> | <a href="">비밀번호 찾기</a>
 				<%}else { %>
 					<div>
 					<%= loginMember.getMemberName()%> 회원 로그인 중
@@ -126,26 +147,26 @@
     </div>
 
     <div class="navigator">
-        <button type="button" id="side-btn">퀵 메뉴</button>
-        <table id="side-btn-list" border="1">
+        <button type="button" id="side-btn" class="btn btn-primary btn-lg">퀵 메뉴</button>
+        <table id="side-btn-list">
             <tr>
-                <th width="30%"><img src="../../resources/image/KakaoTalk_20250303_214556499.jpg" alt=""></th>
+                <th width="30%"><img src="<%= contextPath%>/resources/image/cartlogo.jpg" alt=""></th>
                 <th width="70%">전체음원목록</th>
             </tr>
             <tr>
-                <th><img src="cart.jpg" alt=""></th>
+                <th><img src="../../resources/image/cartlogo.jpg" alt=""></th>
                 <th>마이페이지</th>
             </tr>
             <tr>
-                <th><img src="cart.jpg" alt=""></th>
+                <th><img src="../../resources/image/cartlogo.jpg" alt=""></th>
                 <th>게시판</th>
             </tr>
             <tr>
-                <th><img src="cart.jpg" alt=""></th>
+                <th><img src="../../resources/image/cartlogo.jpg" alt=""></th>
                 <th>장바구니</th>
             </tr>
             <tr>
-                <th><img src="cart.jpg" alt=""></th>
+                <th><img src="../../resources/image/cartlogo.jpg" alt=""></th>
                 <th>플레이 리스트</th>
             </tr>
         </table>
