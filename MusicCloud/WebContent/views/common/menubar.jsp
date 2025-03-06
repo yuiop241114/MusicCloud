@@ -78,7 +78,7 @@
 	    float: right;
 	    border: 1px solid;
 	    text-align: center;
-	    margin-right: 10px;
+	    margin-right: 30px;
 	    box-sizing: border-box;
 	
 	    /*스크롤 움직임에 따라 같이움직이는 코드*/
@@ -106,7 +106,7 @@
 	</style> 
 <body>
 	<div class="wrapper">
-       <img src="KakaoTalk_20250224_164330285.png" id="logo">
+       <img src="../../resources/image/KakaoTalk_20250303_214556499.jpg" id="logo">
        <div id="login-box">   
 				<% if(loginMember == null){ %>
 					<h1><button type="button" onclick="location.href='<%= contentPath%>/loginForm'">로그인</button></h1>
@@ -129,7 +129,7 @@
         <button type="button" id="side-btn">퀵 메뉴</button>
         <table id="side-btn-list" border="1">
             <tr>
-                <th width="30%"><img src="../../resources/image/KakaoTalk_20250303_214556499_01.png" alt=""></th>
+                <th width="30%"><img src="../../resources/image/KakaoTalk_20250303_214556499.jpg" alt=""></th>
                 <th width="70%">전체음원목록</th>
             </tr>
             <tr>
