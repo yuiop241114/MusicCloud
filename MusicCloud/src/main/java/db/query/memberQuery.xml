@@ -4,11 +4,20 @@
 
 	<entry key="loginMember">
 	SELECT 
-	       LOGIN_ID
-	     , LOGIN_PWD
+	       MEMBER_NO
+	     , LOCATION_NO
+	     , MEMBER_ID
+	     , MEMBER_PWD
 	     , MEMBER_NAME
+	     , EMAIL
+	     , GENDER
+	     , AGE
+	     , STATUS
+	     , ENROLL_DATE
+	     , REPORT_COUNT
 	  FROM MEMBER
-	 WHERE LOGIN_ID = ?
-	   AND LOGIN_PWD = ?
+	 WHERE MEMBER_ID = ?
+	   AND MEMBER_PWD  = ?
+	   AND STATUS = 'Y'
 	</entry>
 </properties>

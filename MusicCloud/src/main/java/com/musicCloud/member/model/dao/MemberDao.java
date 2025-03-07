@@ -49,10 +49,18 @@ public class MemberDao {
 			rset = pstmt.executeQuery();
 			if(rset.next()) {
 				m = new Member(
-						   		rset.getString("login_id")
-						   	  , rset.getString("login_pwd")
-						   	  , rset.getString("member_name")
-							  );
+						        rset.getInt("member_no")
+						      , rset.getInt("location_no")
+						      , rset.getString("member_no")
+						      , rset.getString("member_pwd")
+						      , rset.getString("member_name")
+						      , rset.getString("email")
+						      , rset.getString("gender")
+						      , rset.getInt("age")
+						      , rset.getString("status")
+						      , rset.getDate("enroll_date")
+						      , rset.getInt("report_count")
+						      );
 			}
 		} catch (SQLException e) { 
 			e.printStackTrace();
@@ -60,7 +68,6 @@ public class MemberDao {
 			close(pstmt);
 			close(rset);
 		}
-		
 		return m;
 	}
 }
