@@ -37,12 +37,11 @@ public class loginController extends HttpServlet {
 		
 		Member m =  new MemberSerivce().loginMember(loginId, loginPwd);
 		
-		HttpSession session = request.getSession();
 		if(m == null) {
 			//실패
 		}else {
 			//성공
-			session.setAttribute("loginMember", m); //회원의 모든 정보를 가지고 있는 객체
+			request.getSession().setAttribute("loginMember", m); //회원의 모든 정보를 가지고 있는 객체
 			response.sendRedirect(request.getContextPath());
 		}
 	}
