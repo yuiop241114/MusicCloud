@@ -12,11 +12,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	
 	<form action="<%= contentPath%>/login" method="post">
 	아이디 : <input type="text" name="loginId" required> <br>
 	비밀번호 : <input type="password" name="loginPwd" required> <br>
-	<button type="submit">로그인</button>
+	<button type="submit" class="btn btn-sm btn-secondary">로그인</button>
 	</form>
 
 </body>
