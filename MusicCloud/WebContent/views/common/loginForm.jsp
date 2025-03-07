@@ -18,6 +18,5 @@
 	비밀번호 : <input type="password" name="loginPwd" required> <br>
 	<button type="submit" class="btn btn-sm btn-secondary">로그인</button>
 	</form>
-1245151231
 </body>
 </html>
