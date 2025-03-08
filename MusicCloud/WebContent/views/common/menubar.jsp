@@ -25,7 +25,10 @@
 <style>
 	.wrapper{
 	    box-sizing: border-box;
+		border: 1px solid black;
+		width: 1400px;
 	    height: 170px;
+		margin: auto;
 	}
 	.wrapper *{
 	    box-sizing: border-box;
@@ -94,21 +97,21 @@
 	    float: right;
 	    border: 1px solid;
 	    text-align: center;
-	    margin-right: 30px;
+	    margin-right: 60px;
 	    box-sizing: border-box;
-			margin-top: 20px;
-			border: none;
+		margin-top: 20px;
+		border: none;
 	    /*스크롤 움직임에 따라 같이움직이는 코드*/
 	    position: sticky;
 	    top: 20px;
 	}
 	.navigator #side-btn, .navigator #side-btn-list{
 	  	width: 100%;
-			line-height: 20px;
+		line-height: 20px;
 	}
 	#side-btn{
 	    height: 40px;
-			background-color: #1587d0;
+		background-color: #1587d0;
 	}
 	#side-btn-list{
 	    display: none;
