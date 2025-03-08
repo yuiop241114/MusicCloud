@@ -29,6 +29,7 @@
 		width: 1400px;
 	    height: 170px;
 		margin: auto;
+
 	}
 	.wrapper *{
 	    box-sizing: border-box;
@@ -43,9 +44,9 @@
 	    width: 25%;
 	    height: 100%;
 	    float: right;
-			text-align: center;
-			border: 1px solid #1587d0;
-			border-radius: 30px;
+		text-align: center;
+		border: 1px solid #1587d0;
+		border-radius: 30px;
 	}
 	#login-btn{
 		background-color: #1587d0;
@@ -80,9 +81,9 @@
 	    width: 20%;
 	    background-color: #1587d0;
 	    color: white;
-			font-weight: bolder;
-			font-size: larger;
-			line-height: 10px;
+		font-weight: bolder;
+		font-size: larger;
+		line-height: 10px;
 	
 	    border-top-right-radius: 30px;
 	    border-bottom-right-radius: 30px;
@@ -117,10 +118,10 @@
 	    display: none;
 	    width: 100%;
 	    font-size: small;
-			border-radius: 10px;
-			background-color: #1587d0;
-			margin-top: 5px;
-			color: white;
+		border-radius: 10px;
+		background-color: #1587d0;
+		margin-top: 5px;
+		color: white;
 	}
 	#side-btn-list th{
 	    height: 50px;
@@ -152,6 +153,7 @@
        </form>
     </div>
 
+	<!---->
     <div class="navigator">
         <button type="button" id="side-btn" class="btn btn-primary btn-lg">퀵 메뉴</button>
         <table id="side-btn-list">
@@ -178,10 +180,8 @@
         </table>
     </div>
 
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-
 	<script>
+
 	    $(function(){
 	        $("#side-btn").click(function(){
 	            if($("#side-btn-list").css('display') == 'none'){
