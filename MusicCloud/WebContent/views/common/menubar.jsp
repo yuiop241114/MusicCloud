@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	String contentPath = request.getContextPath();
+	String contextPath = request.getContextPath();
 	Member loginMember = (Member)session.getAttribute("loginMember");
 %>
 <!DOCTYPE html>
@@ -25,7 +25,6 @@
 <style>
 	.wrapper{
 	    box-sizing: border-box;
-		border: 1px solid black;
 		width: 1400px;
 	    height: 170px;
 		margin: auto;
@@ -34,19 +33,17 @@
 	.wrapper *{
 	    box-sizing: border-box;
 	}
-	
 	.wrapper #logo{
 	    width: 15%;
 	    height: 100%;
 	}
-	
 	.wrapper #login-box{
 	    width: 25%;
 	    height: 100%;
 	    float: right;
 		text-align: center;
 		border: 1px solid #1587d0;
-		border-radius: 30px;
+		border-radius: 10px;
 	}
 	#login-btn{
 		background-color: #1587d0;
@@ -57,8 +54,21 @@
 	#login-box a{
 		color: black;
 	}
+	#login-success{
+		margin-top: 50px;
+	}
+	#login-success b{ font-size: large;}
+	#login-success img{
+		width: 20px;
+		height: 20px;
+		margin-right: 5px;
+	}
+	#login-success a{
+		margin-right: 75px;
+		height: 20px;
+	}
 
-	
+
 	.wrapper .search-bar{ 
 	    width: 55%; 
 	    float: right;
@@ -135,16 +145,17 @@
 	<div class="wrapper">
        <img src="resources/image/mainlogo.png" id="logo">
        <div id="login-box">   
-				<% if(loginMember == null){ %>
-					<h1><button type="button" onclick="location.href='<%= contentPath%>/loginForm'" class="btn btn-primary btn-lg" id="login-btn">뮤직 클라우드 로그인</button></h1>
-					<a href="">회원가입</a> | <a href="">아이디 찾기</a> | <a href="">비밀번호 찾기</a>
-				<%}else { %>
-					<div>
-					<%= loginMember.getMemberName()%> 회원 로그인 중
-					<br>
-					<a href="<%= contentPath%>/logout" class="btn btn-sm btn-secondary">로그아웃</a>
-					</div>
-				<%} %>
+			<% if(loginMember == null){ %>
+				<h1><button type="button" onclick="location.href='<%= contextPath%>/loginForm'" class="btn btn-primary btn-lg" id="login-btn">뮤직 클라우드 로그인</button></h1>
+				<a href="<%= contextPath%>/memberEnroll">회원가입</a> | <a href="">아이디 찾기</a> | <a href="">비밀번호 찾기</a>
+			<%}else { %>
+				<div id="login-success">
+				<b><%= loginMember.getMemberName()%>님 환영합니다 </b>
+				<br><br>
+				<img src="resources/image/logoutIcon.png" alt="">
+				<a href="<%= contextPath%>/logout">로그아웃</a>
+				</div>
+			<%} %>
        </div>
 
        <form action="" class="search-bar">
