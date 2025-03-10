@@ -76,19 +76,9 @@
         <div class="search-title">'고영훈' 검색 결과</div>
         <div class="sort-title"><b>정확순</b></div>
         <div class="results">
+    
             
-            <div class="item">
-                <img src="../../resources/image/열불이.png" alt="고영훈 이미지">
-                <div class="title-container">
-                    <div>
-                        <div class="title">고영훈</div>
-                        <div class="category">술주정</div>
-                    </div>
-                    <div class="cart">
-                        <img src="../../resources/image/cartlogo.jpg" alt="장바구니">
-                    </div>
-                </div>
-            </div>
+        
 
             <div class="item">
                 <img src="../../resources/image/열불이.png" alt="고영훈 이미지">
@@ -116,6 +106,8 @@
                 </div>
             </div>
 
+            <a href=""></a>
+
             <div class="item">
                 <img src="../../resources/image/열불이.png" alt="고영훈 이미지">
                 <div class="title-container">
@@ -129,7 +121,18 @@
                 </div>
             </div>
 
-
+            <div class="item">
+                <img src="../../resources/image/열불이.png" alt="고영훈 이미지">
+                <div class="title-container">
+                    <div>
+                        <div class="title">고영훈</div>
+                        <div class="category">술주정</div>
+                    </div>
+                    <div class="cart">
+                        <img src="../../resources/image/cartlogo.jpg" alt="장바구니">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

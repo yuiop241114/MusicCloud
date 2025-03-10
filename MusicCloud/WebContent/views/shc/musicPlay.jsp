@@ -136,6 +136,8 @@ b{
    
 }  
 
+
+
     </style>
 </head>
 
@@ -372,11 +374,13 @@ b{
              좋아요 개수
              <img src="../../resources/image/싫어요.png" style="height: 12px; width: 12px;" alt="">
              싫어요 개수
-                
-          
+
+             <button name="comment-btn" id="" style="float: right; background: none; border: none;">   <!--float 란 부모 컨테이너에서 오른쪽 왼쪽 배치하기 여기선 오른쪾-->
+                 <img src="../../resources/image/list.png" style="height: 20px; widows: 20px;" alt="">
+             </button>
              <table id="comment-btn-report" style="line-height: 20px;">
                 <th>
-                    <button id="report" style="border: none; background: none; color: gray;">신고</button>
+                    <button id="report" style="borderg none; background: none; color: gray;">신고</button>
                 </th>
              </table>
             </div>
@@ -472,14 +476,42 @@ b{
   </div>
 </div>
 
-<div id="play-bar" style="height: 200px; width: 100%; position: relative;">
+<br>
+<br><br>
+<br><br>
+<br>
 
+<div id="play-bar" style="height: 200px; width: 100%; position: relative; text-align: center; position: fixed; bottom: 0px;">
+    
+    
     <audio id="audio" src="audio.mp3"></audio>
+    <br><br><br><br>
+    <span style="float: left; padding: 1rem;">00:00</span>
+    <span style="float: left; padding: 1rem;">/</span>
+    <span style="float: left; padding: 1rem;">03:40</span>
+    <input id="seekBar" type="range" min="0" max="100" value="0" style="width: 100%; position: absolute; left: 0; right: 0; color: black;">
+    <br>
 
-    <button id="playPause">▶️ Play</button>
+    <button id="play-previous" style="background: none; border: none; height: 80px; width: 80px;">
+        <img src="../../resources/image/전곡.png" style="height: 40px; width: 40px;" alt="">
+    </button>
 
-    <input id="seekBar" type="range" min="0" max="100" value="0" style="width: 100%; position: absolute; left: 0; right: 0;">
+    <button id="play-pause" style="background: none; border: none; height: 80px; width: 80px;">
+        <img src="../../resources/image/재생이미지 검정.png" style="height: 40px; width: 40px;" alt="">
+    </button>
+
+    <button id="play-next" style="background: none; border: none; height: 80px; width: 80px;">
+        <img src="../../resources/image/다음곡.png" style="height: 40px; width: 40px;" alt="">
+    </button>
+
+
+    <button id="play-hidden" style="background: none; border: none; height: 80px; width: 80px; position: absolute; right: 0;">
+        <img src="../../resources/image/화살표.png" style="height: 40px; width: 40px;" alt="">
+    </button>
+
+    
 </div>
+
 
 
     
@@ -511,7 +543,6 @@ b{
                 }
             });
         });
-
 
         $(document).ready(function () {
     $("#report").click(function () {
@@ -557,6 +588,9 @@ b{
         }
     });
 });
+
+
+
 
 
     </script>
