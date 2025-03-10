@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	String contextPath = request.getContextPath();
+	String contentPath = request.getContextPath();
 	Member loginMember = (Member)session.getAttribute("loginMember");
 %>
 <!DOCTYPE html>
@@ -24,26 +24,28 @@
 
 <style>
 	.wrapper{
-	    box-sizing: border-box;
-		width: 1400px;
-	    height: 170px;
+	  box-sizing: border-box;
+		width: 1500px;
+	  height: 170px;
 		margin: auto;
-
 	}
-	.wrapper *{
-	    box-sizing: border-box;
-	}
+	.wrapper *{ box-sizing: border-box; }
+	
+	/*로고*/
 	.wrapper #logo{
 	    width: 15%;
 	    height: 100%;
+			margin-left: 20px;
 	}
+	
+	/*로그인 div*/
 	.wrapper #login-box{
-	    width: 25%;
+	    width: 20%;
 	    height: 100%;
 	    float: right;
-		text-align: center;
-		border: 1px solid #1587d0;
-		border-radius: 10px;
+			text-align: center;
+			border: 1px solid #1587d0;
+			border-radius: 30px;
 	}
 	#login-btn{
 		background-color: #1587d0;
@@ -54,27 +56,14 @@
 	#login-box a{
 		color: black;
 	}
-	#login-success{
-		margin-top: 50px;
-	}
-	#login-success b{ font-size: large;}
-	#login-success img{
-		width: 20px;
-		height: 20px;
-		margin-right: 5px;
-	}
-	#login-success a{
-		margin-right: 75px;
-		height: 20px;
-	}
 
-
-	.wrapper .search-bar{ 
-	    width: 55%; 
+	/*검색창*/
+	.search-bar{ 
+	    width: 58%; 
 	    float: right;
 	    line-height: 50px;
-	    margin-top: 50px;
-	    margin-right: 30px;
+	    margin-top: 70px;
+	    margin-right: 50px;
 	}
 	.search-bar *{
 	    height: 50px;
@@ -91,9 +80,9 @@
 	    width: 20%;
 	    background-color: #1587d0;
 	    color: white;
-		font-weight: bolder;
-		font-size: larger;
-		line-height: 10px;
+			font-weight: bolder;
+			font-size: larger;
+			line-height: 10px;
 	
 	    border-top-right-radius: 30px;
 	    border-bottom-right-radius: 30px;
@@ -101,37 +90,43 @@
 	}
 	#search-btn:hover{
 	    cursor: pointer;
-	}
+	}  
 	
+	/*퀵메뉴*/
+	#navigator-div{
+		height: 50px;
+		width: 1500px;
+		margin: auto;
+		position: sticky;
+		top: 20px;
+	}
 	.navigator{
 	    width: 150px;
 	    float: right;
 	    border: 1px solid;
 	    text-align: center;
-	    margin-right: 60px;
 	    box-sizing: border-box;
-		margin-top: 20px;
-		border: none;
-	    /*스크롤 움직임에 따라 같이움직이는 코드*/
-	    position: sticky;
-	    top: 20px;
+			line-height: 60px;
+			margin-right: 10px;
+			border: none;
+	   	/*스크롤 움직임에 따라 같이움직이는 코드*/
 	}
 	.navigator #side-btn, .navigator #side-btn-list{
-	  	width: 100%;
+	  width: 100%;
 		line-height: 20px;
 	}
 	#side-btn{
-	    height: 40px;
+	  height: 40px;
 		background-color: #1587d0;
 	}
 	#side-btn-list{
 	    display: none;
 	    width: 100%;
 	    font-size: small;
-		border-radius: 10px;
-		background-color: #1587d0;
-		margin-top: 5px;
-		color: white;
+			border-radius: 10px;
+			background-color: #1587d0;
+			margin-top: 5px;
+			color: white;
 	}
 	#side-btn-list th{
 	    height: 50px;
@@ -144,53 +139,55 @@
 <body>
 	<div class="wrapper">
        <img src="resources/image/mainlogo.png" id="logo">
+
        <div id="login-box">   
-			<% if(loginMember == null){ %>
-				<h1><button type="button" onclick="location.href='<%= contextPath%>/loginForm'" class="btn btn-primary btn-lg" id="login-btn">뮤직 클라우드 로그인</button></h1>
-				<a href="<%= contextPath%>/memberEnroll">회원가입</a> | <a href="">아이디 찾기</a> | <a href="">비밀번호 찾기</a>
-			<%}else { %>
-				<div id="login-success">
-				<b><%= loginMember.getMemberName()%>님 환영합니다 </b>
-				<br><br>
-				<img src="resources/image/logoutIcon.png" alt="">
-				<a href="<%= contextPath%>/logout">로그아웃</a>
-				</div>
-			<%} %>
+					<% if(loginMember == null){ %>
+						<h1><button type="button" onclick="location.href='<%= contentPath%>/loginForm'" class="btn btn-primary btn-lg" id="login-btn">뮤직 클라우드 로그인</button></h1>
+						<a href="">회원가입</a> | <a href="">아이디 찾기</a> | <a href="">비밀번호 찾기</a>
+					<%}else { %>
+						<div>
+						<%= loginMember.getMemberName()%> 회원 로그인 중
+						<br>
+						<a href="<%= contentPath%>/logout" class="btn btn-sm btn-secondary">로그아웃</a>
+						</div>
+					<%} %>
        </div>
 
        <form action="" class="search-bar">
            <input type="text" id="search-box">
            <button type="submit" id="search-btn">검색</button>
        </form>
-    </div>
+  </div>
 
-	<!---->
-    <div class="navigator">
-        <button type="button" id="side-btn" class="btn btn-primary btn-lg">퀵 메뉴</button>
-        <table id="side-btn-list">
-            <tr>
-                <th width="30%"><img src="resources/image/cartlogo.jpg" alt=""></th>
-                <th width="70%">전체음원목록</th>
-            </tr>
-            <tr>
-                <th><img src="resources/image/cartlogo.jpg" alt=""></th>
-                <th>마이페이지</th>
-            </tr>
-            <tr>
-                <th><img src="resources/image/cartlogo.jpg" alt=""></th>
-                <th>게시판</th>
-            </tr>
-            <tr>
-                <th><img src="resources/image/cartlogo.jpg" alt=""></th>
-                <th>장바구니</th>
-            </tr>
-            <tr>
-                <th><img src="resources/image/cartlogo.jpg" alt=""></th>
-                <th>플레이 리스트</th>
-            </tr>
-        </table>
-    </div>
-
+	<div id="navigator-div">
+		<div class="navigator">
+			<button type="button" id="side-btn" class="btn btn-primary btn-lg">퀵 메뉴</button>
+			<table id="side-btn-list">
+					<tr>
+							<th width="30%"><img src="resources/image/cartlogo.jpg" alt=""></th>
+							<th width="70%">전체음원목록</th>
+					</tr>
+					<tr>
+							<th><img src="resources/image/cartlogo.jpg" alt=""></th>
+							<th>마이페이지</th>
+					</tr>
+					<tr>
+							<th><img src="resources/image/cartlogo.jpg" alt=""></th>
+							<th>게시판</th>
+					</tr>
+					<tr>
+							<th><img src="resources/image/cartlogo.jpg" alt=""></th>
+							<th>장바구니</th>
+					</tr>
+					<tr>
+							<th><img src="resources/image/cartlogo.jpg" alt=""></th>
+							<th>플레이 리스트</th>
+					</tr>
+			</table>
+		</div>
+	</div>
+	
+	
 	<script>
 
 	    $(function(){
@@ -201,8 +198,12 @@
 	                $("#side-btn-list").slideUp();
 	            }
 	        });
+	        
+	        
 	    });
 	</script>
 	
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
 </html>

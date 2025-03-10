@@ -6,18 +6,24 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-    .mainPage{
-        width: 1220px;
+    #mainPage-border{
+        width: 1500px;
+        margin: auto;
     }
+    .mainPage{
+        width: 1300px;
+        margin: auto;
+        float: left;
+    }
+
     .mainList {
         border: 1px solid #1587d0;
         width: 100%;
         height: 300px;
-        margin-left: 60px;
-        margin-top: 30px;
-        margin-bottom: 30px;
         border-radius: 10px;
-    }		
+        margin-bottom: 20px;
+    }	
+
 
     /*음원 목록 class="mainList" id="music_list"*/
     /*음원 목록 선택 글자*/
@@ -87,9 +93,6 @@
     }
     #payment_info>*{ width: 25%; }
     /*이미지*/
-    #payment_img{
-
-    }
     /*내용*/
     #payment_cotent *{
         height: 25%;
@@ -200,19 +203,20 @@
         text-align: center;
     }
     
+    
 </style>
 </head>
 <body>
     <%@ include file="menubar.jsp" %>
-    <div class="mainPage">
 
+    <div id="mainPage-border">
+        <div class="mainPage">
+            <!--음원 리스트-->
         <div class="mainList" id="music_list">
             <div id="musicList_select"> 
                 <a href="">인기순</a> / 
                 <a href="">지역별</a>
             </div>
-
-            <!--음원 리스트-->
             <div id="music">
                 <div class="music_detail">
                     <div class="music_img"><img src="resources/image/mainlogo.png" alt=""></div>
@@ -284,12 +288,10 @@
                     <button class="btn btn-light">결제 후 확인 가능</button>
                 </div>
             </div>
-
         </div>
     
-        
+        <!-- 게시판 -->
         <div class="mainList" id="board">
-
             <div id="mainPage_boardTitle"><b>게시판</b></div>
 
             <div id="board_list">
@@ -411,10 +413,13 @@
                     <div id="playList_content"><b>플레이 리스트 제목</b></div>
                 </div>
             </div>
-           
+            
 
         </div>
-
     </div>
+    </div>
+    
+    
+    
 </body>
 </html>
