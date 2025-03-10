@@ -178,9 +178,9 @@
         </table>
     </div>
 
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-
+   
+	
+	
 	<script>
 
 	    $(function(){
@@ -191,6 +191,8 @@
 	                $("#side-btn-list").slideUp();
 	            }
 	        });
+	        
+	        
 	    });
 	</script>
 	
