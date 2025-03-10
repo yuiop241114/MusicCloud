@@ -24,23 +24,23 @@
 
 <style>
 	.wrapper{
-	    box-sizing: border-box;
-		border: 1px solid black;
-		width: 1400px;
-	    height: 170px;
+	  box-sizing: border-box;
+		width: 1500px;
+	  height: 170px;
 		margin: auto;
 	}
-	.wrapper *{
-	    box-sizing: border-box;
-	}
+	.wrapper *{ box-sizing: border-box; }
 	
+	/*로고*/
 	.wrapper #logo{
 	    width: 15%;
 	    height: 100%;
+			margin-left: 20px;
 	}
 	
+	/*로그인 div*/
 	.wrapper #login-box{
-	    width: 25%;
+	    width: 20%;
 	    height: 100%;
 	    float: right;
 			text-align: center;
@@ -57,13 +57,13 @@
 		color: black;
 	}
 
-	
-	.wrapper .search-bar{ 
-	    width: 55%; 
+	/*검색창*/
+	.search-bar{ 
+	    width: 58%; 
 	    float: right;
 	    line-height: 50px;
-	    margin-top: 50px;
-	    margin-right: 30px;
+	    margin-top: 70px;
+	    margin-right: 50px;
 	}
 	.search-bar *{
 	    height: 50px;
@@ -90,27 +90,33 @@
 	}
 	#search-btn:hover{
 	    cursor: pointer;
-	}
+	}  
 	
+	/*퀵메뉴*/
+	#navigator-div{
+		height: 50px;
+		width: 1500px;
+		margin: auto;
+		position: sticky;
+		top: 20px;
+	}
 	.navigator{
 	    width: 150px;
 	    float: right;
 	    border: 1px solid;
 	    text-align: center;
-	    margin-right: 60px;
 	    box-sizing: border-box;
-		margin-top: 20px;
-		border: none;
-	    /*스크롤 움직임에 따라 같이움직이는 코드*/
-	    position: sticky;
-	    top: 20px;
+			line-height: 60px;
+			margin-right: 10px;
+			border: none;
+	   	/*스크롤 움직임에 따라 같이움직이는 코드*/
 	}
 	.navigator #side-btn, .navigator #side-btn-list{
-	  	width: 100%;
+	  width: 100%;
 		line-height: 20px;
 	}
 	#side-btn{
-	    height: 40px;
+	  height: 40px;
 		background-color: #1587d0;
 	}
 	#side-btn-list{
@@ -133,24 +139,25 @@
 <body>
 	<div class="wrapper">
        <img src="resources/image/mainlogo.png" id="logo">
+
        <div id="login-box">   
-				<% if(loginMember == null){ %>
-					<h1><button type="button" onclick="location.href='<%= contentPath%>/loginForm'" class="btn btn-primary btn-lg" id="login-btn">뮤직 클라우드 로그인</button></h1>
-					<a href="">회원가입</a> | <a href="">아이디 찾기</a> | <a href="">비밀번호 찾기</a>
-				<%}else { %>
-					<div>
-					<%= loginMember.getMemberName()%> 회원 로그인 중
-					<br>
-					<a href="<%= contentPath%>/logout" class="btn btn-sm btn-secondary">로그아웃</a>
-					</div>
-				<%} %>
+					<% if(loginMember == null){ %>
+						<h1><button type="button" onclick="location.href='<%= contentPath%>/loginForm'" class="btn btn-primary btn-lg" id="login-btn">뮤직 클라우드 로그인</button></h1>
+						<a href="">회원가입</a> | <a href="">아이디 찾기</a> | <a href="">비밀번호 찾기</a>
+					<%}else { %>
+						<div>
+						<%= loginMember.getMemberName()%> 회원 로그인 중
+						<br>
+						<a href="<%= contentPath%>/logout" class="btn btn-sm btn-secondary">로그아웃</a>
+						</div>
+					<%} %>
        </div>
 
        <form action="" class="search-bar">
            <input type="text" id="search-box">
            <button type="submit" id="search-btn">검색</button>
        </form>
-    </div>
+  </div>
 
     <div class="navigator">
         <button type="button" id="side-btn" class="btn btn-primary btn-lg">퀵 메뉴</button>
@@ -178,9 +185,9 @@
         </table>
     </div>
 
-   
-	
-	
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
 	<script>
 
 	    $(function(){
@@ -196,5 +203,7 @@
 	    });
 	</script>
 	
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
 </html>

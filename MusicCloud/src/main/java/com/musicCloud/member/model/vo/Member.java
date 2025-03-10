@@ -12,14 +12,15 @@ public class Member {
 	private String email;
 	private String gender;
 	private int age;
-	private String status;
 	private Date enrollDate;
 	private int reportCount;
+	private String status;
+	private String pfStatus;
 	
 	public Member() {}
-	
+
 	public Member(int memberNo, int locationNo, String memberId, String memberPwd, String memberName, String email,
-			String gender, int age, String status, Date enrollDate, int reportCount) {
+			String gender, int age, Date enrollDate, int reportCount, String status, String pfStatus) {
 		super();
 		this.memberNo = memberNo;
 		this.locationNo = locationNo;
@@ -29,9 +30,10 @@ public class Member {
 		this.email = email;
 		this.gender = gender;
 		this.age = age;
-		this.status = status;
 		this.enrollDate = enrollDate;
 		this.reportCount = reportCount;
+		this.status = status;
+		this.pfStatus = pfStatus;
 	}
 
 	public int getMemberNo() {
@@ -98,14 +100,6 @@ public class Member {
 		this.age = age;
 	}
 
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
 	public Date getEnrollDate() {
 		return enrollDate;
 	}
@@ -122,10 +116,30 @@ public class Member {
 		this.reportCount = reportCount;
 	}
 
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public String getPfStatus() {
+		return pfStatus;
+	}
+
+	public void setPfStatus(String pfStatus) {
+		this.pfStatus = pfStatus;
+	}
+
 	@Override
 	public String toString() {
 		return "Member [memberNo=" + memberNo + ", locationNo=" + locationNo + ", memberId=" + memberId + ", memberPwd="
 				+ memberPwd + ", memberName=" + memberName + ", email=" + email + ", gender=" + gender + ", age=" + age
-				+ ", status=" + status + ", enrollDate=" + enrollDate + ", reportCount=" + reportCount + "]";
+				+ ", enrollDate=" + enrollDate + ", reportCount=" + reportCount + ", status=" + status + ", pfStatus="
+				+ pfStatus + "]";
 	}
-}
+	
+	}
+
+	
