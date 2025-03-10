@@ -1,5 +1,10 @@
+<%@page import="com.musicCloud.member.model.vo.Location"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	ArrayList<Location> lList = (ArrayList<Location>)request.getAttribute("lList");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,6 +55,7 @@
     }
     #memberName{ padding: 10px; }
 
+
 </style>
 </head>
 <body>
@@ -59,34 +65,56 @@
         
         <div id="enroll-div">
 
-            <form action="" class="was-validated">
+            <form action="<%= request.getContextPath()%>/memberEnroll" class="was-validated">
                 <div class="form-group">
-                  <input type="text" class="form-control" id="memberId" placeholder="아이디" name="memberId" required>
+                  <input type="text" class="form-control" name="memberId" placeholder="아이디" required>
                   <div class="valid-feedback">사용가능한 아이디 입니다.</div>
                   <div class="invalid-feedback">아이디는 필수입력사항 입니다.</div>
                 </div>
 
                 <div class="form-group">
-                  <input type="password" class="form-control" id="memberPwd" placeholder="비밀번호" name="memberPwd" required>
+                  <input type="password" class="form-control" placeholder="비밀번호" name="memberPwd" required>
                   <div class="valid-feedback">사용가능한 비밀번호 입니다.</div>
                   <div class="invalid-feedback">비밀번호는 필수입력사항 입니다.</div>
                 </div>
 
                 <div class="form-group">
-                    <input type="email" class="form-control" id="memberEmail" placeholder="이메일" name="memberEmail" required>
-                    <div class="valid-feedback">사용가능한 이메일 입니다.</div>
-                    <div class="invalid-feedback">이메일는 필수입력사항 입니다</div>
+                  <input type="email" class="form-control" placeholder="이메일" name="memberEmail" required>
+                  <div class="valid-feedback">사용가능한 이메일 입니다.</div>
+                  <div class="invalid-feedback">이메일는 필수입력사항 입니다</div>
                 </div>
 
                 <div class="form-group">
-                    <input type="text" class="form-inline" id="memberName" placeholder="별칭" name="memberName" >
+                    <input type="text" class="form-inline" placeholder="별칭" name="memberName">
                 </div>
 
-                <button type="submit" class="btn btn-primary">회원가입</button>
-              </form>
+                <div class="dateBox">
+                      생년월일
+                      <input type="date" name="ageDate"> 
+                </div>
 
+                <div class="form-group">
+                    성별
+                    <select class="form-control" name="gender">
+                      <option value="M">남자</option>
+                      <option value="W">여자</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    거주 지역
+                    <select class="form-control" name="locationNo">
+                      <%for(Location l : lList) {%>
+                      	<option value="<%= l.getLocationNo()%>"><%= l.getLocationName()%></option>
+                      <%} %>
+                    </select>
+                </div>
+              	<button class="btn btn-primary">회원가입</button>
+              </form>
         </div>
 
     </div>
+
+    <br><br><br><br><br><br><br><br><br><br>
 </body>
 </html>

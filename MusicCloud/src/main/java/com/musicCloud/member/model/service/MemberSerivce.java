@@ -3,8 +3,10 @@ package com.musicCloud.member.model.service;
 import static com.musicCloud.common.JDBCTemplate.*;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 
 import com.musicCloud.member.model.dao.MemberDao;
+import com.musicCloud.member.model.vo.Location;
 import com.musicCloud.member.model.vo.Member;
 
 public class MemberSerivce {
@@ -20,6 +22,18 @@ public class MemberSerivce {
 		
 		close(conn);
 		return m;
+	}
+	
+	/**
+	 * @return
+	 * 설명 : 지역 테이블 데이터 전부 조회하는 서비스 메소드
+	 */
+	public ArrayList<Location> selectAllLocation(){
+		Connection conn = getConnection();
+		ArrayList<Location> lList = new MemberDao().selectAllLocation(conn);
+		
+		close(conn);
+		return lList;
 	}
 
 }

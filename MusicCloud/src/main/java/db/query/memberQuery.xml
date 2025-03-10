@@ -21,4 +21,11 @@
 	   AND MEMBER_PWD  = ?
 	   AND STATUS = 'Y'
 	</entry>
+	
+	<entry key="selectAllLocation">
+		SELECT 
+		       LOCATION_NO
+		     , LOCATION_NAME
+		  FROM LOCATION
+	</entry>
 </properties>

@@ -6,9 +6,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Properties;
 
 import static com.musicCloud.common.JDBCTemplate.*;
+
+import com.musicCloud.member.model.vo.Location;
 import com.musicCloud.member.model.vo.Member;
 
 public class MemberDao {
@@ -70,5 +73,35 @@ public class MemberDao {
 			close(rset);
 		}
 		return m;
+	}
+	
+	
+	/**
+	 * @param conn
+	 * @return
+	 * 설명 : 지역 테이블 데이터 전부 조회 Dao
+	 */
+	public ArrayList<Location> selectAllLocation(Connection conn){
+		ArrayList<Location> list = new ArrayList<Location>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectAllLocation");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				list.add(
+						  new Location( rset.getInt("location_no"), rset.getString("location_name"))
+						);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
 	}
 }
