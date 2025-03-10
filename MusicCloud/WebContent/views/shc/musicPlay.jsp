@@ -25,8 +25,6 @@
     height: 700px;
     width: 1300px;
     margin: auto;
-
-    
     }
 
     .image-container {
@@ -137,6 +135,7 @@ b{
     float: right;
    
 }  
+
     </style>
 </head>
 
@@ -146,7 +145,7 @@ b{
     <%@ include file="../common/menubar.jsp" %>
     <br><br><br>
 
-    <div class="wrapper">
+    <div class="wrapper-1">
         <div class="playlist">
             <div class="image-container">
              <div class="image">
@@ -171,7 +170,7 @@ b{
             <div class="lyrics-comment">
 
                 <div class="button">
-                    <button>가사</button> <button id="comment-view">댓글</button>
+                    <button id="lyrics-view">가사</button> <button id="comment-view">댓글</button>
                 </div>
 
                 <div class="content">
@@ -181,8 +180,8 @@ b{
 
         </div>     
     </div>
-    
 
+    
     <div class="comment-wrapper">
         <div class="comment-header">
             <b>댓글 20개</b>
@@ -218,6 +217,7 @@ b{
                 <th>
                     <button id="report" style="border: none; background: none; color: gray;">신고</button>
                 </th>
+                
              </table>
             </div>
         </div>
@@ -372,10 +372,8 @@ b{
              좋아요 개수
              <img src="../../resources/image/싫어요.png" style="height: 12px; width: 12px;" alt="">
              싫어요 개수
-
-             <button name="comment-btn" id="" style="float: right; background: none; border: none;">   <!--float 란 부모 컨테이너에서 오른쪽 왼쪽 배치하기 여기선 오른쪾-->
-                 <img src="../../resources/image/list.png" style="height: 20px; widows: 20px;" alt="">
-             </button>
+                
+          
              <table id="comment-btn-report" style="line-height: 20px;">
                 <th>
                     <button id="report" style="border: none; background: none; color: gray;">신고</button>
@@ -473,6 +471,17 @@ b{
     </div>
   </div>
 </div>
+
+<div id="play-bar" style="height: 200px; width: 100%; position: relative;">
+
+    <audio id="audio" src="audio.mp3"></audio>
+
+    <button id="playPause">▶️ Play</button>
+
+    <input id="seekBar" type="range" min="0" max="100" value="0" style="width: 100%; position: absolute; left: 0; right: 0;">
+</div>
+
+
     
 
 

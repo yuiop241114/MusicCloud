@@ -72,18 +72,18 @@ select {
 
 .bucketList-product-name,
 .bucketList-price,
-.bucketList-quantity,
 .bucketList-addRemove {
     float: left; 
     text-align: center; 
     
 }
-.bucketList-product-name { width: 40%; } 
-.bucketList-price { width: 20%; }
-.bucketList-quantity { width: 20%; }
-.bucketList-addRemove { width: 20%; }
+.bucketList-product-name { width: 40%; text-align: center; } 
+.bucketList-price { width: 30%; text-align: center;}
+.bucketList-addRemove { width: 30%; text-align: center;}
 
-
+img{
+    border-radius: 5px;
+}
 </style>
 </head>
 <body>
@@ -115,19 +115,16 @@ select {
         <div class="bucketList" style="background-color:  #c5ddff;;">
             <div class="bucketList-title">
 
-               <div class="bucketList-product-name">
+               <div class="bucketList-product-name" >
                 상품명
                </div>
 
-               <div class="bucketList-price">
+               <div class="bucketList-price" >
 
                 가격
                </div>
 
-               <div class="bucketList-quantity">
-
-                수량
-               </div>
+             
 
                <div class="bucketList-addRemove">
                보관/삭제
@@ -136,9 +133,7 @@ select {
             </div>
                 </div>
                 
-            <div class="bucketList-content">
-
-            </div>
+        
         </div>
 <!-- html jsp for문으로 -->
         <div class="bucketList">
@@ -162,11 +157,7 @@ select {
                 <b style="color: crimson;">판매가 : 1,000원원</b>
                </div>
 
-               <div class="bucketList-quantity">
-                    <button onclick="decrease()" style="border:none; background: rgb(191, 191, 255); cursor: pointer; border-radius: 8px;">-</button>    
-                    <span id="count">1</span>
-                    <button onclick="increase()" style="border:none; background: rgb(191, 191, 255); cursor: pointer;  border-radius: 8px;">+</button>
-                </div>
+               
             
                 
                 <div class="bucketList-addRemove">
@@ -174,53 +165,7 @@ select {
                     <input type="checkbox" class="productCheckbox" style="width: 20px; height: 20px;">
                 </div>
                 
-                <div class="bucketList-content">
-                    
-                </div>
-            </div>
-            </div>
-            <!-- html jsp for문으로 -->
-
-            
-
-
-            <!-- html jsp for문으로 -->
-        <div class="bucketList">
-            <div class="bucketList-title">
-
-                <div class="bucketList-product-name">
-                    <img src="../../resources/image/열불이.png" style="padding: 2rem; height: 200px; width: 200px; float: left;">
-                    <span style="color: rgb(92, 92, 248); display: inline-block; vertical-align: left ;">[차은우의 플레이리스트]</span>
-                    <b style="display: block;">즉시 이용 가능</b>
-                </div>
-                
-
-               <div class="bucketList-product-name">
-
-              </div>
-
-               <div class="bucketList-price">
-
-                <b>정가 : 1,000원</b>
-                <br>
-                <b style="color: crimson;">판매가 : 1,000원원</b>
-               </div>
-
-               <div class="bucketList-quantity">
-                    <button onclick="decrease()" style="border:none; background: rgb(191, 191, 255); cursor: pointer; border-radius: 8px;">-</button>    
-                    <span id="count">1</span>
-                    <button onclick="increase()" style="border:none; background: rgb(191, 191, 255); cursor: pointer;  border-radius: 8px;">+</button>
-                </div>
-            
-                
-                <div class="bucketList-addRemove">
-                    
-                    <input type="checkbox" class="productCheckbox" style="width: 20px; height: 20px;">
-                </div>
-                
-                <div class="bucketList-content">
-                    
-                </div>
+             
             </div>
             </div>
             <!-- html jsp for문으로 -->
@@ -247,11 +192,7 @@ select {
                 <b style="color: crimson;">판매가 : 1,000원원</b>
                </div>
 
-               <div class="bucketList-quantity">
-                    <button onclick="decrease()" style="border:none; background: rgb(191, 191, 255); cursor: pointer; border-radius: 8px;">-</button>    
-                    <span id="count">1</span>
-                    <button onclick="increase()" style="border:none; background: rgb(191, 191, 255); cursor: pointer;  border-radius: 8px;">+</button>
-                </div>
+               
             
                 
                 <div class="bucketList-addRemove">
@@ -259,12 +200,12 @@ select {
                     <input type="checkbox" class="productCheckbox" style="width: 20px; height: 20px;">
                 </div>
                 
-                <div class="bucketList-content">
-                    
-                </div>
+             
             </div>
             </div>
             <!-- html jsp for문으로 -->
+
+
 
             <!-- html jsp for문으로 -->
         <div class="bucketList">
@@ -288,11 +229,7 @@ select {
                 <b style="color: crimson;">판매가 : 1,000원원</b>
                </div>
 
-               <div class="bucketList-quantity">
-                    <button onclick="decrease()" style="border:none; background: rgb(191, 191, 255); cursor: pointer; border-radius: 8px;">-</button>    
-                    <span id="count">1</span>
-                    <button onclick="increase()" style="border:none; background: rgb(191, 191, 255); cursor: pointer;  border-radius: 8px;">+</button>
-                </div>
+               
             
                 
                 <div class="bucketList-addRemove">
@@ -300,12 +237,90 @@ select {
                     <input type="checkbox" class="productCheckbox" style="width: 20px; height: 20px;">
                 </div>
                 
-                <div class="bucketList-content">
-                    
-                </div>
+             
             </div>
             </div>
             <!-- html jsp for문으로 -->
+
+
+
+            <!-- html jsp for문으로 -->
+        <div class="bucketList">
+            <div class="bucketList-title">
+
+                <div class="bucketList-product-name">
+                    <img src="../../resources/image/열불이.png" style="padding: 2rem; height: 200px; width: 200px; float: left; border-radius: 10px;">
+                    <span style="color: rgb(92, 92, 248); display: inline-block; vertical-align: left ;">[차은우의 플레이리스트]</span>
+                    <b style="display: block;">즉시 이용 가능</b>
+                </div>
+                
+
+               <div class="bucketList-product-name">
+
+              </div>
+
+               <div class="bucketList-price">
+
+                <b>정가 : 1,000원</b>
+                <br>
+                <b style="color: crimson;">판매가 : 1,000원원</b>
+               </div>
+
+               
+            
+                
+                <div class="bucketList-addRemove">
+                    
+                    <input type="checkbox" class="productCheckbox" style="width: 20px; height: 20px;">
+                </div>
+                
+             
+            </div>
+            </div>
+            <!-- html jsp for문으로 -->
+
+
+            <!-- html jsp for문으로 -->
+        <div class="bucketList">
+            <div class="bucketList-title">
+
+                <div class="bucketList-product-name">
+                    <img src="../../resources/image/열불이.png" style="padding: 2rem; height: 200px; width: 200px; float: left;">
+                    <span style="color: rgb(92, 92, 248); display: inline-block; vertical-align: left ;">[차은우의 플레이리스트]</span>
+                    <b style="display: block;">즉시 이용 가능</b>
+                </div>
+                
+
+               <div class="bucketList-product-name">
+
+              </div>
+
+               <div class="bucketList-price">
+
+                <b>정가 : 1,000원</b>
+                <br>
+                <b style="color: crimson;">판매가 : 1,000원원</b>
+               </div>
+
+               
+            
+                
+                <div class="bucketList-addRemove">
+                    
+                    <input type="checkbox" class="productCheckbox" style="width: 20px; height: 20px;">
+                </div>
+                
+             
+            </div>
+            </div>
+            <!-- html jsp for문으로 -->
+
+
+            
+
+
+
+
 
 
 
@@ -347,19 +362,7 @@ select {
 
     <script>
 
-        let count = 1;
-
-        function increase(){
-
-            count++;
-            document.getElementById('count').innerText = count;
-        }
-        function decrease(){    
-            if(count > 1){
-            count--;
-            document.getElementById('count').innerText = count;
-            }
-        }
+      
 
         function toggleCheckboxes(source) {
         let checkboxes = document.querySelectorAll('.productCheckbox'); 
