@@ -139,18 +139,6 @@
 	
 	</style> 
 <body>
-<<<<<<< HEAD
-
-	<% if(loginMember == null){ %>
-		<h1><button type="button" onclick="location.href='<%= contentPath%>/loginForm'">로그인</button></h1>
-	<%}else { %>
-		<div>
-		<%= loginMember.getMemberName()%> 회원 로그인 중
-		<br>
-		<a href="<%= contentPath%>/logout" class="btn btn-sm btn-secondary">로그아웃</a>
-		</div>
-	<%} %>
-=======
 	<div class="wrapper">
        <img src="resources/image/mainlogo.png" id="logo">
 
@@ -208,7 +196,6 @@
 		</script>
 		<% session.removeAttribute("alertMsg"); %>
 	<%}%>
->>>>>>> main
 	
 	<script>
 			//퀵 메뉴 스크립트

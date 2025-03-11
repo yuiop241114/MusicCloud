@@ -102,14 +102,6 @@
 </style>
 </head>
 <body>
-<<<<<<< HEAD
-
-	<form action="<%= contentPath%>/login" method="post">
-	아이디 : <input type="text" name="loginId" required> <br>
-	비밀번호 : <input type="password" name="loginPwd" required> <br>
-	<button type="submit">로그인</button>
-	</form>
-=======
 	<div class="wrapper">
 		
 		<img src="resources/image/mainlogo.png" alt="">
@@ -150,7 +142,6 @@
 
 
 	</div>
->>>>>>> main
 
 </body>
 </html>

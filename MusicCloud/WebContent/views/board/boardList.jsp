@@ -149,14 +149,14 @@
     }
 	
 	</style> 
-<body>
+    <body>
 	<div class="wrapper">
        <img src="c:\Users\user1\Pictures\Screenshots\화면 캡처 2025-03-11 094550.png" id="logo">
        <div id="login-box">   
 					<h1><button type="button" onclick="location.href='<%= contentPath%>/loginForm'" class="btn btn-primary btn-lg" id="login-btn">뮤직 클라우드 로그인</button></h1>
 					<a href="">회원가입</a> | <a href="">아이디 찾기</a> | <a href="">비밀번호 찾기</a>
 
-       </div>
+    </div>
 
        <form action="" class="search-bar">
            <input type="text" id="search-box">
@@ -190,7 +190,8 @@
 			</table>
 	</div>
 
-		<div class="board-container">
+    <div >
+	  <div class="board-container">
       <h2 class="board-title">통합게시판</h2>
       <table class="board-table">
           <thead>
@@ -304,6 +305,7 @@
           </tbody>
       </table>
   </div>
+</div>
 
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

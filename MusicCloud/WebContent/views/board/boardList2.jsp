@@ -234,22 +234,7 @@
           <label for="title">제목: 30자를 넘겨선 안된다. VARCHAR(90)</label>
           <input type="text" id="title" name="title" maxlength="90">
         </div>
-  
-        <div class="form-group">
-          <label for="date">작성일: SYSDATE</label>
-          <input type="text" id="date" name="date" value="SYSDATE" readonly>
-        </div>
-  
-        <div class="form-group">
-          <label for="author">작성자: user_ID</label>
-          <input type="text" id="author" name="author" value="user_ID" readonly>
-        </div>
-  
-        <div class="form-group">
-          <label for="attachment">파일첨부 및 음원이미지</label>
-          <input type="file" id="attachment" name="attachment">
-        </div>
-  
+    
         <div class="form-group">
           <label for="content">내용들: Max 500자 이내</label>
           <textarea id="content" name="content" maxlength="500"></textarea>
