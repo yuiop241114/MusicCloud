@@ -34,13 +34,7 @@
     line-height: 100px; /* header 높이에 맞게 조정 (ex. 50px) */
 }
 
-.header-2 {
-    
-    height: 80%;
-    width: 85%;
-    float: left;
-    
-}
+
 
 .point {
     margin: 10px 10px 10px 10px;
@@ -149,24 +143,11 @@
         <div class="header">
             <div class="header-1">
 
-                <b style="padding: 2rem;">마이페이지</b>
+                <b style="margin: auto; text-align: center; color: #444; font-size: larger;">마이페이지</b>
 
             </div>
 
-            <div class="header-2">
-
-                <div class="point">
-                        <div class="point-1">
-                            <b style="color: gray;">잔여 포인트</b>
-                            <b>5,000</b>
-                        </div>
-                        <div class="point-2" style="background-color: blueviolet; color: white; border-radius: 10px; height: 40px;">
-                           <b style="color: white;">잔여포인트</b>
-                    </div>
-                </div>
-
-
-                </div>
+            
             </div>
         
         <div class="main">
@@ -204,7 +185,7 @@
                             <th>날짜</th>
                             <th>사용서비스</th>
                             <th>사용내역</th>
-                            <th>잔여포인트</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
@@ -213,18 +194,22 @@
                             <td>2022-12-01 16:37:06</td>
                             <td>서동진 플레이리스트<br>구매</td>
                             <td><b>1,000</b></td>
-                            <td>4,000</td>
+                           
                         </tr>
                         <!-- JSP 반복부문 -->
                     </tbody>
                 </table>
             </div>
+
+
+
+
             <div id="friendList">
                 <b>친구리스트</b>
                 &nbsp; &nbsp; &nbsp; &nbsp;
                 <button id="addFriendBtn" data-toggle="modal" data-target="#addFriendModal" 
                 style="color: white; background-color: rgb(165, 0, 165); border-radius: 5px; border: none; 
-                font-weight: bold; font-size: 12px; height: 30px;">
+                font-weight: bold; font-size: 12px; height: 30px; ">
             친구 추가
         </button>
                 <table id="friendList" style="border-collapse: collapse; border: 1px solid black;">

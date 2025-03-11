@@ -42,7 +42,7 @@
     width: 35%;
     float: left;
     margin-left: 10px; 
-    border: 3px solid rgba(26, 83, 255, 0.784); 
+    border: 3px solid #1587d0; 
     border-radius: 10px;
     padding: 10px; 
     height: 100%;
@@ -53,7 +53,7 @@
     }
     .content{
         height: 90%;
-        border: 3px solid rgba(26, 83, 255, 0.784);
+        border: 3px solid #1587d0;
         border-radius: 30px;
         overflow: auto; /* 넘치는 부분을 스크롤 가능하게한다 */
     }
@@ -65,13 +65,13 @@
     height:100%;
     border-radius: 30px;
     border-width: 2px;
-    border: 3px solid rgba(26, 83, 255, 0.784);
+    border: 3px solid #1587d0;
 
     }
 
 
     .button button {
-    background-color: #4daaf5; 
+    background-color: #1587d0; 
     color: white;
     border: none; 
     border-radius: 20px; 
@@ -83,7 +83,7 @@
     }
 
     .button button:hover {
-    background-color: #3399dd; 
+    background-color: #1587d0; 
     }
 
     .image-info {
@@ -113,6 +113,7 @@ b{
     height: 400px;
     width: 400px;
     display: none;
+    margin: 20px;
 }
 .comment-list-photo{
     width: 10%;
@@ -134,7 +135,14 @@ b{
     border-radius: 5px;
     float: right;
    
-}  
+} 
+.play-info{
+    position: absolute;
+}
+
+#play-bar {
+    transition: bottom 0.3s ease-in-out; /* 부드러운 애니메이션 */
+}
 
 
 
@@ -186,7 +194,7 @@ b{
     
     <div class="comment-wrapper">
         <div class="comment-header">
-            <b>댓글 20개</b>
+            <b style="font-size: 18px;">댓글 20개</b>
         </div> 
 
         <div class="comment-input">
@@ -194,6 +202,8 @@ b{
             &nbsp;
             <input type="text" placeholder="댓글달기..." style="border-radius: 5px; border-color: gray;" required>
         </div>
+
+        <hr>
 
         <div class="comment-list">
             <div class="comment">
@@ -224,221 +234,7 @@ b{
             </div>
         </div>
 
-        <div class="comment">
-            <div class="comment-list-photo">
-            <img src="../../resources/image/주몽1.png" style="border-radius: 5px; height: 55px; width: 55px;" alt="">
-            </div>
-            
-            <div class="comment-list-detail">
-                <span style="font-size: 13px;">kh 1조 마지막 수정된 날짜 : 2025년 02월 21일</span>
-            <hr style="margin: 0">
-             
-             <p style="font-size: 12px; margin: 0;">좋아요</p>
-             
-             <img src="../../resources/image/좋아요.webp" style="height: 12px; width: 12px;" alt="">
-             좋아요 개수
-             <img src="../../resources/image/싫어요.png" style="height: 12px; width: 12px;" alt="">
-             싫어요 개수
-
-             <button name="comment-btn" id="" style="float: right; background: none; border: none;">   <!--float 란 부모 컨테이너에서 오른쪽 왼쪽 배치하기 여기선 오른쪾-->
-                 <img src="../../resources/image/list.png" style="height: 20px; widows: 20px;" alt="">
-             </button>
-             <table id="comment-btn-report" style="line-height: 20px;">
-                <th>
-                    <button id="report" style="border: none; background: none; color: gray;">신고</button>
-                </th>
-             </table>
-            </div>
-        </div>
-
-        <div class="comment">
-            <div class="comment-list-photo">
-            <img src="../../resources/image/주몽1.png" style="border-radius: 5px; height: 55px; width: 55px;" alt="">
-            </div>
-            
-            <div class="comment-list-detail">
-                <span style="font-size: 13px;">kh 1조 마지막 수정된 날짜 : 2025년 02월 21일</span>
-            <hr style="margin: 0">
-             
-             <p style="font-size: 12px; margin: 0;">좋아요</p>
-             
-             <img src="../../resources/image/좋아요.webp" style="height: 12px; width: 12px;" alt="">
-             좋아요 개수
-             <img src="../../resources/image/싫어요.png" style="height: 12px; width: 12px;" alt="">
-             싫어요 개수
-
-             <button name="comment-btn" id="" style="float: right; background: none; border: none;">   <!--float 란 부모 컨테이너에서 오른쪽 왼쪽 배치하기 여기선 오른쪾-->
-                 <img src="../../resources/image/list.png" style="height: 20px; widows: 20px;" alt="">
-             </button>
-             <table id="comment-btn-report" style="line-height: 20px;">
-                <th>
-                    <button id="report" style="border: none; background: none; color: gray;">신고</button>
-                </th>
-             </table>
-            </div>
-        </div>
         
-        <div class="comment">
-            <div class="comment-list-photo">
-            <img src="../../resources/image/주몽1.png" style="border-radius: 5px; height: 55px; width: 55px;" alt="">
-            </div>
-            
-            <div class="comment-list-detail">
-                <span style="font-size: 13px;">kh 1조 마지막 수정된 날짜 : 2025년 02월 21일</span>
-            <hr style="margin: 0">
-             
-             <p style="font-size: 12px; margin: 0;">좋아요</p>
-             
-             <img src="../../resources/image/좋아요.webp" style="height: 12px; width: 12px;" alt="">
-             좋아요 개수
-             <img src="../../resources/image/싫어요.png" style="height: 12px; width: 12px;" alt="">
-             싫어요 개수
-
-             <button name="comment-btn" id="" style="float: right; background: none; border: none;">   <!--float 란 부모 컨테이너에서 오른쪽 왼쪽 배치하기 여기선 오른쪾-->
-                 <img src="../../resources/image/list.png" style="height: 20px; widows: 20px;" alt="">
-             </button>
-             <table id="comment-btn-report" style="line-height: 20px;">
-                <th>
-                    <button id="report" style="border: none; background: none; color: gray;">신고</button>
-                </th>
-             </table>
-            </div>
-        </div>
-
-        <div class="comment">
-            <div class="comment-list-photo">
-            <img src="../../resources/image/주몽1.png" style="border-radius: 5px; height: 55px; width: 55px;" alt="">
-            </div>
-            
-            <div class="comment-list-detail">
-                <span style="font-size: 13px;">kh 1조 마지막 수정된 날짜 : 2025년 02월 21일</span>
-            <hr style="margin: 0">
-             
-             <p style="font-size: 12px; margin: 0;">좋아요</p>
-             
-             <img src="../../resources/image/좋아요.webp" style="height: 12px; width: 12px;" alt="">
-             좋아요 개수
-             <img src="../../resources/image/싫어요.png" style="height: 12px; width: 12px;" alt="">
-             싫어요 개수
-
-             <button name="comment-btn" id="" style="float: right; background: none; border: none;">   <!--float 란 부모 컨테이너에서 오른쪽 왼쪽 배치하기 여기선 오른쪾-->
-                 <img src="../../resources/image/list.png" style="height: 20px; widows: 20px;" alt="">
-             </button>
-             <table id="comment-btn-report" style="line-height: 20px;">
-                <th>
-                    <button id="report" style="border: none; background: none; color: gray;">신고</button>
-                </th>
-             </table>
-            </div>
-        </div>
-
-        <div class="comment">
-            <div class="comment-list-photo">
-            <img src="../../resources/image/주몽1.png" style="border-radius: 5px; height: 55px; width: 55px;" alt="">
-            </div>
-            
-            <div class="comment-list-detail">
-                <span style="font-size: 13px;">kh 1조 마지막 수정된 날짜 : 2025년 02월 21일</span>
-            <hr style="margin: 0">
-             
-             <p style="font-size: 12px; margin: 0;">좋아요</p>
-             
-             <img src="../../resources/image/좋아요.webp" style="height: 12px; width: 12px;" alt="">
-             좋아요 개수
-             <img src="../../resources/image/싫어요.png" style="height: 12px; width: 12px;" alt="">
-             싫어요 개수
-
-             <button name="comment-btn" id="" style="float: right; background: none; border: none;">   <!--float 란 부모 컨테이너에서 오른쪽 왼쪽 배치하기 여기선 오른쪾-->
-                 <img src="../../resources/image/list.png" style="height: 20px; widows: 20px;" alt="">
-             </button>
-             <table id="comment-btn-report" style="line-height: 20px;">
-                <th>
-                    <button id="report" style="border: none; background: none; color: gray;">신고</button>
-                </th>
-             </table>
-            </div>
-        </div>
-
-        <div class="comment">
-            <div class="comment-list-photo">
-            <img src="../../resources/image/주몽1.png" style="border-radius: 5px; height: 55px; width: 55px;" alt="">
-            </div>
-            
-            <div class="comment-list-detail">
-                <span style="font-size: 13px;">kh 1조 마지막 수정된 날짜 : 2025년 02월 21일</span>
-            <hr style="margin: 0">
-             
-             <p style="font-size: 12px; margin: 0;">좋아요</p>
-             
-             <img src="../../resources/image/좋아요.webp" style="height: 12px; width: 12px;" alt="">
-             좋아요 개수
-             <img src="../../resources/image/싫어요.png" style="height: 12px; width: 12px;" alt="">
-             싫어요 개수
-
-             <button name="comment-btn" id="" style="float: right; background: none; border: none;">   <!--float 란 부모 컨테이너에서 오른쪽 왼쪽 배치하기 여기선 오른쪾-->
-                 <img src="../../resources/image/list.png" style="height: 20px; widows: 20px;" alt="">
-             </button>
-             <table id="comment-btn-report" style="line-height: 20px;">
-                <th>
-                    <button id="report" style="borderg none; background: none; color: gray;">신고</button>
-                </th>
-             </table>
-            </div>
-        </div>
-
-        <div class="comment">
-            <div class="comment-list-photo">
-            <img src="../../resources/image/주몽1.png" style="border-radius: 5px; height: 55px; width: 55px;" alt="">
-            </div>
-            
-            <div class="comment-list-detail">
-                <span style="font-size: 13px;">kh 1조 마지막 수정된 날짜 : 2025년 02월 21일</span>
-            <hr style="margin: 0">
-             
-             <p style="font-size: 12px; margin: 0;">좋아요</p>
-             
-             <img src="../../resources/image/좋아요.webp" style="height: 12px; width: 12px;" alt="">
-             좋아요 개수
-             <img src="../../resources/image/싫어요.png" style="height: 12px; width: 12px;" alt="">
-             싫어요 개수
-
-             <button name="comment-btn" id="" style="float: right; background: none; border: none;">   <!--float 란 부모 컨테이너에서 오른쪽 왼쪽 배치하기 여기선 오른쪾-->
-                 <img src="../../resources/image/list.png" style="height: 20px; widows: 20px;" alt="">
-             </button>
-             <table id="comment-btn-report" style="line-height: 20px;">
-                <th>
-                    <button id="report" style="border: none; background: none; color: gray;">신고</button>
-                </th>
-             </table>
-            </div>
-        </div>
-
-        <div class="comment">
-            <div class="comment-list-photo">
-            <img src="../../resources/image/주몽1.png" style="border-radius: 5px; height: 55px; width: 55px;" alt="">
-            </div>
-            
-            <div class="comment-list-detail">
-                <span style="font-size: 13px;">kh 1조 마지막 수정된 날짜 : 2025년 02월 21일</span>
-            <hr style="margin: 0">
-             
-             <p style="font-size: 12px; margin: 0;">좋아요</p>
-             
-             <img src="../../resources/image/좋아요.webp" style="height: 12px; width: 12px;" alt="">
-             좋아요 개수
-             <img src="../../resources/image/싫어요.png" style="height: 12px; width: 12px;" alt="">
-             싫어요 개수
-
-             <button name="comment-btn" id="" style="float: right; background: none; border: none;">   <!--float 란 부모 컨테이너에서 오른쪽 왼쪽 배치하기 여기선 오른쪾-->
-                 <img src="../../resources/image/list.png" style="height: 20px; widows: 20px;" alt="">
-             </button>
-             <table id="comment-btn-report" style="line-height: 20px;">
-                <th>
-                    <button id="report" style="border: none; background: none; color: gray;">신고</button>
-                </th>
-             </table>
-            </div>
-        </div>
         </div>
         
     </div>
@@ -475,26 +271,36 @@ b{
     </div>
   </div>
 </div>
+<br><br><br><br><br><br><br><br>
 
-<br>
-<br><br>
-<br><br>
-<br>
 
-<div id="play-bar" style="height: 200px; width: 100%; position: relative; text-align: center; position: fixed; bottom: 0px;">
+<div id="play-bar" style="height: 130px; width: 100%; position: relative; text-align: center; position: fixed; bottom: 0px; background-color: #d6efff; opacity: 80%; " >
     
     
     <audio id="audio" src="audio.mp3"></audio>
-    <br><br><br><br>
-    <span style="float: left; padding: 1rem;">00:00</span>
-    <span style="float: left; padding: 1rem;">/</span>
-    <span style="float: left; padding: 1rem;">03:40</span>
+
+<div class="play-info">
+            
+ 
+        
+    <span style="float: left; padding: 1rem; font-size: 20px;">00:00</span>
+    <span style="float: left; padding: 1rem; font-size: 20px;">/</span>
+    <span style="float: left; padding: 1rem; font-size: 20px;">03:40</span>
+    
+    
+</div>
     <input id="seekBar" type="range" min="0" max="100" value="0" style="width: 100%; position: absolute; left: 0; right: 0; color: black;">
     <br>
+    
 
+    <b style="text-align: center;">가수</b> <b style="font-size: 18px; color: gray;">노래제목</b>
+    
+    <br>
+    
     <button id="play-previous" style="background: none; border: none; height: 80px; width: 80px;">
         <img src="../../resources/image/전곡.png" style="height: 40px; width: 40px;" alt="">
     </button>
+
 
     <button id="play-pause" style="background: none; border: none; height: 80px; width: 80px;">
         <img src="../../resources/image/재생이미지 검정.png" style="height: 40px; width: 40px;" alt="">
@@ -508,8 +314,8 @@ b{
     <button id="play-hidden" style="background: none; border: none; height: 80px; width: 80px; position: absolute; right: 0;">
         <img src="../../resources/image/화살표.png" style="height: 40px; width: 40px;" alt="">
     </button>
+</div>
 
-    
 </div>
 
 
@@ -588,9 +394,21 @@ b{
         }
     });
 });
+document.getElementById("play-hidden").addEventListener("click", function () {
+    let playBar = document.getElementById("play-bar");
+
+    if (playBar.style.bottom === "0px") {
+        playBar.style.bottom = "-117px"; // 바 숨기기
+    } else {
+        playBar.style.bottom = "0px"; // 바 보이기
+    }
+});
 
 
-
+document.getElementById("seekBar").addEventListener("input", function () {
+    let playBar = document.getElementById("play-bar");
+    playBar.style.bottom = "0px"; // 바 보이기
+});
 
 
     </script>
