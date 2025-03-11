@@ -117,6 +117,9 @@
                     <div>영문(대문자 한개 이상), 숫자, 특수문자 포함한 8자 이상</div>
                 </div>
 
+                <b>실명</b>
+                <input type="text" placeholder="실명" name="memberAlias">
+
                 <b>별칭</b>
                 <input type="text" placeholder="별칭" name="memberName">
 
@@ -190,7 +193,6 @@
    	   						$("#idMsg>div+div").css("display", "block");
                             $("button").attr("type","submit").attr("disabled","disabled");
                         }
-   	   					
    	   				},
    	   				error:function(){},
    	   			})

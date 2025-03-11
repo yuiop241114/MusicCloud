@@ -14,6 +14,8 @@ import static com.musicCloud.common.JDBCTemplate.*;
 import com.musicCloud.member.model.vo.Location;
 import com.musicCloud.member.model.vo.Member;
 
+import oracle.net.aso.n;
+
 public class MemberDao {
 
 	private Properties prop = new Properties();
@@ -57,6 +59,7 @@ public class MemberDao {
 						      , rset.getString("member_no")
 						      , rset.getString("member_pwd")
 						      , rset.getString("member_name")
+						      , rset.getString("member_alias")
 						      , rset.getString("email")
 						      , rset.getString("gender")
 						      , rset.getInt("age")
@@ -67,6 +70,8 @@ public class MemberDao {
 						      );
 			}
 		} catch (SQLException e) { 
+			System.out.println(m);
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
 			close(pstmt);
@@ -123,9 +128,10 @@ public class MemberDao {
 			pstmt.setString(2, m.getMemberId());
 			pstmt.setString(3, m.getMemberPwd());
 			pstmt.setString(4, m.getMemberName());
-			pstmt.setString(5, m.getEmail());
-			pstmt.setString(6, m.getGender());
-			pstmt.setInt(7, m.getAge());
+			pstmt.setString(5, m.getMemberAlias());
+			pstmt.setString(6, m.getEmail());
+			pstmt.setString(7, m.getGender());
+			pstmt.setInt(8, m.getAge());
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {

@@ -37,16 +37,16 @@ public class MemberEnrollController extends HttpServlet {
 		String memberId = request.getParameter("memberId");
 		String memberPwd = request.getParameter("memberPwd");
 		String memberName = request.getParameter("memberName");
-		if(memberName.equals("")) {
-			memberName += memberId;
+		String memberAlias = request.getParameter("memberAlias");
+		if(memberAlias.equals("")) {
+			memberAlias += memberId;
 		}
 		String email = request.getParameter("memberEmail");
 		String gender = request.getParameter("gender");
-		System.out.println(request.getParameter("ageDate") + "");
 		//일반나이로 계산
 		int age = 2025 - Integer.parseInt((request.getParameter("ageDate") + "").substring(0,4)) + 1;
 
-		Member m = new Member(locationNo, memberId, memberPwd, memberName, email, gender, age);
+		Member m = new Member(locationNo, memberId, memberPwd, memberName, memberAlias, email, gender, age);
 		
 		//서비스부터 시작
 		int result = new MemberSerivce().insertMember(m);

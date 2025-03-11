@@ -9,6 +9,7 @@
 			 , MEMBER_ID
 			 , MEMBER_PWD
 			 , MEMBER_NAME
+			 , MEMBER_ALIAS
 			 , EMAIL
 			 , GENDER
 			 , AGE
@@ -38,6 +39,7 @@
 		  , MEMBER_ID
 		  , MEMBER_PWD
 		  , MEMBER_NAME
+		  , MEMBER_ALIAS
 		  , EMAIL
 		  , GENDER
 		  , AGE
@@ -45,6 +47,7 @@
 		  VALUES
 		  (
 		    SEQ_MEMBER_NO.NEXTVAL
+		  , ?
 		  , ?
 		  , ?
 		  , ?

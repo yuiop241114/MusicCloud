@@ -58,6 +58,24 @@
 		color: black;
 	}
 
+	/*로그인 후 로그인 div*/
+	#login-info{
+		margin-top: 55px;
+	}
+	#login-info strong{
+		margin-bottom: 10px;
+	}
+	#login-info a{
+		margin-right: 20px;
+	}
+	#login-info img{
+		width: 20px;
+		height: 20px;
+	}
+	#login-info a{
+		color: #1587d0;
+	}
+ 
 	/*검색창*/
 	.search-bar{ 
 	    width: 58%; 
@@ -147,10 +165,11 @@
 						<h1><button type="button" onclick="location.href='<%= contentPath%>/loginForm'" class="btn btn-primary btn-lg" id="login-btn">뮤직 클라우드 로그인</button></h1>
 						<a href="<%= request.getContextPath()%>/memberEnrollForm">회원가입</a> | <a href="">아이디 찾기</a> | <a href="">비밀번호 찾기</a>
 					<%}else { %>
-						<div>
-						<%= loginMember.getMemberName()%> 회원 로그인 중
-						<br>
-						<a href="<%= contentPath%>/logout" class="btn btn-sm btn-secondary">로그아웃</a>
+						<div id="login-info">
+							<strong><%= loginMember.getMemberName()%> 회원 로그인 중</strong>
+							<br><br>
+							<img src="resources/image/logoutIcon.png" alt="">
+							<a href="<%= contentPath%>/logout">로그아웃</a>
 						</div>
 					<%} %>
        </div>
