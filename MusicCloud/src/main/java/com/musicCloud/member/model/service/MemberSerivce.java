@@ -36,4 +36,33 @@ public class MemberSerivce {
 		return lList;
 	}
 
+	/**
+	 * @param m
+	 * @return
+	 * 설명 : 회원가입 서비스 메소드
+	 */
+	public int insertMember(Member m) {
+		Connection conn = getConnection();
+		int result = new MemberDao().insertMember(conn, m);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+	
+	/**
+	 * @param id
+	 * @return
+	 * 설명 : 아이디 중복 체크 서비스 메소드
+	 */
+	public int memberIdCheck(String id) {
+		Connection conn = getConnection();
+		int result = new MemberDao().memberIdCheck(conn, id);
+		
+		close(conn);
+		return result;
+	}
 }

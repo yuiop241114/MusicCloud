@@ -28,4 +28,36 @@
 		     , LOCATION_NAME
 		  FROM LOCATION
 	</entry>
+	
+	<entry key="insertMember">
+		INSERT 
+		  INTO MEMBER
+		  (
+		    MEMBER_NO
+		  , LOCATION_NO
+		  , MEMBER_ID
+		  , MEMBER_PWD
+		  , MEMBER_NAME
+		  , EMAIL
+		  , GENDER
+		  , AGE
+		  )
+		  VALUES
+		  (
+		    SEQ_MEMBER_NO.NEXTVAL
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  )
+	</entry>
+	
+	<entry key="memberIdCheck">
+		SELECT COUNT(*) AS "COUNT"
+		  FROM MEMBER
+		 WHERE MEMBER_ID = ?
+	</entry>
 </properties>

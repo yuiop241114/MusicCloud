@@ -4,6 +4,7 @@
 <%
 	String contentPath = request.getContextPath();
 	Member loginMember = (Member)session.getAttribute("loginMember");
+	String alertMsg = (String)session.getAttribute("alertMsg");
 %>
 <!DOCTYPE html>
 <html>
@@ -188,9 +189,18 @@
 		</div>
 	</div>
 	
+	<!-- 알림창 스크립트 -->
+	<%if(alertMsg != null){%>
+		<script>
+			alert("<%= alertMsg%>");
+		</script>
+		<% session.removeAttribute("alertMsg"); %>
+	<%}%>
+	
 	<script>
-
+			//퀵 메뉴 스크립트
 	    $(function(){
+	    	
 	        $("#side-btn").click(function(){
 	            if($("#side-btn-list").css('display') == 'none'){
 	                $("#side-btn-list").slideDown();
@@ -198,7 +208,6 @@
 	                $("#side-btn-list").slideUp();
 	            }
 	        });
-	        
 	        
 	    });
 	</script>

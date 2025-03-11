@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.musicCloud.member.model.service.MemberSerivce;
 import com.musicCloud.member.model.vo.Member;
 
 /**
@@ -36,18 +37,28 @@ public class MemberEnrollController extends HttpServlet {
 		String memberId = request.getParameter("memberId");
 		String memberPwd = request.getParameter("memberPwd");
 		String memberName = request.getParameter("memberName");
-		if(memberName == null) {
+		if(memberName.equals("")) {
 			memberName += memberId;
 		}
-		System.out.println(memberName);
 		String email = request.getParameter("memberEmail");
 		String gender = request.getParameter("gender");
-		int age = 2025 - Integer.parseInt(request.getParameter("ageDate").substring(0,3));
-		System.out.println(age);
+		System.out.println(request.getParameter("ageDate") + "");
+		//일반나이로 계산
+		int age = 2025 - Integer.parseInt((request.getParameter("ageDate") + "").substring(0,4)) + 1;
 
 		Member m = new Member(locationNo, memberId, memberPwd, memberName, email, gender, age);
 		
 		//서비스부터 시작
+		int result = new MemberSerivce().insertMember(m);
+		if(result > 0) {
+			//성공
+			request.getSession().setAttribute("alertMsg", "회원가입에 성공 하셨습니다. 메인페이지로 이동합니다");
+			response.sendRedirect(request.getContextPath());
+		}else {
+			//실패
+			request.getSession().setAttribute("alertMsgEnroll", "회원가입에 실패 하였습니다. 다시 시도해주세요");
+			response.sendRedirect(request.getContextPath() + "/memberEnrollForm");
+		}
 	}
 
 	/**

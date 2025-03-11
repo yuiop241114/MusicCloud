@@ -4,6 +4,7 @@
     pageEncoding="UTF-8"%>
 <%
 	ArrayList<Location> lList = (ArrayList<Location>)request.getAttribute("lList");
+	String alertMsgEnroll = (String)session.getAttribute("alertMsgEnroll");
 %>
 <!DOCTYPE html>
 <html>
@@ -22,6 +23,9 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <style>
+    input{
+        border-radius: 5px;
+    }
     /*전체 div*/
     #enroll-form{
 
@@ -55,7 +59,40 @@
     }
     #memberName{ padding: 10px; }
 
+    div{ margin-bottom: 10px;}
 
+    #idMsg *, #pwdMsg *{
+        display: none;
+    }
+    #idMsg>div, #pwdMsg>div{
+    	color: #28a745;
+    }
+    #idMsg>div+div, #pwdMsg>div+div{
+    	color: #dc3545;
+    }
+    
+    input {
+    width: 500px;
+    height: 32px;
+    font-size: 15px;
+    border: 0;
+    border-radius: 15px;
+    outline: none;
+    padding-left: 10px;
+    background-color: rgb(233, 233, 233);
+    margin-bottom: 10px;
+    }
+    select{
+    width: 450px;
+    height: 32px;
+    font-size: 15px;
+    border: 0;
+    border-radius: 15px;
+    outline: none;
+    padding-left: 10px;
+    background-color: rgb(233, 233, 233);
+    margin-bottom: 10px;
+    }
 </style>
 </head>
 <body>
@@ -65,56 +102,100 @@
         
         <div id="enroll-div">
 
-            <form action="<%= request.getContextPath()%>/memberEnroll" class="was-validated">
-                <div class="form-group">
-                  <input type="text" class="form-control" name="memberId" placeholder="아이디" required>
-                  <div class="valid-feedback">사용가능한 아이디 입니다.</div>
-                  <div class="invalid-feedback">아이디는 필수입력사항 입니다.</div>
+            <form action="<%= request.getContextPath()%>/memberEnroll">
+                <b>아이디</b>
+                <input type="text" id="memberId" name="memberId" oninput="memberIdCheck()" placeholder="아이디" required>
+                <div id="idMsg">
+                    <div>사용가능한 아이디 입니다</div>
+                    <div>중복되는 아이디 입니다</div>
                 </div>
 
-                <div class="form-group">
-                  <input type="password" class="form-control" placeholder="비밀번호" name="memberPwd" required>
-                  <div class="valid-feedback">사용가능한 비밀번호 입니다.</div>
-                  <div class="invalid-feedback">비밀번호는 필수입력사항 입니다.</div>
+                <b>비밀번호</b>
+                <input type="password" id="memberPwd" name="memberPwd" oninput="memberPwdCheck()" placeholder="영문(대문자 한개 이상), 숫자, 특수문자 포함한 8자 이상" required>
+                <div id="pwdMsg">
+                    <div>사용가능한 비밀번호 입니다</div>
+                    <div>영문(대문자 한개 이상), 숫자, 특수문자 포함한 8자 이상</div>
                 </div>
 
-                <div class="form-group">
-                  <input type="email" class="form-control" placeholder="이메일" name="memberEmail" required>
-                  <div class="valid-feedback">사용가능한 이메일 입니다.</div>
-                  <div class="invalid-feedback">이메일는 필수입력사항 입니다</div>
-                </div>
+                <b>별칭</b>
+                <input type="text" placeholder="별칭" name="memberName">
 
-                <div class="form-group">
-                    <input type="text" class="form-inline" placeholder="별칭" name="memberName">
-                </div>
+                <b>이메일</b>
+                <input type="email" placeholder="이메일" name="memberEmail">
 
-                <div class="dateBox">
-                      생년월일
-                      <input type="date" name="ageDate"> 
-                </div>
+                <b>생년월일</b>
+                <input type="date" name="ageDate"> 
 
-                <div class="form-group">
-                    성별
-                    <select class="form-control" name="gender">
-                      <option value="M">남자</option>
-                      <option value="W">여자</option>
-                    </select>
-                </div>
+                <b>성별</b>
+                <select name="gender">
+                  <option value="M">남자</option>
+                  <option value="W">여자</option>
+                </select>
 
-                <div class="form-group">
-                    거주 지역
-                    <select class="form-control" name="locationNo">
-                      <%for(Location l : lList) {%>
-                      	<option value="<%= l.getLocationNo()%>"><%= l.getLocationName()%></option>
-                      <%} %>
-                    </select>
-                </div>
-              	<button class="btn btn-primary">회원가입</button>
+                <b>거주 지역</b>
+                <select name="locationNo">
+                  <%for(Location l : lList) {%>
+                  	<option value="<%= l.getLocationNo()%>"><%= l.getLocationName()%></option>
+                  <%} %>
+                </select>
+              	<button class="btn btn-primary" disabled="disabled">회원가입</button>
               </form>
         </div>
 
     </div>
 
     <br><br><br><br><br><br><br><br><br><br>
+    
+   	<!-- 알림창 스크립트 -->
+   	<% if(alertMsgEnroll != null){%>
+   		<script>
+   			alert("<%= alertMsgEnroll%>")
+   		</script>
+   		<% session.removeAttribute("alertMsgEnroll"); %>
+   	<%}%>
+   	
+   	<script>
+   		//비밀번호 정규표현식
+        //영문(대소문자하나이상), 특수문자, 8글자 이상
+        let pwdCheck = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[~?!@#$%^&*_-]).{8,}$/
+        function memberPwdCheck(){
+            if(!pwdCheck.test($("#memberPwd").val())){
+                //조건 만족 X
+                $("#pwdMsg>div").css("display", "none");
+                $("#pwdMsg>div+div").css("display", "block");
+                $("button").attr("type","submit").attr("disabled","disabled");
+            }else{
+                $("#pwdMsg>div").css("display", "block");
+                $("#pwdMsg>div+div").css("display", "none");
+                $("button").attr("type","submit").removeAttr("disabled");
+            }
+        }
+
+   		//아이디 중복체크
+   		function memberIdCheck(){
+   				$.ajax({
+   	   				url:"memberIdCheck",
+   	   				data:{ memberId:$("#memberId").val() },
+   	   				success:function(result){
+                        console.log(result);
+   	   					let massage = "";
+   	   					if(result == "success"){
+                            //성공
+   	   						$("#idMsg>div").css("display", "block");
+   	   						$("#idMsg>div+div").css("display", "none");
+                            $("button").attr("type","submit").removeAttr("disabled");
+   	   					}else{
+                            //실패
+                            $("#idMsg>div").css("display", "none");
+   	   						$("#idMsg>div+div").css("display", "block");
+                            $("button").attr("type","submit").attr("disabled","disabled");
+                        }
+   	   					
+   	   				},
+   	   				error:function(){},
+   	   			})
+   			}
+   		
+   	</script>
 </body>
 </html>
