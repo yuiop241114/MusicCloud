@@ -119,7 +119,7 @@
 
 	  /*스크롤 움직임에 따라 같이움직이는 코드*/
 		position: sticky;
-		top: 10px;
+		top: 5px;
 	}
 	.navigator{
 	    width: 150px;
