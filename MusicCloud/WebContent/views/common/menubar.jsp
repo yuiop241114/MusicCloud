@@ -4,6 +4,7 @@
 <%
 	String contentPath = request.getContextPath();
 	Member loginMember = (Member)session.getAttribute("loginMember");
+	String alertMsg = (String)session.getAttribute("alertMsg");
 %>
 <!DOCTYPE html>
 <html>
@@ -97,8 +98,10 @@
 		height: 50px;
 		width: 1500px;
 		margin: auto;
+
+	  /*스크롤 움직임에 따라 같이움직이는 코드*/
 		position: sticky;
-		top: 20px;
+		top: 10px;
 	}
 	.navigator{
 	    width: 150px;
@@ -109,7 +112,6 @@
 			line-height: 60px;
 			margin-right: 10px;
 			border: none;
-	   	/*스크롤 움직임에 따라 같이움직이는 코드*/
 	}
 	.navigator #side-btn, .navigator #side-btn-list{
 	  width: 100%;
@@ -143,7 +145,7 @@
        <div id="login-box">   
 					<% if(loginMember == null){ %>
 						<h1><button type="button" onclick="location.href='<%= contentPath%>/loginForm'" class="btn btn-primary btn-lg" id="login-btn">뮤직 클라우드 로그인</button></h1>
-						<a href="">회원가입</a> | <a href="">아이디 찾기</a> | <a href="">비밀번호 찾기</a>
+						<a href="<%= request.getContextPath()%>/memberEnrollForm">회원가입</a> | <a href="">아이디 찾기</a> | <a href="">비밀번호 찾기</a>
 					<%}else { %>
 						<div>
 						<%= loginMember.getMemberName()%> 회원 로그인 중
@@ -187,10 +189,18 @@
 		</div>
 	</div>
 	
+	<!-- 알림창 스크립트 -->
+	<%if(alertMsg != null){%>
+		<script>
+			alert("<%= alertMsg%>");
+		</script>
+		<% session.removeAttribute("alertMsg"); %>
+	<%}%>
 	
 	<script>
-
+			//퀵 메뉴 스크립트
 	    $(function(){
+	    	
 	        $("#side-btn").click(function(){
 	            if($("#side-btn-list").css('display') == 'none'){
 	                $("#side-btn-list").slideDown();
@@ -199,9 +209,7 @@
 	            }
 	        });
 	        
-	        
 	    });
 	</script>
-	
 </body>
 </html>

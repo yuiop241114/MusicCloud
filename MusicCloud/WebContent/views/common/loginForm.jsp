@@ -113,7 +113,7 @@
 		<br><br>
 
 		<div id="login-div">
-			<form action="<%= contentPath%>/login" method="post">
+			<form action="<%= contentPath%>" method="post">
 				<div class="login">
 					<b>아이디</b>
 					<input type="text" name="loginId" required> <br>
@@ -126,7 +126,7 @@
 			</form>
 
 			<div style="margin-bottom: 10px;">
-				<a href="<%= request.getContextPath()%>/memberEnroll">회원가입</a> |
+				<a href="<%= request.getContextPath()%>/memberEnrollForm">회원가입</a> |
 				<a href="">아이디 찾기</a> |
 				<a href="">비밀번호 찾기</a>
 			</div>
