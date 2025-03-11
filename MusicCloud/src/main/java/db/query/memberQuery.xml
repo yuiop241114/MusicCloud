@@ -5,6 +5,7 @@
 	<entry key="loginMember">
 	SELECT 
 	       MEMBER_NO
+<<<<<<< HEAD
 	     , LOCATION_NO
 	     , MEMBER_ID
 	     , MEMBER_PWD
@@ -15,9 +16,64 @@
 	     , STATUS
 	     , ENROLL_DATE
 	     , REPORT_COUNT
+=======
+			 , LOCATION_NO
+			 , MEMBER_ID
+			 , MEMBER_PWD
+			 , MEMBER_NAME
+			 , EMAIL
+			 , GENDER
+			 , AGE
+			 , ENROLL_DATE
+			 , REPORT_COUNT
+			 , STATUS
+			 , PF_STATUS
+>>>>>>> main
 	  FROM MEMBER
 	 WHERE MEMBER_ID = ?
 	   AND MEMBER_PWD  = ?
 	   AND STATUS = 'Y'
+<<<<<<< HEAD
+=======
+	</entry>
+	
+	<entry key="selectAllLocation">
+		SELECT 
+		       LOCATION_NO
+		     , LOCATION_NAME
+		  FROM LOCATION
+	</entry>
+	
+	<entry key="insertMember">
+		INSERT 
+		  INTO MEMBER
+		  (
+		    MEMBER_NO
+		  , LOCATION_NO
+		  , MEMBER_ID
+		  , MEMBER_PWD
+		  , MEMBER_NAME
+		  , EMAIL
+		  , GENDER
+		  , AGE
+		  )
+		  VALUES
+		  (
+		    SEQ_MEMBER_NO.NEXTVAL
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  )
+	</entry>
+	
+	<entry key="memberIdCheck">
+		SELECT COUNT(*) AS "COUNT"
+		  FROM MEMBER
+		 WHERE MEMBER_ID = ?
+>>>>>>> main
 	</entry>
 </properties>
