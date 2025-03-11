@@ -113,7 +113,7 @@
 		<br><br>
 
 		<div id="login-div">
-			<form action="<%= contentPath%>" method="post">
+			<form action="<%= contentPath%>/login" method="post">
 				<div class="login">
 					<b>아이디</b>
 					<input type="text" name="loginId" required> <br>
