@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	
+	<entry key="adminselectList">
+		SELECT 
+		        b.*, 
+		        m.member_id, m.member_name, m.member_name
+		  FROM Board b
+		  JOIN Member m ON b.member_no = m.member_no;
+	</entry>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</properties>
