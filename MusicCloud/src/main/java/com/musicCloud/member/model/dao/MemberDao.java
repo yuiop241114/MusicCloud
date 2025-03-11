@@ -69,8 +69,7 @@ public class MemberDao {
 						      , rset.getString("pf_status")
 						      );
 			}
-		} catch (SQLException e) { 
-			System.out.println(m);
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
