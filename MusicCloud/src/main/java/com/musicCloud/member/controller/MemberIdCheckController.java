@@ -1,8 +1,6 @@
 package com.musicCloud.member.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,19 +8,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.musicCloud.member.model.service.MemberSerivce;
-import com.musicCloud.member.model.vo.Location;
 
 /**
- * Servlet implementation class MemberEnrollFormController
+ * Servlet implementation class MemberIdCheckController
  */
-@WebServlet("/memberEnrollForm")
-public class MemberEnrollFormController extends HttpServlet {
+@WebServlet("/memberIdCheck")
+public class MemberIdCheckController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberEnrollFormController() {
+    public MemberIdCheckController() {
         super();
     }
 
@@ -30,10 +27,18 @@ public class MemberEnrollFormController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		//지역 테이블 데이터 전체를 조회해서 가져감
-		request.setAttribute("lList", new MemberSerivce().selectAllLocation());
-		request.getRequestDispatcher("views/common/memberEnrollForm.jsp").forward(request, response);
+		//입력한 아이디 가져오기
+		String id = (String)request.getParameter("memberId");
+		System.out.println(id);
+		int result = new MemberSerivce().memberIdCheck(id);
+		System.out.println(result);
+		if(result == 0) {
+			//중복 아이디 없음
+			response.getWriter().print("success");
+		}else {
+			//중복 아이디 존재
+			response.getWriter().print("fail");
+		}
 	}
 
 	/**

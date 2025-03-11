@@ -4,6 +4,7 @@
 <%
 	String contentPath = request.getContextPath();
 	Member loginMember = (Member)session.getAttribute("loginMember");
+	String alertMsg = (String)session.getAttribute("alertMsg");
 %>
 <!DOCTYPE html>
 <html>
@@ -97,8 +98,10 @@
 		height: 50px;
 		width: 1500px;
 		margin: auto;
+
+	  /*스크롤 움직임에 따라 같이움직이는 코드*/
 		position: sticky;
-		top: 20px;
+		top: 10px;
 	}
 	.navigator{
 	    width: 150px;
@@ -109,7 +112,6 @@
 			line-height: 60px;
 			margin-right: 10px;
 			border: none;
-	   	/*스크롤 움직임에 따라 같이움직이는 코드*/
 	}
 	.navigator #side-btn, .navigator #side-btn-list{
 	  width: 100%;
@@ -143,7 +145,7 @@
        <div id="login-box">   
 					<% if(loginMember == null){ %>
 						<h1><button type="button" onclick="location.href='<%= contentPath%>/loginForm'" class="btn btn-primary btn-lg" id="login-btn">뮤직 클라우드 로그인</button></h1>
-						<a href="">회원가입</a> | <a href="">아이디 찾기</a> | <a href="">비밀번호 찾기</a>
+						<a href="<%= request.getContextPath()%>/memberEnrollForm">회원가입</a> | <a href="">아이디 찾기</a> | <a href="">비밀번호 찾기</a>
 					<%}else { %>
 						<div>
 						<%= loginMember.getMemberName()%> 회원 로그인 중
@@ -159,36 +161,39 @@
        </form>
   </div>
 
-    <div class="navigator">
-        <button type="button" id="side-btn" class="btn btn-primary btn-lg">퀵 메뉴</button>
-        <table id="side-btn-list">
-            <tr>
-                <th width="30%"><img src="resources/image/cartlogo.jpg" alt=""></th>
-                <th width="70%">전체음원목록</th>
-            </tr>
-            <tr>
-                <th><img src="resources/image/cartlogo.jpg" alt=""></th>
-                <th>마이페이지</th>
-            </tr>
-            <tr>
-                <th><img src="resources/image/cartlogo.jpg" alt=""></th>
-                <th>게시판</th>
-            </tr>
-            <tr>
-                <th><img src="resources/image/cartlogo.jpg" alt=""></th>
-                <th>장바구니</th>
-            </tr>
-            <tr>
-                <th><img src="resources/image/cartlogo.jpg" alt=""></th>
-                <th>플레이 리스트</th>
-            </tr>
-        </table>
-    </div>
-
-    
+	<div id="navigator-div">
+		<div class="navigator">
+			<button type="button" id="side-btn" class="btn btn-primary btn-lg">퀵 메뉴</button>
+			<table id="side-btn-list">
+					<tr>
+							<th width="30%"><img src="resources/image/cartlogo.jpg" alt=""></th>
+							<th width="70%">전체음원목록</th>
+					</tr>
+					<tr>
+							<th><img src="resources/image/cartlogo.jpg" alt=""></th>
+							<th>마이페이지</th>
+					</tr>
+					<tr>
+							<th><img src="resources/image/cartlogo.jpg" alt=""></th>
+							<th>게시판</th>
+					</tr>
+					<tr>
+							<th><img src="resources/image/cartlogo.jpg" alt=""></th>
+							<th>장바구니</th>
+					</tr>
+					<tr>
+							<th><img src="resources/image/cartlogo.jpg" alt=""></th>
+							<th>플레이 리스트</th>
+					</tr>
+			</table>
+		</div>
+	</div>
+	
+	
 	<script>
-
+			//퀵 메뉴 스크립트
 	    $(function(){
+	    	
 	        $("#side-btn").click(function(){
 	            if($("#side-btn-list").css('display') == 'none'){
 	                $("#side-btn-list").slideDown();
@@ -197,9 +202,7 @@
 	            }
 	        });
 	        
-	        
 	    });
 	</script>
-	
 </body>
 </html>

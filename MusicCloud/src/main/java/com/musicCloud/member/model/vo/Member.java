@@ -36,6 +36,20 @@ public class Member {
 		this.pfStatus = pfStatus;
 	}
 
+	
+
+	public Member(int locationNo, String memberId, String memberPwd, String memberName, String email, String gender,
+			int age) {
+		super();
+		this.locationNo = locationNo;
+		this.memberId = memberId;
+		this.memberPwd = memberPwd;
+		this.memberName = memberName;
+		this.email = email;
+		this.gender = gender;
+		this.age = age;
+	}
+
 	public int getMemberNo() {
 		return memberNo;
 	}
