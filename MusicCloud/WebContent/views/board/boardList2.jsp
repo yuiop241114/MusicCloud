@@ -182,7 +182,7 @@
 
   .title-row .date-author input[type="text"] {
     width: 120px;
-    margin-left: 5px;
+    margin-left: 5px; margin-left: 5px;
   }
 </style>
 </head>

@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 
 <!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> 
 
 <!-- Popper JS -->
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -160,7 +160,7 @@
 
        <form action="" class="search-bar">
            <input type="text" id="search-box">
-           <button type="submit" id="search-btn">검색</button>
+           <button type="submit" id="search-btn">검색</button> 
        </form>
     </div>
 
@@ -185,7 +185,7 @@
 					</tr>
 					<tr>
 							<th><img src="resources/image/cartlogo.jpg" alt=""></th>
-							<th>플레이 리스트</th>
+							<th>플레이 리스트</th> 
 					</tr>
 			</table>
 	</div>
