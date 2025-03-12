@@ -65,4 +65,45 @@ public class MemberSerivce {
 		close(conn);
 		return result;
 	}
+	
+	
+	/**
+	 * @param memberId
+	 * @param email
+	 * @return
+	 * 설명 : 아이디, 이메일을 받아서 회원이 있는지 확인하는 서비스 메소드
+	 */
+	public int pwdUpdateForm(String memberId, String email) {
+		Connection conn = getConnection();
+		int result = new MemberDao().pwdUpdateForm(conn, memberId, email);
+		
+		close(conn);
+		return result;
+	}
+	
+	
+	/**
+	 * @param memberId
+	 * @param updatePwd
+	 * @return
+	 * 설명 : 변경된 비밀번호를 이용해서 기존 비밀번호가 같은지 확인하는 서비스 메소드
+	 */
+	public int updatePwd(String memberId, String updatePwd) {
+		Connection conn = getConnection();
+		
+		//변경한 비밀번호가 기존 비밀번호와 동일한지 확인
+		int result1 = new MemberDao().updatePwdCheck(conn, memberId, updatePwd);
+		//비밀번호 update
+		int result2 = new MemberDao().updatePwd(conn, memberId, updatePwd);
+		if(result1 == 0) {
+			if(result2 > 0) {
+				commit(conn);
+			}else {
+				rollback(conn);
+			}
+		}
+		
+		close(conn);
+		return result2;
+	}
 }
