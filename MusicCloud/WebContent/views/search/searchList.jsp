@@ -1,4 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<%
+	String search = (String)request.getAttribute("search");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -131,6 +135,11 @@
         margin: auto;
     }
 
+    .sort-title-align>b{
+        font-size: 30px;
+        margin-bottom: 2rem;
+    }
+
     .sort-title {
         display: block;
         text-align: left;
@@ -155,6 +164,8 @@
             <!-- 첫 번째 컨테이너 -->
             <div class="container-1">
                 <div class="sort-title-align">
+                    <b><%=search %>검색결과</b>
+                    <br><br>
                     <div class="sort-title"><b>정확순</b></div>
                 </div>
                 <div class="results-wrapper">
@@ -176,61 +187,11 @@
                             </div>
 
 
-                            <div class="item">
-                                <img src="../../resources/image/열불이.png" alt="고영훈 이미지">
-                                <div class="title-container">
-                                    <div>
-                                        <div class="title">고영훈</div>
-                                        <div class="category">술주정</div>
-                                    </div>
-                                    <div class="cart">
-                                        <img src="../../resources/image/cartlogo.jpg" alt="장바구니">
-                                    </div>
-                                </div>
-                            </div>
+                           
 
-                            <div class="item">
-                                <img src="../../resources/image/열불이.png" alt="고영훈 이미지">
-                                <div class="title-container">
-                                    <div>
-                                        <div class="title">고영훈</div>
-                                        <div class="category">술주정</div>
-                                    </div>
-                                    <div class="cart">
-                                        <img src="../../resources/image/cartlogo.jpg" alt="장바구니">
-                                    </div>
-                                </div>
-                            </div>
+                          
 
 
-
-                            <div class="item">
-                                <img src="../../resources/image/열불이.png" alt="고영훈 이미지">
-                                <div class="title-container">
-                                    <div>
-                                        <div class="title">고영훈</div>
-                                        <div class="category">술주정</div>
-                                    </div>
-                                    <div class="cart">
-                                        <img src="../../resources/image/cartlogo.jpg" alt="장바구니">
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-                            <div class="item">
-                                <img src="../../resources/image/열불이.png" alt="고영훈 이미지">
-                                <div class="title-container">
-                                    <div>
-                                        <div class="title">고영훈</div>
-                                        <div class="category">술주정</div>
-                                    </div>
-                                    <div class="cart">
-                                        <img src="../../resources/image/cartlogo.jpg" alt="장바구니">
-                                    </div>
-                                </div>
-                            </div>
 
 
 
@@ -271,168 +232,24 @@
                         </div>
                         
 
-                        <div class="item">
-                            <img src="../../resources/image/열불이.png" alt="고영훈 이미지">
-                            <div class="title-container">
-                                <div>
-                                    <div class="title">고영훈</div>
-                                    <div class="category">술주정</div>
-                                </div>
-                                <div class="cart">
-                                    <img src="../../resources/image/cartlogo.jpg" alt="장바구니">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <img src="../../resources/image/열불이.png" alt="고영훈 이미지">
-                            <div class="title-container">
-                                <div>
-                                    <div class="title">고영훈</div>
-                                    <div class="category">술주정</div>
-                                </div>
-                                <div class="cart">
-                                    <img src="../../resources/image/cartlogo.jpg" alt="장바구니">
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="item">
-                            <img src="../../resources/image/열불이.png" alt="고영훈 이미지">
-                            <div class="title-container">
-                                <div>
-                                    <div class="title">고영훈</div>
-                                    <div class="category">술주정</div>
-                                </div>
-                                <div class="cart">
-                                    <img src="../../resources/image/cartlogo.jpg" alt="장바구니">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <img src="../../resources/image/열불이.png" alt="고영훈 이미지">
-                            <div class="title-container">
-                                <div>
-                                    <div class="title">고영훈</div>
-                                    <div class="category">술주정</div>
-                                </div>
-                                <div class="cart">
-                                    <img src="../../resources/image/cartlogo.jpg" alt="장바구니">
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="item">
-                            <img src="../../resources/image/열불이.png" alt="고영훈 이미지">
-                            <div class="title-container">
-                                <div>
-                                    <div class="title">고영훈</div>
-                                    <div class="category">술주정</div>
-                                </div>
-                                <div class="cart">
-                                    <img src="../../resources/image/cartlogo.jpg" alt="장바구니">
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="item">
-                            <img src="../../resources/image/열불이.png" alt="고영훈 이미지">
-                            <div class="title-container">
-                                <div>
-                                    <div class="title">고영훈</div>
-                                    <div class="category">술주정</div>
-                                </div>
-                                <div class="cart">
-                                    <img src="../../resources/image/cartlogo.jpg" alt="장바구니">
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="item">
-                            <img src="../../resources/image/열불이.png" alt="고영훈 이미지">
-                            <div class="title-container">
-                                <div>
-                                    <div class="title">고영훈</div>
-                                    <div class="category">술주정</div>
-                                </div>
-                                <div class="cart">
-                                    <img src="../../resources/image/cartlogo.jpg" alt="장바구니">
-                                </div>
-                            </div>
-                        </div>
+                  
 
 
 
-                        <div class="item">
-                            <img src="../../resources/image/열불이.png" alt="고영훈 이미지">
-                            <div class="title-container">
-                                <div>
-                                    <div class="title">고영훈</div>
-                                    <div class="category">술주정</div>
-                                </div>
-                                <div class="cart">
-                                    <img src="../../resources/image/cartlogo.jpg" alt="장바구니">
-                                </div>
-                            </div>
-                        </div>
 
 
-                        <div class="item">
-                            <img src="../../resources/image/열불이.png" alt="고영훈 이미지">
-                            <div class="title-container">
-                                <div>
-                                    <div class="title">고영훈</div>
-                                    <div class="category">술주정</div>
-                                </div>
-                                <div class="cart">
-                                    <img src="../../resources/image/cartlogo.jpg" alt="장바구니">
-                                </div>
-                            </div>
-                        </div>
+                 
 
-                        <div class="item">
-                            <img src="../../resources/image/열불이.png" alt="고영훈 이미지">
-                            <div class="title-container">
-                                <div>
-                                    <div class="title">고영훈</div>
-                                    <div class="category">술주정</div>
-                                </div>
-                                <div class="cart">
-                                    <img src="../../resources/image/cartlogo.jpg" alt="장바구니">
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="item">
-                            <img src="../../resources/image/열불이.png" alt="고영훈 이미지">
-                            <div class="title-container">
-                                <div>
-                                    <div class="title">고영훈</div>
-                                    <div class="category">술주정</div>
-                                </div>
-                                <div class="cart">
-                                    <img src="../../resources/image/cartlogo.jpg" alt="장바구니">
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="item">
-                            <img src="../../resources/image/열불이.png" alt="고영훈 이미지">
-                            <div class="title-container">
-                                <div>
-                                    <div class="title">고영훈</div>
-                                    <div class="category">술주정</div>
-                                </div>
-                                <div class="cart">
-                                    <img src="../../resources/image/cartlogo.jpg" alt="장바구니">
-                                </div>
-                            </div>
-                        </div>
+
+
+
+
+               
+
+
+                    
                     </div>
                 </div>
                 <button class="arrow-right">&#9654;</button> <!-- 우측 화살표 -->
@@ -464,96 +281,11 @@
                             </div>
                         </div>
 
-                        <div class="item">
-                            <img src="../../resources/image/열불이.png" alt="고영훈 이미지">
-                            <div class="title-container">
-                                <div>
-                                    <div class="title">고영훈</div>
-                                    <div class="category">술주정</div>
-                                </div>
-                                <div class="cart">
-                                    <img src="../../resources/image/cartlogo.jpg" alt="장바구니">
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="item">
-                            <img src="../../resources/image/열불이.png" alt="고영훈 이미지">
-                            <div class="title-container">
-                                <div>
-                                    <div class="title">고영훈</div>
-                                    <div class="category">술주정</div>
-                                </div>
-                                <div class="cart">
-                                    <img src="../../resources/image/cartlogo.jpg" alt="장바구니">
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="item">
-                            <img src="../../resources/image/열불이.png" alt="고영훈 이미지">
-                            <div class="title-container">
-                                <div>
-                                    <div class="title">고영훈</div>
-                                    <div class="category">술주정</div>
-                                </div>
-                                <div class="cart">
-                                    <img src="../../resources/image/cartlogo.jpg" alt="장바구니">
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="item">
-                            <img src="../../resources/image/열불이.png" alt="고영훈 이미지">
-                            <div class="title-container">
-                                <div>
-                                    <div class="title">고영훈</div>
-                                    <div class="category">술주정</div>
-                                </div>
-                                <div class="cart">
-                                    <img src="../../resources/image/cartlogo.jpg" alt="장바구니">
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="item">
-                            <img src="../../resources/image/열불이.png" alt="고영훈 이미지">
-                            <div class="title-container">
-                                <div>
-                                    <div class="title">고영훈</div>
-                                    <div class="category">술주정</div>
-                                </div>
-                                <div class="cart">
-                                    <img src="../../resources/image/cartlogo.jpg" alt="장바구니">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <img src="../../resources/image/열불이.png" alt="고영훈 이미지">
-                            <div class="title-container">
-                                <div>
-                                    <div class="title">고영훈</div>
-                                    <div class="category">술주정</div>
-                                </div>
-                                <div class="cart">
-                                    <img src="../../resources/image/cartlogo.jpg" alt="장바구니">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <img src="../../resources/image/열불이.png" alt="고영훈 이미지">
-                            <div class="title-container">
-                                <div>
-                                    <div class="title">고영훈</div>
-                                    <div class="category">술주정</div>
-                                </div>
-                                <div class="cart">
-                                    <img src="../../resources/image/cartlogo.jpg" alt="장바구니">
-                                </div>
-                            </div>
-                        </div>
+                   
                         
                     </div>
                 </div>

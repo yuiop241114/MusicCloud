@@ -174,9 +174,9 @@
 					<%} %>
        </div>
 
-       <form action="" class="search-bar">
-           <input type="text" id="search-box">
-           <button type="submit" id="search-btn">검색</button>
+       <form action="<%=contentPath%>/searchList.li" class="search-bar">
+           <input type="text" id="search-box" name="search" required>
+           <button type="submit" id="search-btn">검색</button>     
        </form>
   </div>
 
@@ -220,7 +220,6 @@
 	                $("#side-btn-list").slideUp();
 	            }
 	        });
-	        
 	    });
 	</script>
 </body>

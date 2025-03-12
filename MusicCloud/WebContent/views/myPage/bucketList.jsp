@@ -309,8 +309,6 @@ img{
                     
                     <input type="checkbox" class="productCheckbox" style="width: 20px; height: 20px;">
                 </div>
-                
-             
             </div>
             </div>
             <!-- html jsp for문으로 -->
