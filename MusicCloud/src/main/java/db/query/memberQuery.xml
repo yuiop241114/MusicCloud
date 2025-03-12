@@ -83,4 +83,25 @@
 		   SET MEMBER_PWD = ?
 		 WHERE MEMBER_ID = ?
 	</entry>
+	
+	<entry key="idCheck">
+		SELECT 
+		       MEMBER_NO
+				 , LOCATION_NO
+				 , MEMBER_ID
+				 , MEMBER_PWD
+				 , MEMBER_NAME
+				 , MEMBER_ALIAS
+				 , EMAIL
+				 , GENDER
+				 , AGE
+				 , ENROLL_DATE
+				 , REPORT_COUNT
+				 , STATUS
+				 , PF_STATUS
+		  FROM MEMBER
+		 WHERE EMAIL = ?
+		   AND MEMBER_NAME = ?
+		   AND STATUS = 'Y'
+	</entry>
 </properties>

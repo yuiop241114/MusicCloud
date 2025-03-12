@@ -106,4 +106,17 @@ public class MemberSerivce {
 		close(conn);
 		return result2;
 	}
+	
+	
+	/**
+	 * @return
+	 * 설명 : 이메일을 이용해서 회원 전체 조회
+	 */
+	public Member idCheck(String email, String memberName) {
+		Connection conn = getConnection();
+		Member m = new MemberDao().idCheck(conn, email, memberName);
+		
+		close(conn);
+		return m;
+	}
 }
