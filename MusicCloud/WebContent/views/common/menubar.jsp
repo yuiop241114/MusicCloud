@@ -94,7 +94,7 @@
 	    border-top-left-radius: 30px;
 	    border-bottom-left-radius: 30px;
 	}
-	.search-bar #search-btn{
+	.search-bar #search-btn, #search-btn-member-null{
 	    float: right;
 	    width: 20%;
 	    background-color: #1587d0;
@@ -174,9 +174,16 @@
 					<%} %>
        </div>
 
+	<% if(loginMember == null){%>
+	      <form action="" class="search-bar">
+           <input type="text" id="search-box" name="search" required>
+           <button type="submit" id="search-btn-member-null">검색</button>     
+		
+         <% }else{ %>
        <form action="<%=contentPath%>/searchList.li" class="search-bar">
            <input type="text" id="search-box" name="search" required>
            <button type="submit" id="search-btn">검색</button>     
+         <% } %>
        </form>
   </div>
 
@@ -221,6 +228,10 @@
 	            }
 	        });
 	    });
+
+		document.getElementById("search-btn-member-null").addEventListener("click", function(){
+			alert("검색기능은 로그인 후 이용가능합니다")
+		});
 	</script>
 </body>
 </html>

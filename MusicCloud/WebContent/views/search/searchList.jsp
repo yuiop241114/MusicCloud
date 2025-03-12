@@ -1,7 +1,11 @@
+<%@page import="com.musicCloud.common.vo.MusicFile"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%
 	String search = (String)request.getAttribute("search");
+	ArrayList<MusicFile> listAccuracy = (ArrayList<MusicFile>)request.getAttribute("listAccuracy");
+	ArrayList<MusicFile> listPopular = (ArrayList<MusicFile>)request.getAttribute("listPopular");
 %>
 <!DOCTYPE html>
 <html>
@@ -173,26 +177,23 @@
                     <div class="results">
                         <div class="results-container">
                             <!-- 아이템들 -->
+                            
+                            
+                            
+                            <% for(MusicFile m : listAccuracy) {%>
                             <div class="item">
-                                <img src="../../resources/image/열불이.png" alt="고영훈 이미지">
+                                <img src="<%=contentPath%>/resources/image/열불이.png" alt="<%= m.getMusicImagePath() %>">
                                 <div class="title-container">
                                     <div>
-                                        <div class="title">고영훈</div>
-                                        <div class="category">술주정</div>
+                                        <div class="title"><%= m.getMusicFileEditName() %></div>
+                                        <div class="category"><%= m.getMusicFileOriginName() %></div>
                                     </div>
                                     <div class="cart">
-                                        <img src="../../resources/image/cartlogo.jpg" alt="장바구니">
+                                        <img src="<%=contentPath %>/resources/image/cartlogo.jpg" alt="장바구니">
                                     </div>
                                 </div>
                             </div>
-
-
-                           
-
-                          
-
-
-
+                            <% } %>
 
 
 
@@ -218,18 +219,25 @@
                 <div class="results">
                     <div class="results-container">
                         <!-- 아이템들 -->
-                        <div class="item">
-                            <img src="../../resources/image/열불이.png" alt="고영훈 이미지">
-                            <div class="title-container">
-                                <div>
-                                    <div class="title">고영훈</div>
-                                    <div class="category">술주정</div>
-                                </div>
-                                <div class="cart">
-                                    <img src="../../resources/image/cartlogo.jpg" alt="장바구니">
+
+
+
+
+
+                        <% for(MusicFile m : listPopular) {%>
+                            <div class="item">
+                                <img src="<%=contentPath%>/resources/image/열불이.png" alt="<%= m.getMusicImagePath() %>">
+                                <div class="title-container">
+                                    <div>
+                                        <div class="title"><%= m.getMusicFileEditName() %></div>
+                                        <div class="category"><%= m.getMusicFileOriginName() %></div>
+                                    </div>
+                                    <div class="cart">
+                                        <img src="<%=contentPath %>/resources/image/cartlogo.jpg" alt="장바구니">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                            <% } %>
                         
 
                   
@@ -267,20 +275,26 @@
                 <button class="arrow-left">&#9664;</button> <!-- 좌측 화살표 -->
                 <div class="results">
                     <div class="results-container">
+                    
+                    
+                    
                         <!-- 아이템들 -->
-                        <div class="item">
-                            <img src="../../resources/image/열불이.png" alt="고영훈 이미지">
-                            <div class="title-container">
-                                <div>
-                                    <div class="title">고영훈</div>
-                                    <div class="category">술주정</div>
-                                </div>
-                                <div class="cart">
-                                    <img src="../../resources/image/cartlogo.jpg" alt="장바구니">
+                        
+                        
+                        <% for(MusicFile m : listAccuracy) {%>
+                            <div class="item">
+                                <img src="<%=contentPath%>/resources/image/열불이.png" alt="<%= m.getMusicImagePath() %>">
+                                <div class="title-container">
+                                    <div>
+                                        <div class="title"><%= m.getMusicFileEditName() %></div>
+                                        <div class="category"><%= m.getMusicFileOriginName() %></div>
+                                    </div>
+                                    <div class="cart">
+                                        <img src="<%=contentPath %>/resources/image/cartlogo.jpg" alt="장바구니">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
+                            <% } %>
 
 
 

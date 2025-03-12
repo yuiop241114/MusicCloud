@@ -29,6 +29,7 @@ public class MemberDao {
 			prop.loadFromXML( new FileInputStream(queryFilePath));
 		} catch (IOException e) {
 			e.printStackTrace();
+			
 		}
 	}
 	

@@ -11,7 +11,6 @@ public class MusicFile {
 	    private String musicImagePath;
 	    
 	    public MusicFile() {}
-
 		public MusicFile(int musicNo, String musicFileOriginName, String musicFileEditName, String musicFileStorePath,
 				String musicImageOriginName, String musicImageEditName, String musicImagePath) {
 			super();
@@ -23,6 +22,48 @@ public class MusicFile {
 			this.musicImageEditName = musicImageEditName;
 			this.musicImagePath = musicImagePath;
 		}
+		
+	    
+	    // 이거 정확도순 뽑기용임
+	    
+	    public MusicFile(int musicNo, String musicFileOriginName, String musicFileEditName, String musicImageEditName,
+				String musicImagePath) {
+			super();
+			this.musicNo = musicNo;
+			this.musicFileOriginName = musicFileOriginName;
+			this.musicFileEditName = musicFileEditName;
+			this.musicImageEditName = musicImageEditName;
+			this.musicImagePath = musicImagePath;
+		}
+		
+	
+		// 이거 인기순 뽑기용
+		
+
+		public MusicFile(int musicNo, String musicFileOriginName, String musicFileEditName, String musicFileStorePath,
+				String musicImageOriginName, String musicImageEditName) {
+			super();
+			this.musicNo = musicNo;
+			this.musicFileOriginName = musicFileOriginName;
+			this.musicFileEditName = musicFileEditName;
+			this.musicFileStorePath = musicFileStorePath;
+			this.musicImageOriginName = musicImageOriginName;
+			this.musicImageEditName = musicImageEditName;   // 인기순 숫자를 담아야해서 String 으로 변환 필요
+		}
+		
+		
+		
+		// 이거 지역별 인기순 뽑기용
+		
+		
+		
+		
+		
+		
+		
+		
+
+
 
 		public int getMusicNo() {
 			return musicNo;
@@ -86,10 +127,7 @@ public class MusicFile {
 					+ ", musicFileEditName=" + musicFileEditName + ", musicFileStorePath=" + musicFileStorePath
 					+ ", musicImageOriginName=" + musicImageOriginName + ", musicImageEditName=" + musicImageEditName
 					+ ", musicImagePath=" + musicImagePath + "]";
-		}
-	    
-	    
-	    
+		}    
 }
 	    
 	
