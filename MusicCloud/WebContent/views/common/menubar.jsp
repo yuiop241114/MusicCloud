@@ -158,7 +158,7 @@
 	</style> 
 <body>
 	<div class="wrapper">
-       <img src="resources/image/mainlogo.png" id="logo">
+			<a href="/music"><img src="resources/image/mainlogo.png" id="logo"></a>
 
        <div id="login-box">   
 					<% if(loginMember == null){ %>

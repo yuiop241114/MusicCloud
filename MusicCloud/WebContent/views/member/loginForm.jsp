@@ -104,7 +104,7 @@
 <body>
 	<div class="wrapper">
 		
-		<img src="resources/image/mainlogo.png" alt="">
+		<a href="/music"><img src="resources/image/mainlogo.png" alt=""></a>
 		
 		<br>
 
