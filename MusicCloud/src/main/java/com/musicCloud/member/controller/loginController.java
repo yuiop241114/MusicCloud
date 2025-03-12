@@ -30,6 +30,7 @@ public class loginController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//아이디 비밀번호는 한글 없어서 인코딩 생략
+		request.setCharacterEncoding("utf-8");
 		
 		//받아온 정보 저장 후 요청 처리
 		String loginId = request.getParameter("loginId");
@@ -39,6 +40,8 @@ public class loginController extends HttpServlet {
 		
 		if(m == null) {
 			//실패
+			request.getSession().setAttribute("alertMsg", "로그인 실패 다시 시도해주세요");
+			response.sendRedirect(request.getContextPath());
 		}else {
 			//성공
 			request.getSession().setAttribute("loginMember", m); //회원의 모든 정보를 가지고 있는 객체

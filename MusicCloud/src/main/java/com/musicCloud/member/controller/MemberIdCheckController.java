@@ -29,9 +29,7 @@ public class MemberIdCheckController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//입력한 아이디 가져오기
 		String id = (String)request.getParameter("memberId");
-		System.out.println(id);
 		int result = new MemberSerivce().memberIdCheck(id);
-		System.out.println(result);
 		if(result == 0) {
 			//중복 아이디 없음
 			response.getWriter().print("success");
