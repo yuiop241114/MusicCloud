@@ -27,8 +27,8 @@
 button#product {
     border-radius: 10px; 
     background: transparent; 
-    border: 2px solid #8a2be2;
-    color: #8a2be2; 
+    border: 2px solid #1587d0;
+    color: #1587d0; 
     padding: 8px 12px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -39,9 +39,9 @@ button#product:hover {
 }
 
 select {
-    color: #8a2be2; 
+    color: #1587d0; 
     background: #d8bfd880; 
-    border: 1px solid #8a2be2;
+    border: 1px solid #1587d0;
     padding: 5px;
     border-radius: 5px; 
     cursor: pointer;
@@ -64,7 +64,7 @@ select {
 .bucketList-title {
     width: 100%;
     overflow: hidden; 
-    border-bottom: 2px solid #8a2be2; 
+    border-bottom: 2px solid #1587d0; 
     font-weight: bold;
     padding: 10px 0;
     margin-top: 30px;
