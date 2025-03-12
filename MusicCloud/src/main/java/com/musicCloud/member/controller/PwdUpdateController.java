@@ -1,8 +1,6 @@
 package com.musicCloud.member.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,19 +8,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.musicCloud.member.model.service.MemberSerivce;
-import com.musicCloud.member.model.vo.Location;
 
 /**
- * Servlet implementation class MemberEnrollFormController
+ * Servlet implementation class PwdUpdateController
  */
-@WebServlet("/memberEnrollForm")
-public class MemberEnrollFormController extends HttpServlet {
+@WebServlet("/pwdUpdate")
+public class PwdUpdateController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberEnrollFormController() {
+    public PwdUpdateController() {
         super();
     }
 
@@ -30,10 +27,21 @@ public class MemberEnrollFormController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//변경한 비밀번호를 가져가서 기존 비밀번호와 일치하는지 확인
+		//회원 아이디를 숨겨서 가져옴
+		String memberId = request.getParameter("memberId");
+		String updatePwd = request.getParameter("updatePwd");
 		
-		//지역 테이블 데이터 전체를 조회해서 가져감
-		request.setAttribute("lList", new MemberSerivce().selectAllLocation());
-		request.getRequestDispatcher("views/member/memberEnrollForm.jsp").forward(request, response);
+		int result = new MemberSerivce().updatePwd(memberId, updatePwd);
+		if(result > 0) {
+			//변경 성공
+			request.getSession().setAttribute("alertMsg", "변경에 성공하였습니다");
+			response.sendRedirect(request.getContextPath());
+		}else {
+			//변경 실패
+			request.getSession().setAttribute("alertMsg", "기존에 사용하고 있는 비밀번호 입니다");
+			response.sendRedirect(request.getContextPath() + "/pwdUpdateForm");
+		}
 	}
 
 	/**

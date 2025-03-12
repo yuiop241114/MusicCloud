@@ -30,7 +30,7 @@
     #enroll-form{
 
     }
-    #enroll-form>img{
+    #enroll-form>a>img{
         display: block;
         margin: auto;
         width: 200px;
@@ -98,7 +98,7 @@
 <body>
     <div id="enroll-form">
 
-        <img src="resources/image/mainlogo.png" alt="">
+        <a href="/music"><img src="resources/image/mainlogo.png" alt=""></a>
         
         <div id="enroll-div">
 

@@ -119,7 +119,7 @@
 
 	  /*스크롤 움직임에 따라 같이움직이는 코드*/
 		position: sticky;
-		top: 10px;
+		top: 5px;
 	}
 	.navigator{
 	    width: 150px;
@@ -163,10 +163,10 @@
        <div id="login-box">   
 					<% if(loginMember == null){ %>
 						<h1><button type="button" onclick="location.href='<%= contentPath%>/loginForm'" class="btn btn-primary btn-lg" id="login-btn">뮤직 클라우드 로그인</button></h1>
-						<a href="<%= request.getContextPath()%>/memberEnrollForm">회원가입</a> | <a href="">아이디 찾기</a> | <a href="">비밀번호 찾기</a>
+						<a href="<%= request.getContextPath()%>/memberEnrollForm">회원가입</a> | <a href="<%= contentPath%>/idSearchForm">아이디 찾기</a> | <a href="<%= contentPath%>/pwdSearchForm">비밀번호 찾기</a>
 					<%}else { %>
 						<div id="login-info">
-							<strong><%= loginMember.getMemberName()%> 회원 로그인 중</strong>
+							<strong><%= loginMember.getMemberAlias()%> 회원 로그인 중</strong>
 							<br><br>
 							<img src="resources/image/logoutIcon.png" alt="">
 							<a href="<%= contentPath%>/logout">로그아웃</a>

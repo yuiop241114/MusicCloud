@@ -70,7 +70,6 @@ public class MemberDao {
 						      , rset.getString("pf_status")
 						      );
 			}
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
@@ -171,5 +170,144 @@ public class MemberDao {
 			close(pstmt);
 		}
 		return result;
+	}
+	
+	
+	/**
+	 * @param conn
+	 * @param memberId
+	 * @param email
+	 * @return
+	 * 설명 : 아이디, 이메일로 회원이 있는지 조회 Dao
+	 */
+	public int pwdUpdateForm(Connection conn, String memberId, String email) {
+		//select
+		int result = 0;
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("pwdUpdateForm");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memberId);
+			pstmt.setString(2, email);
+			
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				result = rset.getInt("count");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			close(rset);
+		}
+		return result;
+	}
+	
+	
+	/**
+	 * @param conn
+	 * @param memberId
+	 * @param updatePwd
+	 * @return
+	 * 설명 : 변경한 비밀번호로 기존 회원의 비밀번호와 동일한지 확인하는 Dao
+	 */
+	public int updatePwdCheck(Connection conn, String memberId, String updatePwd) {
+		//select
+		int result = 0;
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updatePwdCheck");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memberId);
+			pstmt.setString(2, updatePwd);
+			
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				result = rset.getInt("count");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			close(rset);
+		}
+		return result;
+	}
+	
+	/**
+	 * @param conn
+	 * @param memberId
+	 * @param updatePwd
+	 * @return
+	 * 설명 : 회원 비밀번호 변경 Dao
+	 */
+	public int updatePwd(Connection conn, String memberId, String updatePwd) {
+		//update 
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updatePwd");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, updatePwd);
+			pstmt.setString(2, memberId);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	
+	/**
+	 * @param conn
+	 * @param email
+	 * @return
+	 * 설명 : 이메일로 회원 정보 전체 조회
+	 */
+	public Member idCheck(Connection conn, String email, String memberName) {
+		//select
+		Member m = null;
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("idCheck");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, email);
+			pstmt.setString(2, memberName);
+			
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				m = new Member(
+				        rset.getInt("member_no")
+				      , rset.getInt("location_no")
+				      , rset.getString("member_id")
+				      , rset.getString("member_pwd")
+				      , rset.getString("member_name")
+				      , rset.getString("member_alias")
+				      , rset.getString("email")
+				      , rset.getString("gender")
+				      , rset.getInt("age")
+				      , rset.getDate("enroll_date")
+				      , rset.getInt("report_count")
+				      , rset.getString("status")
+				      , rset.getString("pf_status")
+				      );
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			close(rset);
+		}
+		return m;
 	}
 }
