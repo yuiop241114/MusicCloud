@@ -147,50 +147,32 @@
     .board-table td {
         background-color: white;
     }
+
+    .board-container {
+    width: 50%;
+    margin: 20px auto 20px 25%; 
+    text-align: center;
+    }
+
+    .navigator {
+    width: 150px;
+    float: right;
+    border: 1px solid;
+    text-align: center;
+    margin-right: 7%; 
+    box-sizing: border-box;
+    margin-top: 20px;
+    border: none;
+    position: sticky;
+    top: 20px;
+    }
 	
 	</style> 
     <body>
-	<div class="wrapper">
-       <img src="c:\Users\user1\Pictures\Screenshots\화면 캡처 2025-03-11 094550.png" id="logo">
-       <div id="login-box">   
-					<h1><button type="button" onclick="location.href='<%= contentPath%>/loginForm'" class="btn btn-primary btn-lg" id="login-btn">뮤직 클라우드 로그인</button></h1>
-					<a href="">회원가입</a> | <a href="">아이디 찾기</a> | <a href="">비밀번호 찾기</a>
-
+    <%@ include file="../common/menubar.jsp" %>
+	
     </div>
 
-       <form action="" class="search-bar">
-           <input type="text" id="search-box">
-           <button type="submit" id="search-btn">검색</button> 
-       </form>
-    </div>
-
-		<div class="navigator">
-			<button type="button" id="side-btn" class="btn btn-primary btn-lg">퀵 메뉴</button>
-			<table id="side-btn-list">
-					<tr>
-							<th width="30%"><img src="resources/image/cartlogo.jpg" alt=""></th>
-							<th width="70%">전체음원목록</th>
-					</tr>
-					<tr>
-							<th><img src="resources/image/cartlogo.jpg" alt=""></th>
-							<th>마이페이지</th>
-					</tr>
-					<tr>
-							<th><img src="resources/image/cartlogo.jpg" alt=""></th>
-							<th>게시판</th>
-					</tr>
-					<tr>
-							<th><img src="resources/image/cartlogo.jpg" alt=""></th>
-							<th>장바구니</th>
-					</tr>
-					<tr>
-							<th><img src="resources/image/cartlogo.jpg" alt=""></th>
-							<th>플레이 리스트</th> 
-					</tr>
-			</table>
-	</div>
-
-    <div >
 	  <div class="board-container">
       <h2 class="board-title">통합게시판</h2>
       <table class="board-table">
@@ -304,8 +286,8 @@
             </tr>
           </tbody>
       </table>
-  </div>
-</div>
+    </div>
+
 
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

@@ -114,20 +114,110 @@
         background-color: #1587d0;
         color: white;
     }
+
 </style>
+
 </head>
+
 <body>
-    <div class="wrapper">
-        <img src="c:\Users\user1\Pictures\Screenshots\화면 캡처 2025-03-11 094550.png" id="logo">
-        <div id="login-box">
-            <h1><button type="button" onclick="location.href='<%= contentPath%>/loginForm'" class="btn btn-primary btn-lg" id="login-btn">뮤직 클라우드 로그인</button></h1>
-            <a href="">회원가입</a> | <a href="">아이디 찾기</a> | <a href="">비밀번호 찾기</a>
-        </div>
-        <form action="" class="search-bar">
-            <input type="text" id="search-box">
-            <button type="submit" id="search-btn">검색</button>
-        </form>
+ <%@ include file="../common/menubar.jsp" %>
+
+ <div class="container">
+    <div class="header">
+        <h1>게시글 View 부분</h1>
     </div>
+    <div class="post-info">
+        <div class="title">
+            제목: 30자를 넘겨선 안된다. VARCHAR(90)
+        </div>
+        <div class="date">
+            작성날짜 작성자명
+        </div>
+    </div>
+    <div class="content">
+        내용들: Max 500자 이내
+    </div>
+    <div class="music-images">
+        <a href="#"><img src="image1.jpg" alt="음원 이미지 1"></a>
+        <a href="#"><img src="image2.jpg" alt="음원 이미지 2"></a>
+        <a href="#"><img src="image3.jpg" alt="음원 이미지 3"></a>
+        <a href="#"><img src="image4.jpg" alt="음원 이미지 4"></a>
+    </div>
+    <div class="comments">
+        <h2>댓글 20개</h2>
+        <div class="comment">
+            <img src="avatar.jpg" alt="프로필 사진" class="avatar">
+            <textarea placeholder="댓글을 입력하세요..."></textarea>
+            <button>등록</button>
+        </div>
+        <div class="comment-list">
+        </div>
+    </div>
+    <div class="actions">
+        <button> 18</button>
+        <button></button>
+        <button>공유</button>
+    </div>
+</div>
+<script src="script.js"></script>
+
+<style>
+.container {
+    width: 80%;
+    margin: 20px auto;
+    border: 1px solid #ddd;
+    padding: 20px;
+}
+
+.header h1 {
+    text-align: center;
+}
+
+.post-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.content {
+    border: 1px solid #eee;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.music-images {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+
+.music-images img {
+    width: 150px;
+    height: 150px;
+}
+
+.comments .comment {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.comments .avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.comments textarea {
+    flex-grow: 1;
+    padding: 5px;
+}
+
+.actions button {
+    margin-right: 10px;
+}
+</style>
 
     <style>
       .board-container {
@@ -161,32 +251,20 @@
       }
   </style>
 
-<div class="navigator">
-    <button type="button" id="side-btn" class="btn btn-primary btn-lg">퀵 메뉴</button>
-    <table id="side-btn-list">
-            <tr>
-                    <th width="30%"><img src="resources/image/cartlogo.jpg" alt=""></th>
-                    <th width="70%">전체음원목록</th>
-            </tr>
-            <tr>
-                    <th><img src="resources/image/cartlogo.jpg" alt=""></th>
-                    <th>마이페이지</th>
-            </tr>
-            <tr>
-                    <th><img src="resources/image/cartlogo.jpg" alt=""></th>
-                    <th>게시판</th>
-            </tr>
-            <tr>
-                    <th><img src="resources/image/cartlogo.jpg" alt=""></th>
-                    <th>장바구니</th>
-            </tr>
-            <tr>
-                    <th><img src="resources/image/cartlogo.jpg" alt=""></th>
-                    <th>플레이 리스트</th>
-            </tr>
-    </table>
-</div>
-    
+    <style>
+    document.querySelector('.comments button').addEventListener('click', function() {
+        const commentText = document.querySelector('.comments textarea').value;
+        if  (commentText) {
+            const newComment = document.createElement('div');
+            newComment.textContent = commentText;
+            document.querySelector('.comment-list').appendChild(newComment);
+            document.querySelector('.comments textarea').value = ''; // 입력창 초기화
+        }
+    });
+
+    </style>
+
+
     <script>
         $(function() {
             $("#side-btn").click(function() {

@@ -184,47 +184,76 @@
     width: 120px;
     margin-left: 5px; margin-left: 5px;
   }
+
+  {
+  background-color: #f0f8ff; /* 연한 하늘색 배경 */
+}
+
+/* 검색창 스타일 */
+.search-container {
+  display: flex;
+  align-items: center;
+  border-radius: 20px; /* 둥근 모서리 */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+  overflow: hidden; /* 둥근 모서리 적용을 위한 overflow 설정 */
+}
+
+.search-input {
+  flex-grow: 1;
+  padding: 10px 15px;
+  border: none;
+  font-size: 16px;
+  background-color: #e6f7ff; /* 연한 파란색 배경 */
+}
+
+.search-button {
+  background: linear-gradient(to right, #87ceeb, #1e90ff); /* 구름 로고 그라데이션 색상 적용 */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  font-size: 16px;
+  border-radius: 0 20px 20px 0; /* 오른쪽 모서리만 둥글게 */
+  cursor: pointer;
+}
+
+/* 구름 로고 스타일 */
+.cloud-logo {
+  width: 80px; /* 로고 크기 조절 */
+  height: 80px;
+  margin-right: 10px;
+}
+
+.music-selection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.music-images {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-left: 20px; /* 추가: 왼쪽 여백 추가 */
+}
+
+.image-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.image-row img {
+  width: 150px;
+  height: 150px;
+  margin: 0 10px;
+}
 </style>
 </head>
 <body>
-    <div class="wrapper">
-        <img src="c:\Users\user1\Pictures\Screenshots\화면 캡처 2025-03-11 094550.png" id="logo">
-        <div id="login-box">
-            <h1><button type="button" class="btn btn-primary btn-lg" id="login-btn">뮤직 클라우드 로그인</button></h1>
-            <a href="">회원가입</a> | <a href="">아이디 찾기</a> | <a href="">비밀번호 찾기</a>
-        </div>
-        <form action="" class="search-bar">
-            <input type="text" id="search-box">
-            <button type="submit" id="search-btn">검색</button>
-        </form>
-    </div>
-
-    <div class="navigator">
-      <button type="button" id="side-btn" class="btn btn-primary btn-lg">퀵 메뉴</button>
-      <table id="side-btn-list">
-          <tr>
-              <th width="30%"><img src="resources/image/cartlogo.jpg" alt=""></th>
-              <th width="70%">전체음원목록</th>
-          </tr>
-          <tr>
-              <th><img src="resources/image/cartlogo.jpg" alt=""></th>
-              <th>마이페이지</th>
-          </tr>
-          <tr>
-              <th><img src="resources/image/cartlogo.jpg" alt=""></th>
-              <th>게시판</th>
-          </tr>
-          <tr>
-              <th><img src="resources/image/cartlogo.jpg" alt=""></th>
-              <th>장바구니</th>
-          </tr>
-          <tr>
-              <th><img src="resources/image/cartlogo.jpg" alt=""></th>
-              <th>플레이 리스트</th>
-          </tr>
-      </table>
-  </div>
-
+  <%@ include file="../common/menubar.jsp" %>
     <div class="container">
       <div class="search-bar">
         </div>
@@ -239,25 +268,30 @@
           <label for="content">내용들: Max 500자 이내</label>
           <textarea id="content" name="content" maxlength="500"></textarea>
         </div>
-  
-        <div class="form-group">
-          <label for="music">음원 및 플레이 리스트 선택</label>
-          <div class="music-list">
-            <img src="음원1.jpg" alt="음원1">
-            <img src="음원2.jpg" alt="음원2">
-            <img src="음원3.jpg" alt="음원3">
-            <img src="음원4.jpg" alt="음원4">
-          </div>
-        </div>
-  
+
         <div class="form-buttons">
           <button type="submit">등록</button>
           <button type="reset">초기화</button>
-          <button type="button">이전 페이지 (혹은 취소)</button>
+          <button type="button">이전 페이지 돌아가기(취소)</button>
         </div>
       </div>
     </div>
-
+  
+    <div class="music-selection">
+      <span>음원 및 플레이 리스트 선택</span>
+    </div>
+    
+    <div class="music-images">
+      <div class="image-row">
+        <img src="음원1.jpg" alt="음원1">
+        <img src="음원2.jpg" alt="음원2">
+      </div>
+      <div class="image-row">
+        <img src="음원3.jpg" alt="음원3">
+        <img src="음원4.jpg" alt="음원4">
+      </div>
+    </div>
+  
     <style>
       .board-container {
           width: 80%;
