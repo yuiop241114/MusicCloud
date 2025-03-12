@@ -43,7 +43,7 @@ public class loginController extends HttpServlet {
 			request.getSession().setAttribute("alertMsg", "로그인 실패 다시 시도해주세요");
 			response.sendRedirect(request.getContextPath());
 		}else {
-			//성공
+			// 성공
 			request.getSession().setAttribute("loginMember", m); //회원의 모든 정보를 가지고 있는 객체
 			response.sendRedirect(request.getContextPath());
 		}
