@@ -2,12 +2,18 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 	
-	<entry key="adminselectList">
+	<entry key="adminMemberList">
 		SELECT 
 		        b.*, 
 		        m.member_id, m.member_name, m.member_name
 		  FROM Board b
 		  JOIN Member m ON b.member_no = m.member_no;
+	</entry>
+	
+	<entry key="">
+		SELECT R.*
+		  FROM REPORT_DETAIL R
+		  JOIN MEMBER M ON M.MEMBER_NO = R.MEMBER_NO
 	</entry>
 	
 	

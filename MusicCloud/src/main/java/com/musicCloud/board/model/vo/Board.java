@@ -1,5 +1,10 @@
 package com.musicCloud.board.model.vo;
 
+import java.sql.Connection;
+import java.util.ArrayList;
+
+import com.musicCloud.common.model.vo.PageInfo;
+
 public class Board {
 	
 	private int boardNo;
@@ -15,6 +20,10 @@ public class Board {
 	
 	private String memberId;
 	private String memberName;
+	
+	private int reportNo;
+	private int reportMemberNo;
+	private String reportDate;
 	
 	public Board() {}
 
@@ -50,6 +59,63 @@ public class Board {
 		this.category = category;
 		this.memberId = memberId;
 		this.memberName = memberName;
+	}
+	
+	
+
+	public Board(int boardNo, int playlistNo, int memberNo, int musicNo, String boardTitle, String boardContent,
+			int count, String enrollDate, String status, String category, String memberId, String memberName,
+			int reportNo, int reportMemberNo, String reportDate) {
+		super();
+		this.boardNo = boardNo;
+		this.playlistNo = playlistNo;
+		this.memberNo = memberNo;
+		this.musicNo = musicNo;
+		this.boardTitle = boardTitle;
+		this.boardContent = boardContent;
+		this.count = count;
+		this.enrollDate = enrollDate;
+		this.status = status;
+		this.category = category;
+		this.memberId = memberId;
+		this.memberName = memberName;
+		this.reportNo = reportNo;
+		this.reportMemberNo = reportMemberNo;
+		this.reportDate = reportDate;
+	}
+
+	
+
+	public Board(int memberNo, int reportNo, int reportMemberNo, String reportDate) {
+		super();
+		this.memberNo = memberNo;
+		this.reportNo = reportNo;
+		this.reportMemberNo = reportMemberNo;
+		this.reportDate = reportDate;
+	}
+
+	public int getReportNo() {
+		return reportNo;
+	}
+
+	public void setReportNo(int reportNo) {
+		this.reportNo = reportNo;
+	}
+
+	public int getReportMemberNo() {
+		return reportMemberNo;
+	}
+
+	public void setReportMemberNo(int reportMemberNo) {
+		this.reportMemberNo = reportMemberNo;
+	}
+
+	public String getReportDate() {
+		return reportDate;
+	}
+
+	public void setReportDate(String reportDate) {
+		this.reportDate = reportDate;
 	}
 
 	public String getMemberId() {
@@ -153,8 +219,13 @@ public class Board {
 		return "Board [boardNo=" + boardNo + ", playlistNo=" + playlistNo + ", memberNo=" + memberNo + ", musicNo="
 				+ musicNo + ", boardTitle=" + boardTitle + ", boardContent=" + boardContent + ", count=" + count
 				+ ", enrollDate=" + enrollDate + ", status=" + status + ", category=" + category + ", memberId="
-				+ memberId + ", memberName=" + memberName + "]";
+				+ memberId + ", memberName=" + memberName + ", reportNo=" + reportNo + ", reportMemberNo="
+				+ reportMemberNo + ", reportDate=" + reportDate + "]";
 	}
+
+	
+
+	
 
 
 	

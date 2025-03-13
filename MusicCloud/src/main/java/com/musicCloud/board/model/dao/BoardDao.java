@@ -9,8 +9,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import static com.musicCloud.common.JDBCTemplate. *;
+
 import com.musicCloud.board.model.vo.Board;
 import com.musicCloud.common.model.vo.PageInfo;
+import com.musicCloud.member.model.vo.Member;
 
 import oracle.net.aso.p;
 
@@ -26,11 +29,11 @@ public class BoardDao {
 		}
 	}
 
-	public ArrayList<Board> adminselectList(Connection conn, PageInfo pi) {
-		ArrayList<Board> list = new ArrayList<Board>();
+	public ArrayList<Member> adminselectList(Connection conn, PageInfo pi) {
+		ArrayList<Member> list = new ArrayList<Member>();
 		ResultSet rset = null;
 		PreparedStatement pstmt = null;
-		String sql = prop.getProperty("adminselectList");
+		String sql = prop.getProperty("adminMemberList");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -43,28 +46,76 @@ public class BoardDao {
 			rset = pstmt.executeQuery();
 			while(rset.next()) {
 				list.add(
-						 new Board(
-								   rset.getInt("board_no")
-								 , rset.getInt("playlist_no")
-								 , rset.getInt("member_no")
-								 , rset.getInt("music_no")
-								 , rset.getString("board_title")
-								 , rset.getString("board_content")
-								 , rset.getInt("count")
-								 , rset.getString("enroll_date")
-								 , rset.getString("status")
-								 , rset.getString("category")
+						 new Member(
+								 	rset.getInt("member_no")
+							      , rset.getInt("location_no")
+							      , rset.getString("member_no")
+							      , rset.getString("member_pwd")
+							      , rset.getString("member_name")
+							      , rset.getString("email")
+							      , rset.getString("gender")
+							      , rset.getInt("age")
+							      , rset.getString("status")
+							      , rset.getDate("enroll_date")
+							      , rset.getInt("report_count")
 								 )
 						);
 			}
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+			
 		}
 		
 		return list;
 	}
+
+	public ArrayList<Board> adminReportList(Connection conn, PageInfo pi) {
+
+		ArrayList<Board> list = new ArrayList<Board>();
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("adminReportList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(
+						new Board(
+								rset.getInt("memberNo")
+								, rset.getInt("reportNo")
+								, rset.getInt("reportMemberNo")
+								, rset.getString("reportDate")
+								
+								)
+						);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		
+		return list;
+		
+		
+	}
+
+	
 	
 	
 
