@@ -10,10 +10,14 @@
 		  JOIN Member m ON b.member_no = m.member_no;
 	</entry>
 	
-	<entry key="">
+	<entry key="adminReportList">
 		SELECT R.*
 		  FROM REPORT_DETAIL R
 		  JOIN MEMBER M ON M.MEMBER_NO = R.MEMBER_NO
+	</entry>
+	
+	<entry key="adminMusicList">
+		
 	</entry>
 	
 	

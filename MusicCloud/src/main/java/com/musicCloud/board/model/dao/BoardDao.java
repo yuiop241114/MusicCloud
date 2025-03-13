@@ -45,6 +45,8 @@ public class BoardDao {
 			
 			rset = pstmt.executeQuery();
 			while(rset.next()) {
+
+				
 				list.add(
 						 new Member(
 								 	rset.getInt("member_no")

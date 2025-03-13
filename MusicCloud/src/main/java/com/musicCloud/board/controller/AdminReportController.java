@@ -46,7 +46,9 @@ public class AdminReportController extends HttpServlet {
 		listCount = new BoardService().selectListCount();
 		
 		currentPage = Integer.parseInt(request.getParameter("cpage"));
-		
+		String cpageParam = request.getParameter("cpage");
+		currentPage = (cpageParam != null) ? Integer.parseInt(cpageParam) : 1;
+
 		pageLimit = 10;
 		
 		boardLimit = 10;
@@ -64,11 +66,14 @@ public class AdminReportController extends HttpServlet {
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		
 		ArrayList<Board> list = new BoardService().adminReportList(pi);
+		if (list == null) {
+		    list = new ArrayList<>();
+		}
 		
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
 		
-		request.getRequestDispatcher("views/board/adminReport.jsp").forward(request, response);
+		request.getRequestDispatcher("views/board/admin.jsp").forward(request, response);
 		
 	}
 		

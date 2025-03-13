@@ -11,14 +11,14 @@ import com.musicCloud.common.model.vo.PageInfo;
 import com.musicCloud.member.model.vo.Member;
 
 public class BoardService {
-
-	public int selectListCount() {
-		int result = 0;
+	
+	public ArrayList<Member> adminMemberList(PageInfo pi) {
 		
+		Connection conn = getConnection();
+		ArrayList<Member> list = new BoardDao().adminselectList(conn, pi);
 		
-		
-		
-		return result;
+		close(conn);
+		return list;
 	}
 
 	public ArrayList<Member> adminselectList(PageInfo pi) {
@@ -38,6 +38,13 @@ public class BoardService {
 		close(conn);
 		return list;
 	}
+
+	public int adminselectList() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
 	
 	
 	
