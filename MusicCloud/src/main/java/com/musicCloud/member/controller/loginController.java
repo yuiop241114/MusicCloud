@@ -47,9 +47,10 @@ public class loginController extends HttpServlet {
 	}
 
 	/**
+	 * @param <HttpServletRequest>
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected <HttpServletRequest> void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

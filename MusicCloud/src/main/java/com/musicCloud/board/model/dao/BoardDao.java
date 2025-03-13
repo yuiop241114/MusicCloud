@@ -63,7 +63,7 @@ public class BoardDao {
 			e.printStackTrace();
 		}
 		
-		return null;
+		return list;
 	}
 	
 	
