@@ -77,7 +77,7 @@
         if(infoConCode == 200){
         	//정보 추출
         	JSONParser infoParsar = new JSONParser();
-        	
+        	//fdsfdafdaf
         }
     	
       }
