@@ -1,3 +1,4 @@
+<%@page import="javax.swing.text.html.HTMLEditorKit.Parser"%>
 <%@page import="org.json.simple.JSONObject"%>
 <%@page import="org.json.simple.parser.JSONParser"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -13,7 +14,7 @@
     String clientSecret = "myhWXY_W23";//애플리케이션 클라이언트 시크릿값";
     String code = request.getParameter("code");
     String state = request.getParameter("state");
-    String redirectURI = URLEncoder.encode("http://localhost:8118/music/loginForm.jsp", "UTF-8");
+    String redirectURI = URLEncoder.encode("http://localhost:8118/music/naverCallBack.jps", "UTF-8");
     String apiURL;
     apiURL = "https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&";
     apiURL += "client_id=" + clientId;
@@ -31,8 +32,7 @@
       HttpURLConnection con = (HttpURLConnection)url.openConnection();
       con.setRequestMethod("GET");
       int responseCode = con.getResponseCode();
-      BufferedReader br;
-      System.out.print("responseCode="+responseCode);
+      BufferedReader br;;
       if(responseCode==200) { // 정상 호출
         br = new BufferedReader(new InputStreamReader(con.getInputStream()));
       } else {  // 에러 발생
@@ -49,13 +49,18 @@
     	  JSONParser parsar = new JSONParser();
     	  JSONObject jResponse = (JSONObject)parsar.parse(res.toString());
     	  accessToken = (String)jResponse.get("access_token");
+    	  //출력
+    	  System.out.println("엑세스 토큰 : " + accessToken);
     	  id = (String)jResponse.get("id"); //토큰 대신 DB로 가져갈 데이터
     	  
     	  //사용자 정보 api 사용
     	  String infoUrl = "https://openapi.naver.com/v1/nid/me";
     	  URL userApiUrl = new URL(infoUrl);
-    	  HttpURLConnection infoCon = (HttpURLConnection)url.openConnection();
+    	  HttpURLConnection infoCon = (HttpURLConnection)userApiUrl.openConnection();
+    	  //출력 
+    	  System.out.println("infoCon : "+ infoCon);
         infoCon.setRequestMethod("GET");
+        //요청 헤더(Authorization) : 정보를 가져오기 위해 접근 토큰 값을 받는 것
         infoCon.setRequestProperty("Authorization", "Bearer " + accessToken);
           
         int infoConCode = infoCon.getResponseCode();
@@ -76,8 +81,31 @@
         
         if(infoConCode == 200){
         	//정보 추출
-        	JSONParser infoParsar = new JSONParser();
-        	//fdsfdafdaf
+        	//출력
+        	System.out.println("infoRes : "+ infoRes.toString());
+        	JSONObject infoResult = (JSONObject)parsar.parse(infoRes.toString());
+        	//츨력
+        	System.out.println("infoResult : "+ infoRes);
+        	JSONObject infoResponse = (JSONObject)infoResult.get("response");
+        	
+        	String userId = (String)infoResponse.get("id");
+        	String nickName = (String)infoResponse.get("nickname");
+        	String name = (String)infoResponse.get("name");
+        	String email = (String)infoResponse.get("email");
+        	String age = (String)infoResponse.get("age"); //나이
+        	String birthday = (String)infoResponse.get("birthday"); //사용자 생일(MM-DD 형식)
+        	String birthyear = (String)infoResponse.get("birthyear");
+        	String mobile = (String)infoResponse.get("mobile");
+        	
+        	System.out.println(userId);
+        	id = userId; //토큰은 주기적으로 바뀌어 갱신해줘야 하니때문에 고유 아이디를 이용해서 정보에 접근
+        	System.out.println(nickName);
+        	System.out.println(name);
+        	System.out.println(email);
+        	System.out.println(age);
+        	System.out.println(birthday);
+        	System.out.println(birthyear);
+        	System.out.println(mobile);
         }
     	
       }
