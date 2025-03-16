@@ -1,3 +1,4 @@
+<%@page import="com.musicCloud.member.model.vo.Member"%>
 <%@page import="javax.swing.text.html.HTMLEditorKit.Parser"%>
 <%@page import="org.json.simple.JSONObject"%>
 <%@page import="org.json.simple.parser.JSONParser"%>
@@ -14,7 +15,7 @@
     String clientSecret = "myhWXY_W23";//애플리케이션 클라이언트 시크릿값";
     String code = request.getParameter("code");
     String state = request.getParameter("state");
-    String redirectURI = URLEncoder.encode("http://localhost:8118/music/naverCallBack.jps", "UTF-8");
+    String redirectURI = URLEncoder.encode("http://localhost:8118/music/", "UTF-8");
     String apiURL;
     apiURL = "https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&";
     apiURL += "client_id=" + clientId;
@@ -92,22 +93,27 @@
         	String nickName = (String)infoResponse.get("nickname");
         	String name = (String)infoResponse.get("name");
         	String email = (String)infoResponse.get("email");
-        	String age = (String)infoResponse.get("age"); //나이
+        	String age = (String)infoResponse.get("age"); //연령대
+        	String gender = (String)infoResponse.get("gender"); //성별
         	String birthday = (String)infoResponse.get("birthday"); //사용자 생일(MM-DD 형식)
         	String birthyear = (String)infoResponse.get("birthyear");
         	String mobile = (String)infoResponse.get("mobile");
         	
         	System.out.println(userId);
         	id = userId; //토큰은 주기적으로 바뀌어 갱신해줘야 하니때문에 고유 아이디를 이용해서 정보에 접근
+        	//FaYoWNq4aUe3CuAZZ3i-UCSYTzyhODBoBhlAPEN1Z9c
+        	
         	System.out.println(nickName);
         	System.out.println(name);
         	System.out.println(email);
         	System.out.println(age);
+        	System.out.println(gender);
         	System.out.println(birthday);
         	System.out.println(birthyear);
         	System.out.println(mobile);
+        	Member m = new Member();
+        	m.setMemberAlias(nickName);
         }
-    	 //dasdasdas
       }
       
     } catch (Exception e) {
