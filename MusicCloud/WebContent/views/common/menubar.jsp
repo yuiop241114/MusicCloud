@@ -154,7 +154,7 @@
 	#side-btn-list img{
 	    width: 80%;
 	}
-	/**/
+
 	</style> 
 <body>
 	<div class="wrapper">
