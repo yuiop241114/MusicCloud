@@ -1,3 +1,4 @@
+<%@page import="com.musicCloud.member.model.vo.NaverMember"%>
 <%@page import="com.musicCloud.member.model.vo.Member"%>
 <%@page import="javax.swing.text.html.HTMLEditorKit.Parser"%>
 <%@page import="org.json.simple.JSONObject"%>
@@ -15,7 +16,7 @@
     String clientSecret = "myhWXY_W23";//애플리케이션 클라이언트 시크릿값";
     String code = request.getParameter("code");
     String state = request.getParameter("state");
-    String redirectURI = URLEncoder.encode("http://localhost:8118/music/", "UTF-8");
+    String redirectURI = URLEncoder.encode("http://localhost:8118/music/naverLogin", "UTF-8");
     String apiURL;
     apiURL = "https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&";
     apiURL += "client_id=" + clientId;
@@ -58,8 +59,7 @@
     	  String infoUrl = "https://openapi.naver.com/v1/nid/me";
     	  URL userApiUrl = new URL(infoUrl);
     	  HttpURLConnection infoCon = (HttpURLConnection)userApiUrl.openConnection();
-    	  //출력 
-    	  System.out.println("infoCon : "+ infoCon);
+    	  //System.out.println("infoCon : "+ infoCon);
         infoCon.setRequestMethod("GET");
         //요청 헤더(Authorization) : 정보를 가져오기 위해 접근 토큰 값을 받는 것
         infoCon.setRequestProperty("Authorization", "Bearer " + accessToken);
@@ -82,11 +82,9 @@
         
         if(infoConCode == 200){
         	//정보 추출
-        	//출력
-        	System.out.println("infoRes : "+ infoRes.toString());
+        	//System.out.println("infoRes : "+ infoRes.toString());
         	JSONObject infoResult = (JSONObject)parsar.parse(infoRes.toString());
-        	//츨력
-        	System.out.println("infoResult : "+ infoRes);
+        	//System.out.println("infoResult : "+ infoRes);
         	JSONObject infoResponse = (JSONObject)infoResult.get("response");
         	
         	String userId = (String)infoResponse.get("id");
@@ -99,10 +97,11 @@
         	String birthyear = (String)infoResponse.get("birthyear");
         	String mobile = (String)infoResponse.get("mobile");
         	
-        	System.out.println(userId);
+        	//System.out.println(userId);
         	id = userId; //토큰은 주기적으로 바뀌어 갱신해줘야 하니때문에 고유 아이디를 이용해서 정보에 접근
-        	//FaYoWNq4aUe3CuAZZ3i-UCSYTzyhODBoBhlAPEN1Z9c
         	
+        	/*
+        	System.out.println(userId);
         	System.out.println(nickName);
         	System.out.println(name);
         	System.out.println(email);
@@ -111,8 +110,20 @@
         	System.out.println(birthday);
         	System.out.println(birthyear);
         	System.out.println(mobile);
-        	Member m = new Member();
-        	m.setMemberAlias(nickName);
+        	*/
+        	
+        	request.setAttribute("uniqueId", userId);
+        	request.setAttribute("nickName", nickName);
+        	request.setAttribute("name", name);
+        	request.setAttribute("email", email);
+        	request.setAttribute("age", age);
+        	request.setAttribute("gender", gender);
+        	request.setAttribute("birthday", birthday);
+        	request.setAttribute("birthyear", birthyear);
+        	request.setAttribute("mobile", mobile);
+        	//네이버 로그인 서블릿으로 이동
+        	request.getRequestDispatcher("/naverLogin").forward(request, response);
+        	
         }
       }
       
