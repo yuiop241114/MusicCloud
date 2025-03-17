@@ -56,7 +56,7 @@ public class MemberDao {
 				m = new Member(
 						        rset.getInt("member_no")
 						      , rset.getInt("location_no")
-						      , rset.getString("member_no")
+						      , rset.getString("member_id")
 						      , rset.getString("member_pwd")
 						      , rset.getString("member_name")
 						      , rset.getString("member_alias")
