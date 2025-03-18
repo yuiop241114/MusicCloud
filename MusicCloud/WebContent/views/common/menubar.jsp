@@ -163,6 +163,9 @@
 		text-decoration: none;
 		color: white;
 	}
+	#side-btn-list a:hover{
+		color: gray;
+	}
 
 	
 	</style> 
@@ -184,7 +187,7 @@
 					<%} %>
        </div>
 
-	<% if(loginMember == null){%>
+			<% if(loginMember == null){%>
 	      <form action="" class="search-bar">
            <input type="text" id="search-box" name="search" required>
            <button type="submit" id="search-btn-member-null">검색</button>     
@@ -208,7 +211,7 @@
 					</tr>
 					<tr>
 							<th><img src="resources/image/cartlogo.jpg" alt=""></th>
-							<th><a href="<%= contentPath%>">마이페이지</a></th>
+							<th><a href="<%= contentPath%>/myPageForm">마이페이지</a></th>
 					</tr>
 					<tr>
 							<th><img src="resources/image/cartlogo.jpg" alt=""></th>
@@ -241,8 +244,14 @@
 	    });
 
 		document.getElementById("search-btn-member-null").addEventListener("click", function(){
+			alert("로그인 후 이용가능합니다")
+		});
+		
+		/*
+		document.getElementById("search-btn-member-null").addEventListener("click", function(){
 			alert("검색기능은 로그인 후 이용가능합니다")
 		});
+		*/
 	</script>
 </body>
 </html>
