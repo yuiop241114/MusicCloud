@@ -63,16 +63,11 @@ public class MemberDao {
 						      , rset.getString("email")
 						      , rset.getString("gender")
 						      , rset.getInt("age")
-<<<<<<< HEAD
-						      , rset.getString("status")
-						      , rset.getDate("enroll_date")
-						      , rset.getInt("report_count")
-=======
 						      , rset.getDate("enroll_date")
 						      , rset.getInt("report_count")
 						      , rset.getString("status")
 						      , rset.getString("pf_status")
->>>>>>> main
+ 
 						      );
 			}
 		} catch (SQLException e) {

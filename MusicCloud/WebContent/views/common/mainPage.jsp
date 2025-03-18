@@ -123,7 +123,6 @@
         margin-top: 25%;
     }
 
-
     /*게시판 미리보기 리스트 class="mainList" id="board"*/
     #mainPage_boardTitle{
         background-color: #1587d0;

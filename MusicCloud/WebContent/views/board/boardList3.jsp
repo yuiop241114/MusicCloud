@@ -54,7 +54,7 @@
     }
 
     .comments .comment {
-        display: flex;
+        display: flex; 
         align-items: flex-start;
         margin-bottom: 10px;
     }
@@ -172,7 +172,7 @@
                 const newComment = document.createElement('div');
                 newComment.textContent = commentText;
                 document.querySelector('.comment-list').appendChild(newComment);
-                document.querySelector('.comments textarea').value = ''; // 입력창 초기화
+                document.querySelector('.comments textarea').value = '';  초기화
             }
         });
     </script>

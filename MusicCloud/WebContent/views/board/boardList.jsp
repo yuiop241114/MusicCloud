@@ -125,7 +125,7 @@
     .board-table td a {
     color: #007bff; 
     text-decoration: none; 
-}
+    }
 
     .board-table td a:hover {
         text-decoration: underline; 
@@ -135,7 +135,6 @@
 <body>
     <%@ include file="../common/menubar.jsp" %>
 	
-
 	<div class="board-container">
       <h2 class="board-title">통합게시판</h2>
       <table class="board-table">
