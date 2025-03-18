@@ -209,7 +209,7 @@
         }
 
         #play-previous,
-        #play-pause,
+        #play-play,
         #play-next,
         #play-hidden {
             background: none;
@@ -224,7 +224,7 @@
         }
 
         #play-previous img,
-        #play-pause img,
+        #play-play img,
         #play-next img,
         #play-hidden img {
             height: 40px;
@@ -480,6 +480,19 @@
             });
         });
 
+        document.getElementById("play-play").addEventListener("click", function() {
+        let playButtonImg = this.querySelector("img"); // 현재 버튼 안의 <img> 요소 가져오기
+        let currentSrc = playButtonImg.src; // 현재 이미지 경로
+
+    // 이미지 토글 (재생 ↔ 일시정지)
+    if (currentSrc.includes("재생이미지.png")) {
+        playButtonImg.src = "<%=contentPath%>/resources/image/멈춤이미지.png";
+    } else {
+        playButtonImg.src = "<%=contentPath%>/resources/image/재생이미지.png";
+    }
+});
+
     </script>
+    
 </body>
 </html>
