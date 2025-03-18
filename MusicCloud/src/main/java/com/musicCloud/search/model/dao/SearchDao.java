@@ -50,7 +50,7 @@ public class SearchDao {
 			pstmt.setString(3, "%" + search + "%");
 			rset = pstmt.executeQuery();
 			
-			System.out.println(sql);
+			
 		
 			while(rset.next()) {
 				listAccuracy.add(new MusicFile(
@@ -107,15 +107,44 @@ public class SearchDao {
 
 		return listPopular;
 	}
-	public ArrayList<MusicFile> searchListPopularLocation(Connection conn, String search) {
+	public ArrayList<MusicFile> searchListPopularLocation(Connection conn, String search, int locationNo) {
 		ArrayList<MusicFile> listPopular = new ArrayList<MusicFile>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
+		String sql = prop.getProperty("searchListPopularLocation");
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			
+			pstmt.setInt(1, locationNo);
+			pstmt.setString(2, "%" + search + "%");
+			
+			
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				
+				listPopular.add(new MusicFile(
+											  rset.getInt("MUSIC_NO") 
+											, rset.getString("MUSIC_TITLE")
+											, rset.getString("MUSIC_SINGER")
+											, rset.getString("MUSIC_IMAGE_EDIT_NAME")
+											, rset.getString("MUSIC_IMAGE_PATH")
+											, rset.getString("POPULAR")    // Int로 바꿔줘야함
+											)
+							);
+				}
+			} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
 		// 보류
-		
 		return listPopular;
-		
 	}		
 }
 

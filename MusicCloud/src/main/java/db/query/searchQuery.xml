@@ -34,4 +34,23 @@ ORDER BY
 	      LIKE ?
 	ORDER BY POPULAR DESC
 	</entry>
+	
+	<entry key="searchListPopularLocation">
+	
+		SELECT 
+		       MUSIC_NO
+	         , MUSIC_TITLE
+		     , LOCATION_NO
+	         , MUSIC_SINGER
+		     , MUSIC_IMAGE_EDIT_NAME
+		     , MUSIC_IMAGE_PATH
+	         , (MUSIC_COUNT + MUSIC_LIKE * 5 - MUSIC_DISLIKE) AS "POPULAR"
+		  FROM RECENT_MUSIC 
+		  JOIN LOCATION USING(LOCATION_NO)
+	      JOIN MUSIC_FILE USING (MUSIC_NO)
+		  JOIN MUSIC_LIST USING(MUSIC_NO)
+	     WHERE LOCATION_NO = ?
+	       AND MUSIC_TITLE LIKE ?
+		 ORDER BY POPULAR DESC
+	</entry>
 </properties>

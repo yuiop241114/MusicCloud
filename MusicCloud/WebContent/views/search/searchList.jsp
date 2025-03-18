@@ -6,6 +6,7 @@
 	String search = (String)request.getAttribute("search");
 	ArrayList<MusicFile> listAccuracy = (ArrayList<MusicFile>)request.getAttribute("listAccuracy");
 	ArrayList<MusicFile> listPopular = (ArrayList<MusicFile>)request.getAttribute("listPopular");
+	ArrayList<MusicFile> listPopularLocation = ((ArrayList<MusicFile>)request.getAttribute("listPopularLocation"));
 %>
 <!DOCTYPE html>
 <html>
@@ -281,7 +282,7 @@
                         <!-- 아이템들 -->
                         
                         
-                        <% for(MusicFile m : listAccuracy) {%>
+                        <% for(MusicFile m : listPopularLocation) {%>
                             <div class="item">
                                 <img src="<%=contentPath%>/resources/image/열불이.png" alt="<%= m.getMusicImagePath() %>">
                                 <div class="title-container">

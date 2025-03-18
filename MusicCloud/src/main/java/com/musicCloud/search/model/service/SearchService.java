@@ -32,17 +32,15 @@ public class SearchService {
 		return listPopular;
 	}
 
-	public ArrayList<MusicFile> searchListPopularLocation(String search) {
+	public ArrayList<MusicFile> searchListPopularLocation(String search, int locationNo) {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
-		ArrayList<MusicFile> listPopularLocation = new SearchDao().searchListPopularLocation(conn, search); 
+		ArrayList<MusicFile> listPopularLocation = new SearchDao().searchListPopularLocation(conn, search, locationNo);
 		
 		
 		JDBCTemplate.close(conn);
 		
 		return listPopularLocation;
-		
-	}
-
+		}
 }

@@ -189,6 +189,7 @@
          <% }else{ %>
        <form action="<%=contentPath%>/searchList.li" class="search-bar">
            <input type="text" id="search-box" name="search" required>
+           <input type="hidden" name="locationNo" value="<%= loginMember.getLocationNo() %>">
            <button type="submit" id="search-btn">검색</button>     
          <% } %>
        </form>

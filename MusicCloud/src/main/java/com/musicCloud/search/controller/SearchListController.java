@@ -36,12 +36,14 @@ public class SearchListController extends HttpServlet {
 		
 		// 서블릿에서 데이터 설정
 		String search = request.getParameter("search"); // 클라이언트에서 넘어온 검색어
+		int locationNo = Integer.parseInt(request.getParameter("locationNo"));
+		
 		request.setAttribute("search", search);
 		ArrayList<MusicFile> listAccuracy = new SearchService().searchListAccuracy(search);
 		
 		ArrayList<MusicFile> listPopular = new SearchService().searchListPoupular(search);
 		
-		ArrayList<MusicFile> listPopularLocation = new SearchService().searchListPopularLocation(search);
+		ArrayList<MusicFile> listPopularLocation = new SearchService().searchListPopularLocation(search, locationNo);
 		
 		System.out.println(search+"위치는 searchListController 들어옴");
 		request.setAttribute("listAccuracy", listAccuracy);
@@ -57,7 +59,7 @@ public class SearchListController extends HttpServlet {
 		
 	
 		
-	}
+	} 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
