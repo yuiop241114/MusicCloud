@@ -132,7 +132,7 @@
                 <b>성별</b>
                 <select name="gender">
                   <option value="M">남자</option>
-                  <option value="W">여자</option>
+                  <option value="F">여자</option>
                 </select>
 
                 <b>거주 지역</b>

@@ -219,7 +219,7 @@
 					</tr>
 					<tr>
 							<th><img src="resources/image/cartlogo.jpg" alt=""></th>
-							<th>장바구니</th>
+							<th><a href="<%= contentPath%>/cartForm">장바구니</a></th>
 					</tr>
 					<tr>
 							<th><img src="resources/image/cartlogo.jpg" alt=""></th>
@@ -229,6 +229,13 @@
 		</div>
 	</div>
 	
+		<!-- 알림창 스크립트 -->
+		<%if(alertMsg != null){%>
+			<script>
+				alert("<%= alertMsg%>");
+			</script>
+			<% session.removeAttribute("alertMsg"); %>
+		<%}%>
 	
 	<script>
 			//퀵 메뉴 스크립트
@@ -247,11 +254,6 @@
 			alert("로그인 후 이용가능합니다")
 		});
 		
-		/*
-		document.getElementById("search-btn-member-null").addEventListener("click", function(){
-			alert("검색기능은 로그인 후 이용가능합니다")
-		});
-		*/
 	</script>
 </body>
 </html>

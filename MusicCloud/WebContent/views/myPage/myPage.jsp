@@ -1,5 +1,10 @@
+<%@page import="com.musicCloud.member.model.vo.Location"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+  ArrayList<Location> locationList = (ArrayList<Location>)request.getAttribute("locationList");  
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,7 +52,6 @@
     height: 100%;
     background-color: white;
     border-radius: 10px;
-
     width: 90%; /* 전체 너비보다 약간 작게 설정 */
 }
 
@@ -83,10 +87,6 @@
         text-decoration-line: none;
         color: black;
     }
-    .main-margin{
-        float: left;
-       width: 10%;
-    }
     .main-2{
         float: left;
         width: 70%;
@@ -114,30 +114,30 @@
     .main-1 b{
         
     }
-    table {
+    .myPageTable table{
         width: 100%;
         border-collapse: collapse;
         border-radius: 8px;
         overflow: hidden;
         border: 1px solid #eee;
     }
-    th, td {
+    .myPageTable th, td {
         padding: 12px;
         text-align: left;
     }
-    th {
+    .myPageTable th {
         background-color: #f8f8f8;
         font-weight: bold;
         color: gray;
     }
-    td {
+    .myPageTable td {
         font-weight: bold;
         color: #444;
     }
-    tr:nth-child(even) {
+    .myPageTable tr:nth-child(even) {
         background-color: #f9f9f9;
     }
-    tr td b {
+    .myPageTable tr td b {
         color: rgb(221, 0, 221);
         text-decoration: none;
         font-weight: bold;
@@ -148,6 +148,39 @@
         color: gray;
         text-decoration: none;
     }
+
+    /*input select 스타일*/
+    .myInfo input {
+    width: 200px;
+    height: 32px;
+    font-size: 15px;
+    border: 0;
+    border-radius: 15px;
+    outline: none;
+    padding-left: 10px;
+    background-color: rgb(233, 233, 233);
+    margin-bottom: 10px;
+    }
+    .myInfo select{
+    width: 200px;
+    height: 32px;
+    font-size: 15px;
+    border: 0;
+    border-radius: 15px;
+    outline: none;
+    padding-left: 10px;
+    background-color: rgb(233, 233, 233);
+    margin-bottom: 10px;
+    }
+
+    /*회원 정보*/
+   .myInfo{
+   }
+   .myInfo>div{
+    width: 90%;
+    margin: auto;
+   }
+   .myInfo>div table{ width: 100%; }
 </style>
 </head>
 <body>
@@ -187,34 +220,81 @@
                 <a href="<%= contentPath%>/logout" class="myPageList"><b>로그아웃</b></a>
 
             </div>
-
-            <div class="main-margin">&nbsp;</div>
-
             <div class="main-2">
                 
                 <br>
-            <div class="myInfo" style="display: none;">
-                <b>프리뷰 사용내역</b>
-                <table class="myPageTable" style="border-collapse: collapse; border: 1px solid black;">
-                    <thead>
-                        <tr>
-                            <th>날짜</th>
-                            <th>사용서비스</th>
-                            <th>사용내역</th>
-                            
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- JSP 반복부문 -->
-                        <tr>
-                            <td>2022-12-01 16:37:06</td>
-                            <td>서동진 플레이리스트<br>구매</td>
-                            <td><b>1,000</b></td>
-                           
-                        </tr>
-                        <!-- JSP 반복부문 -->
-                    </tbody>
-                </table>
+                <div class="myInfo" style="display: none;">
+                    <div id="myPageInfo">
+                        <b style="font-size: xx-large;">내정보</b>
+                        <form action="">
+                            <table>
+                                <tr>
+                                    <th>아이디</th>
+                                    <td><input type="text" name="memberId" value="<%= loginMember.getMemberId()%>"></td>
+                                </tr>
+                                <tr>
+                                    <th>실명</th>
+                                    <td><input type="text" name="memberName" value="<%= loginMember.getMemberName() %>"></td>
+                                </tr>
+                                <tr>
+                                    <th>별칭</th>
+                                    <td><input type="text" name="memberAlias" value="<%= loginMember.getMemberAlias() %>"></td>
+                                </tr>
+                                <tr>
+                                    <th>이메일</th>
+                                    <td><input type="email" name="memberEmail" value="<%= loginMember.getEmail() %>"></td>
+                                </tr>
+                                <tr>
+                                    <th>나이</th>
+                                    <td><input type="text" name="age" value="<%= loginMember.getAge()%>"></td>
+                                </tr>
+                                <tr>
+                                    <th>성별</th>
+                                    <td><select name="gender">
+                                        <option value="M">남자</option>
+                                        <option value="F">여자</option>
+                                    </select></td>
+                                </tr>
+                                <tr>
+                                    <th>거주 지역</th>
+                                    <td>
+                                        <select name="locationNo" id="">
+                                            <%for(Location l : locationList){%>
+                                                <option value="<%= l.getLocationNo()%>"><%= l.getLocationName() %></option>
+                                            <%}%>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>   
+                            <button type="submit" class="btn btn-danger">정보 수정</button>
+                        </form>
+                    </div>
+
+                    <br>
+
+                    <div id="payment-detail">
+                        <b style="font-size: xx-large;">프리뷰 사용내역</b>
+                        <table class="myPageTable">
+                            <thead>
+                                <tr>
+                                    <th>날짜</th>
+                                    <th>사용서비스</th>
+                                    <th>사용내역</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- JSP 반복부문 -->
+                                <tr>
+                                    <td>2022-12-01 16:37:06</td>
+                                    <td>서동진 플레이리스트<br>구매</td>
+                                    <td><b>1,000</b></td>
+                                    
+                                </tr>
+                                <!-- JSP 반복부문 -->
+                            </tbody>
+                        </table>
+                    </div>
             </div>
 
 
@@ -228,7 +308,7 @@
                 font-weight: bold; font-size: 12px; height: 30px; ">
             친구 추가
              </button>
-                <table id="friendList" class="myPageTable" style="border-collapse: collapse; border: 1px solid black;">
+                <table id="friendList" class="myPageTable" style="border-collapse: collapse; ">
                     <thead>
                         <tr>
                             <th>추가한날짜</th>
@@ -246,7 +326,7 @@
             </div>
 
         </div>
-        </div>
+    </div>
 
 
         <div class="footer">
