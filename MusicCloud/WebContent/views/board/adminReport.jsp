@@ -85,7 +85,7 @@
 	</style> 
 </head>
 <body>
-	<%@ include file="../common/menubar.jsp" %>
+
 
     <img src="resources/image/mainlogo.png" id="logo">
     <br>
