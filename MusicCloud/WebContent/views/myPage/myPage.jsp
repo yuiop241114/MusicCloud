@@ -309,11 +309,11 @@
         friendListDiv.style.display ="none";
     }
     });*/
-
+    /* 아무거나 */
     document.addEventListener("DOMContentLoaded", function() {
     var infoDiv = document.querySelector(".myInfo");
     var friendListDiv = document.getElementById("friendList");
-
+    
     infoDiv.style.display = "block";
     friendListDiv.style.display = "none";
 
