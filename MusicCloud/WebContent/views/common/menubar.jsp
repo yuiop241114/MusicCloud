@@ -157,6 +157,13 @@
 	#side-btn-list img{
 	    width: 80%;
 	}
+
+	/*퀵메뉴 각 페이지 이동 a 태그*/
+	#side-btn-list a{
+		text-decoration: none;
+		color: white;
+	}
+
 	
 	</style> 
 <body>
@@ -201,7 +208,7 @@
 					</tr>
 					<tr>
 							<th><img src="resources/image/cartlogo.jpg" alt=""></th>
-							<th>마이페이지</th>
+							<th><a href="<%= contentPath%>">마이페이지</a></th>
 					</tr>
 					<tr>
 							<th><img src="resources/image/cartlogo.jpg" alt=""></th>
