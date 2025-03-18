@@ -9,7 +9,7 @@ import com.musicCloud.member.model.dao.MemberDao;
 import com.musicCloud.member.model.vo.Location;
 import com.musicCloud.member.model.vo.Member;
 
-public class MemberService {
+public class MemberSerivce {
 	
 	/**
 	 * @param loginId

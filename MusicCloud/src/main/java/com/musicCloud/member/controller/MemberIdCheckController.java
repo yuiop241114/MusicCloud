@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.musicCloud.member.model.service.MemberService;
+import com.musicCloud.member.model.service.MemberSerivce;
 
 /**
  * Servlet implementation class MemberIdCheckController
@@ -29,7 +29,7 @@ public class MemberIdCheckController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//입력한 아이디 가져오기
 		String id = (String)request.getParameter("memberId");
-		int result = new MemberService().memberIdCheck(id);
+		int result = new MemberSerivce().memberIdCheck(id);
 		if(result == 0) {
 			//중복 아이디 없음
 			response.getWriter().print("success");

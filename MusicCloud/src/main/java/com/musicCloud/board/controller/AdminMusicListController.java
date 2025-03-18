@@ -55,7 +55,7 @@ public class AdminMusicListController extends HttpServlet {
         PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 
         // 5. 회원 리스트 가져오기 (null 체크 추가)
-        ArrayList<Music> list = new BoardService().adminselectList(pi);
+        ArrayList<Member> list = new BoardService().adminselectList(pi);
         if (list == null) {
             list = new ArrayList<>(); // null 방지
         }

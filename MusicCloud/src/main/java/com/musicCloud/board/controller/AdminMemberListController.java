@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.musicCloud.board.model.service.BoardService;
 import com.musicCloud.common.model.vo.PageInfo;
-import com.musicCloud.member.model.service.MemberService;
+import com.musicCloud.member.model.service.MemberSerivce;
 import com.musicCloud.member.model.vo.Member;
 
 /**
@@ -34,7 +34,7 @@ public class AdminMemberListController extends HttpServlet {
         currentPage = (cpageParam != null) ? Integer.parseInt(cpageParam) : 1;
 
         // 2. 전체 회원 수 가져오기 (adminMemberList()가 int 반환하는지 확인)
-        listCount = new MemberService().selectMemberCount();	
+        listCount = new MemberSerivce().selectMemberCount();	
 
         // 3. 페이지 계산
         int maxPage = (int) Math.ceil(boardLimit);
