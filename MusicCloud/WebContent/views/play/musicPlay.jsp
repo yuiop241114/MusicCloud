@@ -419,12 +419,11 @@
             let playBar = document.getElementById("play-bar");
 
             if (playBar.style.bottom === "0px") {
-                playBar.style.bottom = "-117px";
+                playBar.style.bottom = "-108px";
             } else {
                 playBar.style.bottom = "0px";
             }
         });
-
 
 
         document.getElementById("seekBar").addEventListener("input", function () {
@@ -443,6 +442,7 @@
                 playBar.style.display = "none";
             }
         });
+
 
         
     </script>
