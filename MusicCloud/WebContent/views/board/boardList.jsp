@@ -92,7 +92,7 @@
     }
 
     .board-title {
-        background-color: #1587d0; /* 파란색 배경 */
+        background-color: #1587d0;
         color: white;
         padding: 10px;
         border-radius: 10px;
