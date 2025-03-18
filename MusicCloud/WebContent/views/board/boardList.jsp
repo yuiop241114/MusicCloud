@@ -4,10 +4,8 @@
 <meta charset="UTF-8">
 <title>MusicCloud</title>
 
-
 <style>
-	
-	
+
 	.board-container {
         width: 50%;
         margin: 20px auto;
@@ -44,33 +42,32 @@
     text-align: center;
     }
 
-
     .board-container {
         width: 50%;
         margin: 20px auto 20px 25%;
         text-align: center;
-        border-radius: 10px; /* 테두리 둥글게 */
-        padding: 20px; /* 내부 여백 추가 */
+        border-radius: 10px; 
+        padding: 20px; 
     }
 
     .board-title {
         background-color: #1587d0;
         color: white;
         padding: 10px;
-        border-radius: 10px 10px 0 0; /* 위쪽 모서리만 둥글게 */
+        border-radius: 10px 10px 0 0; 
         font-size: 24px;
         font-weight: bold;
-        margin-bottom: 0; /* 제목 아래 여백 제거 */
+        margin-bottom: 0; 
     }
 
     .board-table {
         width: 100%;
-        margin-top: 0; /* 테이블 위 여백 제거 */
+        margin-top: 0; 
         border-collapse: collapse;
     }
 
     .board-table th, .board-table td {
-        border: 1px solid #1587d0; /* 테이블 내부 테두리 색상 변경 */
+        border: 1px solid #1587d0; 
         padding: 10px;
         text-align: center;
     }
@@ -98,7 +95,7 @@
         border-radius: 10px;
         font-size: 24px;
         font-weight: bold;
-        margin-bottom: 20px; /* 제목 아래 여백 추가 */
+        margin-bottom: 20px; 
     }
 
     .board-table {
@@ -108,33 +105,32 @@
 
     .board-table th, .board-table td {
         border: 1px solid #ddd;
-        padding: 15px; /* 패딩 증가 */
+        padding: 15px; 
         text-align: center;
     }
 
     .board-table th {
-        background-color: #f8f8f8; /* 밝은 회색 배경 */
+        background-color: #f8f8f8; 
         font-weight: bold;
     }
 
-    .board-table tr:nth-child(even) { /* 짝수 행 배경색 */
+    .board-table tr:nth-child(even) {
         background-color: #f2f2f2;
     }
 
-    .board-table tr:hover { /* 호버 효과 */
+    .board-table tr:hover { 
         background-color: #e0e0e0;
     }
 
     .board-table td a {
-    color: #007bff; /* 링크 색상 */
-    text-decoration: none; /* 밑줄 제거 */
+    color: #007bff; 
+    text-decoration: none; 
 }
 
     .board-table td a:hover {
-        text-decoration: underline; /* 호버 시 밑줄 표시 */
+        text-decoration: underline; 
     }
-    /* ... (나머지 스타일 코드) ... */
-	
+   	
 	</style> 
 <body>
     <%@ include file="../common/menubar.jsp" %>
