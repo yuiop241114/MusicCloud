@@ -4,120 +4,10 @@
 <meta charset="UTF-8">
 <title>MusicCloud</title>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> 
-
-<!-- Popper JS -->
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <style>
-	.wrapper{
-	    box-sizing: border-box;
-	    height: 170px;
-	}
-	.wrapper *{
-	    box-sizing: border-box;
-	}
 	
-	.wrapper #logo{
-	    width: 15%;
-	    height: 100%;
-	}
 	
-	.wrapper #login-box{
-	    width: 25%;
-	    height: 100%;
-	    float: right;
-			text-align: center;
-			border: 1px solid #1587d0;
-			border-radius: 30px;
-	}
-	#login-btn{
-		background-color: #1587d0;
-		width: 80%;
-		line-height: 40px;
-		margin-top: 40px
-	}
-
-	#login-box a{
-		color: black;
-	}
-	
-	.wrapper .search-bar{ 
-	    width: 55%; 
-	    float: right;
-	    line-height: 50px;
-	    margin-top: 50px;
-	    margin-right: 30px;
-	}
-	.search-bar *{
-	    height: 50px;
-	}
-	.search-bar #search-box{
-	    width: 80%;
-	    border: none;
-	    border: 1px solid #1587d0;
-	    border-top-left-radius: 30px;
-	    border-bottom-left-radius: 30px;
-	}
-	.search-bar #search-btn{
-	    float: right;
-	    width: 20%;
-	    background-color: #1587d0;
-	    color: white;
-			font-weight: bolder;
-			font-size: larger;
-			line-height: 10px;
-	
-	    border-top-right-radius: 30px;
-	    border-bottom-right-radius: 30px;
-	    border: 1px solid #1587d0;
-	}
-	#search-btn:hover{
-	    cursor: pointer;
-	}
-	
-	.navigator{
-	    width: 150px;
-	    float: right;
-	    border: 1px solid;
-	    text-align: center;
-	    margin-right: 30px;
-	    box-sizing: border-box;
-			margin-top: 20px;
-			border: none;
-	    position: sticky;
-	    top: 20px;
-	}
-	.navigator #side-btn, .navigator #side-btn-list{
-	  	width: 100%;
-			line-height: 20px;
-	}
-	#side-btn{
-	    height: 40px;
-			background-color: #1587d0;
-	}
-	#side-btn-list{
-	    display: none;
-	    width: 100%;
-	    font-size: small;
-			border-radius: 10px;
-			background-color: #1587d0;
-			margin-top: 5px;
-			color: white;
-	}
-	#side-btn-list th{
-	    height: 50px;
-	}
-	#side-btn-list img{
-	    width: 80%;
-	}
-
 	.board-container {
         width: 50%;
         margin: 20px auto;
@@ -154,18 +44,6 @@
     text-align: center;
     }
 
-    .navigator {
-    width: 150px;
-    float: right;
-    border: 1px solid;
-    text-align: center;
-    margin-right: 7%; 
-    box-sizing: border-box;
-    margin-top: 20px;
-    border: none;
-    position: sticky;
-    top: 20px;
-    }
 
     .board-container {
         width: 50%;
@@ -206,7 +84,7 @@
     }
 
     .board-container {
-        width: 80%; /* 너비 조정 */
+        width: 1200px;
         margin: 20px auto;
         text-align: center;
         border-radius: 10px;
@@ -258,12 +136,11 @@
     /* ... (나머지 스타일 코드) ... */
 	
 	</style> 
-    <body>
+<body>
     <%@ include file="../common/menubar.jsp" %>
 	
-    </div>
 
-	  <div class="board-container">
+	<div class="board-container">
       <h2 class="board-title">통합게시판</h2>
       <table class="board-table">
           <thead>
@@ -278,14 +155,14 @@
           <tbody>
               <tr>
                   <td>7</td>
-                  <td>우리조 망했나요</td>
+                  <td>곡이 재생이 안돼요.</td>
                   <td>4</td>
                   <td>25/03/27</td>
                   <td>user02</td>
               </tr>
               <tr>
                   <td>6</td>
-                  <td>고생하는 준서 회원</td>
+                  <td>신곡 업데이트 공지</td>
                   <td>9</td>
                   <td>25/03/17</td>
                   <td>hidden</td>
@@ -377,23 +254,6 @@
           </tbody>
       </table>
     </div>
-
-
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-
-	<script>
-
-	    $(function(){
-	        $("#side-btn").click(function(){
-	            if($("#side-btn-list").css('display') == 'none'){
-	                $("#side-btn-list").slideDown();
-	            }else{
-	                $("#side-btn-list").slideUp();
-	            }
-	        });
-	    });
-	</script>
 	
 </body>
 </html>
