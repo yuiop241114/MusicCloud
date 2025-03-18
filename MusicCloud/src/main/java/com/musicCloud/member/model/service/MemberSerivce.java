@@ -132,6 +132,10 @@ public class MemberSerivce {
 		return m;
 	}
 	
+	/**
+	 * @return
+	 * 설명 : 관리자에서 회원 전체 정보 카운트
+	 */
 	public int selectMemberCount() {
 		Connection conn = getConnection();
 		int result = new MemberDao().selectMemberCount(conn);
@@ -139,4 +143,15 @@ public class MemberSerivce {
 		close(conn);
 		return result;
 	}
+
+	 public int deleteMembers(String[] memberId) {
+	        Connection conn = getConnection();
+	        int result = new MemberDao().deleteMember(conn, memberId);
+
+	        if (result > 0) commit(conn);
+	        else rollback(conn);
+
+	        close(conn);
+	        return result;
+	    }
 }

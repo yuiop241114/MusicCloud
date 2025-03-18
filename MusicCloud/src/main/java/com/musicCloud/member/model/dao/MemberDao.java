@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Properties;
 
 import static com.musicCloud.common.JDBCTemplate.*;
@@ -311,6 +312,11 @@ public class MemberDao {
 	}
 
 
+	/**
+	 * @param conn
+	 * @return Member
+	 * 설명 : 멤버 전체조회
+	 */
 	public ArrayList<Member> selectAllMember(Connection conn) {
 		
 		ArrayList<Member> m = new ArrayList<Member>();
@@ -354,6 +360,11 @@ public class MemberDao {
 	}
 
 
+	/**
+	 * @param conn
+	 * @return Member
+	 * 설명 : 멤버 전체 카운트
+	 */
 	public int selectMemberCount(Connection conn) {
 		int result = 0;
 		ResultSet rset = null;
@@ -378,4 +389,30 @@ public class MemberDao {
 		
 		return result;
 	}
+
+
+	public int deleteMember(Connection conn, String[] memberId) {
+        PreparedStatement pstmt = null;
+        int result = 0;
+
+        try {
+        	 String baseSql = prop.getProperty("deleteMember");
+             //String sql = baseSql.replace("?", String.join(",", new String[memberId.length]).replace("\0", "?"));
+        	 String placeholders = String.join(",", Collections.nCopies(memberId.length, "?"));
+             String sql = baseSql.replace("?", placeholders);
+            System.out.println(sql);
+            pstmt = conn.prepareStatement(sql);
+            
+            for(int i = 0; i < memberId.length; i++) {
+                pstmt.setInt(i + 1, Integer.parseInt(memberId[i]));
+            }
+
+            result = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            close(pstmt);
+        }
+        return result;
+    }
 }

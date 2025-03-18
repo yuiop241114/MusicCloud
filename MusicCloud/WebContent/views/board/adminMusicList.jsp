@@ -132,7 +132,7 @@
                         <td>
                             <button type="button" id="YNbtn">
                                 <!-- 나중에 게시글삭제 테이블 만들 자리.  -->
-                                 <%= b.getBoardStatus() %>
+                                 <!--  <%= b.getBoardStatus() %> -->
                             </button>
                         </td>
                     </tr>

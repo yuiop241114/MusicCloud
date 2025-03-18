@@ -29,7 +29,12 @@ public class BoardDao {
 		}
 	}
 
-	public ArrayList<Member> adminselectList(Connection conn, PageInfo pi) {
+	/**
+	 * @param conn
+	 * @param pi
+	 * @return 설명 : 멤버객체에서 받아오는 전체 회원 리스트
+	 */
+	public ArrayList<Member> adminMemberList(Connection conn, PageInfo pi) {
 		ArrayList<Member> list = new ArrayList<Member>();
 		ResultSet rset = null;
 		PreparedStatement pstmt = null;
@@ -40,26 +45,19 @@ public class BoardDao {
 			
 			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
 			int endRow = startRow + pi.getBoardLimit() - 1;
+			
 			pstmt.setInt(1, startRow);
 			pstmt.setInt(2, endRow);
-			
 			rset = pstmt.executeQuery();
 			while(rset.next()) {
 
 				
 				list.add(
 						 new Member(
-								 	rset.getInt("member_no")
-							      , rset.getInt("location_no")
-							      , rset.getString("member_id")
-							      , rset.getString("member_pwd")
-							      , rset.getString("member_name")
-							      , rset.getString("email")
-							      , rset.getString("gender")
-							      , rset.getInt("age")
-							      , rset.getDate("enroll_date")
-							      , rset.getInt("report_count")
-							      , rset.getString("status")
+								 	  rset.getInt("member_no")
+								 	, rset.getString("member_name")
+							        , rset.getString("member_id")
+							        , rset.getDate("enroll_date")
 								 )
 						);
 			}
@@ -75,6 +73,11 @@ public class BoardDao {
 		return list;
 	}
 
+	/**
+	 * @param conn
+	 * @param pi
+	 * @return Board객체에서 받아오는 회원 신고 리스트
+	 */
 	public ArrayList<Board> adminReportList(Connection conn, PageInfo pi) {
 
 		ArrayList<Board> list = new ArrayList<Board>();
@@ -115,6 +118,35 @@ public class BoardDao {
 		return list;
 		
 		
+	}
+	
+	/**
+	 * @param conn
+	 * @return 음악 전체 카운트
+	 */
+	public int adminMusicCount(Connection conn) {
+		int result = 0;
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("adminMusicCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				result = rset.getInt("M");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		
+		return result;
 	}
 
 	

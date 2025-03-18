@@ -2,7 +2,7 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 	
-	<entry key="adminMemberList">
+	<entry key="adminBoardList">
 		SELECT 
 		        b.*, 
 		        m.member_id, m.member_name, m.member_name
@@ -16,7 +16,27 @@
 		  JOIN MEMBER M ON M.MEMBER_NO = R.MEMBER_NO
 	</entry>
 	
-	<entry key="adminMusicList">
+	<entry key="adminMusicCount">
+		SELECT COUNT(*) AS "Music"
+		  FROM MUSIC_BOARD
+	</entry>
+	
+	<entry key="adminMemberList">
+	SELECT *
+	FROM (
+		SELECT ROWNUM RNUM, M.*
+		FROM(
+			SELECT MEMBER_NO
+		     , MEMBER_NAME
+		     , MEMBER_ID
+		     , ENROLL_DATE
+  		  	  FROM MEMBER
+			)M
+			
+		 )
+	WHERE RNUM BETWEEN ? AND ?
+	
+	
 		
 	</entry>
 	

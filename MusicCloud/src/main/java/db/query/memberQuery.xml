@@ -108,11 +108,19 @@
 	<entry key="selectAllMember">
 		SELECT *
 		  FROM MEMBER
+		 ORDER
+		 	BY MEMBER_NO DESC
 	</entry>
 	
 	<entry key="selectMemberCount">
 		SELECT COUNT(*) AS "C"
 		  FROM MEMBER
+	</entry>
 	
+	<entry key="deleteMember">
+		DELETE
+		  FROM MEMBER
+		 WHERE MEMBER_NO IN (?)
+		 
 	</entry>
 </properties>

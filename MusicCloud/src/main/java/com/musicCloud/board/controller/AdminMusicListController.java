@@ -42,7 +42,7 @@ public class AdminMusicListController extends HttpServlet {
         String cpageParam = request.getParameter("cpage");
         currentPage = (cpageParam != null) ? Integer.parseInt(cpageParam) : 1;
 
-        // 2. 전체 회원 수 가져오기 (adminMemberList()가 int 반환하는지 확인)
+        // 2. 전체 음원 수 가져오기 (adminMemberList()가 int 반환하는지 확인)
         listCount = new BoardService().adminMusicSelect();
 
         // 3. 페이지 계산
@@ -54,8 +54,8 @@ public class AdminMusicListController extends HttpServlet {
         // 4. PageInfo 객체 생성
         PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 
-        // 5. 회원 리스트 가져오기 (null 체크 추가)
-        ArrayList<Member> list = new BoardService().adminselectList(pi);
+        // 5. 음원 리스트 가져오기 (null 체크 추가)
+        ArrayList<Music> list = new BoardService().adminselectList(pi);
         if (list == null) {
             list = new ArrayList<>(); // null 방지
         }
@@ -73,7 +73,6 @@ public class AdminMusicListController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

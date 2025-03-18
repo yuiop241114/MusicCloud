@@ -85,11 +85,11 @@
 	</style> 
 </head>
 <body>
-
+	<%@ include file="../common/menubar.jsp" %>
 
     <img src="resources/image/mainlogo.png" id="logo">
     <br>
-    <h2 align="center">관리자페이지-회원삭제</h2>
+    <h2 align="center">관리자페이지-회원신고</h2>
     <br>
 
     <div class="wrapper">

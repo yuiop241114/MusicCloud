@@ -34,27 +34,37 @@ public class AdminMemberListController extends HttpServlet {
         currentPage = (cpageParam != null) ? Integer.parseInt(cpageParam) : 1;
 
         // 2. 전체 회원 수 가져오기 (adminMemberList()가 int 반환하는지 확인)
-        listCount = new MemberSerivce().selectMemberCount();	
+        listCount = new MemberSerivce().selectMemberCount();
 
         // 3. 페이지 계산
-        int maxPage = (int) Math.ceil(boardLimit);
+        int maxPage;
         int startPage = ((currentPage - 1) / pageLimit) * pageLimit + 1;
         int endPage = startPage + pageLimit - 1;
-        if (endPage > maxPage) endPage = maxPage;
 
+        maxPage = (int)Math.ceil((double)listCount / boardLimit);
+        startPage = (currentPage -1 ) / pageLimit * pageLimit + 1;
+        endPage = startPage + pageLimit - 1;
+        
+        if (endPage > maxPage) {
+        	endPage = maxPage;
+        }
         // 4. PageInfo 객체 생성
         PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 
         // 5. 회원 리스트 가져오기 (null 체크 추가)
-        ArrayList<Member> list = new BoardService().adminselectList(pi);
+        ArrayList<Member> list = new BoardService().adminMemberList(pi);
         if (list == null) {
-            list = new ArrayList<>(); // null 방지
+        	list = new ArrayList<Member>(); // null 방지
         }
-
+        System.out.println("회원 리스트 개수: " + (list != null ? list.size() : "null"));
+        // ↑위에 회원리스트 DB에 저장된대로 6개 찍힘
+        
         // 6. 데이터 JSP로 전달
         request.setAttribute("pi", pi);
         request.setAttribute("list", list);
 
+
+        
         // 7. 페이지 이동 (경로 확인 필요)
         System.out.println("Forwarding to: views/board/adminBoard.jsp");
         request.getRequestDispatcher("views/board/adminBoard.jsp").forward(request, response);
