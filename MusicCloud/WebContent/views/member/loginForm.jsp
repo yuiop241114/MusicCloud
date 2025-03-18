@@ -1,3 +1,6 @@
+<%@page import="java.math.BigInteger"%>
+<%@page import="java.security.SecureRandom"%>
+<%@page import="java.net.URLEncoder"%>
 <%@page import="com.musicCloud.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -5,6 +8,18 @@
 	String contentPath = request.getContextPath();
 	Member loginMember = (Member)session.getAttribute("loginMember");
 %>
+
+<%
+    String clientId = "DTkHU3VbjmkxYRkognp3";//애플리케이션 클라이언트 아이디값";
+    String redirectURI = URLEncoder.encode("http://localhost:8118/music/views/common/naverCallback.jsp", "UTF-8");
+    SecureRandom random = new SecureRandom();
+    String state = new BigInteger(130, random).toString();
+    String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
+    apiURL += "&client_id=" + clientId;
+    apiURL += "&redirect_uri=" + redirectURI;
+    apiURL += "&state=" + state;
+    session.setAttribute("state", state);
+ %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -75,29 +90,16 @@
 
 	/*api 로그인*/
 	.api-login{ margin-bottom: 20px; }
-	.api-login>div{
-		width: 200px;
-		height: 40px;
+	.api-login>a{
 		margin: auto;
 	}
-	.api-login>div:hover{
+	.api-login img{
+		width: 150px;
+		height: 50px;
+	}
+	.api-login>a:hover{
 		cursor: pointer;
 		opacity: 0.9;
-	}
-	#naver-login{
-		background-color: #03bc62;
-		border-radius: 5px;
-		line-height: 40px;
-	}
-	#naver-login b{
-		width: 80%;
-		color: white;
-	}
-	#naver-login img{
-		width: 40px;
-		height: 100%;
-		float: left;
-		margin-left: 10px;
 	}
 </style>
 </head>
@@ -132,14 +134,9 @@
 			</div>
 
 			<div class="api-login">
-				<div id="naver-login">
-					<img src="resources/image/naverLogo.png" alt="">
-					<b>네이버로 로그인</b>
-				</div>
+				<a href="<%=apiURL%>"><img height="50" src="http://static.nid.naver.com/oauth/small_g_in.PNG"/></a>
 			</div>
 		</div>
-
-
 
 	</div>
 
