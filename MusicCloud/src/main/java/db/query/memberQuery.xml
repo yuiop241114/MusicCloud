@@ -5,19 +5,103 @@
 	<entry key="loginMember">
 	SELECT 
 	       MEMBER_NO
-	     , LOCATION_NO
-	     , MEMBER_ID
-	     , MEMBER_PWD
-	     , MEMBER_NAME
-	     , EMAIL
-	     , GENDER
-	     , AGE
-	     , STATUS
-	     , ENROLL_DATE
-	     , REPORT_COUNT
+			 , LOCATION_NO
+			 , MEMBER_ID
+			 , MEMBER_PWD
+			 , MEMBER_NAME
+			 , MEMBER_ALIAS
+			 , EMAIL
+			 , GENDER
+			 , AGE
+			 , ENROLL_DATE
+			 , REPORT_COUNT
+			 , STATUS
+			 , PF_STATUS
 	  FROM MEMBER
 	 WHERE MEMBER_ID = ?
 	   AND MEMBER_PWD  = ?
 	   AND STATUS = 'Y'
+	</entry>
+	
+	<entry key="selectAllLocation">
+		SELECT 
+		       LOCATION_NO
+		     , LOCATION_NAME
+		  FROM LOCATION
+	</entry>
+	
+	<entry key="insertMember">
+		INSERT 
+		  INTO MEMBER
+		  (
+		    MEMBER_NO
+		  , LOCATION_NO
+		  , MEMBER_ID
+		  , MEMBER_PWD
+		  , MEMBER_NAME
+		  , MEMBER_ALIAS
+		  , EMAIL
+		  , GENDER
+		  , AGE
+		  )
+		  VALUES
+		  (
+		    SEQ_MEMBER_NO.NEXTVAL
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  )
+	</entry>
+	
+	<entry key="memberIdCheck">
+		SELECT COUNT(*) AS "COUNT"
+		  FROM MEMBER
+		 WHERE MEMBER_ID = ?
+	</entry>
+	
+	<entry key="pwdUpdateForm">
+		SELECT COUNT(*) AS "COUNT"
+		  FROM MEMBER
+		 WHERE MEMBER_ID = ?
+       AND EMAIL = ?
+	</entry>
+	
+	<entry key="updatePwdCheck">
+		SELECT COUNT(*) AS "COUNT"
+		  FROM MEMBER
+		 WHERE MEMBER_ID = ?
+       AND MEMBER_PWD = ?
+	</entry>
+	
+	<entry key="updatePwd">
+		UPDATE MEMBER
+		   SET MEMBER_PWD = ?
+		 WHERE MEMBER_ID = ?
+	</entry>
+	
+	<entry key="idCheck">
+		SELECT 
+		       MEMBER_NO
+				 , LOCATION_NO
+				 , MEMBER_ID
+				 , MEMBER_PWD
+				 , MEMBER_NAME
+				 , MEMBER_ALIAS
+				 , EMAIL
+				 , GENDER
+				 , AGE
+				 , ENROLL_DATE
+				 , REPORT_COUNT
+				 , STATUS
+				 , PF_STATUS
+		  FROM MEMBER
+		 WHERE EMAIL = ?
+		   AND MEMBER_NAME = ?
+		   AND STATUS = 'Y'
 	</entry>
 </properties>
