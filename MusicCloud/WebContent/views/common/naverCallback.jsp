@@ -28,7 +28,7 @@
     String refresh_token = "";
     //토큰은 계속 바뀌기 때문에 토큰 대신 고유 아이디를 저장
     String id = "";
-    System.out.println("apiURL="+apiURL);
+    //System.out.println("apiURL="+apiURL);
     try {
       URL url = new URL(apiURL);
       HttpURLConnection con = (HttpURLConnection)url.openConnection();
