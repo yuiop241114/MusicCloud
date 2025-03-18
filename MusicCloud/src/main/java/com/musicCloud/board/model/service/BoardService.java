@@ -40,8 +40,19 @@ public class BoardService {
 	}
 
 	public int adminselectList() {
-		// TODO Auto-generated method stub
+		
 		return 0;
+	}
+
+	public int selectListCount() {
+		int result = 0;
+		
+		Connection conn = getConnection();
+		
+		
+		
+		
+		return result;
 	}
 
 
