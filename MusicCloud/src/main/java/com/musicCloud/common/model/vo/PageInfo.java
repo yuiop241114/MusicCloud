@@ -1,5 +1,7 @@
 package com.musicCloud.common.model.vo;
 
+import com.musicCloud.member.model.vo.Member;
+
 public class PageInfo {
 
 	private int listCount;
@@ -11,7 +13,7 @@ public class PageInfo {
 	private int endPage;
 	
 	public PageInfo() {}
-
+	
 	public PageInfo(int listCount, int currentPage, int pageLimit, int boardLimit, int maxPage, int startPage,
 			int endPage) {
 		super();

@@ -9,7 +9,7 @@ import com.musicCloud.member.model.dao.MemberDao;
 import com.musicCloud.member.model.vo.Location;
 import com.musicCloud.member.model.vo.Member;
 
-public class MemberSerivce {
+public class MemberService {
 	
 	/**
 	 * @param loginId
@@ -118,5 +118,25 @@ public class MemberSerivce {
 		
 		close(conn);
 		return m;
+	}
+	
+	/**
+	 * @return
+	 * 설명 : 관리자에서 회원 전체정보 조회
+	 */	
+	public ArrayList<Member> selectAllMember() {
+		Connection conn = getConnection();
+		ArrayList<Member> m = new MemberDao().selectAllMember(conn);
+		
+		close(conn);
+		return m;
+	}
+	
+	public int selectMemberCount() {
+		Connection conn = getConnection();
+		int result = new MemberDao().selectMemberCount(conn);
+		
+		close(conn);
+		return result;
 	}
 }

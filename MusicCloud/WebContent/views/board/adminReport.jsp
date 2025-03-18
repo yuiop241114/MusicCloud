@@ -33,30 +33,6 @@
 	    width: 15%;
 	    height: 100%;
 	}
-	
-	/* 관리자페이지 로그인 박스 */
-	.wrapper #login-box{
-	    width: 25%;
-	    height: 100%;
-	    float: right;
-			text-align: center;
-			border: 1px solid #1587d0;
-			border-radius: 30px;
-	}
-
-	/* 관리자페이지 로그인 버튼 */
-	#login-btn{
-		background-color: #1587d0;
-		width: 80%;
-		line-height: 40px;
-		margin-top: 40px;
-        color: white;
-	}
-
-	/* 관리자 페이지 로그인 박스 텍스트 색상 */
-	#login-box a{
-		color: black;
-	}
 
 	/* 관리자페이지 메뉴바 스타일속성 */
 	menu {
@@ -127,18 +103,7 @@
 
         </menu>
     
-        <div id="login-box">   
-            <% if(loginMember == null){ %>
-                <h1><button type="button" onclick="location.href='<%= contentPath%>/loginForm'" class="btn btn-primary btn-lg" id="login-btn">뮤직 클라우드 로그인</button></h1>
-                <a href="">회원가입</a> | <a href="">아이디 찾기</a> | <a href="">비밀번호 찾기</a>
-            <%}else { %>
-                <div>
-                <%= loginMember.getMemberName()%> 회원 로그인 중
-                <br>
-                <a href="<%= contentPath%>/logout" class="btn btn-sm btn-secondary">로그아웃</a>
-                </div>
-            <%} %>
-        </div>
+
        
         <table align="center" class="list-area">
             <thead>

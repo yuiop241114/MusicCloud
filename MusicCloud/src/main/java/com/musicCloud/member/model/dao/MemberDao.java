@@ -309,4 +309,73 @@ public class MemberDao {
 		}
 		return m;
 	}
+
+
+	public ArrayList<Member> selectAllMember(Connection conn) {
+		
+		ArrayList<Member> m = new ArrayList<Member>();
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("selectAllMember");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				m.add(new Member(
+						  rset.getInt("member_no")
+						, rset.getInt("location_no")
+						, rset.getString("member_id")
+						, rset.getString("member_pwd")
+						, rset.getString("member_name")
+						, rset.getString("member_alias")
+						, rset.getString("email")
+						, rset.getString("gender")
+						, rset.getInt("age")
+						, rset.getDate("enroll_date")
+						, rset.getInt("report_count")
+						, rset.getString("status")
+						, rset.getString("pf_status")
+						));
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		
+		
+		return m;
+	}
+
+
+	public int selectMemberCount(Connection conn) {
+		int result = 0;
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("selectMemberCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				result = rset.getInt("C");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		
+		return result;
+	}
 }

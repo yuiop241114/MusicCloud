@@ -51,15 +51,15 @@ public class BoardDao {
 						 new Member(
 								 	rset.getInt("member_no")
 							      , rset.getInt("location_no")
-							      , rset.getString("member_no")
+							      , rset.getString("member_id")
 							      , rset.getString("member_pwd")
 							      , rset.getString("member_name")
 							      , rset.getString("email")
 							      , rset.getString("gender")
 							      , rset.getInt("age")
-							      , rset.getString("status")
 							      , rset.getDate("enroll_date")
 							      , rset.getInt("report_count")
+							      , rset.getString("status")
 								 )
 						);
 			}

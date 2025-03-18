@@ -104,4 +104,15 @@
 		   AND MEMBER_NAME = ?
 		   AND STATUS = 'Y'
 	</entry>
+	
+	<entry key="selectAllMember">
+		SELECT *
+		  FROM MEMBER
+	</entry>
+	
+	<entry key="selectMemberCount">
+		SELECT COUNT(*) AS "C"
+		  FROM MEMBER
+	
+	</entry>
 </properties>

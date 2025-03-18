@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import com.musicCloud.board.model.dao.BoardDao;
 import com.musicCloud.board.model.vo.Board;
 import com.musicCloud.common.model.vo.PageInfo;
+import com.musicCloud.member.model.service.MemberSerivce;
 import com.musicCloud.member.model.vo.Member;
 
 public class BoardService {
@@ -39,21 +40,14 @@ public class BoardService {
 		return list;
 	}
 
-	public int adminselectList() {
+
+	public int adminMusicSelect() {
+		new MemberSerivce().selectAllMember();
+		
 		
 		return 0;
 	}
 
-	public int selectListCount() {
-		int result = 0;
-		
-		Connection conn = getConnection();
-		
-		
-		
-		
-		return result;
-	}
 
 
 	
