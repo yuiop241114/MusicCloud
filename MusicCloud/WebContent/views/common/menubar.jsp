@@ -1,6 +1,13 @@
+<%@page import="org.json.simple.JSONObject"%>
+<%@page import="org.json.simple.parser.JSONParser"%>
 <%@page import="com.musicCloud.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.net.URLEncoder" %>
+<%@ page import="java.net.URL" %>
+<%@ page import="java.net.HttpURLConnection" %>
+<%@ page import="java.io.BufferedReader" %>
+<%@ page import="java.io.InputStreamReader" %>
 <%
 	String contentPath = request.getContextPath();
 	Member loginMember = (Member)session.getAttribute("loginMember");
@@ -22,7 +29,7 @@
 
 <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-
+	
 <style>
 	.wrapper{
 	  box-sizing: border-box;
@@ -119,7 +126,7 @@
 
 	  /*스크롤 움직임에 따라 같이움직이는 코드*/
 		position: sticky;
-		top: 10px;
+		top: 5px;
 	}
 	.navigator{
 	    width: 150px;
@@ -154,7 +161,7 @@
 	#side-btn-list img{
 	    width: 80%;
 	}
-	
+
 	</style> 
 <body>
 	<div class="wrapper">
@@ -163,10 +170,10 @@
        <div id="login-box">   
 					<% if(loginMember == null){ %>
 						<h1><button type="button" onclick="location.href='<%= contentPath%>/loginForm'" class="btn btn-primary btn-lg" id="login-btn">뮤직 클라우드 로그인</button></h1>
-						<a href="<%= request.getContextPath()%>/memberEnrollForm">회원가입</a> | <a href="">아이디 찾기</a> | <a href="">비밀번호 찾기</a>
+						<a href="<%= request.getContextPath()%>/memberEnrollForm">회원가입</a> | <a href="<%= contentPath%>/idSearchForm">아이디 찾기</a> | <a href="<%= contentPath%>/pwdSearchForm">비밀번호 찾기</a>
 					<%}else { %>
 						<div id="login-info">
-							<strong><%= loginMember.getMemberName()%> 회원 로그인 중</strong>
+							<strong><%= loginMember.getMemberAlias()%> 회원 로그인 중</strong>
 							<br><br>
 							<img src="resources/image/logoutIcon.png" alt="">
 							<a href="<%= contentPath%>/logout">로그아웃</a>
