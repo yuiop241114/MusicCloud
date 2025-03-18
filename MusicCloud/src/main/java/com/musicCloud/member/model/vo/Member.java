@@ -9,6 +9,7 @@ public class Member {
 	private String memberId;
 	private String memberPwd;
 	private String memberName;
+	private String memberAlias;
 	private String email;
 	private String gender;
 	private int age;
@@ -29,6 +30,9 @@ public class Member {
 	
 	public Member() {}
 
+	public Member(int memberNo, int locationNo, String memberId, String memberPwd, String memberName,
+			String memberAlias, String email, String gender, int age, Date enrollDate, int reportCount, String status,
+			String pfStatus) {
 	public Member(int memberNo, int locationNo, String memberId, String memberPwd, String memberName, String email,
 			String gender, int age, Date enrollDate, int reportCount, String status, String pfStatus) {
 >>>>>>> main
@@ -38,6 +42,7 @@ public class Member {
 		this.memberId = memberId;
 		this.memberPwd = memberPwd;
 		this.memberName = memberName;
+		this.memberAlias = memberAlias;
 		this.email = email;
 		this.gender = gender;
 		this.age = age;
@@ -74,15 +79,26 @@ public class Member {
 		this.pfStatus = pfStatus;
 	}
 
-	
 
-	public Member(int locationNo, String memberId, String memberPwd, String memberName, String email, String gender,
-			int age) {
+	/**
+	 * @param locationNo
+	 * @param memberId
+	 * @param memberPwd
+	 * @param memberName
+	 * @param memberAlias
+	 * @param email
+	 * @param gender
+	 * @param age
+	 * 설정 : 회원가입 정보를 담기 위한 생성자
+	 */
+	public Member(int locationNo, String memberId, String memberPwd, String memberName, String memberAlias,
+			String email, String gender, int age) {
 		super();
 		this.locationNo = locationNo;
 		this.memberId = memberId;
 		this.memberPwd = memberPwd;
 		this.memberName = memberName;
+		this.memberAlias = memberAlias;
 		this.email = email;
 		this.gender = gender;
 		this.age = age;
@@ -127,6 +143,14 @@ public class Member {
 
 	public void setMemberName(String memberName) {
 		this.memberName = memberName;
+	}
+
+	public String getMemberAlias() {
+		return memberAlias;
+	}
+
+	public void setMemberAlias(String memberAlias) {
+		this.memberAlias = memberAlias;
 	}
 
 	public String getEmail() {
