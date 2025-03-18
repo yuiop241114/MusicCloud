@@ -2,6 +2,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.musicCloud.common.model.vo.PageInfo"%>
 <%
+	String contentPath = request.getContextPath();
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<Board> list = (ArrayList<Board>)request.getAttribute("list");
 	int currentPage = pi.getCurrentPage();
@@ -34,6 +35,7 @@
 	    width: 15%;
 	    height: 100%;
 	}
+
 
 	/* 관리자페이지 메뉴바 스타일속성 */
 	menu {
@@ -97,7 +99,7 @@
 				<a href="" id="menutext">게시글관리</a>
 				<a href="" id="menutext">유료 컨텐츠 관리</a>
 				
-    </menu>
+            </menu>
 			
 					
 	<table align="center" class="list-area">

@@ -29,8 +29,6 @@ public class AdminMemberListController extends HttpServlet {
         int pageLimit = 10;
         int boardLimit = 10;
         
-        
-
         // 1. 현재 페이지 예외 처리
         String cpageParam = request.getParameter("cpage");
         currentPage = (cpageParam != null) ? Integer.parseInt(cpageParam) : 1;

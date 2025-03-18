@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.musicCloud.member.model.service.MemberSerivce;
+import com.musicCloud.member.model.service.MemberService;
 import com.musicCloud.member.model.vo.Member;
 
 /**
@@ -49,7 +49,7 @@ public class MemberEnrollController extends HttpServlet {
 		Member m = new Member(locationNo, memberId, memberPwd, memberName, memberAlias, email, gender, age);
 		
 		//서비스부터 시작
-		int result = new MemberSerivce().insertMember(m);
+		int result = new MemberService().insertMember(m);
 		if(result > 0) {
 			//성공
 			request.getSession().setAttribute("alertMsg", "회원가입에 성공 하셨습니다. 메인페이지로 이동합니다");
