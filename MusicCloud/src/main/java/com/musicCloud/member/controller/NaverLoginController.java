@@ -76,7 +76,6 @@ public class NaverLoginController extends HttpServlet {
     	
 		//로그인을 위한 정보를 가져옴
 		m = new MemberSerivce().loginMember(uniqueId, "sociallogin");
-		System.out.println(m);
 		request.getSession().setAttribute("loginMember", m);
 		response.sendRedirect(request.getContextPath());
 	}

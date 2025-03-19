@@ -34,38 +34,38 @@
     background-color: rgb(246, 246, 246);
     height: 5%;
    
-}
+		}
+		
+		.header-1 {
+		    width: 15%;
+		    float: left;
+		    height: 100%; /* 부모 요소(header)의 높이 100% */
+		    text-align: center; /* 가로 중앙 정렬 */
+		    line-height: 100px; /* header 높이에 맞게 조정 (ex. 50px) */
+		}
 
-.header-1 {
-    width: 15%;
-    float: left;
-    height: 100%; /* 부모 요소(header)의 높이 100% */
-    text-align: center; /* 가로 중앙 정렬 */
-    line-height: 100px; /* header 높이에 맞게 조정 (ex. 50px) */
-}
 
 
+		.point {
+		    margin: 10px 10px 10px 10px;
+		    
+		    height: 100%;
+		    background-color: white;
+		    border-radius: 10px;
+		    width: 90%; /* 전체 너비보다 약간 작게 설정 */
+		}
+		
+		.point-1 {
+		    padding: 2rem;
+		    float: left; /* 왼쪽 정렬 */
+		}
 
-.point {
-    margin: 10px 10px 10px 10px;
-    
-    height: 100%;
-    background-color: white;
-    border-radius: 10px;
-    width: 90%; /* 전체 너비보다 약간 작게 설정 */
-}
-
-.point-1 {
-    padding: 2rem;
-    float: left; /* 왼쪽 정렬 */
-}
-
-.point-2 {
-    padding: 2rem;
-    float: right; /* 오른쪽 정렬 */
-    margin-top: 5px;
-    margin-right: 20px;
-}
+		.point-2 {
+		    padding: 2rem;
+		    float: right; /* 오른쪽 정렬 */
+		    margin-top: 5px;
+		    margin-right: 20px;
+		}
 
 
     .main{
@@ -180,7 +180,24 @@
     width: 90%;
     margin: auto;
    }
-   .myInfo>div table{ width: 100%; }
+   .myInfo>div table{ 
+        width: 100%; 
+        border: 1px solid #1587d0;
+        border-left: none;
+        border-right: none;
+    }
+
+    #submitBtn{
+        margin-top: 10px;
+    }
+
+   /*아이디 중복 메세지*/
+    #idMsg *{
+        display: none;
+    }
+    #idMsg>div{
+    	color: #dc3545;
+    }
 </style>
 </head>
 <body>
@@ -226,17 +243,24 @@
                 <div class="myInfo" style="display: none;">
                     <div id="myPageInfo"> <!-- 정보 수정 폼 -->
                         <b style="font-size: xx-large;">내정보</b>
-                        <form action="">
+                        <form action="<%= contentPath%>/updateMemberInfo" method="post">
+                        		<!-- update시 사용할 회원번호 -->
+                        		<input type="hidden" name="memberNo" value="<%= loginMember.getMemberNo()%>">
                             <table>
                                 <tr>
                                     <th>아이디</th>
                                     <td>
-                                        <%if(loginMember.getMemberPwd() == "1"){%>
+                                        <%if(loginMember.getMemberPwd().equals("sociallogin")){%>
                                         <!-- 소셜 로그인인 경우 -->
-                                        	<input type="text" name="memberId" placeholder="소셜 로그인 이용자 입니다">
+                                        	<input type="text" placeholder="소셜 로그인 이용자 입니다" readonly>
+                                        	<input type="hidden" name="memberId" value="<%= loginMember.getMemberId()%>">
                                         <%}else{ %>
-                                        	<input type="text" name="memberId" value="<%= loginMember.getMemberId()%>">
+                                        	<input type="text" name="memberId" id="memberId" oninput="memberIdCheck()" value="<%= loginMember.getMemberId()%>">
                                         <%} %>
+                                        <br>
+                                        <div id="idMsg">
+                                            <div>다시 입력해주세요</div>
+                                        </div>
                                     </td>
                                 </tr>
                                 <tr>
@@ -249,11 +273,17 @@
                                 </tr>
                                 <tr>
                                     <th>이메일</th>
-                                    <td><input type="email" name="memberEmail" value="<%= loginMember.getEmail() %>"></td>
+                                    <td>
+                                    <%if(loginMember.getMemberPwd().equals("sociallogin")){%>
+                                    	<input type="email" name="memberEmail" value="<%= loginMember.getEmail() %>" readonly>
+                                    <%}else{%>
+                                    	<input type="email" name="memberEmail" value="<%= loginMember.getEmail() %>">
+                                    <%} %>
+                                   	</td>
                                 </tr>
                                 <tr>
                                     <th>나이</th>
-                                    <td><input type="text" name="age" value="<%= loginMember.getAge()%>"></td>
+                                    <td><input type="number" name="age" value="<%= loginMember.getAge()%>"></td>
                                 </tr>
                                 <tr>
                                     <th>성별</th>
@@ -267,13 +297,17 @@
                                     <td>
                                         <select name="locationNo" id="">
                                             <%for(Location l : locationList){%>
+                                            	<%if(l.getLocationNo() == loginMember.getLocationNo()) {%>
+                                            		<option value="<%= l.getLocationNo()%>" selected><%= l.getLocationName()%></option>
+                                            	<%}else{ %>
                                                 <option value="<%= l.getLocationNo()%>"><%= l.getLocationName() %></option>
+                                            	<%} %>
                                             <%}%>
                                         </select>
                                     </td>
                                 </tr>
                             </table>   
-                            <button type="submit" class="btn btn-danger">정보 수정</button>
+                            <button type="submit" id="submitBtn" class="btn btn-danger">정보 수정</button>
                         </form>
                     </div>
 
@@ -424,8 +458,8 @@
     document.getElementById("friendListBtn").addEventListener("click", function(){
         infoDiv.style.display = "none";
         friendListDiv.style.display = "block";
-    });
-});
+		    });
+		});
 
     document.getElementById("searchById").addEventListener("click", function() {
         document.getElementById("friendId").innerText = "친구 아이디";
@@ -436,6 +470,24 @@
         document.getElementById("friendId").innerText = "친구 이름";
         document.getElementById("friendIdInput").placeholder = "친구 이름 입력";
     });
+
+    //아이디 중복체크
+    function memberIdCheck(){
+   				$.ajax({
+   	   				url:"memberIdCheck",
+   	   				data:{ memberId:$("#memberId").val() },
+   	   				success:function(result){
+   	   					if(result == "success"){
+                            $("#idMsg>div").css("display", "none"); 
+                            $("#submitBtn").removeAttr("disabled");
+   	   					}else{
+   	   						$("#idMsg>div").css("display", "block");
+                            $("#submitBtn").attr("disabled","disabled");
+                        }
+   	   				},
+   	   				error:function(){},
+   	   			})
+   			}
 
 
 </script>

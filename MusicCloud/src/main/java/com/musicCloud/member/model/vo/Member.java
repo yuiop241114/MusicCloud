@@ -63,6 +63,31 @@ public class Member {
 		this.gender = gender;
 		this.age = age;
 	}
+	
+	
+	/**
+	 * @param memberNo
+	 * @param locationNo
+	 * @param memberId
+	 * @param memberName
+	 * @param memberAlias
+	 * @param email
+	 * @param gender
+	 * @param age
+	 * 설명 : 마이페이지에서 회원정보 수정 시 정보를 담을 생성자
+	 */
+	public Member(int memberNo, int locationNo, String memberId, String memberName, String memberAlias, String email,
+			String gender, int age) {
+		super();
+		this.memberNo = memberNo;
+		this.locationNo = locationNo;
+		this.memberId = memberId;
+		this.memberName = memberName;
+		this.memberAlias = memberAlias;
+		this.email = email;
+		this.gender = gender;
+		this.age = age;
+	}
 
 	public int getMemberNo() {
 		return memberNo;
