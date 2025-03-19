@@ -150,7 +150,7 @@
     }
 
     /*input select 스타일*/
-    .myInfo input {
+    .myInfo input, #myModal input{
     width: 200px;
     height: 32px;
     font-size: 15px;
@@ -198,6 +198,11 @@
     #idMsg>div{
     	color: #dc3545;
     }
+
+    /*회원탈퇴 모달*/
+    .modal-body th{
+        line-height: 40px;
+    }
 </style>
 </head>
 <body>
@@ -228,7 +233,7 @@
                 <br>
                 
                 <br>
-                <b class="myPageList">회원탈퇴</b>
+                <btn type="button" class="myPageList" data-toggle="modal" data-target="#myModal"><b>회원탈퇴</b></btn>
                 <br>
                 <button id="infoBtn" class="myPageList" style="font-weight: bold; background: none; border: none; cursor: pointer;">내정보</button>
                 <br>
@@ -395,101 +400,136 @@
 </div>
 
 
-<div class="modal fade" id="addFriendModal" tabindex="-1" role="dialog" aria-labelledby="addFriendModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="addFriendModalLabel">친구 추가</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>추가할 친구의 정보를 입력하세요.</p>
-                
-                <div class="text-center">
-                    <button class="btn btn-outline-primary" id="searchById">아이디로 찾기</button>
-                    <button class="btn btn-outline-primary" id="searchByName">이름으로 찾기</button>
+    <div class="modal fade" id="addFriendModal" tabindex="-1" role="dialog" aria-labelledby="addFriendModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addFriendModalLabel">친구 추가</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
+                <div class="modal-body">
+                    <p>추가할 친구의 정보를 입력하세요.</p>
+                    
+                    <div class="text-center">
+                        <button class="btn btn-outline-primary" id="searchById">아이디로 찾기</button>
+                        <button class="btn btn-outline-primary" id="searchByName">이름으로 찾기</button>
+                    </div>
 
-                <br>
-                <label for="friendId" id="friendId">친구 아이디</label>
-                <input type="text" id="friendIdInput" class="form-control" placeholder="친구 아이디 입력">
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-                <button type="button" class="btn btn-primary">추가</button>
+                    <br>
+                    <label for="friendId" id="friendId">친구 아이디</label>
+                    <input type="text" id="friendIdInput" class="form-control" placeholder="친구 아이디 입력">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+                    <button type="button" class="btn btn-primary">추가</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<script>
-    /*
-    document.getElementById("infoBtn").addEventListener("click", function() {
-        var infoDiv = document.querySelector(".myInfo"); // 클래스 선택자로 변경
-        if (infoDiv.style.display === "none" || infoDiv.style.display === "") {
-            infoDiv.style.display = "block";
-        } else {
-            infoDiv.style.display = "none";
+
+    <!-- 회원탈퇴 모달-->
+    <div class="modal" id="myModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+      
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">회원 탈퇴</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+      
+            <!-- Modal body -->
+            <div class="modal-body">
+                회원 탈퇴를 위한 정보 입력
+                <form action="<%= contentPath%>/memberSecession">
+                    <table>
+                        <tr>
+                            <th>회원 아이디</th>
+                            <td><input type="text" name="memberId"></td>
+                        </tr>
+                        <tr>
+                            <th>회원 비밀번호</th>
+                            <td><input type="password" name="memberPwd"></td>
+                        </tr>
+                    </table>
+                    <button type="submit" class="btn btn-danger">회원탈퇴</button>
+              			<button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    <script>
+        /*
+        document.getElementById("infoBtn").addEventListener("click", function() {
+            var infoDiv = document.querySelector(".myInfo"); // 클래스 선택자로 변경
+            if (infoDiv.style.display === "none" || infoDiv.style.display === "") {
+                infoDiv.style.display = "block";
+            } else {
+                infoDiv.style.display = "none";
+            }
+        });
+
+        document.getElementById("friendListBtn").addEventListener("click", function(){
+            var friendListDiv = document.getElementById("friendList");  // id 선택으로 연습해 보기
+            if(friendListDiv.style.display === "none" || friendListDiv.style.display === ""){
+            friendListDiv.style.display = "block";
+        }else{
+            friendListDiv.style.display ="none";
         }
-    });
-
-    document.getElementById("friendListBtn").addEventListener("click", function(){
-        var friendListDiv = document.getElementById("friendList");  // id 선택으로 연습해 보기
-        if(friendListDiv.style.display === "none" || friendListDiv.style.display === ""){
-        friendListDiv.style.display = "block";
-    }else{
-        friendListDiv.style.display ="none";
-    }
-    });*/
-    /* 아무거나 */
-    document.addEventListener("DOMContentLoaded", function() {
-    var infoDiv = document.querySelector(".myInfo");
-    var friendListDiv = document.getElementById("friendList");
-    
-    infoDiv.style.display = "block";
-    friendListDiv.style.display = "none";
-
-    document.getElementById("infoBtn").addEventListener("click", function() {
+        });*/
+        /* 아무거나 */
+        document.addEventListener("DOMContentLoaded", function() {
+        var infoDiv = document.querySelector(".myInfo");
+        var friendListDiv = document.getElementById("friendList");
+        
         infoDiv.style.display = "block";
         friendListDiv.style.display = "none";
-    });
 
-    document.getElementById("friendListBtn").addEventListener("click", function(){
-        infoDiv.style.display = "none";
-        friendListDiv.style.display = "block";
-		    });
-		});
+        document.getElementById("infoBtn").addEventListener("click", function() {
+            infoDiv.style.display = "block";
+            friendListDiv.style.display = "none";
+        });
 
-    document.getElementById("searchById").addEventListener("click", function() {
-        document.getElementById("friendId").innerText = "친구 아이디";
-        document.getElementById("friendIdInput").placeholder = "친구 아이디 입력";
-    });
+        document.getElementById("friendListBtn").addEventListener("click", function(){
+            infoDiv.style.display = "none";
+            friendListDiv.style.display = "block";
+                });
+            });
 
-    document.getElementById("searchByName").addEventListener("click", function() {
-        document.getElementById("friendId").innerText = "친구 이름";
-        document.getElementById("friendIdInput").placeholder = "친구 이름 입력";
-    });
+        document.getElementById("searchById").addEventListener("click", function() {
+            document.getElementById("friendId").innerText = "친구 아이디";
+            document.getElementById("friendIdInput").placeholder = "친구 아이디 입력";
+        });
 
-    //아이디 중복체크
-    function memberIdCheck(){
-   				$.ajax({
-   	   				url:"memberIdCheck",
-   	   				data:{ memberId:$("#memberId").val() },
-   	   				success:function(result){
-   	   					if(result == "success"){
-                            $("#idMsg>div").css("display", "none"); 
-                            $("#submitBtn").removeAttr("disabled");
-   	   					}else{
-   	   						$("#idMsg>div").css("display", "block");
-                            $("#submitBtn").attr("disabled","disabled");
-                        }
-   	   				},
-   	   				error:function(){},
-   	   			})
-   			}
+        document.getElementById("searchByName").addEventListener("click", function() {
+            document.getElementById("friendId").innerText = "친구 이름";
+            document.getElementById("friendIdInput").placeholder = "친구 이름 입력";
+        });
+
+        //아이디 중복체크
+        function memberIdCheck(){
+                    $.ajax({
+                        url:"memberIdCheck",
+                        data:{ memberId:$("#memberId").val() },
+                        success:function(result){
+                            if(result == "success"){
+                                $("#idMsg>div").css("display", "none"); 
+                                $("#submitBtn").removeAttr("disabled");
+                            }else{
+                                $("#idMsg>div").css("display", "block");
+                                $("#submitBtn").attr("disabled","disabled");
+                            }
+                        },
+                        error:function(){},
+                    })
+                }
 
 
-</script>
+    </script>
 </body>
 </html>

@@ -36,4 +36,22 @@ public class MyPageService {
 		close(conn);
 		return m;
 	}
+	
+	/**
+	 * @param memberId
+	 * @param memberPwd
+	 * @return
+	 * 설명 : 회원 탈퇴 서비스 메소드
+	 */
+	public int memberSecession(String memberId, String memberPwd) {
+		Connection conn = getConnection();
+		int result = new MyPageDao().memberSecession(conn, memberId, memberPwd);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
 }
