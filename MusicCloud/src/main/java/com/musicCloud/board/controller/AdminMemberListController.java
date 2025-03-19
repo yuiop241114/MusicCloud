@@ -52,10 +52,9 @@ public class AdminMemberListController extends HttpServlet {
         PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 
         // 5. 회원 리스트 가져오기 (null 체크 추가)
-        ArrayList<Member> list = new BoardService().adminMemberList(pi);
-        if (list == null) {
-        	list = new ArrayList<Member>(); // null 방지
-        }
+        ArrayList<Member> list = new ArrayList<Member>();
+        list = new BoardService().adminMemberList(pi);
+        		
         System.out.println("회원 리스트 개수: " + (list != null ? list.size() : "null"));
         // ↑위에 회원리스트 DB에 저장된대로 6개 찍힘
         

@@ -80,22 +80,6 @@ public class Member {
 		this.age = age;
 	}
 	
-	
-
-	/**
-	 * @param memberNo
-	 * @param memberId
-	 * @param memberName
-	 * @param enrollDate
-	 * 설명 : 관리자의 회원관리 탭
-	 */
-	public Member(int memberNo, String memberId, String memberName, Date enrollDate) {
-		super();
-		this.memberNo = memberNo;
-		this.memberId = memberId;
-		this.memberName = memberName;
-		this.enrollDate = enrollDate;
-	}
 
 	public int getMemberNo() {
 		return memberNo;

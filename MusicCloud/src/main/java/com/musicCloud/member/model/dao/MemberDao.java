@@ -7,8 +7,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Properties;
+
+import org.apache.catalina.util.ParameterMap;
 
 import static com.musicCloud.common.JDBCTemplate.*;
 
@@ -391,28 +394,66 @@ public class MemberDao {
 	}
 
 
+	/**
+	 * @param conn
+	 * @param memberId
+	 * @return
+	 * 설명 : 관리자의 회원관리 테이블에서 DB STATUS객체를 N으로 돌리기
+	 */
 	public int deleteMember(Connection conn, String[] memberId) {
         PreparedStatement pstmt = null;
         int result = 0;
 
-        try {
-        	 String baseSql = prop.getProperty("deleteMember");
-             //String sql = baseSql.replace("?", String.join(",", new String[memberId.length]).replace("\0", "?"));
-        	 String placeholders = String.join(",", Collections.nCopies(memberId.length, "?"));
-             String sql = baseSql.replace("?", placeholders);
-            System.out.println(sql);
-            pstmt = conn.prepareStatement(sql);
-            
-            for(int i = 0; i < memberId.length; i++) {
-                pstmt.setInt(i + 1, Integer.parseInt(memberId[i]));
-            }
+//        try {
+//        	 String baseSql = prop.getProperty("deleteMember");
+//             //String sql = baseSql.replace("?", String.join(",", new String[memberId.length]).replace("\0", "?"));
+//        	 String placeholders = String.join(",", Collections.nCopies(memberId.length, "?"));
+//             String sql = baseSql.replace("?", placeholders);
+//            System.out.println(sql);
+//            pstmt = conn.prepareStatement(sql);
+//            
+//            for(int i = 0; i < memberId.length; i++) {
+//                pstmt.setInt(i + 1, Integer.parseInt(memberId[i]));
+//            }
+//
+//            result = pstmt.executeUpdate();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        } finally {
+//            close(pstmt);
+//        }
+//        return result;
+//    }
+	
+	    try {
+	        // 기존 DELETE가 아닌 UPDATE 쿼리로 변경
+	        String baseSql = prop.getProperty("deleteMember");
+	        
+	        // `?`를 memberId 개수만큼 반복하여 동적 쿼리 생성
+	        String placeholders = String.join(",", Collections.nCopies(memberId.length, "?"));
+	        String sql = baseSql.replace("?", placeholders);
+	        
+	        System.out.println(sql); // 쿼리 확인용 출력
+	
+	        pstmt = conn.prepareStatement(sql);
+	
+	        // ?에 실제 값 바인딩
+	        for (int i = 0; i < memberId.length; i++) {
+	            pstmt.setInt(i + 1, Integer.parseInt(memberId[i])); // MEMBER_ID는 String이므로 setString 사용
+	        }
+	        // 업데이트 실행
+	        result = pstmt.executeUpdate();
+	        System.out.println(result);
+	        
+	        
 
-            result = pstmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            close(pstmt);
-        }
-        return result;
-    }
+	        
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        close(pstmt); // 리소스 정리
+	    }
+	    return result;
+	}
+
 }

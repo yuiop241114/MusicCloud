@@ -144,12 +144,20 @@ public class MemberSerivce {
 		return result;
 	}
 
-	 public int deleteMembers(String[] memberId) {
+	 /**
+	 * @param memberId
+	 * @return
+	 * 설명 : 관리자에서 특정 회원 DB삭제
+	 */
+	public int deleteMembers(String[] memberId) {
 	        Connection conn = getConnection();
 	        int result = new MemberDao().deleteMember(conn, memberId);
 
-	        if (result > 0) commit(conn);
-	        else rollback(conn);
+	        if (result > 0) {
+	        	commit(conn);
+	        }else{
+	        	rollback(conn);
+	        }
 
 	        close(conn);
 	        return result;

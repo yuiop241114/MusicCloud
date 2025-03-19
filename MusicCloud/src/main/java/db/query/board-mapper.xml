@@ -26,13 +26,22 @@
 	FROM (
 		SELECT ROWNUM RNUM, M.*
 		FROM(
-			SELECT MEMBER_NO
-		     , MEMBER_NAME
-		     , MEMBER_ID
-		     , ENROLL_DATE
-  		  	  FROM MEMBER
-			)M
-			
+			SELECT 
+		       	   MEMBER_NO
+				 , LOCATION_NO
+				 , MEMBER_ID
+				 , MEMBER_PWD
+				 , MEMBER_NAME
+				 , MEMBER_ALIAS
+				 , EMAIL
+				 , GENDER
+				 , AGE
+				 , ENROLL_DATE
+				 , REPORT_COUNT
+				 , STATUS
+				 , PF_STATUS
+	  		  FROM MEMBER
+			) M
 		 )
 	WHERE RNUM BETWEEN ? AND ?
 	
