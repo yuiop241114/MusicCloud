@@ -59,7 +59,7 @@
 		background-color: #1587d0;
 		width: 80%;
 		line-height: 40px;
-		margin-top: 40px
+		margin-top: 40px;
 	}
 	#login-box a{
 		color: black;

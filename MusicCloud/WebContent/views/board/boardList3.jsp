@@ -181,7 +181,7 @@
         $(function() {
             $("#side-btn").click(function() {
                 $("#side-btn-list").slideToggle();
-            });
+            }); 
         });
     </script>
 </body>
