@@ -40,23 +40,15 @@
 				 , REPORT_COUNT
 				 , STATUS
 				 , PF_STATUS
-	  		  FROM MEMBER
+	  		FROM MEMBER
 			) M
+			
 		 )
 	WHERE RNUM BETWEEN ? AND ?
 	
-	
-		
 	</entry>
 	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	
 </properties>

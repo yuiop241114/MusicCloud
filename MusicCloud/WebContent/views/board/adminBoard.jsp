@@ -12,7 +12,6 @@
 	int endPage = pi.getEndPage();
 	int maxPage = pi.getMaxPage();
 %>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <!DOCTYPE html>
 <html>
@@ -20,15 +19,6 @@
 <meta charset="UTF-8">
 <title>관리자 페이지</title>
 <style>
-
-	/* 관리자 페이지  박스 크기 설정*/
-	.wrapperAdmin{
-		width: 1400px;
-		margin: auto;
-	}
-	.wrapperAdmin *{
-	    box-sizing: border-box;
-	}
 
 	/*제목*/
 	#titleDiv{
@@ -39,6 +29,15 @@
 		margin: auto;
 		text-align: center;
 		font-size: xx-large;
+	}
+
+	/* 관리자 페이지  박스 크기 설정*/
+	.wrapperAdmin{
+		width: 1400px;
+		margin: auto;
+	}
+	.wrapperAdmin *{
+	    box-sizing: border-box;
 	}
 
 	/* 관리자페이지 메뉴바 스타일속성 */
@@ -74,7 +73,7 @@
 		width: 90%;
 	}
 
-	table{
+	#mTable{
 		width: 80%;
 		border-color: #1587d0;
 		border-left: none;
@@ -82,7 +81,7 @@
 	}
 
 	/* 관리자 페이지 테이블 td 스타일 */
-	tr *{
+	#mTable td{
 		border-left: none;
         border-right: none;
 		text-align: center;
@@ -96,7 +95,16 @@
 		cursor: pointer;
 		border-radius: 10px;
 		border: 1px solid red;
+		height: 45px;
 		
+	}
+	#adminInsertMember{
+		width: 40%;
+		color: white;
+		cursor: pointer;
+		border-radius: 10px;
+		border: 1px solid green;
+		height: 45px;
 	}
 	#btnTd{
 		width: 100px;
@@ -121,16 +129,16 @@
 			<div id="menuBox">
 				<menu>
 					<a href="" id="menutext">메인페이지</a>
-							<a href="" id="menutext">음원관리</a>
-							<a href="" id="menutext">회원관리</a>
-							<a href="" id="menutext">게시글관리</a>
-							<a href="" id="menutext">유료 컨텐츠 관리</a>	
+					<a href="" id="menutext">음원관리</a>
+					<a href="" id="menutext">회원관리</a>
+					<a href="" id="menutext">게시글관리</a>
+					<a href="" id="menutext">유료 컨텐츠 관리</a>	
 				</menu>
 			</div>
 			
 					
 			<div id="memberListBox">
-				<table align="center" border="1">
+				<table id="mTable" align="center" border="1">
 						<tr>
 							<td>회원선택</td>
 							<td>회원번호</td>
@@ -138,7 +146,9 @@
 							<td>회원아이디</td>
 							<td>회원이름</td>
 							<td>활동상태</td>
+							<td rowspan="<%= list.size() + 1%>" id="btnTd"><button type="button" id="adminInsertMember" class="btn-success">Y</button></td>
 							<td rowspan="<%= list.size() + 1%>" id="btnTd"><button type="button" id="deleteMember" class="btn-danger">X</button></td>
+							
 						</tr>
 
 						<!-- case1. 내역이 없을경우 -->
@@ -194,47 +204,76 @@
 
 	
 	<script>
-    $(document).ready(function () {
-        let selectedMembers = [];
-        
-        
-        $("#deleteMember").click(function () {
- 
-            // $("input[name='memberCheckbox']:checked").each(function () {
-            //     selectedMembers.push($(this).val()); // 선택된 회원번호를 배열에 추가
-            //     console.log(selectedMembers);
-            // });
-            selectedMembers = [];
-            $("input[type=checkbox]:checked").each(function(){
-       			selectedMembers.push($(this).val());
-        	})
-        	
-            if (selectedMembers.length === 0) {
-                alert("삭제할 회원을 선택하세요.");
-                return;
-            }
+	    $(document).ready(function () {
+	        let selectedMembers = [];
+	        
+	        $("#deleteMember").click(function () {
+	 
+	            selectedMembers = [];
+	            $("input[type=checkbox]:checked").each(function(){
+	       			selectedMembers.push($(this).val());
+	        	})
+	        	
+	            if (selectedMembers.length === 0) {
+	                alert("삭제할 회원을 선택하세요.");
+	                return;
+	            }
+	
+	            if (confirm("정말 삭제하시겠습니까?")) {
+	                $.ajax({
+	                    type: "POST",
+	                    url: "MemberDelete.bo",
+	                    data: { members: selectedMembers.join(",") }, // 배열을 문자열로 변환
+	                    success: function (response1) {
+	                        if (response1.trim() === "success") {
+	                            alert("회원 삭제 완료!");
+								
+	                        } else {
+	                            alert("삭제 실패! 다시 시도하세요.");
+	                        }
+	                    },
+	                    error: function () {
+	                        alert("서버 오류 발생!");
+	                    }
+	                });
+	            }
+	        });
+	        
+	        // ----------------------- 복구 -----------------------
+	        $("#adminInsertMember").click(function () {
+	       	 
+	            selectedMembers = [];
+	            $("input[type=checkbox]:checked").each(function(){
+	       			selectedMembers.push($(this).val());
+	        	})
+	        	
+	            if (selectedMembers.length === 0) {
+	                alert("복구할 회원을 선택하세요.");
+	                return;
+	            }
+	
+	            if (confirm("복구하시겠습니까?")) {
+	                $.ajax({
+	                    type: "post",
+	                    url: "adminInsertMember.bo",
+	                    data: { members: selectedMembers.join(",") }, // 배열을 문자열로 변환
+	                    success: function (response2) {
+	                        if (response2.trim() === "success") {
+	                            alert("회원 복구 완료!");
+								
+	                        } else {
+	                            alert("복구 실패! 다시 시도하세요.");
+	                        }
+	                    },
+	                    error: function () {
+	                        alert("서버 오류 발생!");
+	                    }
+	                });
+	            }
+	        });
+	    });
+	</script>
 
-            if (confirm("정말 삭제하시겠습니까?")) {
-                $.ajax({
-                    type: "POST",
-                    url: "MemberDelete.bo",
-                    data: { members: selectedMembers.join(",") }, // 배열을 문자열로 변환
-                    success: function (response) {
-                        if (response.trim() === "success") {
-                            alert("회원 삭제 완료!");
-							// location.href="<%= contentPath%>/Admin.bo";
-                        } else {
-                            alert("삭제 실패! 다시 시도하세요.");
-                        }
-                    },
-                    error: function () {
-                        alert("서버 오류 발생!");
-                    }
-                });
-            }
-        });
-    });
-</script>
 
 	<br>
 	<br>

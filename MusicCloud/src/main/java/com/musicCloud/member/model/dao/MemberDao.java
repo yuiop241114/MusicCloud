@@ -403,27 +403,6 @@ public class MemberDao {
 	public int deleteMember(Connection conn, String[] memberId) {
         PreparedStatement pstmt = null;
         int result = 0;
-
-//        try {
-//        	 String baseSql = prop.getProperty("deleteMember");
-//             //String sql = baseSql.replace("?", String.join(",", new String[memberId.length]).replace("\0", "?"));
-//        	 String placeholders = String.join(",", Collections.nCopies(memberId.length, "?"));
-//             String sql = baseSql.replace("?", placeholders);
-//            System.out.println(sql);
-//            pstmt = conn.prepareStatement(sql);
-//            
-//            for(int i = 0; i < memberId.length; i++) {
-//                pstmt.setInt(i + 1, Integer.parseInt(memberId[i]));
-//            }
-//
-//            result = pstmt.executeUpdate();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        } finally {
-//            close(pstmt);
-//        }
-//        return result;
-//    }
 	
 	    try {
 	        // 기존 DELETE가 아닌 UPDATE 쿼리로 변경
@@ -455,5 +434,38 @@ public class MemberDao {
 	    }
 	    return result;
 	}
+	
+	public int adminInsertMember(Connection conn, String[] memberId) {
+		PreparedStatement pstmt = null;
+        int result = 0;
+	
+	    try {
+	        // 기존 DELETE가 아닌 UPDATE 쿼리로 변경
+	        String baseSql = prop.getProperty("adminInsertMember");
+	        
+	        // `?`를 memberId 개수만큼 반복하여 동적 쿼리 생성
+	        String placeholders = String.join(",", Collections.nCopies(memberId.length, "?"));
+	        String sql = baseSql.replace("?", placeholders);
+	        
+	        System.out.println(sql); // 쿼리 확인용 출력
+	
+	        pstmt = conn.prepareStatement(sql);
+	
+	        // ?에 실제 값 바인딩
+	        for (int i = 0; i < memberId.length; i++) {
+	            pstmt.setInt(i + 1, Integer.parseInt(memberId[i])); // MEMBER_ID는 String이므로 setString 사용
+	        }
+	        // 업데이트 실행
+	        result = pstmt.executeUpdate();
+	        System.out.println(result);
+	        
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        close(pstmt); // 리소스 정리
+	    }
+	    return result;
+	}
+	
 
 }

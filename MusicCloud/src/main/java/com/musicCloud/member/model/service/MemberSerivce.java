@@ -162,4 +162,18 @@ public class MemberSerivce {
 	        close(conn);
 	        return result;
 	    }
+	
+	public int adminInsertMembers(String[] memberId) {
+		Connection conn = getConnection();
+		int result = new MemberDao().adminInsertMember(conn, memberId);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		return result;
+	}
 }

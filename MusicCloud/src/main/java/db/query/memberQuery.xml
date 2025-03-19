@@ -118,9 +118,15 @@
 	</entry>
 	
 	<entry key="deleteMember">
-		DELETE
-		  FROM MEMBER
+		UPDATE MEMBER
+		   SET STATUS = 'N'
 		 WHERE MEMBER_NO IN (?)
 		 
+	</entry>
+	
+	<entry key="adminInsertMember">
+		UPDATE MEMBER
+		   SET STATUS = 'Y'
+		 WHERE MEMBER_NO IN ( ? )
 	</entry>
 </properties>
