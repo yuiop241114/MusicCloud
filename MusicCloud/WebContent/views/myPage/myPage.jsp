@@ -224,13 +224,20 @@
                 
                 <br>
                 <div class="myInfo" style="display: none;">
-                    <div id="myPageInfo">
+                    <div id="myPageInfo"> <!-- 정보 수정 폼 -->
                         <b style="font-size: xx-large;">내정보</b>
                         <form action="">
                             <table>
                                 <tr>
                                     <th>아이디</th>
-                                    <td><input type="text" name="memberId" value="<%= loginMember.getMemberId()%>"></td>
+                                    <td>
+                                        <%if(loginMember.getMemberPwd() == "1"){%>
+                                        <!-- 소셜 로그인인 경우 -->
+                                        	<input type="text" name="memberId" placeholder="소셜 로그인 이용자 입니다">
+                                        <%}else{ %>
+                                        	<input type="text" name="memberId" value="<%= loginMember.getMemberId()%>">
+                                        <%} %>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th>실명</th>

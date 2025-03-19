@@ -69,15 +69,16 @@ public class NaverLoginController extends HttpServlet {
     	int result = new MemberSerivce().memberIdCheck(uniqueId); //아이디로 select 절에서 count 개수 가져 오는 메소드
     	Member m = null;
     	if(result <= 0) {
-    		//네이버로 로그인한 전적이 없는 경우
-    		//DB에 정보저장
-    		new MemberSerivce().insertMember( new Member( 1, uniqueId, "1", name, nickName, email, gender, Integer.parseInt(dateFormat.format(today)) -  Integer.parseInt(birthyear) ) );
+			//네이버로 로그인한 전적이 없는 경우
+			//DB에 정보저장
+			new MemberSerivce().insertMember( new Member( 1, uniqueId, "sociallogin", name, nickName, email, gender, Integer.parseInt(dateFormat.format(today)) -  Integer.parseInt(birthyear) ) );
     	}
-    	//로그인을 위한 정보를 가져옴
-    	m = new MemberSerivce().loginMember(uniqueId, "1");
-		//System.out.println(m);
-    	request.getSession().setAttribute("loginMember", m);
-    	response.sendRedirect(request.getContextPath());
+    	
+		//로그인을 위한 정보를 가져옴
+		m = new MemberSerivce().loginMember(uniqueId, "sociallogin");
+		System.out.println(m);
+		request.getSession().setAttribute("loginMember", m);
+		response.sendRedirect(request.getContextPath());
 	}
 
 	/**
