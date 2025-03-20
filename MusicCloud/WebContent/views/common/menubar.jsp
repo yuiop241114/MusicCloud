@@ -161,6 +161,10 @@
 	#side-btn-list img{
 	    width: 80%;
 	}
+	#side-btn-list a {
+    color: white; /* 링크 텍스트를 하얀색으로 변경 */
+    text-decoration: none; /* 링크에 밑줄을 없애기 */
+    }
 
 	</style> 
 <body>

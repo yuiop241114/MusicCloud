@@ -119,6 +119,62 @@
         align-items: center; /* 버튼 세로 정렬 */
         margin-top: 10px; /* 버튼 위 여백 추가 */
     }
+    
+    .board-container {
+        width: 1200px;
+        margin: 20px auto; /* 좌우 여백을 동일하게 설정하여 중앙 정렬 */
+        text-align: center;
+        border-radius: 10px;
+        padding: 20px;
+    }
+    .board-title {
+        background-color: #1587d0;
+        color: white;
+        padding: 10px;
+        border-radius: 10px;
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+    .board-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .board-table th, .board-table td {
+        border: 1px solid #ddd;
+        padding: 15px;
+        text-align: center;
+    }
+    .board-table th {
+        background-color: #f8f8f8;
+        font-weight: bold;
+    }
+    .board-table tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+    .board-table tr:hover {
+        background-color: #e0e0e0;
+    }
+    .pagination {
+        margin-top: 20px;
+        display: inline-block; /* 페이지 바를 inline-block으로 설정 */
+        text-align: center;
+    }
+    .pagination a {
+        color: #1587d0;
+        text-decoration: none;
+        padding: 8px 16px;
+        border: 1px solid #1587d0;
+        margin: 0 5px;
+        border-radius: 5px;
+    }
+    .pagination a.active {
+        background-color: #1587d0;
+        color: white;
+    }
+    .pagination a:hover {
+        background-color: #e0e0e0;
+    }
 
     /* ... (나머지 스타일 코드) ... */
 </style>
