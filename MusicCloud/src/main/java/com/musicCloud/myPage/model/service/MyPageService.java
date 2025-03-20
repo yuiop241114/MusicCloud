@@ -67,4 +67,24 @@ public class MyPageService {
 		close(conn);
 		return list;
 	}
+	
+	
+	/**
+	 * @param memberNo
+	 * @param insertInfo : 친구 추가할 회원의 아이디 또는 별칭
+	 * @return
+	 * 설명 : 친구 추가 서비스 메소드
+	 */
+	public int friendInsert(int memberNo, String insertInfo) {
+		Connection conn = getConnection();
+		int result = new MyPageDao().friendInsert(conn, memberNo, insertInfo);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+			
+		}
+		close(conn);
+		return result;
+	}
 }

@@ -176,8 +176,6 @@
     }
 
     /*회원 정보*/
-   .myInfo{
-   }
    .myInfo>div{
     width: 90%;
     margin: auto;
@@ -209,14 +207,18 @@
 
     /*친구리스트*/
     .friendListDiv>div{
-        width: 90%;
+        width: 100%;
         margin: auto;
+        margin-left: 30px;
     }
     .friendListDiv table{
         width: 100%; 
         border: 1px solid #1587d0;
         border-left: none;
         border-right: none;
+    }
+    #addFriendBtn+table *{
+        text-align: center;
     }
 
     #addFriendBtn{
@@ -376,6 +378,7 @@
                             <tr>
                                 <th>친구이름</th>
                                 <th>최근 재생음악</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -426,20 +429,25 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>추가할 친구의 정보를 입력하세요.</p>
+                    <form action="<%= contentPath%>/friendInsert">
+                    		<input type="hidden" name="memberNo" value="<%= loginMember.getMemberNo()%>">
+                        <p>추가할 친구의 정보를 입력하세요.</p>
                     
-                    <div class="text-center">
-                        <button class="btn btn-outline-primary" id="searchById">아이디로 찾기</button>
-                        <button class="btn btn-outline-primary" id="searchByName">이름으로 찾기</button>
-                    </div>
+                        <div class="text-center">
+                            <button type="button" class="btn btn-outline-primary" id="searchById">아이디로 찾기</button>
+                            <button type="button" class="btn btn-outline-primary" id="searchByName">별칭으로 찾기</button>
+                        </div>
 
-                    <br>
-                    <label for="friendId" id="friendId">친구 아이디</label>
-                    <input type="text" id="friendIdInput" class="form-control" placeholder="친구 아이디 입력">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-                    <button type="button" class="btn btn-primary">추가</button>
+                        <br>
+                    
+                        <label for="friendId" id="friendId">친구 아이디</label>
+                        <input type="text" class="form-control" id="friendIdInput" name="memberId" placeholder="친구 아이디 입력">
+    
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">추가</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -461,7 +469,7 @@
                 <b>회원 탈퇴를 위한 정보 입력</b> <br> (소셜 로그인인 경우 정보입력 없이 회원탈퇴 버튼을 눌러주세요)
                 <form action="<%= contentPath%>/memberSecession">
                 		<input type="hidden" name="memberNo" value="<%= loginMember.getMemberNo()%>">
-                    <table>
+                        <table>
                    			<%if(loginMember.getMemberPwd().equals("sociallogin")){%>
                    				<tr>
 	                            <th>회원 아이디</th>
@@ -482,8 +490,10 @@
 	                        </tr>
                    			<%} %>
                     </table>
-                    <button type="submit" class="btn btn-danger">회원탈퇴</button>
-              			<button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-danger">회원탈퇴</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+                    </div>
                 </form>
             </div>
           </div>
@@ -511,14 +521,17 @@
                 });
             });
 
+        //친구 추가 모달 버튼
         document.getElementById("searchById").addEventListener("click", function() {
             document.getElementById("friendId").innerText = "친구 아이디";
             document.getElementById("friendIdInput").placeholder = "친구 아이디 입력";
+            $("#friendIdInput").attr("name","memberId");
         });
 
         document.getElementById("searchByName").addEventListener("click", function() {
-            document.getElementById("friendId").innerText = "친구 이름";
-            document.getElementById("friendIdInput").placeholder = "친구 이름 입력";
+            document.getElementById("friendId").innerText = "친구 별칭";
+            document.getElementById("friendIdInput").placeholder = "친구 별칭 입력";
+            $("#friendIdInput").attr("name","memberAlias");
         });
 
         //아이디 중복체크
@@ -538,6 +551,8 @@
                 error:function(){},
             })
         }
+        
+
         $(function(){
 
             //친구 리스트 가져오는 ajax
@@ -551,10 +566,12 @@
                 	let content = "";
                 	if(friendList != null){
                         for(let i=0; i<friendList.length; i++){
-                        	content += "<tr>"
-                        					 + "<td>" + friendList[i].memberId + "</td>"
+                        	content += "<tr>"                 //<input type="hidden" name="friendAlias" value="">
+                        				 + "<td>" + friendList[i].memberId + "</td>"
                             			 + "<td>" + friendList[i].memberName + "</td>"
-                            			 + "</tr>"
+                                         + "<td>" + "<button type=" + "'button'" + " class=" + "'btn btn-danger'" + ">친구 삭제</button>" + "<input type=" + "'hidden'" +  " id=" + "'friendAlias'" + " value=" + "'" + friendList[i].memberId +"'" + ">" 
+                                         + "</td>"
+                            		 + "</tr>"
                         }
                         $("#friendList>tbody").html(content);
                     }
@@ -564,6 +581,27 @@
                 },
             })
 
+        })
+
+        //친구삭제 스크립트
+        $(document).on("click", ".btn-danger", function() {
+            console.log($(this).siblings("#friendAlias").val());
+            let booleanMsg = confirm("친구 삭제하시겠습니까?");
+            if(booleanMsg == true){
+
+                $.ajax({
+                    url:"deleteFriend",
+                    date:{
+                        memberNo : $("#memberNo").val(),
+                        friend : $(this),
+                    },
+                    success:function(){},
+                    error:function(){
+                        console.log("친구 삭제 ajax 작동 불가")
+                    },
+                })
+
+            }
         })
 
     </script>

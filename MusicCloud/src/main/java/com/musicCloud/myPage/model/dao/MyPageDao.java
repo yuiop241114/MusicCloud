@@ -156,7 +156,7 @@ public class MyPageDao {
 				list.add(
 						  new Member(
 								  	  rset.getInt("member_no")
-								  	, rset.getString("friend_name")
+								  	, rset.getString("friend_alias")
 								  	, rset.getString("recent_music")
 								  	)
 						);
@@ -168,6 +168,60 @@ public class MyPageDao {
 			close(rset);
 		}
 		return list;
+	}
+	
+	/**
+	 * @param conn
+	 * @param memberNo
+	 * @param insertInfo
+	 * @return
+	 * 설명 : 친구 추가 Dao
+	 */
+	public int friendInsert(Connection conn, int memberNo, String insertInfo) {
+		//insert 
+		//1. 아이디를 받은 경우 2. 별칭을 받은 경우
+		int friendNo = 0;
+		int result = 0;
+		System.out.println(insertInfo);
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String insertSql = prop.getProperty("friendInsert"); //친구 추가 쿼리
+		String idSql = prop.getProperty("friendInsertInfoId"); // 아이디로 친구 회원번호 조회 쿼리
+		String aliasSql = prop.getProperty("friendInsertInfoAlias"); // 별칭으로 친구 회원번호 조회 쿼리
+		
+		try {
+			//먼저 아이디로 select문 실행
+			pstmt = conn.prepareStatement(idSql);
+			pstmt.setString(1, insertInfo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) { //select 결과 => 친구 추가할 회원 번호
+				friendNo = rset.getInt("member_no");
+			}
+			
+			if(friendNo == 0) { //아이디 select 결과가 없다면 별칭으로 실행
+				pstmt = conn.prepareStatement(aliasSql);
+				pstmt.setString(1, insertInfo);
+				rset = pstmt.executeQuery();
+			}
+			if(rset.next()) { //select 결과 => 친구 추가할 회원 번호
+				friendNo = rset.getInt("member_no");
+			}
+			
+			//추가할 친구 회원번호, 로그인한 회원 번호를 이용해서 친구 추가 진행
+			pstmt = conn.prepareStatement(insertSql);
+			pstmt.setInt(1, friendNo);
+			pstmt.setInt(2, memberNo);
+			result = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		System.out.println(result);
+		return result;
 	}
 
 }
