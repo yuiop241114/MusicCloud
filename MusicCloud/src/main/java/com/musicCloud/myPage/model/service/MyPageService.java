@@ -1,6 +1,7 @@
 package com.musicCloud.myPage.model.service;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 
 import static com.musicCloud.common.JDBCTemplate.*;
 import com.musicCloud.member.model.vo.Member;
@@ -43,9 +44,9 @@ public class MyPageService {
 	 * @return
 	 * 설명 : 회원 탈퇴 서비스 메소드
 	 */
-	public int memberSecession(String memberId, String memberPwd) {
+	public int memberSecession(int memberNo, String memberId, String memberPwd) {
 		Connection conn = getConnection();
-		int result = new MyPageDao().memberSecession(conn, memberId, memberPwd);
+		int result = new MyPageDao().memberSecession(conn, memberNo, memberId, memberPwd);
 		if(result > 0) {
 			commit(conn);
 		}else {
@@ -53,5 +54,17 @@ public class MyPageService {
 		}
 		close(conn);
 		return result;
+	}
+	
+	/**
+	 * @param memberNo
+	 * @return
+	 * 친구 리스트(친구가 최근들은 음원) 가져오는
+	 */
+	public ArrayList<Member> friendList(int memberNo){
+		Connection conn = getConnection();
+		ArrayList<Member> list = new MyPageDao().friendList(conn, memberNo);
+		close(conn);
+		return list;
 	}
 }

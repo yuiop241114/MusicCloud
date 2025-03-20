@@ -21,6 +21,8 @@
 <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 <style>
+    .main-2 b{ font-size: xx-large;}
+
     .wrapperMypage{
         width: 1450px;
         margin: auto;
@@ -34,38 +36,38 @@
     background-color: rgb(246, 246, 246);
     height: 5%;
    
-		}
+	}
 		
-		.header-1 {
-		    width: 15%;
-		    float: left;
-		    height: 100%; /* 부모 요소(header)의 높이 100% */
-		    text-align: center; /* 가로 중앙 정렬 */
-		    line-height: 100px; /* header 높이에 맞게 조정 (ex. 50px) */
-		}
+    .header-1 {
+        width: 15%;
+        float: left;
+        height: 100%; /* 부모 요소(header)의 높이 100% */
+        text-align: center; /* 가로 중앙 정렬 */
+        line-height: 100px; /* header 높이에 맞게 조정 (ex. 50px) */
+    }
 
 
 
-		.point {
-		    margin: 10px 10px 10px 10px;
-		    
-		    height: 100%;
-		    background-color: white;
-		    border-radius: 10px;
-		    width: 90%; /* 전체 너비보다 약간 작게 설정 */
-		}
-		
-		.point-1 {
-		    padding: 2rem;
-		    float: left; /* 왼쪽 정렬 */
-		}
+    .point {
+        margin: 10px 10px 10px 10px;
+        
+        height: 100%;
+        background-color: white;
+        border-radius: 10px;
+        width: 90%; /* 전체 너비보다 약간 작게 설정 */
+    }
+    
+    .point-1 {
+        padding: 2rem;
+        float: left; /* 왼쪽 정렬 */
+    }
 
-		.point-2 {
-		    padding: 2rem;
-		    float: right; /* 오른쪽 정렬 */
-		    margin-top: 5px;
-		    margin-right: 20px;
-		}
+    .point-2 {
+        padding: 2rem;
+        float: right; /* 오른쪽 정렬 */
+        margin-top: 5px;
+        margin-right: 20px;
+    }
 
 
     .main{
@@ -203,6 +205,24 @@
     .modal-body th{
         line-height: 40px;
     }
+
+
+    /*친구리스트*/
+    .friendListDiv>div{
+        width: 90%;
+        margin: auto;
+    }
+    .friendListDiv table{
+        width: 100%; 
+        border: 1px solid #1587d0;
+        border-left: none;
+        border-right: none;
+    }
+
+    #addFriendBtn{
+        background-color: #1587d0;
+        margin-bottom: 10px;
+    }
 </style>
 </head>
 <body>
@@ -233,13 +253,13 @@
                 <br>
                 
                 <br>
-                <btn type="button" class="myPageList" data-toggle="modal" data-target="#myModal"><b>회원탈퇴</b></btn>
-                <br>
                 <button id="infoBtn" class="myPageList" style="font-weight: bold; background: none; border: none; cursor: pointer;">내정보</button>
                 <br>
                 <button id="friendListBtn" class="myPageList" style="font-weight: bold; background: none; border: none; cursor: pointer;">친구리스트</button>
                 <br>
                 <a href="<%= contentPath%>/logout" class="myPageList"><b>로그아웃</b></a>
+                <br>
+                <btn type="button" class="myPageList" data-toggle="modal" data-target="#myModal"><b>회원탈퇴</b></btn>
 
             </div>
             <div class="main-2">
@@ -247,10 +267,10 @@
                 <br>
                 <div class="myInfo" style="display: none;">
                     <div id="myPageInfo"> <!-- 정보 수정 폼 -->
-                        <b style="font-size: xx-large;">내정보</b>
+                        <b>내정보</b>
                         <form action="<%= contentPath%>/updateMemberInfo" method="post">
                         		<!-- update시 사용할 회원번호 -->
-                        		<input type="hidden" name="memberNo" value="<%= loginMember.getMemberNo()%>">
+                        		<input type="hidden" name="memberNo" id="memberNo" value="<%= loginMember.getMemberNo()%>">
                             <table>
                                 <tr>
                                     <th>아이디</th>
@@ -319,7 +339,7 @@
                     <br>
 
                     <div id="payment-detail">
-                        <b style="font-size: xx-large;">프리뷰 사용내역</b>
+                        <b>결재 내역</b>
                         <table class="myPageTable">
                             <thead>
                                 <tr>
@@ -346,29 +366,23 @@
 
 
 
-            <div id="friendList">
-                <b>친구리스트</b>
-                &nbsp; &nbsp; &nbsp; &nbsp;
-                <button id="addFriendBtn" data-toggle="modal" data-target="#addFriendModal" 
-                style="color: white; background-color: rgb(165, 0, 165); border-radius: 5px; border: none; 
-                font-weight: bold; font-size: 12px; height: 30px; ">
-            친구 추가
-             </button>
-                <table id="friendList" class="myPageTable" style="border-collapse: collapse; ">
-                    <thead>
-                        <tr>
-                            <th>추가한날짜</th>
-                            <th>친구이름</th>
-                            <th style="color: rgb(0, 195, 140);">최근 재생음악</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <td>2022-12-01 16:37:06</td>
-                        <td>일호석</td>
-                        <td>볼빨간사춘기-여행</td>
-                    </tbody>
-
-                </table>
+            <div id="friendList" class="friendListDiv">
+                <div>
+                    <b>친구리스트</b>
+                    &nbsp; &nbsp; &nbsp; &nbsp;
+                    <button id="addFriendBtn" data-toggle="modal" data-target="#addFriendModal" class="btn btn-primary">친구 추가</button>
+                    <table id="friendList" class="myPageTable">
+                        <thead>
+                            <tr>
+                                <th>친구이름</th>
+                                <th>최근 재생음악</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
         </div>
@@ -399,7 +413,9 @@
     </div>
 </div>
 
+    <!-- 모달 -->
 
+    <!-- 친구 추가 모달-->
     <div class="modal fade" id="addFriendModal" tabindex="-1" role="dialog" aria-labelledby="addFriendModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -442,17 +458,29 @@
       
             <!-- Modal body -->
             <div class="modal-body">
-                회원 탈퇴를 위한 정보 입력
+                <b>회원 탈퇴를 위한 정보 입력</b> <br> (소셜 로그인인 경우 정보입력 없이 회원탈퇴 버튼을 눌러주세요)
                 <form action="<%= contentPath%>/memberSecession">
+                		<input type="hidden" name="memberNo" value="<%= loginMember.getMemberNo()%>">
                     <table>
-                        <tr>
-                            <th>회원 아이디</th>
-                            <td><input type="text" name="memberId"></td>
-                        </tr>
-                        <tr>
-                            <th>회원 비밀번호</th>
-                            <td><input type="password" name="memberPwd"></td>
-                        </tr>
+                   			<%if(loginMember.getMemberPwd().equals("sociallogin")){%>
+                   				<tr>
+	                            <th>회원 아이디</th>
+	                            <td><input type="text" name="memberId" value="<%= loginMember.getMemberId()%>"></td>
+	                        </tr>
+	                        <tr>
+	                            <th>회원 비밀번호</th>
+	                            <td><input type="password" name="memberPwd" value="<%= loginMember.getMemberPwd()%>"></td>
+	                        </tr>
+                   			<%}else{ %>
+	                        <tr>
+	                            <th>회원 아이디</th>
+	                            <td><input type="text" name="memberId"></td>
+	                        </tr>
+	                        <tr>
+	                            <th>회원 비밀번호</th>
+	                            <td><input type="password" name="memberPwd"></td>
+	                        </tr>
+                   			<%} %>
                     </table>
                     <button type="submit" class="btn btn-danger">회원탈퇴</button>
               			<button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
@@ -464,24 +492,6 @@
 
 
     <script>
-        /*
-        document.getElementById("infoBtn").addEventListener("click", function() {
-            var infoDiv = document.querySelector(".myInfo"); // 클래스 선택자로 변경
-            if (infoDiv.style.display === "none" || infoDiv.style.display === "") {
-                infoDiv.style.display = "block";
-            } else {
-                infoDiv.style.display = "none";
-            }
-        });
-
-        document.getElementById("friendListBtn").addEventListener("click", function(){
-            var friendListDiv = document.getElementById("friendList");  // id 선택으로 연습해 보기
-            if(friendListDiv.style.display === "none" || friendListDiv.style.display === ""){
-            friendListDiv.style.display = "block";
-        }else{
-            friendListDiv.style.display ="none";
-        }
-        });*/
         /* 아무거나 */
         document.addEventListener("DOMContentLoaded", function() {
         var infoDiv = document.querySelector(".myInfo");
@@ -513,22 +523,48 @@
 
         //아이디 중복체크
         function memberIdCheck(){
-                    $.ajax({
-                        url:"memberIdCheck",
-                        data:{ memberId:$("#memberId").val() },
-                        success:function(result){
-                            if(result == "success"){
-                                $("#idMsg>div").css("display", "none"); 
-                                $("#submitBtn").removeAttr("disabled");
-                            }else{
-                                $("#idMsg>div").css("display", "block");
-                                $("#submitBtn").attr("disabled","disabled");
-                            }
-                        },
-                        error:function(){},
-                    })
-                }
+            $.ajax({
+                url:"memberIdCheck",
+                data:{ memberId:$("#memberId").val() },
+                success:function(result){
+                    if(result == "success"){
+                        $("#idMsg>div").css("display", "none"); 
+                        $("#submitBtn").removeAttr("disabled");
+                    }else{
+                        $("#idMsg>div").css("display", "block");
+                        $("#submitBtn").attr("disabled","disabled");
+                    }
+                },
+                error:function(){},
+            })
+        }
+        $(function(){
 
+            //친구 리스트 가져오는 ajax
+            $.ajax({
+                url:"friendList",
+                data:{ memberNo:$("#memberNo").val()},
+                success:function(friendList){
+                	//memberNo : 로그인 회원 번호
+                	//memberId : 친구 이름
+                	//memberName : 최근 감상한 음원명,가수명
+                	let content = "";
+                	if(friendList != null){
+                        for(let i=0; i<friendList.length; i++){
+                        	content += "<tr>"
+                        					 + "<td>" + friendList[i].memberId + "</td>"
+                            			 + "<td>" + friendList[i].memberName + "</td>"
+                            			 + "</tr>"
+                        }
+                        $("#friendList>tbody").html(content);
+                    }
+                },
+                error:function(){
+                	console.log("친구리스트 ajax 안됨")
+                },
+            })
+
+        })
 
     </script>
 </body>

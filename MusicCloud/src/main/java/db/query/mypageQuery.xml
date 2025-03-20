@@ -37,8 +37,27 @@
 		   SET STATUS = 'N'
 		 WHERE MEMBER_ID = ?
 		   AND MEMBER_PWD = ?
+		   AND MEMBER_NO = ?
 	</entry>
-	<entry key="">
+	
+	<entry key="friendList">
+		SELECT 
+		       F.MEMBER_NO AS "MEMBER_NO"
+		     , M.MEMBER_NAME AS "FRIEND_NAME"
+		     , MUSIC.MUSIC_TITLE || '-' || MUSIC.MUSIC_SINGER AS "RECENT_MUSIC"
+		  FROM FRIEND_LIST F
+		  JOIN (
+		        SELECT 
+		               R.MEMBER_NO AS "MEMBER_NO"
+		             , R.MUSIC_NO AS "MUSIC_NO"
+		             , ML.MUSIC_TITLE AS "MUSIC_TITLE"
+		             , ML.MUSIC_SINGER AS "MUSIC_SINGER"
+		          FROM RECENT_MUSIC R
+		          JOIN MUSIC_LIST ML ON(R.MUSIC_NO = ML.MUSIC_NO)
+		       ) MUSIC
+		    ON (F.FRIEND_NO = MUSIC.MEMBER_NO)
+		  JOIN MEMBER M ON(F.FRIEND_NO = M.MEMBER_NO)
+		  WHERE F.MEMBER_NO =  ?
 	</entry>
 	<entry key="">
 	</entry>

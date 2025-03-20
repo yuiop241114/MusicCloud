@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Properties;
 
 import static com.musicCloud.common.JDBCTemplate.*;
@@ -112,7 +113,7 @@ public class MyPageDao {
 	 * @return
 	 * 설명 : 회원 탈퇴 Dao
 	 */
-	public int memberSecession(Connection conn, String memberId, String memberPwd) {
+	public int memberSecession(Connection conn, int memberNo, String memberId, String memberPwd) {
 		//update
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -122,6 +123,7 @@ public class MyPageDao {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, memberId);
 			pstmt.setString(2, memberPwd);
+			pstmt.setInt(3, memberNo);
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -130,6 +132,42 @@ public class MyPageDao {
 			close(pstmt);
 		}
 		return result;
+	}
+	
+	/**
+	 * @param conn
+	 * @param memberNo
+	 * @return
+	 * 설명 : 친구 리스트(친구가 최근들은 음원) 가져오는 Dao
+	 */
+	public ArrayList<Member> friendList(Connection conn, int memberNo){
+		//select
+		ArrayList<Member> list = new ArrayList<Member>();
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("friendList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memberNo);
+			
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				list.add(
+						  new Member(
+								  	  rset.getInt("member_no")
+								  	, rset.getString("friend_name")
+								  	, rset.getString("recent_music")
+								  	)
+						);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			close(rset);
+		}
+		return list;
 	}
 
 }

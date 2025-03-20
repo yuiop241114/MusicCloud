@@ -88,6 +88,21 @@ public class Member {
 		this.gender = gender;
 		this.age = age;
 	}
+	
+	
+
+	/**
+	 * @param memberNo
+	 * @param memberId
+	 * @param memberName
+	 * 설명 : 친구 리스트 정보를 가져오기 위한 생성자(회원번호, 친구이름, 최근재생음악)
+	 */
+	public Member(int memberNo, String memberId, String memberName) {
+		super();
+		this.memberNo = memberNo;
+		this.memberId = memberId;
+		this.memberName = memberName;
+	}
 
 	public int getMemberNo() {
 		return memberNo;

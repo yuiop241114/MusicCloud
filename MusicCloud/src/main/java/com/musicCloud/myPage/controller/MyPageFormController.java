@@ -33,7 +33,8 @@ public class MyPageFormController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		Member loginMember = (Member)request.getSession().getAttribute("loginMember");	
-		ArrayList<Location> location = new MemberSerivce().selectAllLocation(); 
+		ArrayList<Location> location = new MemberSerivce().selectAllLocation();
+		
 		
 		if(loginMember != null) {
 			//로그인 상태
