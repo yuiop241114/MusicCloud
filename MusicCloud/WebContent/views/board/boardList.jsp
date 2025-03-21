@@ -6,10 +6,11 @@
 <style>
     .board-container {
         width: 1200px;
-        margin: 20px auto 20px 25%; /* 기존보다 조금 더 오른쪽으로 이동 */
+        margin: 20px auto 20px 25%;
         text-align: center;
         border-radius: 10px;
         padding: 20px;
+        position: relative; /* 버튼 배치 조정을 위해 추가 */
     }
     .board-title {
         background-color: #1587d0;
@@ -19,6 +20,22 @@
         font-size: 24px;
         font-weight: bold;
         margin-bottom: 20px; 
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .write-btn {
+        background-color: #1587d0;
+        color: white;
+        padding: 8px 16px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-right: 15px;
+    }
+    .write-btn:hover {
+        background-color: #1066a0;
     }
     .board-table {
         width: 100%;
@@ -30,7 +47,7 @@
         text-align: center;
     }
     .board-table th {
-        background-color: #f8f8f8; 
+        background-color: #f8f8f8;
         font-weight: bold;
     }
     .board-table tr:nth-child(even) {
@@ -42,7 +59,7 @@
     .pagination {
         margin-top: 20px;
         text-align: center;
-        margin-left: 40%; /* 페이지바를 오른쪽으로 이동 */
+        margin-left: 40%;
     }
     .pagination a {
         color: #1587d0;
@@ -65,39 +82,43 @@
     <%@ include file="../common/menubar.jsp" %>
     
     <div class="board-container">
-      <h2 class="board-title">통합게시판</h2>
-      <table class="board-table">
-          <thead>
-              <tr>
-                  <th>글번호</th>
-                  <th>글 제목</th>
-                  <th>조회수</th>
-                  <th>작성일</th>
-                  <th>작성자</th>
-              </tr>
-          </thead>
-          <tbody>
-    <% for (int i = 10; i >= 1; i--) { %>
-    <tr>
-        <td><%= i %></td>
-        <td>
-            <a href="<%= contentPath %>/views/board/boardList2.jsp">Ã¬ÂÂÃ­ÂÂ ÃªÂ¸Â Ã¬ ÂÃ«ÂªÂ©</a>
-        </td>
-        <td><%= (int)(Math.random() * 100) %></td>
-        <td>25/03/<%= 30 - i %></td>
-        <td>user<%= i %></td>
-    </tr>
-    <% } %>
-</tbody>
-      </table>
+        <div class="board-title">
+            <span>통합게시판</span>
+            <button class="write-btn" onclick="location.href='<%= contentPath %>/views/board/writePost.jsp'" href="<%= contentPath %>/views/board/boardList3.jsp">글 작성</button>
+        </div>
       
-      <div class="pagination">
-          <a href="#" class="active">1</a>
-          <a href="#">2</a>
-          <a href="#">3</a>
-          <a href="#">4</a>
-          <a href="#">5</a>
-      </div>
+        <table class="board-table">
+            <thead>
+                <tr>
+                    <th>글번호</th>
+                    <th>글 제목</th>
+                    <th>조회수</th>
+                    <th>작성일</th>
+                    <th>작성자</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for (int i = 10; i >= 1; i--) { %>
+                <tr>
+                    <td><%= i %></td>
+                    <td>
+                        <a href="<%= contentPath %>/views/board/boardList3.jsp">게시판 제목</a>
+                    </td>
+                    <td><%= (int)(Math.random() * 100) %></td>
+                    <td>25/03/<%= 30 - i %></td>
+                    <td>user<%= i %></td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+        
+        <div class="pagination">
+            <a href="#" class="active">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+        </div>
     </div>
 </body>
 </html>
