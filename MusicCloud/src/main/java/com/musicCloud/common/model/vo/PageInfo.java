@@ -1,6 +1,8 @@
 package com.musicCloud.common.model.vo;
 
 import com.musicCloud.member.model.vo.Member;
+import com.musicCloud.board.model.vo.Board;
+
 
 public class PageInfo {
 
