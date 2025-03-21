@@ -11,17 +11,18 @@ import javax.servlet.http.HttpSession;
 import com.musicCloud.myPage.model.service.MyPageService;
 
 /**
- * Servlet implementation class MyPageFriendInsertController
+ * Servlet implementation class MyPageFriendDeleteController
  */
-@WebServlet("/friendInsert")
-public class MyPageFriendInsertController extends HttpServlet {
+@WebServlet("/deleteFriend")
+public class MyPageFriendDeleteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MyPageFriendInsertController() {
+    public MyPageFriendDeleteController() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -29,32 +30,20 @@ public class MyPageFriendInsertController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int memberNo = Integer.parseInt(request.getParameter("memberNo"));
-		String insertInfo = "";
+		int friendNo = Integer.parseInt(request.getParameter("friendNo"));
 		HttpSession session = request.getSession();
-		//아이디를 받았으면 아이디를 저장
-		if(request.getParameter("memberId") != null) {
-			insertInfo = request.getParameter("memberId");
-		}
-		//별칭을 받았으면 별칭을 저장
-		if(request.getParameter("memberAlias") != null) {
-			insertInfo = request.getParameter("memberAlias");
-		}
 		
-		int result = new MyPageService().friendInsert(memberNo, insertInfo);
+		int result = new MyPageService().deleteFriend(memberNo, friendNo);
 		
-		if(result > 0) {
-			session.setAttribute("alertMsg", "친구 추가 성공하였습니다");
-			response.sendRedirect(request.getContextPath() + "/myPageForm");
-		}else {
-			session.setAttribute("alertMsg", "친구 추가 실패하였습니다");
-			response.sendRedirect(request.getContextPath() + "/myPageForm");
-		}
+		response.getWriter().print(result);
+
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
 	}
 
 }

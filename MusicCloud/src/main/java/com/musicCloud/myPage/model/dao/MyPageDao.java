@@ -12,6 +12,7 @@ import java.util.Properties;
 import static com.musicCloud.common.JDBCTemplate.*;
 import com.musicCloud.member.model.dao.MemberDao;
 import com.musicCloud.member.model.vo.Member;
+import com.musicCloud.myPage.model.vo.Subscribe;
 
 public class MyPageDao {
 	
@@ -156,6 +157,7 @@ public class MyPageDao {
 				list.add(
 						  new Member(
 								  	  rset.getInt("member_no")
+								  	, rset.getInt("friend_no")
 								  	, rset.getString("friend_alias")
 								  	, rset.getString("recent_music")
 								  	)
@@ -182,7 +184,6 @@ public class MyPageDao {
 		//1. 아이디를 받은 경우 2. 별칭을 받은 경우
 		int friendNo = 0;
 		int result = 0;
-		System.out.println(insertInfo);
 		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -222,6 +223,72 @@ public class MyPageDao {
 		}
 		System.out.println(result);
 		return result;
+	}
+	
+	
+	/**
+	 * @param conn
+	 * @param memberNo
+	 * @param friendNo
+	 * @return
+	 * 설명 : 친구 삭제 Dao
+	 */
+	public int deleteFriend(Connection conn, int memberNo, int friendNo) {
+		//delete 
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("deleteFriend");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memberNo);
+			pstmt.setInt(2, friendNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	
+	/**
+	 * @param conn
+	 * @param memberNo
+	 * @return
+	 * 설명 : 정기 구독 내역 Dao
+	 */
+	public ArrayList<Subscribe> subscribeList(Connection conn, int memberNo) {
+		//select
+		ArrayList<Subscribe> list = new ArrayList<Subscribe>();
+ 		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("subscribeList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memberNo);
+			
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				list.add(
+						  new Subscribe(
+								  		 rset.getInt("member_no")
+								  	   , rset.getString("start_date")
+								  	   , rset.getString("end_date")
+								  	   )
+						);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			close(rset);
+		}
+		return list;
 	}
 
 }

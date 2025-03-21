@@ -97,9 +97,10 @@ public class Member {
 	 * @param memberName
 	 * 설명 : 친구 리스트 정보를 가져오기 위한 생성자(회원번호, 친구이름, 최근재생음악)
 	 */
-	public Member(int memberNo, String memberId, String memberName) {
+	public Member(int memberNo, int locationNo, String memberId, String memberName) {
 		super();
 		this.memberNo = memberNo;
+		this.locationNo = locationNo;
 		this.memberId = memberId;
 		this.memberName = memberName;
 	}

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import static com.musicCloud.common.JDBCTemplate.*;
 import com.musicCloud.member.model.vo.Member;
 import com.musicCloud.myPage.model.dao.MyPageDao;
+import com.musicCloud.myPage.model.vo.Subscribe;
 
 public class MyPageService {
 
@@ -86,5 +87,38 @@ public class MyPageService {
 		}
 		close(conn);
 		return result;
+	}
+	
+	
+	/**
+	 * @param memberNo
+	 * @param friendNo
+	 * @return
+	 * 설명 : 친구 삭제 서비스 메소드
+	 */
+	public int deleteFriend(int memberNo, int friendNo) {
+		Connection conn = getConnection();
+		int result = new MyPageDao().deleteFriend(conn, memberNo, friendNo);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+	
+	
+	/**
+	 * @param memberNo
+	 * @return
+	 * 설명 : 정기 구독 내역 서비스 메소드
+	 */
+	public ArrayList<Subscribe> subscribeList(int memberNo) {
+		Connection conn = getConnection();
+		ArrayList<Subscribe> list = new MyPageDao().subscribeList(conn, memberNo);
+		close(conn);
+		return list;
 	}
 }

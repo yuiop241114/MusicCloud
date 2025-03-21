@@ -139,11 +139,6 @@
     .myPageTable tr:nth-child(even) {
         background-color: #f9f9f9;
     }
-    .myPageTable tr td b {
-        color: rgb(221, 0, 221);
-        text-decoration: none;
-        font-weight: bold;
-    }
 
     /*회원탈퇴 내정보 친구리스트 로그아웃*/
     .myPageList:hover{
@@ -224,6 +219,11 @@
     #addFriendBtn{
         background-color: #1587d0;
         margin-bottom: 10px;
+    }
+
+    /*정기 구독 결재 내역*/
+    #subscribeTable b{
+        font-size: medium;
     }
 </style>
 </head>
@@ -341,25 +341,17 @@
                     <br>
 
                     <div id="payment-detail">
-                        <b>결재 내역</b>
-                        <table class="myPageTable">
+                        <b>구독권 결재 내역</b>
+                        <table class="myPageTable" id="subscribeTable">
                             <thead>
                                 <tr>
                                     <th>날짜</th>
                                     <th>사용서비스</th>
-                                    <th>사용내역</th>
-                                    
+                                    <th>금액</th>
                                 </tr>
                             </thead>
+
                             <tbody>
-                                <!-- JSP 반복부문 -->
-                                <tr>
-                                    <td>2022-12-01 16:37:06</td>
-                                    <td>서동진 플레이리스트<br>구매</td>
-                                    <td><b>1,000</b></td>
-                                    
-                                </tr>
-                                <!-- JSP 반복부문 -->
                             </tbody>
                         </table>
                     </div>
@@ -561,15 +553,17 @@
                 data:{ memberNo:$("#memberNo").val()},
                 success:function(friendList){
                 	//memberNo : 로그인 회원 번호
+                    //locationNo : 친구 회원 번호
                 	//memberId : 친구 이름
                 	//memberName : 최근 감상한 음원명,가수명
                 	let content = "";
                 	if(friendList != null){
                         for(let i=0; i<friendList.length; i++){
-                        	content += "<tr>"                 //<input type="hidden" name="friendAlias" value="">
+                        	content += "<tr>"                 
                         				 + "<td>" + friendList[i].memberId + "</td>"
                             			 + "<td>" + friendList[i].memberName + "</td>"
-                                         + "<td>" + "<button type=" + "'button'" + " class=" + "'btn btn-danger'" + ">친구 삭제</button>" + "<input type=" + "'hidden'" +  " id=" + "'friendAlias'" + " value=" + "'" + friendList[i].memberId +"'" + ">" 
+                                         + "<td>" + "<button type=" + "'button'" + " class=" + "'btn btn-danger'" + ">친구 삭제</button>" + "<input type=" + "'hidden'" +  " id=" + "'friendNo'" + " value=" + "'" + friendList[i].locationNo +"'" + ">" 
+                                         + "<input type=" + "'hidden'" +  " id=" + "'memberNo'" + " value=" + "'" + friendList[i].memberNo +"'" + ">"
                                          + "</td>"
                             		 + "</tr>"
                         }
@@ -585,23 +579,50 @@
 
         //친구삭제 스크립트
         $(document).on("click", ".btn-danger", function() {
-            console.log($(this).siblings("#friendAlias").val());
+
+            //console.log($(this).siblings("#friendNo").val());
             let booleanMsg = confirm("친구 삭제하시겠습니까?");
             if(booleanMsg == true){
-
                 $.ajax({
                     url:"deleteFriend",
-                    date:{
-                        memberNo : $("#memberNo").val(),
-                        friend : $(this),
+                    data:{
+                        memberNo : $(this).siblings("#memberNo").val(),
+                        friendNo : $(this).siblings("#friendNo").val(),
                     },
-                    success:function(){},
+                    success:function(result){
+                        if(result == 0){
+                            alert("다시 시도해주세요")
+                        }
+                        location.href = location.href;
+                    },
                     error:function(){
                         console.log("친구 삭제 ajax 작동 불가")
-                    },
+                    }
                 })
-
             }
+
+        })
+
+        //정기 구독 정보
+        $.ajax({
+            url:"subscribeList",
+            data:{ memberNo : $("#memberNo").val()},
+            success:function(list){
+                let content = "";
+                if(list != null){
+                    for(let i=0; i<list.length; i++){
+                    	content += "<tr>" +
+                                    "<td>" + list[i].startDate + "</td>" + 
+                                    "<td><b>정기 구독권</b></td>" + 
+                                    "<td><b>" + 9999 + "</b></td>"
+                                   "</tr>";
+                    }
+                }
+                $("#subscribeTable>tbody").html(content);
+            },
+            error:function(){
+                console.log("정기 구독 내역 ajax 실패");
+            },
         })
 
     </script>

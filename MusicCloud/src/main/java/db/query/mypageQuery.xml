@@ -43,6 +43,7 @@
 	<entry key="friendList">
 		SELECT 
 		       F.MEMBER_NO AS "MEMBER_NO"
+	       , F.FRIEND_NO AS "FRIEND_NO"
 		     , M.MEMBER_ALIAS AS "FRIEND_ALIAS"
 		     , MUSIC.MUSIC_TITLE || '-' || MUSIC.MUSIC_SINGER AS "RECENT_MUSIC"
 		  FROM FRIEND_LIST F
@@ -58,6 +59,7 @@
 		    ON (F.FRIEND_NO = MUSIC.MEMBER_NO)
 		  JOIN MEMBER M ON(F.FRIEND_NO = M.MEMBER_NO)
 		  WHERE F.MEMBER_NO =  ?
+		    AND M.STATUS = 'Y'
 	</entry>
 	<entry key="friendInsert">
 		INSERT
@@ -83,5 +85,21 @@
 		SELECT MEMBER_NO
 		  FROM MEMBER 
 		 WHERE MEMBER_ALIAS = ?
+	</entry>
+	
+	<entry key="deleteFriend">
+		DELETE 
+		  FROM FRIEND_LIST 
+		WHERE MEMBER_NO = ?
+		  AND FRIEND_NO = ?
+	</entry>
+	
+	<entry key="subscribeList">
+		SELECT
+		       MEMBER_NO
+		     , TO_CHAR(SUBSCRIBE_START_DATE, 'YYYY MM-DD') AS "START_DATE" 
+		     , TO_CHAR(SUBSCRIBE_END_DATE, 'YYYY MM-DD') AS "END_DATE"
+		 FROM SUBSCRIBE
+		WHERE MEMBER_NO = ?
 	</entry>
 </properties>
