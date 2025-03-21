@@ -227,7 +227,7 @@
 	                    success: function (response1) {
 	                        if (response1.trim() === "success") {
 	                            alert("회원 삭제 완료!");
-								
+								location.reload();
 	                        } else {
 	                            alert("삭제 실패! 다시 시도하세요.");
 	                        }
@@ -260,7 +260,7 @@
 	                    success: function (response2) {
 	                        if (response2.trim() === "success") {
 	                            alert("회원 복구 완료!");
-								
+	                            location.reload();
 	                        } else {
 	                            alert("복구 실패! 다시 시도하세요.");
 	                        }
