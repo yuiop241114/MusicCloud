@@ -223,7 +223,7 @@
 					</tr>
 					<tr>
 							<th><img src="resources/image/cartlogo.jpg" alt=""></th>
-							<th>플레이 리스트</th>
+							<th><a href="<%= contentPath%>/playlistForm">플레이리스트</a></th>
 					</tr>
 			</table>
 		</div>
