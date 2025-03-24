@@ -7,6 +7,7 @@
 	String contentPath = request.getContextPath();
 	Member loginMember = (Member)session.getAttribute("loginMember");
 	String alertMsg = (String)session.getAttribute("alertMsg");
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -96,7 +97,7 @@
 	    border-top-left-radius: 30px;
 	    border-bottom-left-radius: 30px;
 	}
-	.search-bar #search-btn{
+	.search-bar #search-btn, #search-btn-member-null{
 	    float: right;
 	    width: 20%;
 	    background-color: #1587d0;
@@ -156,6 +157,16 @@
 	#side-btn-list img{
 	    width: 80%;
 	}
+
+	/*퀵메뉴 각 페이지 이동 a 태그*/
+	#side-btn-list a{
+		text-decoration: none;
+		color: white;
+	}
+	#side-btn-list a:hover{
+		color: gray;
+	}
+
 	
 	</style> 
 <body>
@@ -179,9 +190,17 @@
 					<%} %>
        </div>
 
-       <form action="" class="search-bar">
-           <input type="text" id="search-box">
-           <button type="submit" id="search-btn">검색</button>
+			<% if(loginMember == null){%>
+	      <form action="" class="search-bar">
+           <input type="text" id="search-box" name="search" required>
+           <button type="submit" id="search-btn-member-null">검색</button>     
+		
+         <% }else{ %>
+       <form action="<%=contentPath%>/searchList.li" class="search-bar">
+           <input type="text" id="search-box" name="search" required>
+           <input type="hidden" name="locationNo" value="<%= loginMember.getLocationNo() %>">
+           <button type="submit" id="search-btn">검색</button>     
+         <% } %>
        </form>
   </div>
 
@@ -195,7 +214,7 @@
 					</tr>
 					<tr>
 							<th><img src="resources/image/cartlogo.jpg" alt=""></th>
-							<th>마이페이지</th>
+							<th><a href="<%= contentPath%>/myPageForm">마이페이지</a></th>
 					</tr>
 					<tr>
 							<th><img src="resources/image/cartlogo.jpg" alt=""></th>
@@ -203,23 +222,23 @@
 					</tr>
 					<tr>
 							<th><img src="resources/image/cartlogo.jpg" alt=""></th>
-							<th>장바구니</th>
+							<th><a href="<%= contentPath%>/cartForm">장바구니</a></th>
 					</tr>
 					<tr>
 							<th><img src="resources/image/cartlogo.jpg" alt=""></th>
-							<th>플레이 리스트</th>
+							<th><a href="<%= contentPath%>/playlistForm">플레이리스트</a></th>
 					</tr>
 			</table>
 		</div>
 	</div>
 	
-	<!-- 알림창 스크립트 -->
-	<%if(alertMsg != null){%>
-		<script>
-			alert("<%= alertMsg%>");
-		</script>
-		<% session.removeAttribute("alertMsg"); %>
-	<%}%>
+		<!-- 알림창 스크립트 -->
+		<%if(alertMsg != null){%>
+			<script>
+				alert("<%= alertMsg%>");
+			</script>
+			<% session.removeAttribute("alertMsg"); %>
+		<%}%>
 	
 	<script>
 			//퀵 메뉴 스크립트
@@ -232,8 +251,12 @@
 	                $("#side-btn-list").slideUp();
 	            }
 	        });
-	        
 	    });
+
+		document.getElementById("search-btn-member-null").addEventListener("click", function(){
+			alert("로그인 후 이용가능합니다")
+		});
+		
 	</script>
 </body>
 </html>

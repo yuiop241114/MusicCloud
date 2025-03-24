@@ -37,7 +37,6 @@ public class loginController extends HttpServlet {
 		String loginPwd = request.getParameter("loginPwd");
 		
 		Member m =  new MemberSerivce().loginMember(loginId, loginPwd);
-		
 		if(m == null) {
 			//실패
 			request.getSession().setAttribute("alertMsg", "로그인 실패 다시 시도해주세요");
