@@ -7,6 +7,9 @@ public class PlayList {
 	private String playlistTag;
 	private String payment_status;
 	
+	//개인 플레이리스트 가져올때 사용하는 컬럼
+	private String playListMusicTotal;
+	
 	public PlayList() {}
 
 	public PlayList(int playlistNo, int memberNo, String playlistName, String playlistTag, String payment_status) {
@@ -16,6 +19,37 @@ public class PlayList {
 		this.playlistName = playlistName;
 		this.playlistTag = playlistTag;
 		this.payment_status = payment_status;
+	}
+	
+
+	/**
+	 * @param playlistNo
+	 * @param memberNo
+	 * @param playlistName
+	 * @param playlistTag
+	 * @param payment_status
+	 * @param playListMusicTotal
+	 * 설명 : 개인 플레이 리스트를 가져오기 위한 컬럼을 추가한 생성자
+	 */
+	public PlayList(int playlistNo, int memberNo, String playlistName, String playlistTag, String payment_status,
+			String playListMusicTotal) {
+		super();
+		this.playlistNo = playlistNo;
+		this.memberNo = memberNo;
+		this.playlistName = playlistName;
+		this.playlistTag = playlistTag;
+		this.payment_status = payment_status;
+		this.playListMusicTotal = playListMusicTotal;
+	}
+	
+	
+
+	public String getPlayListMusicTotal() {
+		return playListMusicTotal;
+	}
+
+	public void setPlayListMusicTotal(String playListMusicTotal) {
+		this.playListMusicTotal = playListMusicTotal;
 	}
 
 	public int getPlaylistNo() {
@@ -60,7 +94,8 @@ public class PlayList {
 
 	@Override
 	public String toString() {
-		return "playList [playlistNo=" + playlistNo + ", memberNo=" + memberNo + ", playlistName=" + playlistName
-				+ ", playlistTag=" + playlistTag + ", payment_status=" + payment_status + "]";
+		return "PlayList [playlistNo=" + playlistNo + ", memberNo=" + memberNo + ", playlistName=" + playlistName
+				+ ", playlistTag=" + playlistTag + ", payment_status=" + payment_status + ", playListMusicTotal="
+				+ playListMusicTotal + "]";
 	}
 }

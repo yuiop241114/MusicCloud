@@ -1,4 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
+	<entry key="selectAllPlaylist">
+		SELECT 
+		      P.MEMBER_NO AS "MNO"
+		    , P.PLAYLIST_NO AS "PNO"
+		    , P.PLAYLIST_NAME AS "PNAME"
+		    , P.PLAYLIST_TAG AS "PTAG"
+		    , P.PAYMENT_STATUS AS "PSTATUS"
+		    , PD.PLAYLIST_MUSIC_TOTAL AS "TOTAL"
+		 FROM PLAYLIST P
+		 LEFT JOIN PLAYLIST_DETAIL PD ON (P.PLAYLIST_NO = PD.PLAYLIST_NO)
+		WHERE P.MEMBER_NO = ?
+	</entry>
+	<entry key="selectAllMusic">
+		SELECT 
+		       ML.MUSIC_NO MNO
+		     , ML.MUSIC_CATEGORY_NO CATEGORY
+		     , ML.MUSIC_TITLE MTITLE
+		     , ML.MUSIC_SINGER MSINGER
+		     , ML.MUSIC_COUNT MCOUNT
+		     , ML.MUSIC_LIKE MLIKE
+		     , ML.MUSIC_DISLIKE MDISLIKE
+		     , ML.LYRICS LYRICS
+		     , ML.MUSIC_STATUS STATUS 
+		     , MF.MUSIC_FILE_ORIGIN_NAME FILEORIGINNAME
+		     , MF.MUSIC_FILE_EDIT_NAME FILEEDITNAME
+		     , MF.MUSIC_FILE_STORE_PATH FILEPATH
+		     , MF.MUSIC_IMAGE_ORIGIN_NAME IMAGEORIGINNAME
+		     , MF.MUSIC_IMAGE_EDIT_NAME IMAGEEDITNAME
+		     , MF.MUSIC_IMAGE_PATH IMAGEPATH
+		  FROM MUSIC_LIST ML
+		  JOIN MUSIC_FILE MF ON (ML.MUSIC_NO = MF.MUSIC_NO)
+		 WHERE ML.MUSIC_STATUS = 'Y'
+	</entry>
+	<entry key="">
+	</entry>
+	<entry key="">
+	</entry>
+	<entry key="">
+	</entry>
+	<entry key="">
+	</entry>
+	<entry key="">
+	</entry>
+	<entry key="">
+	</entry>
+	<entry key="">
+	</entry>
+	<entry key="">
+	</entry>
+	<entry key="">
+	</entry>
+	<entry key="">
+	</entry>
 </properties>

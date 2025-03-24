@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.musicCloud.common.vo.MusicFile;
 import com.musicCloud.member.model.vo.Member;
 import com.musicCloud.playlist.model.service.PlaylistService;
 import com.musicCloud.playlist.model.vo.PlayList;
@@ -36,9 +37,13 @@ public class PlaylistFormController extends HttpServlet {
 		HttpSession session = request.getSession();
 		Member m = (Member)session.getAttribute("loginMember");
 		
+		//개인 플레이 리스트 조회 
 		ArrayList<PlayList> playlist = new PlaylistService().selectAllPlaylist(m.getMemberNo());
-		
+		ArrayList<MusicFile> fileList = new PlaylistService().selectAllMusic();
+
 		if(session.getAttribute("loginMember") != null) {
+			session.setAttribute("playlist", playlist);
+			session.setAttribute("fileList", fileList);
 			request.getRequestDispatcher("views/play/playList.jsp").forward(request, response);
 		}else {
 			session.setAttribute("alertMsg", "로그인 후 이용 가능합니다");
