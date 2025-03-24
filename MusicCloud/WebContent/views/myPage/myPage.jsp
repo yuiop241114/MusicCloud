@@ -230,18 +230,14 @@
 <body>
 	<%@ include file="../common/menubar.jsp" %>
 
-
     <div class="wrapperMypage">
         <div class="content">
 
         <div class="header">
-
             <div class="header-1">
                 <b style="margin: auto; text-align: center; color: #444; font-size: larger;">마이페이지</b>
-            </div>
-
-            
-            </div>
+            </div>    
+        </div>
         
         <div class="main">
 
