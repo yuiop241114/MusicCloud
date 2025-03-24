@@ -34,40 +34,42 @@
 <style>
 	/*전체를 감싸는 div*/
 	.playlistForm{
-		border: 1px solid;
-		width: 1500px;
+		width: 1400px;
 		margin: auto;
+	}
+	h3{
+		margin-left: 40px;
+		color: #1587d0;
 	}
 	/*플레이 리스트 출력 영역*/
 	.playlistviewer{
 		box-sizing: border-box;
-		border: 1px solid;
-		width: 1300px;
+		width: 1200px;
 		float: left;
 		display: flex;
 		flex-wrap: wrap;
 		gap: 60px;
+		margin-left: 30px;
 	}
 	/*플레이 리스트 각 div*/
 	.personPlaylist{
-		border: 1px solid #1587d0;
+		border: 1px solid skyblue;
 		width: 250px;
 		height: 250px;
+		border-radius: 10px;
+		overflow: hidden;
 	}
 	.playlistImg{
 		display: flex;
 		flex-wrap: wrap;
-		border: 1px solid;
 		width: 100%;
 		height: 80%;
 	}
-	.playlistImg>div{
-		border: 1px solid;
+	.playlistImg>img{
 		width: 50%;
 		height: 50%;
 	}
 	.playlistContent{
-		border: 1px solid;
 		width: 100%;
 		height: 20%;
 		text-align: center;
@@ -82,24 +84,39 @@
 	<%@ include file="../common/menubar.jsp" %>
 	
 	<div class="playlistForm">
-		<h2 align="center">플레이 리스트</h2>
+		<h3>플레이 리스트</h3>
 		<div class="playlistviewer">
 			<%if(playlist != null) {%>
-				<%for(PlayList p : playlist){%>
+				<%
+					String[] musicNum = null;
+					//소유한 플레이 리스트 만큼 반복
+					for(PlayList p : playlist){
+						musicNum = p.getPlayListMusicTotal().split(",");
+				%>
 					<div class="personPlaylist">
 
+						<!-- 음원 이미지(4개고정) -->
 						<div class="playlistImg">
 							<%for(int i=0; i<4; i++){%>
-								<div></div>
-							<%} %>
+								<img src="<%
+										for(MusicFile f : fileList){
+											if(Integer.parseInt(musicNum[i % musicNum.length]) == f.getMusicNo()){
+									%> <%= f.getMusicImagePath() + f.getMusicImageEditName()%>
+									<%
+											}
+										}
+									%>">
+									
+							<%} //음원이미지반복문끝부분%>
 						</div>
 
+						<!-- 플레이리스트 제목-->
 						<div class="playlistContent">
 							<b><%= p.getPlaylistName()%></b>
 						</div>
 
 					</div>
-				<%}%>
+				<%}//플레이리스트 개수 만큼 반복문 끝부분%>
 			<%}else{%>
 				<h2>플레이 리스트가 없습니다</h2>
 			<%} %>
