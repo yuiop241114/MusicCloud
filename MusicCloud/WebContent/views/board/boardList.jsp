@@ -4,14 +4,18 @@
 <meta charset="UTF-8">
 <title>MusicCloud</title>
 <style>
+    /* 전체 컨테이너 스타일 */
     .board-container {
-        width: 1200px;
-        margin: 20px auto 20px 25%;
+        max-width: 1200px;
+        width: 90%;
+        margin: 20px auto;
         text-align: center;
         border-radius: 10px;
         padding: 20px;
-        position: relative; /* 버튼 배치 조정을 위해 추가 */
+        position: relative;
     }
+
+    /* 게시판 제목 */
     .board-title {
         background-color: #1587d0;
         color: white;
@@ -19,48 +23,61 @@
         border-radius: 10px;
         font-size: 24px;
         font-weight: bold;
-        margin-bottom: 20px; 
+        margin-bottom: 20px;
         display: flex;
-        justify-content: space-between;
+        justify-content: center; /* 가운데 정렬 */
         align-items: center;
+        flex-wrap: wrap;
     }
-    .write-btn {
+
+    /* 등록 버튼 스타일 */
+    .register-btn {
+        position: absolute;
+        top: -50px;
+        right: 30px; /* 기존보다 왼쪽으로 조금 더 이동 */
         background-color: #1587d0;
         color: white;
-        padding: 8px 16px;
-        font-size: 16px;
-        border: none;
+        padding: 10px 15px;
         border-radius: 5px;
+        border: none;
         cursor: pointer;
-        margin-right: 15px;
     }
-    .write-btn:hover {
+    .register-btn:hover {
         background-color: #1066a0;
     }
+
+    /* 게시판 테이블 */
     .board-table {
         width: 100%;
         border-collapse: collapse;
     }
+
     .board-table th, .board-table td {
         border: 1px solid #ddd;
-        padding: 15px; 
+        padding: 15px;
         text-align: center;
+        white-space: nowrap;
     }
+
     .board-table th {
         background-color: #f8f8f8;
         font-weight: bold;
     }
+
     .board-table tr:nth-child(even) {
         background-color: #f2f2f2;
     }
-    .board-table tr:hover { 
+
+    .board-table tr:hover {
         background-color: #e0e0e0;
     }
+
+    /* 페이지네이션 */
     .pagination {
         margin-top: 20px;
         text-align: center;
-        margin-left: 40%;
     }
+
     .pagination a {
         color: #1587d0;
         text-decoration: none;
@@ -69,10 +86,12 @@
         margin: 0 5px;
         border-radius: 5px;
     }
+
     .pagination a.active {
         background-color: #1587d0;
         color: white;
     }
+
     .pagination a:hover {
         background-color: #e0e0e0;
     }
@@ -82,9 +101,9 @@
     <%@ include file="../common/menubar.jsp" %>
     
     <div class="board-container">
+        <button class="register-btn">등록</button>
         <div class="board-title">
             <span>통합게시판</span>
-            <button class="write-btn" onclick="location.href='<%= contentPath %>/views/board/writePost.jsp'" href="<%= contentPath %>/views/board/boardList3.jsp">글 작성</button>
         </div>
       
         <table class="board-table">

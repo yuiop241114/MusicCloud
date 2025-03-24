@@ -101,6 +101,26 @@
     flex-wrap: wrap;
   }
 
+  .music-gallery {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .music-gallery a {
+            display: block;
+            width: 150px;
+        }
+        .music-gallery img {
+            width: 100%;
+            border-radius: 10px;
+            transition: transform 0.3s ease-in-out;
+        }
+        .music-gallery img:hover {
+            transform: scale(1.1);
+        }
+
+        
 </style>
 </head>
 <body>
@@ -113,7 +133,6 @@
 
   <div class="content-container">파일첨부 및 음원 이미지</div>
   <textarea class="large-textarea" placeholder="내용을 입력하세요. (Max 500자)"></textarea>
-
 </div>
 
 <!-- 수정된 중앙 정렬 제목 -->
@@ -134,6 +153,21 @@
   <div class="button-container">
     <button>등록</button>
   </div>
+
+  <div class="music-gallery">
+    <a href="https://example.com/song1" target="_blank">
+        <img src="music1.jpg" alt="음원 1">
+    </a>
+    <a href="https://example.com/song2" target="_blank">
+        <img src="music2.jpg" alt="음원 2">
+    </a>
+    <a href="https://example.com/song3" target="_blank">
+        <img src="music3.jpg" alt="음원 3">
+    </a>
+    <a href="https://example.com/song4" target="_blank">
+        <img src="music4.jpg" alt="음원 4">
+    </a>
+</div>
 </div>
 
 </body>
