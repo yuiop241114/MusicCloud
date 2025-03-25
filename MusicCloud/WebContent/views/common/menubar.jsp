@@ -201,6 +201,8 @@
        </form>
   </div>
 
+	<hr>
+
 	<div id="navigator-div">
 		<div class="navigator">
 			<button type="button" id="side-btn" class="btn btn-primary btn-lg">퀵 메뉴</button>
@@ -240,7 +242,6 @@
 	<script>
 			//퀵 메뉴 스크립트
 	    $(function(){
-	    	
 	        $("#side-btn").click(function(){
 	            if($("#side-btn-list").css('display') == 'none'){
 	                $("#side-btn-list").slideDown();

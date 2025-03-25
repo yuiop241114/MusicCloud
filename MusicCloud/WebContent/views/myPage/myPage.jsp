@@ -558,7 +558,7 @@
                         	content += "<tr>"                 
                         				 + "<td>" + friendList[i].memberId + "</td>"
                             			 + "<td>" + friendList[i].memberName + "</td>"
-                                         + "<td>" + "<button type=" + "'button'" + " class=" + "'btn btn-danger'" + ">친구 삭제</button>" + "<input type=" + "'hidden'" +  " id=" + "'friendNo'" + " value=" + "'" + friendList[i].locationNo +"'" + ">" 
+                                         + "<td>" + "<button type=" + "'button'" + " class=" + "'btn btn-danger deleteFriend'" + ">친구 삭제</button>" + "<input type=" + "'hidden'" +  " id=" + "'friendNo'" + " value=" + "'" + friendList[i].locationNo +"'" + ">" 
                                          + "<input type=" + "'hidden'" +  " id=" + "'memberNo'" + " value=" + "'" + friendList[i].memberNo +"'" + ">"
                                          + "</td>"
                             		 + "</tr>"
@@ -574,7 +574,7 @@
         })
 
         //친구삭제 스크립트
-        $(document).on("click", ".btn-danger", function() {
+        $(document).on("click", ".deleteFriend", function() {
 
             //console.log($(this).siblings("#friendNo").val());
             let booleanMsg = confirm("친구 삭제하시겠습니까?");
