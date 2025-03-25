@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +19,7 @@
 
     /* 게시판 제목 */
     .board-title {
-        background-color: #1587d0;
+        background-color: #1587d0;	
         color: white;
         padding: 10px;
         border-radius: 10px;
@@ -25,7 +27,7 @@
         font-weight: bold;
         margin-bottom: 20px;
         display: flex;
-        justify-content: center; /* 가운데 정렬 */
+        justify-content: center;
         align-items: center;
         flex-wrap: wrap;
     }
@@ -34,7 +36,7 @@
     .register-btn {
         position: absolute;
         top: -50px;
-        right: 30px; /* 기존보다 왼쪽으로 조금 더 이동 */
+        right: 30px;
         background-color: #1587d0;
         color: white;
         padding: 10px 15px;
@@ -75,7 +77,9 @@
     /* 페이지네이션 */
     .pagination {
         margin-top: 20px;
-        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .pagination a {
@@ -101,7 +105,9 @@
     <%@ include file="../common/menubar.jsp" %>
     
     <div class="board-container">
-        <button class="register-btn">등록</button>
+        <!-- 등록 버튼 클릭 시 글 작성 페이지로 이동 -->
+        <button class="register-btn" onclick="location.href='<%= contentPath %>/views/board/boardList2.jsp'">등록</button>
+
         <div class="board-title">
             <span>통합게시판</span>
         </div>

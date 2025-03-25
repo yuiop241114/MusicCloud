@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,6 +22,7 @@
     font-weight: bold;
     text-align: center;
     margin-bottom: 15px;
+    margin-left: -30px;
   }
 
   .input-field {
@@ -29,6 +32,7 @@
     border-radius: 5px;
     margin-bottom: 15px;
     font-size: 16px;
+    margin-left: -30px;
   }
 
   .large-textarea {
@@ -42,11 +46,12 @@
 
   .comment-section {
     margin-top: 20px;
+    text-align: center; /* 가운데 정렬을 위한 설정 */
   }
 
   .comment-box {
-    width: 100%;
-    height: 150px;
+    width: 80%; /* 기존 100%에서 줄임 */
+    height: 120px;
     padding: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -87,11 +92,11 @@
     text-align: center;
     background-color: #1e73be;
     color: white;
-    padding: 12px; /* 여백 조정 */
+    padding: 12px;
     border-radius: 5px;
     font-weight: bold;
-    margin: 30px auto; /* 위아래 여백 추가 */
-    width: fit-content; /* 텍스트 크기에 맞춰 조정 */
+    margin: 30px auto;
+    width: fit-content;
   }
 
   /* 이미지 컨테이너 중앙 정렬 */
@@ -101,29 +106,18 @@
     flex-wrap: wrap;
   }
 
-  .music-gallery {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            margin-top: 20px;
-        }
-        .music-gallery a {
-            display: block;
-            width: 150px;
-        }
-        .music-gallery img {
-            width: 100%;
-            border-radius: 10px;
-            transition: transform 0.3s ease-in-out;
-        }
-        .music-gallery img:hover {
-            transform: scale(1.1);
-        }
-
-        
 </style>
+
+<script>
+  function showCommentAlert() {
+      alert("댓글이 등록되었습니다!");
+  }
+</script>
+
 </head>
 <body>
+
+<%@ include file="../common/menubar.jsp" %>
 
 <div class="blue-box">
   <div class="title-container">제목: 30자를 넘겨선 안됩니다. VARCHAR(90)</div>
@@ -151,23 +145,8 @@
   <h2>댓글 20개</h2>
   <textarea class="comment-box" placeholder="댓글을 입력하세요..."></textarea>
   <div class="button-container">
-    <button>등록</button>
+    <button onclick="showCommentAlert()">등록</button>
   </div>
-
-  <div class="music-gallery">
-    <a href="https://example.com/song1" target="_blank">
-        <img src="music1.jpg" alt="음원 1">
-    </a>
-    <a href="https://example.com/song2" target="_blank">
-        <img src="music2.jpg" alt="음원 2">
-    </a>
-    <a href="https://example.com/song3" target="_blank">
-        <img src="music3.jpg" alt="음원 3">
-    </a>
-    <a href="https://example.com/song4" target="_blank">
-        <img src="music4.jpg" alt="음원 4">
-    </a>
-</div>
 </div>
 
 </body>
