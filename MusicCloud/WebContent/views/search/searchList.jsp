@@ -59,6 +59,9 @@
     .musicAccuracyDiv *{
         box-sizing: border-box;
     }
+    .musicAccuracyDiv:hover{
+        cursor: pointer;
+    }
     .musicAccuracyDiv{
         width: 230px;
         height: 90%;
