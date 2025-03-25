@@ -12,7 +12,7 @@ import java.util.InvalidPropertiesFormatException;
 import java.util.List;
 import java.util.Properties;
 
-import com.musicCloud.common.JDBCTemplate;
+import static com.musicCloud.common.JDBCTemplate.*;
 import com.musicCloud.common.vo.MusicFile;
 
 public class SearchDao {
@@ -31,46 +31,45 @@ public class SearchDao {
 			e.printStackTrace();
 		}
 	}
+	
+	/**
+	 * @param conn
+	 * @param search
+	 * @return
+	 * 설명 : 정확도 검색 정보 추출 Dao
+	 */
 	public ArrayList<MusicFile> searchListAccuracy(Connection conn, String search) {
-		
 		ArrayList<MusicFile> listAccuracy = new ArrayList<MusicFile>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		
-		
 		String sql = prop.getProperty("searchList");
-		
-		
-		
+
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, "%" + search + "%");
-			pstmt.setString(2, "%" + search + "%");
-			pstmt.setString(3, "%" + search + "%");
+			pstmt.setString(2, "%" + search +"%");
 			rset = pstmt.executeQuery();
 			
-			
-		
 			while(rset.next()) {
 				listAccuracy.add(new MusicFile(
 									    rset.getInt("MUSIC_NO")
+									  , rset.getString("MUSIC_PATH")
+									  , rset.getString("IMAGE_PATH")
 									  , rset.getString("MUSIC_TITLE")
 									  , rset.getString("MUSIC_SINGER")
-									  , rset.getString("MUSIC_IMAGE_EDIT_NAME")
-									  , rset.getString("MUSIC_IMAGE_PATH")
 									)
 								);
 							}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
-			JDBCTemplate.close(rset);
-			JDBCTemplate.close(rset);
+			close(rset);
+			close(pstmt);
 		}
-		
 		return listAccuracy;
 	}
+	
 	public ArrayList<MusicFile> searchListPouplar(Connection conn, String search) {
 		
 		ArrayList<MusicFile> listPopular = new ArrayList<MusicFile>();
@@ -101,8 +100,8 @@ public class SearchDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally{
-			JDBCTemplate.close(rset);
-			JDBCTemplate.close(pstmt);
+			close(rset);
+			close(pstmt);
 		}
 
 		return listPopular;
@@ -140,8 +139,8 @@ public class SearchDao {
 			} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
-			JDBCTemplate.close(rset);
-			JDBCTemplate.close(pstmt);
+			close(rset);
+			close(pstmt);
 		}
 		// 보류
 		return listPopular;

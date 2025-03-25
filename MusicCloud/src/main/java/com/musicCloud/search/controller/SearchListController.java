@@ -38,24 +38,22 @@ public class SearchListController extends HttpServlet {
 		String search = request.getParameter("search"); // 클라이언트에서 넘어온 검색어
 		int locationNo = Integer.parseInt(request.getParameter("locationNo"));
 		
-		request.setAttribute("search", search);
 		ArrayList<MusicFile> listAccuracy = new SearchService().searchListAccuracy(search);
-		
+		for(MusicFile m : listAccuracy) {
+			System.out.println(m);
+		}
 		ArrayList<MusicFile> listPopular = new SearchService().searchListPoupular(search);
 		
 		ArrayList<MusicFile> listPopularLocation = new SearchService().searchListPopularLocation(search, locationNo);
 		
-		System.out.println(search+"위치는 searchListController 들어옴");
+		request.setAttribute("search", search);
 		request.setAttribute("listAccuracy", listAccuracy);
-		
 		request.setAttribute("listPopular", listPopular);
 		request.setAttribute("listPopularLocation", listPopularLocation);
 			
 		// 검색 결과 JSP로 포워드
 		RequestDispatcher dispatcher = request.getRequestDispatcher("views/search/searchList.jsp");
 		dispatcher.forward(request, response);
-		
-		System.out.println(request.getContextPath());
 		
 	
 		
