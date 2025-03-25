@@ -13,54 +13,47 @@ public class Board {
 	private int musicNo;
 	private String boardTitle;
 	private String boardContent;
-	private int count;
+	private int boardcount;
 	private String enrollDate;
 	private String status;
 	private String category;
 	private String boardStatus;
-	
 	private String memberId;
 	private String memberName;
-	
 	private int reportNo;
 	private int reportMemberNo;
 	private String reportDate;
 	
 	public Board() {}
 
-	public Board(int boardNo, int playlistNo, int memberNo, int musicNo, String boardTitle, String boardContent,
-			int count, String enrollDate, String status, String category) {
-		super();
-		this.boardNo = boardNo;
-		this.playlistNo = playlistNo;
-		this.memberNo = memberNo;
-		this.musicNo = musicNo;
-		this.boardTitle = boardTitle;
-		this.boardContent = boardContent;
-		this.count = count;
-		this.enrollDate = enrollDate;
-		this.status = status;
-		this.category = category;
-	}
-	
 	
 
-	public Board(int boardNo, int playlistNo, int memberNo, int musicNo, String boardTitle, String boardContent,
-			int count, String enrollDate, String status, String category, String boardStatus, String memberId,
-			String memberName, int reportNo, int reportMemberNo, String reportDate) {
+
+	
+	/**
+	 * @param boardNo
+	 * @param memberNo
+	 * @param boardTitle
+	 * @param boardContent
+	 * @param boardcount
+	 * @param enrollDate
+	 * @param boardStatus
+	 * @param memberName
+	 * @param reportNo
+	 * @param reportMemberNo
+	 * @param reportDate
+	 * 게시글 조회
+	 */
+	public Board(int boardNo, int memberNo, String boardTitle, String boardContent, int boardcount, String enrollDate,
+			String boardStatus, String memberName, int reportNo, int reportMemberNo, String reportDate) {
 		super();
 		this.boardNo = boardNo;
-		this.playlistNo = playlistNo;
 		this.memberNo = memberNo;
-		this.musicNo = musicNo;
 		this.boardTitle = boardTitle;
 		this.boardContent = boardContent;
-		this.count = count;
+		this.boardcount = boardcount;
 		this.enrollDate = enrollDate;
-		this.status = status;
-		this.category = category;
 		this.boardStatus = boardStatus;
-		this.memberId = memberId;
 		this.memberName = memberName;
 		this.reportNo = reportNo;
 		this.reportMemberNo = reportMemberNo;
@@ -68,55 +61,8 @@ public class Board {
 	}
 
 
-	public Board(int boardNo, int playlistNo, int memberNo, int musicNo, String boardTitle, String boardContent,
-			int count, String enrollDate, String status, String category, String memberId, String memberName) {
-		super();
-		this.boardNo = boardNo;
-		this.playlistNo = playlistNo;
-		this.memberNo = memberNo;
-		this.musicNo = musicNo;
-		this.boardTitle = boardTitle;
-		this.boardContent = boardContent;
-		this.count = count;
-		this.enrollDate = enrollDate;
-		this.status = status;
-		this.category = category;
-		this.memberId = memberId;
-		this.memberName = memberName;
-	}
-	
-	
 
-	public Board(int boardNo, int playlistNo, int memberNo, int musicNo, String boardTitle, String boardContent,
-			int count, String enrollDate, String status, String category, String memberId, String memberName,
-			int reportNo, int reportMemberNo, String reportDate) {
-		super();
-		this.boardNo = boardNo;
-		this.playlistNo = playlistNo;
-		this.memberNo = memberNo;
-		this.musicNo = musicNo;
-		this.boardTitle = boardTitle;
-		this.boardContent = boardContent;
-		this.count = count;
-		this.enrollDate = enrollDate;
-		this.status = status;
-		this.category = category;
-		this.memberId = memberId;
-		this.memberName = memberName;
-		this.reportNo = reportNo;
-		this.reportMemberNo = reportMemberNo;
-		this.reportDate = reportDate;
-	}
 
-	
-
-	public Board(int memberNo, String boardTitle, String boardStatus, String memberName) {
-		super();
-		this.memberNo = memberNo;
-		this.boardTitle = boardTitle;
-		this.boardStatus = boardStatus;
-		this.memberName = memberName;
-	}
 
 	public int getReportNo() {
 		return reportNo;
@@ -206,14 +152,6 @@ public class Board {
 		this.boardContent = boardContent;
 	}
 
-	public int getCount() {
-		return count;
-	}
-
-	public void setCount(int count) {
-		this.count = count;
-	}
-
 	public String getEnrollDate() {
 		return enrollDate;
 	}
@@ -245,14 +183,21 @@ public class Board {
 	public void setBoardStatus(String boardStatus) {
 		this.boardStatus = boardStatus;
 	}
+
+
+
+
+
 	@Override
 	public String toString() {
 		return "Board [boardNo=" + boardNo + ", playlistNo=" + playlistNo + ", memberNo=" + memberNo + ", musicNo="
-				+ musicNo + ", boardTitle=" + boardTitle + ", boardContent=" + boardContent + ", count=" + count
-				+ ", enrollDate=" + enrollDate + ", status=" + status + ", category=" + category + ", boardStatus="
-				+ boardStatus + ", memberId=" + memberId + ", memberName=" + memberName + ", reportNo=" + reportNo
-				+ ", reportMemberNo=" + reportMemberNo + ", reportDate=" + reportDate + "]";
+				+ musicNo + ", boardTitle=" + boardTitle + ", boardContent=" + boardContent + ", boardcount="
+				+ boardcount + ", enrollDate=" + enrollDate + ", status=" + status + ", category=" + category
+				+ ", boardStatus=" + boardStatus + ", memberId=" + memberId + ", memberName=" + memberName
+				+ ", reportNo=" + reportNo + ", reportMemberNo=" + reportMemberNo + ", reportDate=" + reportDate + "]";
 	}
+
+	
 
 	
 

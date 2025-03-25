@@ -128,8 +128,8 @@
 				<menu>
 					<a href="<%=contentPath %>/views/common/mainPage.jsp" id="menutext">메인페이지</a>
 					<a href="<%=contentPath %>/views/board/adminMusicList.jsp" id="menutext">음원관리</a>
-					<a href="<%=contentPath %>/Admin.bo?capge=1" id="menutext">회원관리</a>
-					<a href="<%=contentPath %>/views/board/adminReportBoard.jsp" id="menutext">게시글관리</a>
+					<a href="<%=contentPath %>/Admin.bo?cpage=1" id="menutext">회원관리</a>
+					<a href="<%=contentPath %>/AdminReport.bo?cpage=1" id="menutext">게시글관리</a>
 					<a href="" id="menutext">유료 컨텐츠 관리</a>	
 				</menu>
 			</div>
@@ -159,12 +159,12 @@
 						<!-- case2. 내역이 있는경우 -->
 						<% for(Member m:list) { %>
 							<tr>
+								<!-- join 해서 Member/vo/Member에서 작성자 아이디, 닉네임 가져오기 -->
 								<td style="text-align: center;"><input type="checkbox" class="check" value="<%= m.getMemberNo() %>"></td>
 								<td><%= m.getMemberNo() %></td>
 								<td><%= m.getMemberName() %></td>
 								<td><%= m.getMemberId() %></td>
 								<td><%= m.getEnrollDate() %></td>
-								<!-- join 해서 Member/vo/Member에서 작성자 아이디, 닉네임 가져오기 -->
 								<td><%= m.getStatus()%></td>
 							</tr>
 							<% } %>

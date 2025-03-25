@@ -436,6 +436,11 @@ public class MemberDao {
 	    return result;
 	}
 	
+	/**
+	 * @param conn
+	 * @param memberId
+	 * @return 관리자페이지 Member Status Y로 돌리기
+	 */
 	public int adminInsertMember(Connection conn, String[] memberId) {
 		PreparedStatement pstmt = null;
         int result = 0;

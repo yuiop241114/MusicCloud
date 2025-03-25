@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Properties;
 
 import static com.musicCloud.common.JDBCTemplate. *;
@@ -85,61 +86,60 @@ public class BoardDao {
 	/**
 	 * @param conn
 	 * @param pi
-	 * @return Board객체에서 받아오는 회원 신고 리스트
+	 * @return Board객체에서 받아오는 게시글 조회
 	 */
 	public ArrayList<Board> adminBoardView(Connection conn, PageInfo pi) {
+	    ArrayList<Board> list = new ArrayList<>();
+	    ResultSet rset = null;
+	    PreparedStatement pstmt = null;
+	    String sql = prop.getProperty("adminBoardListView");
 
-		ArrayList<Board> list = new ArrayList<Board>();
-		ResultSet rset = null;
-		PreparedStatement pstmt = null;
-		String sql = prop.getProperty("adminReportList");
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			
-			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
-			int endRow = startRow + pi.getBoardLimit() - 1;
-			pstmt.setInt(1, startRow);
-			pstmt.setInt(2, endRow);
-			
-			rset = pstmt.executeQuery();
-			
-			while(rset.next()) {
-				list.add(
-						new Board(
-								rset.getInt("memberNo")
-								, rset.getString("memberName")
-								, rset.getString("memberNo")
-								, rset.getString("BoardStatus")
-								)
-						);
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-			close(rset);
-			close(pstmt);
-		}
-		
-		
-		return list;
-		
-		
+	    try {
+	        pstmt = conn.prepareStatement(sql);
+	        rset = pstmt.executeQuery();
+
+	        while (rset.next()) {
+	            list.add(new Board(
+	                rset.getInt("boardNo"),
+	                rset.getInt("memberNo"),
+	                rset.getString("boardTitle"),
+	                rset.getString("boardContent"),
+	                rset.getInt("boardCount"),
+	                rset.getString("boardEnrollDate"),
+	                rset.getString("boardStatus"),
+	                rset.getString("memberName"),
+	                rset.getInt("reportNo"),
+	                rset.getInt("reportMemberNo"),
+	                rset.getString("reportDate")
+	            ));
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        close(rset);
+	        close(pstmt);
+	    }
+
+	    return list;
 	}
+
 	
+	/**
+	 * @param conn
+	 * @return 게시글 전체 카운트
+	 */
 	public int selectBoardCount(Connection conn) {
 		int result = 0;
 		ResultSet rset = null;
 		PreparedStatement pstmt = null;
-		String sql = prop.getProperty("adminBoardList");
+		String sql = prop.getProperty("adminBoardCount");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
 			rset = pstmt.executeQuery();
 			if(rset.next()) {
-				result = rset.getInt("BC");
+				result = rset.getInt(1);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -150,6 +150,39 @@ public class BoardDao {
 		
 		
 		return result;
+	}
+	
+	/**
+	 * @param conn
+	 * @param boardReportTitle
+	 * @return 게시글 삭제 메소드
+	 */
+	public int deleteBoards(Connection conn, String[] boardReportTitle) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String baseSql = prop.getProperty("deleteBoard");
+		
+		String placeholders = String.join(",", Collections.nCopies(boardReportTitle.length, "?"));
+		String sql = baseSql.replace("?", placeholders);
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			for(int i = 0; i<boardReportTitle.length; i++) {
+				pstmt.setInt(i + 1, Integer.parseInt(boardReportTitle[i]));
+			}
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+		
+		
 	}
 	
 	/**

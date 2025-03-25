@@ -126,8 +126,8 @@
         <menu>
             <a href="<%=contentPath %>/views/common/mainPage.jsp" id="menutext">메인페이지</a>
 			<a href="<%=contentPath %>/views/board/adminMusicList.jsp" id="menutext">음원관리</a>
-			<a href="<%=contentPath %>/Admin.bo?capge=1" id="menutext">회원관리</a>
-			<a href="<%=contentPath %>/views/board/adminReportBoard.jsp" id="menutext">게시글관리</a>
+			<a href="<%=contentPath %>/Admin.bo?cpage=1" id="menutext">회원관리</a>
+			<a href="<%=contentPath %>/AdminReport.bo?cpage=1" id="menutext">게시글관리</a>
             <a href="" id="menutext">유료 컨텐츠 관리</a>
 
         </menu>
@@ -137,29 +137,31 @@
         <div id="ReportBoardListBox">
 				<table id="mTable" align="center" border="1">
 						<tr>
+							<td>게시글선택</td>
+							<td>회원번호</td>
 							<td>게시글제목</td>
 							<td>글작성자</td>
-							<td>회원번호</td>
-							<td rowspan="<%= list.size() + 1%>" id="btnTd"><button type="button" id="admininsertReport" class="btn-success">Y</button></td>
-							<td rowspan="<%= list.size() + 1%>" id="btnTd"><button type="button" id="admindeleteReport" class="btn-danger">X</button></td>
+							<td>활성상태</td>
+							<td rowspan="<%= list.size() + 0%>" id="btnTd"><button type="button" id="admininsertReport" class="btn-success">Y</button></td>
+							<td rowspan="<%= list.size() + 0%>" id="btnTd"><button type="button" id="admindeleteReport" class="btn-danger">X</button></td>
 							
 						</tr>
 
 						<!-- case1. 내역이 없을경우 -->
 						<% if(list.isEmpty()) { %>
 						<tr>
-							<td colspan="4" align="center"></td>
+							<td colspan="5" align="center"></td>
 						</tr>
 						<% } else { %>
 	
 						<!-- case2. 내역이 있는경우 -->
 						<% for(Board b:list) { %>
 							<tr>
+								<!-- join 해서 Board/vo/Report에서 작성자 아이디, 닉네임 가져오기 -->
 								<td style="text-align: center;"><input type="checkbox" class="check" value="<%= b.getMemberNo() %>"></td>
+								<td><%= b.getMemberNo() %></td>
 								<td><%= b.getBoardTitle() %></td>
 								<td><%= b.getMemberName() %></td>
-								<td><%= b.getMemberNo() %></td>
-								<!-- join 해서 Board/vo/Report에서 작성자 아이디, 닉네임 가져오기 -->
 								<td><%= b.getBoardStatus()%></td>
 							</tr>
 							<% } %>
@@ -200,14 +202,14 @@
 	    $(document).ready(function () {
 	        let selectedMembers = [];
 	        
-	        $("#deleteMember").click(function () {
+	        $("#deleteBoard").click(function () {
 	 
-	            selectedMembers = [];
+	            selectedBoards = [];
 	            $("input[type=checkbox]:checked").each(function(){
-	       			selectedMembers.push($(this).val());
+	       			selectedBoards.push($(this).val());
 	        	})
 	        	
-	            if (selectedMembers.length === 0) {
+	            if (selectedBoards.length === 0) {
 	                alert("삭제할 게시글을 선택하세요.");
 	                return;
 	            }
@@ -216,7 +218,7 @@
 	                $.ajax({
 	                    type: "POST",
 	                    url: "MemberDelete.bo",
-	                    data: { members: selectedMembers.join(",") }, // 배열을 문자열로 변환
+	                    data: { members: selectedBoards.join(",") }, // 배열을 문자열로 변환
 	                    success: function (response1) {
 	                        if (response1.trim() === "success") {
 	                            alert("게시글 삭제 완료!");
@@ -234,14 +236,14 @@
 	        });
 	        
 	        // ----------------------- 복구 기능 구현 1 -----------------------
-	        $("#adminInsertMember").click(function () {
+	        $("#adminInsertBoard").click(function () {
 	       	 
-	            selectedMembers = [];
+	        	selectedBoards = [];
 	            $("input[type=checkbox]:checked").each(function(){
-	       			selectedMembers.push($(this).val());
+	            	selectedBoards.push($(this).val());
 	        	})
 	        	
-	            if (selectedMembers.length === 0) {
+	            if (selectedBoards.length === 0) {
 	                alert("복구할 게시글을 선택하세요.");
 	                return;
 	            }
@@ -250,7 +252,7 @@
 	                $.ajax({
 	                    type: "post",
 	                    url: "adminInsertMember.bo",
-	                    data: { members: selectedMembers.join(",") }, // 배열을 문자열로 변환
+	                    data: { members: selectedBoards.join(",") }, // 배열을 문자열로 변환
 	                    success: function (response2) {
 	                        if (response2.trim() === "success") {
 	                            alert("게시글 복구 완료!");

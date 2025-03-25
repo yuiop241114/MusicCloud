@@ -50,17 +50,33 @@ public class BoardService {
 		Connection conn = getConnection();
 		ArrayList<Board> list = new BoardDao().adminBoardView(conn, pi);
 		
+
+		
 		close(conn);
 		return list;
 	}
 	
 	/**
 	 * @return
-	 * 보드 전체 조회
+	 * 보드 전체 카운트
 	 */
 	public int selectBoardCount() {
 		Connection conn = getConnection();
 		int result = new BoardDao().selectBoardCount(conn);
+		
+		close(conn);
+		return result;
+	}
+	
+	public int deleteBoards(String[] boardReportTitle) {
+		Connection conn = getConnection();
+		int result = new BoardDao().deleteBoards(conn, boardReportTitle);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
 		
 		close(conn);
 		return result;

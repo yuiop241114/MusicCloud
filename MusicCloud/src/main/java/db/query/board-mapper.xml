@@ -33,10 +33,15 @@
 		        b.*, 
 		        m.member_id, m.member_name, m.member_name
 		  FROM Board b
-		  JOIN Member m ON b.member_no = m.member_no;
+		  JOIN Member m ON b.member_no = m.member_no
 	</entry>
 	
-	<entry key="adminReportList">
+	<entry key="adminBoardCount">
+		SELECT COUNT(*) AS "C"
+		  FROM BOARD
+	</entry>
+	
+	<entry key="adminReportList"> <!-- 이거 폐기 -->
 		SELECT R.*
 		  FROM REPORT_DETAIL R
 		  JOIN MEMBER M ON M.MEMBER_NO = R.MEMBER_NO
@@ -49,9 +54,37 @@
 	
 	
 	<entry key="adminBoardListView">
-		SELECT B.MEMBER_NO, B.BOARD_TITLE, B.BOARD_STATUS, M.MEMBER_NAME
-		  FROM BOARD B
-		  JOIN MEMBER M ON M.MEMBER_NO = B.MEMBER_NO
+SELECT
+       B.BOARD_NO AS boardNo
+     , B.MEMBER_NO AS memberNo
+     , M.MEMBER_NAME AS memberName
+     , M.MEMBER_ALIAS AS memberAlias
+     , B.BOARD_TITLE AS boardTitle
+     , B.BOARD_CONTENT AS boardContent
+     , B.BOARD_COUNT AS boardCount
+     , B.BOARD_ENROLL_DATE AS boardEnrollDate
+     , B.BOARD_CATEGORY AS boardCategory
+     , B.BOARD_STATUS AS boardStatus
+     , R.MEMBER_NO AS memberNo
+     , R.REPORT_NO AS reportNo
+     , R.REPORT_MEMBER_NO AS reportMemberNo
+     , R.REPORT_DATE AS reportDate
+  FROM BOARD B
+  JOIN MEMBER M ON (B.MEMBER_NO = M.MEMBER_NO)
+  JOIN REPORT_DETAIL R ON (B.MEMBER_NO = R.MEMBER_NO)
+	</entry>
+
+	
+	<entry key="deleteBoard">
+		UPDATE Board
+		   SET Board_STATUS = 'N'
+		 WHERE Board_NO IN (?)
+	</entry>
+	
+	<entry key="">
+		UPDATE Board
+		   SET Board_STATUS = 'Y'
+		 WHERE Board_NO IN (?)
 	</entry>
 	
 	

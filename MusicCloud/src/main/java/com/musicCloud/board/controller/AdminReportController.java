@@ -36,44 +36,36 @@ public class AdminReportController extends HttpServlet {
 		
 		int listCount;
 		int currentPage;
-		int pageLimit;
-		int boardLimit;
+		int pageLimit = 10;
+		int boardLimit = 10;
 		
-		int maxPage;
-		int startPage;
-		int endPage;
+		String cpageParam = request.getParameter("cpage");
+		currentPage = (cpageParam != null) ? Integer.parseInt(cpageParam) : 1;
 		
 		listCount = new BoardService().selectBoardCount();
 		
-		currentPage = Integer.parseInt(request.getParameter("cpage"));
-		String cpageParam = request.getParameter("cpage");
-		currentPage = (cpageParam != null) ? Integer.parseInt(cpageParam) : 1;
+		int maxPage;
+		int startPage = ((currentPage -1) / pageLimit * pageLimit + 1);
+		int endPage = startPage + pageLimit - 1 ;
 
-		pageLimit = 10;
-		
-		boardLimit = 10;
-		
 		maxPage = (int)Math.ceil((double)listCount / boardLimit);
-		
-		startPage = (currentPage - 1) / pageLimit * pageLimit + 1;
-		
+		startPage = (currentPage -1 ) / pageLimit * pageLimit +1;
 		endPage = startPage + pageLimit - 1;
 		
-		if(endPage > maxPage) {
+		if (endPage > maxPage) {
 			endPage = maxPage;
 		}
 		
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		
-		ArrayList<Board> list = new BoardService().adminBoardView(pi);
-		if (list == null) {
-		    list = new ArrayList<>();
-		}
+		ArrayList<Board> list = new ArrayList<Board>();
+		list = new BoardService().adminBoardView(pi);
 		
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
 		
-		request.getRequestDispatcher("views/board/admin.jsp").forward(request, response);
+		
+        request.getRequestDispatcher("views/board/adminReportBoard.jsp").forward(request, response);
 		
 	}
 		
