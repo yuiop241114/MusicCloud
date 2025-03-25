@@ -114,7 +114,7 @@
         <div class="resultDiv">
             <div><h2>정확순</h2></div>
             <div class="searchContentDiv" id="listAccuracy">
-
+		
                 <% for (MusicFile l : listAccuracy) { %>
                     <div class="musicAccuracyDiv" id="AccuracyDiv">
                         <div class="musicImg"><img src="<%= contentPath + "/" + l.getMusicImagePath()%>" alt=""></div>
