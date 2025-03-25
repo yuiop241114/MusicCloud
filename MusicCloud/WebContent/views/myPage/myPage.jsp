@@ -242,7 +242,7 @@
         <div class="main">
 
             <div class="main-1">
-                <img src="resources/image/열불이.png" alt="">
+                <br>
                 <br>
                 <b>유저 이름</b>
                 <br>
