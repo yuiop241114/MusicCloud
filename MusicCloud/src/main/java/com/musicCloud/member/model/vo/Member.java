@@ -80,8 +80,7 @@ public class Member {
 		this.age = age;
 	}
 	
-<<<<<<< HEAD
-=======
+
 	
 	/**
 	 * @param memberNo
@@ -122,7 +121,7 @@ public class Member {
 		this.memberId = memberId;
 		this.memberName = memberName;
 	}
->>>>>>> a15d244b937c37d8c01a39d39b38c91452f3f81c
+
 
 	public int getMemberNo() {
 		return memberNo;
