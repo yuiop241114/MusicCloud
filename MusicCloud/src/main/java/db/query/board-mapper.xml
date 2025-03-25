@@ -1,26 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
-	
-	<entry key="adminBoardList">
-		SELECT 
-		        b.*, 
-		        m.member_id, m.member_name, m.member_name
-		  FROM Board b
-		  JOIN Member m ON b.member_no = m.member_no;
-	</entry>
-	
-	<entry key="adminReportList">
-		SELECT R.*
-		  FROM REPORT_DETAIL R
-		  JOIN MEMBER M ON M.MEMBER_NO = R.MEMBER_NO
-	</entry>
-	
-	<entry key="adminMusicCount">
-		SELECT COUNT(*) AS "Music"
-		  FROM MUSIC_BOARD
-	</entry>
-	
 	<entry key="adminMemberList">
 	SELECT *
 	FROM (
@@ -48,7 +28,31 @@
 	
 	</entry>
 	
-
+	<entry key="adminBoardList">
+		SELECT 
+		        b.*, 
+		        m.member_id, m.member_name, m.member_name
+		  FROM Board b
+		  JOIN Member m ON b.member_no = m.member_no;
+	</entry>
+	
+	<entry key="adminReportList">
+		SELECT R.*
+		  FROM REPORT_DETAIL R
+		  JOIN MEMBER M ON M.MEMBER_NO = R.MEMBER_NO
+	</entry>
+	
+	<entry key="adminMusicCount">
+		SELECT COUNT(*) AS "Music"
+		  FROM MUSIC_BOARD
+	</entry>
+	
+	
+	<entry key="adminBoardListView">
+		SELECT B.MEMBER_NO, B.BOARD_TITLE, B.BOARD_STATUS, M.MEMBER_NAME
+		  FROM BOARD B
+		  JOIN MEMBER M ON M.MEMBER_NO = B.MEMBER_NO
+	</entry>
 	
 	
 </properties>

@@ -17,6 +17,7 @@ public class Board {
 	private String enrollDate;
 	private String status;
 	private String category;
+	private String boardStatus;
 	
 	private String memberId;
 	private String memberName;
@@ -43,6 +44,29 @@ public class Board {
 	}
 	
 	
+
+	public Board(int boardNo, int playlistNo, int memberNo, int musicNo, String boardTitle, String boardContent,
+			int count, String enrollDate, String status, String category, String boardStatus, String memberId,
+			String memberName, int reportNo, int reportMemberNo, String reportDate) {
+		super();
+		this.boardNo = boardNo;
+		this.playlistNo = playlistNo;
+		this.memberNo = memberNo;
+		this.musicNo = musicNo;
+		this.boardTitle = boardTitle;
+		this.boardContent = boardContent;
+		this.count = count;
+		this.enrollDate = enrollDate;
+		this.status = status;
+		this.category = category;
+		this.boardStatus = boardStatus;
+		this.memberId = memberId;
+		this.memberName = memberName;
+		this.reportNo = reportNo;
+		this.reportMemberNo = reportMemberNo;
+		this.reportDate = reportDate;
+	}
+
 
 	public Board(int boardNo, int playlistNo, int memberNo, int musicNo, String boardTitle, String boardContent,
 			int count, String enrollDate, String status, String category, String memberId, String memberName) {
@@ -86,12 +110,12 @@ public class Board {
 
 	
 
-	public Board(int memberNo, int reportNo, int reportMemberNo, String reportDate) {
+	public Board(int memberNo, String boardTitle, String boardStatus, String memberName) {
 		super();
 		this.memberNo = memberNo;
-		this.reportNo = reportNo;
-		this.reportMemberNo = reportMemberNo;
-		this.reportDate = reportDate;
+		this.boardTitle = boardTitle;
+		this.boardStatus = boardStatus;
+		this.memberName = memberName;
 	}
 
 	public int getReportNo() {
@@ -214,14 +238,23 @@ public class Board {
 		this.category = category;
 	}
 
+	public String getBoardStatus() {
+		return boardStatus;
+	}
+	
+	public void setBoardStatus(String boardStatus) {
+		this.boardStatus = boardStatus;
+	}
 	@Override
 	public String toString() {
 		return "Board [boardNo=" + boardNo + ", playlistNo=" + playlistNo + ", memberNo=" + memberNo + ", musicNo="
 				+ musicNo + ", boardTitle=" + boardTitle + ", boardContent=" + boardContent + ", count=" + count
-				+ ", enrollDate=" + enrollDate + ", status=" + status + ", category=" + category + ", memberId="
-				+ memberId + ", memberName=" + memberName + ", reportNo=" + reportNo + ", reportMemberNo="
-				+ reportMemberNo + ", reportDate=" + reportDate + "]";
+				+ ", enrollDate=" + enrollDate + ", status=" + status + ", category=" + category + ", boardStatus="
+				+ boardStatus + ", memberId=" + memberId + ", memberName=" + memberName + ", reportNo=" + reportNo
+				+ ", reportMemberNo=" + reportMemberNo + ", reportDate=" + reportDate + "]";
 	}
+
+	
 
 	
 

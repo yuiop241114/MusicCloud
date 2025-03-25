@@ -28,6 +28,10 @@ public class BoardService {
 		return list;
 	}
 	
+	/**
+	 * @return
+	 * 설명 : 멤버에서 받아온 전체 회원의 수
+	 */
 	public int adminMemberCount() {
 		Connection conn = getConnection();
 		int result = new MemberDao().selectMemberCount(conn);
@@ -35,16 +39,31 @@ public class BoardService {
 		close(conn);
 		return result;
 	}
-	
-	
 
-	public ArrayList<Board> adminReportList(PageInfo pi) {
+	/**
+	 * @param pi
+	 * @return
+	 * 보드 게시글조회
+	 */
+	public ArrayList<Board> adminBoardView(PageInfo pi) {
 		
 		Connection conn = getConnection();
-		ArrayList<Board> list = new BoardDao().adminReportList(conn, pi);
+		ArrayList<Board> list = new BoardDao().adminBoardView(conn, pi);
 		
 		close(conn);
 		return list;
+	}
+	
+	/**
+	 * @return
+	 * 보드 전체 조회
+	 */
+	public int selectBoardCount() {
+		Connection conn = getConnection();
+		int result = new BoardDao().selectBoardCount(conn);
+		
+		close(conn);
+		return result;
 	}
 
 
@@ -56,6 +75,7 @@ public class BoardService {
 		close(conn);
 		return result;
 	}
+
 
 	
 	/**

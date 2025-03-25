@@ -121,9 +121,7 @@
 	<div id="titleDiv">
 		<div id="title">관리자페이지-회원삭제</div>
 	</div>
-
 	<br>
-	
 	<div class="wrapperAdmin">
 		
 			<div id="menuBox">

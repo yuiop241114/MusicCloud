@@ -1,6 +1,8 @@
 <%@page import="com.musicCloud.board.model.vo.Board"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.musicCloud.common.model.vo.PageInfo"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<Board> list = (ArrayList<Board>)request.getAttribute("list");
@@ -9,32 +11,39 @@
 	int endPage = pi.getEndPage();
 	int maxPage = pi.getMaxPage();
 %>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>관리자페이지-신고테이블</title>
 <style>
-	/* 관리자 페이지 속성 */
-	.wrapper{
-	    box-sizing: border-box;
-	    height: 170px;
+
+	/*제목*/
+	#titleDiv{
+		width: 60%;
+		margin: auto;
+	}
+	#title{
+		margin: auto;
+		text-align: center;
+		font-size: xx-large;
 	}
 
 	/* 관리자 페이지  박스 크기 설정*/
-	.wrapper *{
-	    box-sizing: border-box;
+	.wrapperAdmin{
+		width: 1400px;
+		margin: auto;
 	}
-	
-	/* 관리자 페이지 로고 크기설정 */
-	.wrapper #logo{
-	    width: 15%;
-	    height: 100%;
+	.wrapperAdmin *{
+	    box-sizing: border-box;
 	}
 
 	/* 관리자페이지 메뉴바 스타일속성 */
+	#menuBox{
+		float: left;
+		width: 90%;
+		margin-bottom: 20px;
+	}
 	menu {
     top: 0;
     background-color: #007bff;
@@ -43,43 +52,64 @@
     align-items: center;
     padding: 15px;
     border-radius: 10px;
+	width: 100%;
+	margin: 0 15px;
 	}
 
 	/* 관리자페이지 메뉴바 텍스트 스타일속성 */
 	#menutext {
-
 	background-color: #007bff;
 	border: none;
 	color: white;
 	font-size: 16px;
-	margin: 0 10px;
+	margin: 0 15px;
 	cursor: pointer;
 	}
 
+	/* 관리자 페이지 테이블 속성 */
+	#memberListBox{
+		width: 90%;
+	}
 
-    #deleteMember{
-        background-color: red;
-    }
-
-    /* 관리자 페이지 테이블 속성 */
-	table{
-		border: 1px solid #000000;
-
+	#mTable{
+		width: 80%;
+		border-color: #1587d0;
+		border-left: none;
+        border-right: none;
 	}
 
 	/* 관리자 페이지 테이블 td 스타일 */
-	table td{
-        border: 1px solid #08edf5;
-        background-color: #d2f7f8;
+	#mTable td{
+		border-left: none;
+        border-right: none;
+		text-align: center;
+		height: 40px;
 	}
 	
-	/* 회원삭제 버튼 속성 */
-	#deleteMember {
-		background-color: red;
+	/* 글삭제 버튼 속성 */
+	#admindeleteReport {
+		width: 40%;
 		color: white;
 		cursor: pointer;
+		border-radius: 10px;
+		border: 1px solid red;
+		height: 45px;
 		
 	}
+	/* 글복구 버튼 속성*/
+	#admininsertReport{
+		width: 40%;
+		color: white;
+		cursor: pointer;
+		border-radius: 10px;
+		border: 1px solid green;
+		height: 45px;
+	}
+	#btnTd{
+		width: 100px;
+	}
+
+	
 
 
 	</style> 
@@ -87,62 +117,157 @@
 <body>
 	<%@ include file="../common/menubar.jsp" %>
 
-    <img src="resources/image/mainlogo.png" id="logo">
-    <br>
-    <h2 align="center">관리자페이지-회원신고</h2>
-    <br>
-
+    <div id="titleDiv">
+		<div id="title">관리자페이지-게시글삭제</div>
+	</div>
+	<br>
     <div class="wrapper">
 
         <menu>
-            <a href="" id="menutext">메인페이지</a>
-            <a href="" id="menutext">음원관리</a>
-            <a href="" id="menutext">회원관리</a>
-            <a href="" id="menutext">게시글관리</a>
+            <a href="<%=contentPath %>/views/common/mainPage.jsp" id="menutext">메인페이지</a>
+			<a href="<%=contentPath %>/views/board/adminMusicList.jsp" id="menutext">음원관리</a>
+			<a href="<%=contentPath %>/Admin.bo?capge=1" id="menutext">회원관리</a>
+			<a href="<%=contentPath %>/views/board/adminReportBoard.jsp" id="menutext">게시글관리</a>
             <a href="" id="menutext">유료 컨텐츠 관리</a>
 
         </menu>
     
 
        
-        <table align="center" class="list-area">
-            <thead>
-                <tr>
-                    <td>게시글선택</td>
-                    <td width="70">글제목</td>
-                    <td width="80">신고누적사유</td>
-                    <td width="100">발생일시(신고카운트 10회 이상부터 알림)</td>
-                    <td width="100">글 작성자</td>
-                </tr>
-                
-            </thead>
-            <tbody>
-                <!-- case1. 내역이 없을경우 -->
-                <% if(list.isEmpty()) { %>
-                <tr>
-                    <td colspan="5" align="center">조회된 내역이 없습니다</td>
-                </tr>
-                <% } else { %>
-    
-                <!-- case2. 내역이 있는경우 -->
-                <% for(Board b:list) { %>
-                    <tr>
-                        <td style="text-align: center;"><input type="checkbox"></td>
-                        <td><%= b.getBoardNo() %></td>
-                        <td><%= b.getReportNo() %></td>
-                        <td><%= b.getReportDate() %></td>
-                        <td><%= b.getMemberName() %></td>
-                        <!-- join 해서 Member/vo/Member에서 작성자 아이디, 닉네임 가져오기 -->
-                        <th>
-                            <button type="button" class="btn btn-danger" id="deleteMember">
-                                <!-- 나중에 게시글삭제 테이블 만들 자리.  -->X
-                            </button>
-                        </th>
-                    </tr>
-                    <% } %>
-                <% } %>
-            </tbody>
-        </table>
+        <div id="ReportBoardListBox">
+				<table id="mTable" align="center" border="1">
+						<tr>
+							<td>게시글제목</td>
+							<td>글작성자</td>
+							<td>회원번호</td>
+							<td rowspan="<%= list.size() + 1%>" id="btnTd"><button type="button" id="admininsertReport" class="btn-success">Y</button></td>
+							<td rowspan="<%= list.size() + 1%>" id="btnTd"><button type="button" id="admindeleteReport" class="btn-danger">X</button></td>
+							
+						</tr>
+
+						<!-- case1. 내역이 없을경우 -->
+						<% if(list.isEmpty()) { %>
+						<tr>
+							<td colspan="4" align="center"></td>
+						</tr>
+						<% } else { %>
+	
+						<!-- case2. 내역이 있는경우 -->
+						<% for(Board b:list) { %>
+							<tr>
+								<td style="text-align: center;"><input type="checkbox" class="check" value="<%= b.getMemberNo() %>"></td>
+								<td><%= b.getBoardTitle() %></td>
+								<td><%= b.getMemberName() %></td>
+								<td><%= b.getMemberNo() %></td>
+								<!-- join 해서 Board/vo/Report에서 작성자 아이디, 닉네임 가져오기 -->
+								<td><%= b.getBoardStatus()%></td>
+							</tr>
+							<% } %>
+						<% } %>
+
+				</table>
+			
+				<br> <br>
+			
+				<div class="paging-area" align="center">
+					<!-- 이전 버튼 출력 -->
+					<% if(currentPage != 1) { %>
+						<button onclick="location.href='<%= contentPath%>/list.bo?cpage=<%= currentPage-1%>'">&lt;</button>
+					<% } %>
+					
+					<!-- 반복문으로 베이징바를 설정한 개수만큼 출력 -->
+					<% for(int p=startPage; p<=endPage; p++) {%>
+						<% if(p == currentPage) { %>
+							<button disabled><%=p%></button>
+						<%}else { %>
+							<button onclick="location.href='<%= contentPath %>/list.bo?cpage=<%=p%>'"><%=p %></button>
+						<%} %>
+					<%} %>
+					
+					<!-- 다음 버튼 -->
+					<%if(currentPage != maxPage){ %>
+					<button onclick="location.href='<%= contentPath%>/list.bo?cpage<%= currentPage+1%>'">&gt;</button>
+					<%} %>
+				</div>
+			</div>
+
+	</div>
+
+
+
+	
+	<script>
+	    $(document).ready(function () {
+	        let selectedMembers = [];
+	        
+	        $("#deleteMember").click(function () {
+	 
+	            selectedMembers = [];
+	            $("input[type=checkbox]:checked").each(function(){
+	       			selectedMembers.push($(this).val());
+	        	})
+	        	
+	            if (selectedMembers.length === 0) {
+	                alert("삭제할 게시글을 선택하세요.");
+	                return;
+	            }
+	
+	            if (confirm("정말 삭제하시겠습니까?")) {
+	                $.ajax({
+	                    type: "POST",
+	                    url: "MemberDelete.bo",
+	                    data: { members: selectedMembers.join(",") }, // 배열을 문자열로 변환
+	                    success: function (response1) {
+	                        if (response1.trim() === "success") {
+	                            alert("게시글 삭제 완료!");
+	                            location.reload();
+	                        } else {
+	                            alert("삭제 실패! 다시 시도하세요.");
+								location.reload();
+	                        }
+	                    },
+	                    error: function () {
+	                        alert("서버 오류 발생!");
+	                    }
+	                });
+	            }
+	        });
+	        
+	        // ----------------------- 복구 기능 구현 1 -----------------------
+	        $("#adminInsertMember").click(function () {
+	       	 
+	            selectedMembers = [];
+	            $("input[type=checkbox]:checked").each(function(){
+	       			selectedMembers.push($(this).val());
+	        	})
+	        	
+	            if (selectedMembers.length === 0) {
+	                alert("복구할 게시글을 선택하세요.");
+	                return;
+	            }
+	
+	            if (confirm("복구하시겠습니까?")) {
+	                $.ajax({
+	                    type: "post",
+	                    url: "adminInsertMember.bo",
+	                    data: { members: selectedMembers.join(",") }, // 배열을 문자열로 변환
+	                    success: function (response2) {
+	                        if (response2.trim() === "success") {
+	                            alert("게시글 복구 완료!");
+								location.reload();
+	                        } else {
+	                            alert("복구 실패! 다시 시도하세요.");
+								location.reload();
+	                        }
+	                    },
+	                    error: function () {
+	                        alert("서버 오류 발생!");
+	                    }
+	                });
+	            }
+	        });
+	    });
+	</script>
 	
 
     </div>

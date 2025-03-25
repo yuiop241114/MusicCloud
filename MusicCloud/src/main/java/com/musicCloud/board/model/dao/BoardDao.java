@@ -87,7 +87,7 @@ public class BoardDao {
 	 * @param pi
 	 * @return Board객체에서 받아오는 회원 신고 리스트
 	 */
-	public ArrayList<Board> adminReportList(Connection conn, PageInfo pi) {
+	public ArrayList<Board> adminBoardView(Connection conn, PageInfo pi) {
 
 		ArrayList<Board> list = new ArrayList<Board>();
 		ResultSet rset = null;
@@ -108,10 +108,9 @@ public class BoardDao {
 				list.add(
 						new Board(
 								rset.getInt("memberNo")
-								, rset.getInt("reportNo")
-								, rset.getInt("reportMemberNo")
-								, rset.getString("reportDate")
-								
+								, rset.getString("memberName")
+								, rset.getString("memberNo")
+								, rset.getString("BoardStatus")
 								)
 						);
 			}
@@ -127,6 +126,30 @@ public class BoardDao {
 		return list;
 		
 		
+	}
+	
+	public int selectBoardCount(Connection conn) {
+		int result = 0;
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("adminBoardList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				result = rset.getInt("BC");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		
+		return result;
 	}
 	
 	/**

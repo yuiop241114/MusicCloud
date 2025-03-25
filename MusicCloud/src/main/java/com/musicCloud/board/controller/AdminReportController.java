@@ -43,7 +43,7 @@ public class AdminReportController extends HttpServlet {
 		int startPage;
 		int endPage;
 		
-		listCount = new BoardService().selectListCount();
+		listCount = new BoardService().selectBoardCount();
 		
 		currentPage = Integer.parseInt(request.getParameter("cpage"));
 		String cpageParam = request.getParameter("cpage");
@@ -65,7 +65,7 @@ public class AdminReportController extends HttpServlet {
 		
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		
-		ArrayList<Board> list = new BoardService().adminReportList(pi);
+		ArrayList<Board> list = new BoardService().adminBoardView(pi);
 		if (list == null) {
 		    list = new ArrayList<>();
 		}
