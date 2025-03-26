@@ -117,6 +117,7 @@
 		
                 <% for (MusicFile l : listAccuracy) { %>
                     <div class="musicAccuracyDiv" id="AccuracyDiv">
+                        <audio src="<%= contentPath + "/" + l.getMusicFileStorePath()%>">dsadsa</audio>
                         <div class="musicImg"><img src="<%= contentPath + "/" + l.getMusicImagePath()%>" alt=""></div>
                         <div class="musicInfo">
                             <div class="musicText">
@@ -141,9 +142,6 @@
         </div>
     </div>
     
-
-    <script>
-    
-    </script>
+    <%@ include file="../play/playBar.jsp" %>
 </body>
 </html>

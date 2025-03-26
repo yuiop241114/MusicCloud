@@ -167,7 +167,6 @@
 		color: gray;
 	}
 
-	
 	</style> 
 <body>
 	<div class="wrapper">
@@ -256,5 +255,6 @@
 		});
 		
 	</script>
+</div>
 </body>
 </html>
