@@ -144,7 +144,47 @@ public class SearchDao {
 		}
 		// 보류
 		return listPopular;
-	}		
+	}	
+	
+	/**
+	 * @param conn
+	 * @param musicNo
+	 * @return
+	 * 설명 : 음원 재생에 필요한 정보 select Dao
+	 */
+	public MusicFile musicSelect(Connection conn, int musicNo) {
+		//select 
+		MusicFile mf = null;
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("musicSelect");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, musicNo);
+			
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				mf = new MusicFile(
+					    rset.getInt("MUSIC_NO")
+					  , rset.getString("MUSIC_PATH")
+					  , rset.getString("IMAGE_PATH")
+					  , rset.getString("MUSIC_TITLE")
+					  , rset.getString("MUSIC_SINGER")
+					  , rset.getInt("music_count")
+					  , rset.getInt("music_like")
+					  , rset.getInt("music_dislike")
+					  , rset.getString("LYRICS")
+					);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			close(rset);
+		}
+		return mf;
+	}
 }
 
 

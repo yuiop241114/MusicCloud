@@ -423,9 +423,6 @@
     <br><br><br><br><br><br><br><br><br><br>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     
-
-
-    <%@ include file="../play/playBar.jsp" %>
     
 </body>
 </html>

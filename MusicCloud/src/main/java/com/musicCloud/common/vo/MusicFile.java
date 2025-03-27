@@ -119,6 +119,31 @@ public class MusicFile {
 		}
 		
 		
+		/**
+		 * @param musicNo
+		 * @param musicFileStorePath
+		 * @param musicImagePath
+		 * @param musicTitle
+		 * @param musicSinger
+		 * @param musicCount
+		 * @param like
+		 * @param dislike
+		 * @param lyrics
+		 * 설명 : 음원 재생용 정보 담는 생성자
+		 */
+		public MusicFile(int musicNo, String musicFileStorePath, String musicImagePath, String musicTitle,
+				String musicSinger, int musicCount, int like, int dislike, String lyrics) {
+			super();
+			this.musicNo = musicNo;
+			this.musicFileStorePath = musicFileStorePath;
+			this.musicImagePath = musicImagePath;
+			this.musicTitle = musicTitle;
+			this.musicSinger = musicSinger;
+			this.musicCount = musicCount;
+			this.like = like;
+			this.dislike = dislike;
+			this.lyrics = lyrics;
+		}
 		public int getCommentNo() {
 			return commentNo;
 		}

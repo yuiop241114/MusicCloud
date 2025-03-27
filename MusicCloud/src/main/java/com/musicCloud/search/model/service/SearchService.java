@@ -42,4 +42,17 @@ public class SearchService {
 		
 		return listPopularLocation;
 		}
+	
+	
+	/**
+	 * @param musicNo
+	 * @return
+	 * 설명 : 음원 재생용 정보 select 서비스 메소드
+	 */
+	public MusicFile musicSelect(int musicNo) {
+		Connection conn = getConnection();
+		MusicFile mf = new SearchDao().musicSelect(conn, musicNo);
+		close(conn);
+		return mf;
+	}
 }

@@ -8,13 +8,13 @@
 		listAccuracy
 		musicNo : 음원번호
 		musicFileStorePath : 음원경로
-		musicImagePath : 음원이미지겨로
+		musicImagePath : 음원이미지경로
 		musicTitle : 제목
 		musicSinger : 가수
 	*/
-	ArrayList<MusicFile> listAccuracy = (ArrayList<MusicFile>)request.getAttribute("listAccuracy");
-	ArrayList<MusicFile> listPopular = (ArrayList<MusicFile>)request.getAttribute("listPopular");
-	ArrayList<MusicFile> listPopularLocation = ((ArrayList<MusicFile>)request.getAttribute("listPopularLocation"));
+	ArrayList<MusicFile> listAccuracy = (ArrayList<MusicFile>)session.getAttribute("listAccuracy");
+	ArrayList<MusicFile> listPopular = (ArrayList<MusicFile>)session.getAttribute("listPopular");
+	ArrayList<MusicFile> listPopularLocation = ((ArrayList<MusicFile>)session.getAttribute("listPopularLocation"));
 %>
 <!DOCTYPE html>
 <html>
@@ -115,20 +115,22 @@
             <div><h2>정확순</h2></div>
             <div class="searchContentDiv" id="listAccuracy">
 		
-                <% for (MusicFile l : listAccuracy) { %>
-                    <div class="musicAccuracyDiv" id="AccuracyDiv">
-                        <audio src="<%= contentPath + "/" + l.getMusicFileStorePath()%>">dsadsa</audio>
-                        <div class="musicImg"><img src="<%= contentPath + "/" + l.getMusicImagePath()%>" alt=""></div>
+                <% for(int i=0; i<listAccuracy.size(); i++) { %>
+                    <div class="musicAccuracyDiv" id="accuracyDiv">
+                        <input type="hidden" value="<%= listAccuracy.get(i).getMusicNo()%>">
+                        <div class="musicImg"><img src="<%= contentPath + "/" + listAccuracy.get(i).getMusicImagePath()%>" alt=""></div>
                         <div class="musicInfo">
                             <div class="musicText">
-                            	<%= l.getMusicTitle() %> <br>
-                            	<%= l.getMusicSinger()%>
+                          	    <%= listAccuracy.get(i).getMusicTitle()%> <br>
+                          	    <%= listAccuracy.get(i).getMusicSinger()%>
                             </div>
                             <div class="cartImg"></div>
                         </div>
                     </div>
                 <% } %>
+                
             </div>
+
         </div>
 
         <div class="resultDiv">
@@ -140,8 +142,39 @@
             <div><h2>지역별 순위</h2></div>
             <div class="searchContentDiv" id="listPopularLocation"></div>
         </div>
+
     </div>
     
     <%@ include file="../play/playBar.jsp" %>
+
+    <script>
+        $(document).on("click", "#accuracyDiv", function(){
+            $.ajax({
+                url: "musicSelect",
+                data: {
+                    musicNo: $(this).find("input[type='hidden']").val(),
+                },
+                success: function(mf) {
+                    const audio = document.getElementById('music_source');
+                    const playBarWrapper = document.querySelector('.playBarWrapper');
+                    const playButton = document.querySelector('.playBtn');
+                    const pauseButton = document.querySelector('.pauseBtn');
+                    
+                    audio.src = mf.musicFileStorePath;
+                    $(".music_title").html(mf.musicTitle + "<br>" + mf.musicSinger);
+                    playBarWrapper.style.display = 'block';
+                    audio.play();
+                    playButton.style.display = 'none';
+                    pauseButton.style.display = 'block';
+                },
+                error: function() {
+                    console.log("선택음원 ajax 실패");
+                }
+            });
+
+        } )
+
+
+    </script>
 </body>
 </html>

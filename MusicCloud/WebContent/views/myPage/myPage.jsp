@@ -4,6 +4,19 @@
     pageEncoding="UTF-8"%>
 <%
   ArrayList<Location> locationList = (ArrayList<Location>)request.getAttribute("locationList");  
+
+  /*음원용*/
+  /*
+		listAccuracy
+		musicNo : 음원번호
+		musicFileStorePath : 음원경로
+		musicImagePath : 음원이미지경로
+		musicTitle : 제목
+		musicSinger : 가수
+	*/
+	ArrayList<MusicFile> listAccuracy = (ArrayList<MusicFile>)session.getAttribute("listAccuracy");
+	ArrayList<MusicFile> listPopular = (ArrayList<MusicFile>)session.getAttribute("listPopular");
+	ArrayList<MusicFile> listPopularLocation = ((ArrayList<MusicFile>)session.getAttribute("listPopularLocation"));
 %>
 <!DOCTYPE html>
 <html>
@@ -622,5 +635,7 @@
         })
 
     </script>
+
+    <%@ include file="../play/playBar.jsp" %>
 </body>
 </html>
