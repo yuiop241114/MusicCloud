@@ -22,5 +22,6 @@
         <textarea name="content" placeholder="댓글 내용"></textarea>
         <button type="submit">댓글 작성</button>
     </form>
+   
 </body>
 </html>

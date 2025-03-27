@@ -38,6 +38,7 @@ pageEncoding="UTF-8"%>
     border-radius: 5px;
     margin-bottom: 15px;
     font-size: 16px; /* 글자 크기 증가 */
+    margin-left: -2px;
   }
 
   /* 내용 입력 박스 크기 증가 */
@@ -48,8 +49,9 @@ pageEncoding="UTF-8"%>
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px; /* 글자 크기 증가 */
+    margin-left: -2px;
   }
-
+  
   .button-container {
     text-align: center;
     margin-top: 20px;
@@ -83,7 +85,7 @@ pageEncoding="UTF-8"%>
     width: 180px;
     height: 120px;
     border-radius: 5px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);   
   }
 
   .section-title {
