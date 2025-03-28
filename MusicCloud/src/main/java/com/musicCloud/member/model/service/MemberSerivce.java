@@ -43,8 +43,9 @@ public class MemberSerivce {
 	 */
 	public int insertMember(Member m) {
 		Connection conn = getConnection();
-		int result = new MemberDao().insertMember(conn, m);
-		if(result > 0) {
+		int result = new MemberDao().insertMember(conn, m); //회원가입
+		int result2 = new MemberDao().insertRecentMusic(conn, m.getLocationNo()); //최근들은음원 테이블에 회원번호, 지역번호 추가
+		if(result > 0 && result2 > 0) {
 			commit(conn);
 		}else {
 			rollback(conn);

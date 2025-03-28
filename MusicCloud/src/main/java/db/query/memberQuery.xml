@@ -58,6 +58,20 @@
 		  )
 	</entry>
 	
+	<entry key="insertRecentMusic">
+		INSERT 
+		  INTO RECENT_MUSIC
+		  (
+		    MEMBER_NO
+		  , LOCATION_NO
+		  )
+		  VALUES
+		  (
+		    SEQ_MEMBER_NO.CURRVAL
+		  , ?
+		  )
+	</entry>
+	
 	<entry key="memberIdCheck">
 		SELECT COUNT(*) AS "COUNT"
 		  FROM MEMBER
