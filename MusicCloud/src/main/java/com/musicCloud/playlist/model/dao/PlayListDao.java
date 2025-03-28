@@ -70,45 +70,45 @@ public class PlayListDao {
 	 * @return
 	 * 설명 : 모든 음원 select Dao
 	 */
-	public ArrayList<MusicFile> selectAllMusic(Connection conn){
-		//select
-		ArrayList<MusicFile> list = new ArrayList<MusicFile>();
-		ResultSet rset = null;
-		PreparedStatement pstmt = null;
-		String sql = prop.getProperty("selectAllMusic");
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			
-			rset = pstmt.executeQuery();
-			while(rset.next()) {
-				list.add(
-						  new MusicFile(
-								  		 rset.getInt("mno")
-								  	   , rset.getString("fileoriginname")
-								  	   , rset.getString("fileeditname")
-								  	   , rset.getString("filepath")
-								  	   , rset.getString("imageoriginname")
-								  	   , rset.getString("imageeditname")
-								  	   , rset.getString("imagepath")
-								  	   , rset.getInt("category")
-								  	   , rset.getString("mtitle")
-								  	   , rset.getString("msinger")
-								  	   , rset.getInt("mcount")
-								  	   , rset.getInt("mlike")
-								  	   , rset.getInt("mdislike")
-								  	   , rset.getString("lyrics")
-								  	   , rset.getString("status")
-								  	   )
-						);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-			close(pstmt);
-			close(rset);
-		}
-		return list;
-	}
+//	public ArrayList<MusicFile> selectAllMusic(Connection conn){
+//		//select
+//		ArrayList<MusicFile> list = new ArrayList<MusicFile>();
+//		ResultSet rset = null;
+//		PreparedStatement pstmt = null;
+//		String sql = prop.getProperty("selectAllMusic");
+//		
+//		try {
+//			pstmt = conn.prepareStatement(sql);
+//			
+//			rset = pstmt.executeQuery();
+//			while(rset.next()) {
+//				list.add(
+//						  new MusicFile(
+//								  		 rset.getInt("mno")
+//								  	   , rset.getString("fileoriginname")
+//								  	   , rset.getString("fileeditname")
+//								  	   , rset.getString("filepath")
+//								  	   , rset.getString("imageoriginname")
+//								  	   , rset.getString("imageeditname")
+//								  	   , rset.getString("imagepath")
+//								  	   , rset.getInt("category")
+//								  	   , rset.getString("mtitle")
+//								  	   , rset.getString("msinger")
+//								  	   , rset.getInt("mcount")
+//								  	   , rset.getInt("mlike")
+//								  	   , rset.getInt("mdislike")
+//								  	   , rset.getString("lyrics")
+//								  	   , rset.getString("status")
+//								  	   )
+//						);
+//			}
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}finally {
+//			close(pstmt);
+//			close(rset);
+//		}
+//		return list;
+//	}
 
 }

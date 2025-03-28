@@ -248,7 +248,7 @@
 
         <div class="header">
             <div class="header-1">
-                <b style="margin: auto; text-align: center; color: #444; font-size: larger;">마이페이지</b>
+                <b style="margin: auto; text-align: center; color: #1587d0; font-size: larger;">마이페이지</b>
             </div>    
         </div>
         

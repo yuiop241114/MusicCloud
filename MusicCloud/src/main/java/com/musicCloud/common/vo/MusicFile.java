@@ -168,6 +168,26 @@ public class MusicFile {
 		}
 		
 		
+		/**
+		 * @param musicNo
+		 * @param musicImagePath
+		 * @param musicCategoryNo
+		 * @param musicTitle
+		 * @param musicSinger
+		 * 설명 : 모든 음원 표지 출력 데이터 저장 생성자
+		 */
+		public MusicFile(int musicNo, String musicImagePath, int musicCategoryNo, String musicTitle,
+				String musicSinger) {
+			super();
+			this.musicNo = musicNo;
+			this.musicImagePath = musicImagePath;
+			this.musicCategoryNo = musicCategoryNo;
+			this.musicTitle = musicTitle;
+			this.musicSinger = musicSinger;
+		}
+		
+		
+		
 		public int getCommentNo() {
 			return commentNo;
 		}

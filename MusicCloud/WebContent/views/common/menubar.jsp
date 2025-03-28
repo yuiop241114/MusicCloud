@@ -1,3 +1,5 @@
+<%@page import="com.musicCloud.common.vo.MusicFile"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="org.json.simple.JSONObject"%>
 <%@page import="org.json.simple.parser.JSONParser"%>
 <%@page import="com.musicCloud.member.model.vo.Member"%>
@@ -7,14 +9,18 @@
 	String contentPath = request.getContextPath();
 	Member loginMember = (Member)session.getAttribute("loginMember");
 	String alertMsg = (String)session.getAttribute("alertMsg");
-	
+	ArrayList<MusicFile> fileList = (ArrayList<MusicFile>)session.getAttribute("fileList");
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>MusicCloud</title>
+<!-- 메테리얼 아이콘 -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 
+			
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 
 <!-- jQuery library -->
@@ -179,6 +185,7 @@
 
 	</style> 
 <body>
+	
 	<div class="wrapper">
 			<a href="<%= contentPath%>"><img src="resources/image/mainlogo.png" id="logo"></a>
 
@@ -250,8 +257,24 @@
 		<%}%>
 	
 	<script>
-			//퀵 메뉴 스크립트
 	    $(function(){
+	    		$.ajax({
+	    			url : "selectMusicInfo",
+	    			data : {},
+	    			success:function(fileList){
+							/*
+								fileList
+								musicNo : 음원명
+		 						musicImagePath : 이미지경로
+								musicCategoryNo : 음원 장르
+		 						musicTitle : 음원명
+		 						musicSinge : 가수명
+							*/
+						},
+	    			error:function(){},
+	    		})
+	    	
+					//퀵 메뉴 스크립트
 	        $("#side-btn").click(function(){
 	            if($("#side-btn-list").css('display') == 'none'){
 	                $("#side-btn-list").slideDown();

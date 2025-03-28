@@ -40,7 +40,7 @@
 <head>
 <meta charset="UTF-8">
 <title>검색 결과</title>
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=shopping_cart_checkout" />
 <style>
     /*전체 Div*/
     #searchListDiv{
@@ -114,6 +114,12 @@
     .cartImg{
         width: 30%;
         height: 100%;
+        color: white;
+        text-align: center;
+        padding: 8px;
+    }
+    .material-symbols-outlined{
+        font-size: 40px;
     }
     .musicText{
         width: 70%;
@@ -143,7 +149,9 @@
                           	    <%= listAccuracy.get(i).getMusicTitle()%> <br>
                           	    <%= listAccuracy.get(i).getMusicSinger()%>
                             </div>
-                            <div class="cartImg"></div>
+                            <div class="cartImg">
+                                <span class="material-symbols-outlined">shopping_cart_checkout</span>
+                            </div>
                         </div>
                     </div>
                 <% } %>
@@ -164,7 +172,9 @@
                           	    <%= listPopular.get(i).getMusicTitle()%> <br>
                           	    <%= listPopular.get(i).getMusicSinger()%>
                             </div>
-                            <div class="cartImg"></div>
+                            <div class="cartImg">
+                                <span class="material-symbols-outlined">shopping_cart_checkout</span>
+                            </div>
                         </div>
                     </div>
                 <% } %>
@@ -183,7 +193,9 @@
                           	    <%= listPopularLocation.get(i).getMusicTitle()%> <br>
                           	    <%= listPopularLocation.get(i).getMusicSinger()%>
                             </div>
-                            <div class="cartImg"></div>
+                            <div class="cartImg">
+                                <span class="material-symbols-outlined">shopping_cart_checkout</span>
+                            </div>
                         </div>
                     </div>
                 <% } %>
