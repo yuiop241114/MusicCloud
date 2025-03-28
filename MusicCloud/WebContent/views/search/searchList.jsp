@@ -13,7 +13,26 @@
 		musicSinger : 가수
 	*/
 	ArrayList<MusicFile> listAccuracy = (ArrayList<MusicFile>)session.getAttribute("listAccuracy");
+	
+	/*
+		listPopular
+		musicNo : 음원번호
+		musicImagePath : 이미지 경로
+		musicTitle : 음원명
+		musicSinger : 가수명
+	  musicCount : 인기 카운트
+	*/
 	ArrayList<MusicFile> listPopular = (ArrayList<MusicFile>)session.getAttribute("listPopular");
+	
+	/*
+		listPopularLocation
+		musicNo : 음원번호
+		musicFileOriginName : 지역이름 
+		musicImagePath : 이미지 경로
+		musicTitle : 음원명
+		musicSinger : 가수명
+		musicCount : 인기 카운트
+	*/
 	ArrayList<MusicFile> listPopularLocation = ((ArrayList<MusicFile>)session.getAttribute("listPopularLocation"));
 %>
 <!DOCTYPE html>
@@ -135,12 +154,40 @@
 
         <div class="resultDiv">
             <div><h2>인기순</h2></div>
-            <div class="searchContentDiv" id="listPopular"></div>
+            <div class="searchContentDiv" id="listPopular">
+            	<% for(int i=0; i<listPopular.size(); i++) { %>
+                    <div class="musicAccuracyDiv" id="accuracyDiv">
+                        <input type="hidden" value="<%= listPopular.get(i).getMusicNo()%>">
+                        <div class="musicImg"><img src="<%= contentPath + "/" + listPopular.get(i).getMusicImagePath()%>" alt=""></div>
+                        <div class="musicInfo">
+                            <div class="musicText">
+                          	    <%= listPopular.get(i).getMusicTitle()%> <br>
+                          	    <%= listPopular.get(i).getMusicSinger()%>
+                            </div>
+                            <div class="cartImg"></div>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
         </div>
 
         <div class="resultDiv">
             <div><h2>지역별 순위</h2></div>
-            <div class="searchContentDiv" id="listPopularLocation"></div>
+            <div class="searchContentDiv" id="listPopularLocation">
+            	<% for(int i=0; i<listPopularLocation.size(); i++) { %>
+                    <div class="musicAccuracyDiv" id="accuracyDiv">
+                        <input type="hidden" value="<%= listPopularLocation.get(i).getMusicNo()%>">
+                        <div class="musicImg"><img src="<%= contentPath + "/" + listPopularLocation.get(i).getMusicImagePath()%>" alt=""></div>
+                        <div class="musicInfo">
+                            <div class="musicText">
+                          	    <%= listPopularLocation.get(i).getMusicTitle()%> <br>
+                          	    <%= listPopularLocation.get(i).getMusicSinger()%>
+                            </div>
+                            <div class="cartImg"></div>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
         </div>
 
     </div>
@@ -148,6 +195,18 @@
     <%@ include file="../play/playBar.jsp" %>
 
     <script>
+        //음원 클릭시 음원 정보를 비동기로 가져오고 플레이바 활성화
+        /*
+            musicNo : 음원번호
+            musicFileStorePath : 음원 경로
+            musicImagePath : 이미지 경로
+            musicTitle : 음원명
+            musicSinger : 가수명
+            musicCount : 조회수
+            like : 좋아요
+            dislike : 싫어요
+            lyrics : 가사
+        */
         $(document).on("click", "#accuracyDiv", function(){
             $.ajax({
                 url: "musicSelect",
@@ -173,7 +232,6 @@
             });
 
         } )
-
 
     </script>
 </body>

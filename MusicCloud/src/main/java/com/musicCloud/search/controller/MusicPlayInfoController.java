@@ -30,9 +30,9 @@ public class MusicPlayInfoController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int musicNo = Integer.parseInt(request.getParameter("musicNo"));
+		int countResult = new SearchService().increaseCount(musicNo);
 		MusicFile mf = new SearchService().musicSelect(musicNo);
 
-		System.out.println(mf);
 		//Gson으로 넘겨줌
 		response.setContentType("application/json; charset=utf-8");
 		new Gson().toJson(mf, response.getWriter());

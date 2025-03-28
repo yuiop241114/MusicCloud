@@ -42,7 +42,7 @@ public class SearchDao {
 		ArrayList<MusicFile> listAccuracy = new ArrayList<MusicFile>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String sql = prop.getProperty("searchList");
+		String sql = prop.getProperty("searchAccuracyList");
 
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -70,30 +70,34 @@ public class SearchDao {
 		return listAccuracy;
 	}
 	
+	/**
+	 * @param conn
+	 * @param search
+	 * @return
+	 * 설명 : 인기순 검색 정보 추출 Dao
+	 */
 	public ArrayList<MusicFile> searchListPouplar(Connection conn, String search) {
 		
 		ArrayList<MusicFile> listPopular = new ArrayList<MusicFile>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		
-		String sql = prop.getProperty("searchListPopular");
-		
+		String sql = prop.getProperty("searchPopularList");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, "%" + search +"%");
+			pstmt.setString(2, "%" + search +"%");
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
 				
 					listPopular.add(new MusicFile(
 												  rset.getInt("MUSIC_NO") 
+												, rset.getString("IMAGE_PATH")
 												, rset.getString("MUSIC_TITLE")
 												, rset.getString("MUSIC_SINGER")
-												, rset.getString("MUSIC_IMAGE_EDIT_NAME")
-												, rset.getString("MUSIC_IMAGE_PATH")
-												, rset.getString("POPULAR")    // Int로 바꿔줘야함
+												, rset.getInt("POPULAR")
 												)
 					);
 			}
@@ -106,33 +110,39 @@ public class SearchDao {
 
 		return listPopular;
 	}
+	
+	
+	/**
+	 * @param conn
+	 * @param search
+	 * @param locationNo
+	 * @return
+	 * 설명 : 지역별 인기 순위 정보 추출 Dao
+	 */
 	public ArrayList<MusicFile> searchListPopularLocation(Connection conn, String search, int locationNo) {
 		ArrayList<MusicFile> listPopular = new ArrayList<MusicFile>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
-		String sql = prop.getProperty("searchListPopularLocation");
+		String sql = prop.getProperty("searchPopularLocationList");
 
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			
 			pstmt.setInt(1, locationNo);
 			pstmt.setString(2, "%" + search + "%");
-			
-			
+			pstmt.setString(3, "%" + search + "%");
 			
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
-				
 				listPopular.add(new MusicFile(
 											  rset.getInt("MUSIC_NO") 
+											, rset.getString("LOCATION_NAME")
+											, rset.getString("IMAGE_PATH")
 											, rset.getString("MUSIC_TITLE")
 											, rset.getString("MUSIC_SINGER")
-											, rset.getString("MUSIC_IMAGE_EDIT_NAME")
-											, rset.getString("MUSIC_IMAGE_PATH")
-											, rset.getString("POPULAR")    // Int로 바꿔줘야함
+											, rset.getInt("POPULAR")    // Int로 바꿔줘야함
 											)
 							);
 				}
@@ -142,7 +152,6 @@ public class SearchDao {
 			close(rset);
 			close(pstmt);
 		}
-		// 보류
 		return listPopular;
 	}	
 	
@@ -184,6 +193,31 @@ public class SearchDao {
 			close(rset);
 		}
 		return mf;
+	}
+	
+	/**
+	 * @param conn
+	 * @param musicNo
+	 * @return
+	 * 설명 : 음원 조회수 증가 Dao
+	 */
+	public int increaseCount(Connection conn, int musicNo) {
+		//update
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("increaseCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, musicNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
 	}
 }
 

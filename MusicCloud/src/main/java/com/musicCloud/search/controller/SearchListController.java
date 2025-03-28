@@ -33,9 +33,7 @@ public class SearchListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		
-		// 서블릿에서 데이터 설정
-		String search = request.getParameter("search"); // 클라이언트에서 넘어온 검색어
+		String search = request.getParameter("search"); // 검색어
 		int locationNo = Integer.parseInt(request.getParameter("locationNo"));
 		HttpSession session = request.getSession();
 		

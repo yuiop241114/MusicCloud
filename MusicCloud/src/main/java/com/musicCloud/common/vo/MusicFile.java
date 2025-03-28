@@ -44,23 +44,6 @@ public class MusicFile {
 			this.musicImagePath = musicImagePath;
 		}
 		
-	
-		
-		
-		//인기순 뽑기용
-		public MusicFile(int musicNo, String musicFileOriginName, String musicFileEditName, String musicFileStorePath,
-				String musicImageOriginName, String musicImageEditName) {
-			super();
-			this.musicNo = musicNo;
-			this.musicFileOriginName = musicFileOriginName;
-			this.musicFileEditName = musicFileEditName;
-			this.musicFileStorePath = musicFileStorePath;
-			this.musicImageOriginName = musicImageOriginName;
-			this.musicImageEditName = musicImageEditName;   // 인기순 숫자를 담아야해서 String 으로 변환 필요
-		}
-		
-		
-		
 		/**
 		 * @param musicNo
 		 * @param musicFileStorePath
@@ -77,6 +60,45 @@ public class MusicFile {
 			this.musicImagePath = musicImagePath;
 			this.musicTitle = musicTitle;
 			this.musicSinger = musicSinger;
+		}
+		
+		/**
+		 * @param musicNo
+		 * @param musicImagePath
+		 * @param musicTitle
+		 * @param musicSinger
+		 * @param musicCount
+		 * 설명 : 인기순 음원 정보 저장 생성자
+		 */
+		public MusicFile(int musicNo, String musicImagePath, String musicTitle, String musicSinger, int musicCount) {
+			super();
+			this.musicNo = musicNo;
+			this.musicImagePath = musicImagePath;
+			this.musicTitle = musicTitle;
+			this.musicSinger = musicSinger;
+			this.musicCount = musicCount;
+		}
+		
+		
+		
+		/**
+		 * @param musicNo
+		 * @param musicFileOriginName : 지역이름 담을 변수
+		 * @param musicImagePath
+		 * @param musicTitle
+		 * @param musicSinger
+		 * @param musicCount
+		 * 설명 : 지역별 인기 순위 정보 저장 생성자
+		 */
+		public MusicFile(int musicNo, String musicFileOriginName, String musicImagePath, String musicTitle,
+				String musicSinger, int musicCount) {
+			super();
+			this.musicNo = musicNo;
+			this.musicFileOriginName = musicFileOriginName;
+			this.musicImagePath = musicImagePath;
+			this.musicTitle = musicTitle;
+			this.musicSinger = musicSinger;
+			this.musicCount = musicCount;
 		}
 		/**
 		 * @param musicNo
@@ -144,6 +166,8 @@ public class MusicFile {
 			this.dislike = dislike;
 			this.lyrics = lyrics;
 		}
+		
+		
 		public int getCommentNo() {
 			return commentNo;
 		}
