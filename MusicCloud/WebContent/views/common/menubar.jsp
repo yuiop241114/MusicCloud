@@ -27,6 +27,16 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 	
 <style>
+	@font-face {
+	font-family: 'SUITE-Regular';
+	src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	}
+	body{
+		font-family: 'SUITE-Regular';
+	}
+
 	.wrapper{
 	  box-sizing: border-box;
 		width: 1500px;
@@ -167,7 +177,6 @@
 		color: gray;
 	}
 
-	
 	</style> 
 <body>
 	<div class="wrapper">
@@ -201,6 +210,8 @@
        </form>
   </div>
 
+	<hr>
+
 	<div id="navigator-div">
 		<div class="navigator">
 			<button type="button" id="side-btn" class="btn btn-primary btn-lg">퀵 메뉴</button>
@@ -223,7 +234,7 @@
 					</tr>
 					<tr>
 							<th><img src="resources/image/cartlogo.jpg" alt=""></th>
-							<th>플레이 리스트</th>
+							<th><a href="<%= contentPath%>/playlistForm">플레이리스트</a></th>
 					</tr>
 			</table>
 		</div>
@@ -240,7 +251,6 @@
 	<script>
 			//퀵 메뉴 스크립트
 	    $(function(){
-	    	
 	        $("#side-btn").click(function(){
 	            if($("#side-btn-list").css('display') == 'none'){
 	                $("#side-btn-list").slideDown();
@@ -255,5 +265,7 @@
 		});
 		
 	</script>
+
+
 </body>
 </html>

@@ -1,159 +1,175 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page import="com.musicCloud.common.vo.MusicFile"%>
+<%@page import="java.util.ArrayList"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-    <style>
-        /* 기본 스타일 */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- 메테리얼 아이콘 -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+<style>
+    .playBarWrapper{
+        margin: auto;
+        width: 100%;
+        height: 100px;
+        background-color: #1587d0;
+        z-index: 999;
+        position: sticky;
+        bottom: 0;
+        float: inline-end;
+        /*초기에는 안보이는 상태*/
+        display: none;
+    }   
+    /*아이콘 디자인*/
+    .material-icons{
+        font-size: 60px;
+        background-color: #1587d0;
+        border: none;
+        color: white;
+        height: 100%;
+        width: 13%;
+    }
+    .material-icons:hover{
+        cursor: pointer;
+    }
 
-        .button {
-            height: 10%;
-        }
+    /*컨트롤러*/
+    .controller{
+        position: absolute;
+        bottom: 0;
+        height: 60%;
+        width: 100%;
+        display: flex;
+        
+    }
 
-        b {
-            font-size: 20px;
-        }
+    /*음원 정보*/
+    .music_title{
+        width: 30%;
+        padding-left: 10px;
+        padding-top: 5px;
+        color: white;
+    }
 
-        .play-info {
-            position: absolute;
-        }
+    /*플레이바 아이콘*/
+    .music_controller{
+        width: 40%;
+        display: flex;
+        justify-content: center;
+    }
+    .playBtn{
+        display: none;
+    }
+    .pauseBtn{
 
-        #play-bar {
-            height: 130px;
-            width: 100%;
-            position: fixed;
-            bottom: 0;
-            background-color: #d6efff;
-            opacity: 80%;
-            text-align: center;
-            transition: bottom 0.3s ease-in-out;
-            display: none;
-        }
+    }
 
-        #play-bar.show {
-         height: 117px; /* 원하는 높이 설정 (playBar의 실제 높이에 맞게 설정) */
-         opacity: 1;
-        }
-
-        #seekBar {
-            width: 100%;
-            position: absolute;
-            left: 0;
-            right: 0;
-            color: black;
-        }
-
-        .play-info span {
-            float: left;
-            padding: 1rem;
-            font-size: 20px;
-        }
-
-        #play-previous,
-        #play-pause,
-        #play-next,
-        #play-hidden {
-            background: none;
-            border: none;
-            height: 80px;
-            width: 80px;
-        }
-
-        #play-hidden {
-            position: absolute;
-            right: 0;
-        }
-
-        #play-previous img,
-        #play-pause img,
-        #play-next img,
-        #play-hidden img {
-            height: 40px;
-            width: 40px;
-        }
-
-      
-    </style>
+    /*추가 창 띄우는 아이콘*/
+    .music_detail_btn{
+        width: 30%;
+    }
+    .detailBtn{
+        float: right;
+        padding-right: 10px;
+    }
+</style>
 </head>
 <body>
- 
+    <!-- musicAccuracyDiv : 음원 전체 div 클래스명 -->
+    <div class="playBarWrapper">
 
-
-
-        <br><br><br><br><br><br><br><br>
-
-        <div id="play-bar">
-            <audio id="audio" src="audio.mp3"></audio>
-            <div class="play-info">
-                <span>00:00</span>
-                <span>/</span>
-                <span>03:40</span>
-            </div>
-            <input id="seekBar" type="range" min="0" max="100" value="0">
-            <br>
-            <b>가수</b>
-            <b style="font-size: 18px; color: gray;">노래제목</b>
-            <button style="float: right;"></button>
-            <br>
-            <button id="play-previous">
-                <img src="../../resources/image/전곡.png" alt="">
-            </button>
-            <button id="play-pause">
-                <img src="../../resources/image/재생이미지 검정.png" alt="">
-            </button>
-            <button id="play-next">
-                <img src="../../resources/image/다음곡.png" alt="">
-            </button>
-            <button id="play-hidden">
-                <img src="../../resources/image/화살표.png" alt="">
-            </button>
+        <audio preload controls id="music_source" src="" type="audio/mp3"></audio>
+        <div class="progress-bar">
+            <div class="progress"></div>
         </div>
+        
+        <div class="controller">
+
+            <div class="music_title">
+               
+            </div>
+
+            <div class="music_controller">
+                <div class="material-icons previousBtn">skip_previous</div>
+                <div class="material-icons playBtn">play_arrow</div>
+                <div class="material-icons pauseBtn">pause</div>
+                <div class="material-icons nextBtn">skip_next</div>    
+            </div>
+
+            <div class="music_detail_btn">
+                <div class="material-icons detailBtn">view_headline</div>
+            </div>
+        </div>
+
     </div>
 
     <script>
-      
+    //음원 정보 가져오는 ajax
+        // $(function(){
+        //     //음원 클릭시 음원 정보를 비동기로 가져오고 플레이바 활성화
+        //     /*
+        //         musicNo : 음원번호
+        //         musicFileStorePath : 음원 경로
+        //         musicImagePath : 이미지 경로
+        //         musicTitle : 음원명
+        //         musicSinger : 가수명
+        //         musicCount : 조회수
+        //         like : 좋아요
+        //         dislike : 싫어요
+        //         lyrics : 가사
+        //     */
+        //     $("#accuracyDiv").click(function() {
+        //         //해당 음원이 들어가 있는 인덱스
+        //         $.ajax({
+        //             url: "musicSelect",
+        //             data:{
+        //                 musicNo : $("#accuracyDiv>input").val(),
+        //             },
+        //             success:function(mf){
+        //                 $("audio").attr("src", mf.musicFileStorePath);
+        //                 $(".music_title").html(
+        //                 	mf.musicTitle + "<br>" + mf.musicSinger		
+        //                 );
+        //                 audio.play();
+        //             },
+        //             error:function(){
+        //                 console.log("선택음원 ajax 실패")
+        //             }
+        //         })
+        //         $(".playBarWrapper").css("display", "block");
+        //     })
+        // })
+        //음원 재생바 커스텀 
+        const audio = document.getElementById('music_source');
+        const playButton = document.querySelector('.playBtn');
+        const pauseButton = document.querySelector('.pauseBtn');
+        const progressBar = document.querySelector('.progress-bar');
+        const progress = document.querySelector('.progress');
 
- 
-        document.getElementById("play-hidden").addEventListener("click", function () {
-            let playBar = document.getElementById("play-bar");
-
-            if (playBar.style.bottom === "0px") {
-                playBar.style.bottom = "-108px";
-            } else {
-                playBar.style.bottom = "0px";
-            }
+        playButton.addEventListener('click', () => {
+            audio.play();
+            playButton.style.display = 'none';
+            pauseButton.style.display = 'block';
         });
 
-
-        document.getElementById("seekBar").addEventListener("input", function () {
-            let playBar = document.getElementById("play-bar");
-            playBar.style.bottom = "0px";
+        pauseButton.addEventListener('click', () => {
+            audio.pause();
+            playButton.style.display = 'block';
+            pauseButton.style.display = 'none';
         });
 
-        document.querySelector(".image-container").addEventListener("click", function(){
-            
-            let playBar = document.getElementById("play-bar");
-            
-            if (playBar.style.display === "none" || playBar.style.display === ""){
-
-                playBar.style.display = "block";
-            }else{
-                playBar.style.display = "none";
-            }
+        audio.addEventListener('timeupdate', () => {
+            const percentage = (audio.currentTime / audio.duration) * 100;
+            progress.style.width = `${percentage}%`;
         });
 
-
-        
+        progressBar.addEventListener('click', (e) => {
+            const clickPosition = (e.offsetX / progressBar.offsetWidth) * audio.duration;
+            audio.currentTime = clickPosition;
+        });
     </script>
 </body>
 </html>

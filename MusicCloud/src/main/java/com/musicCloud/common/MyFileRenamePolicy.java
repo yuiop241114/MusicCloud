@@ -16,7 +16,7 @@ public class MyFileRenamePolicy implements FileRenamePolicy{
 		
 		
 		
-		String currentTime = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+		String currentTime = new SimpleDateFormat("yyyyMMdd").format(new Date());
 		
 		int ranNum = (int)(Math.random()* 90000 + 10000); 
 		

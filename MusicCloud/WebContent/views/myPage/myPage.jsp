@@ -4,6 +4,19 @@
     pageEncoding="UTF-8"%>
 <%
   ArrayList<Location> locationList = (ArrayList<Location>)request.getAttribute("locationList");  
+
+  /*음원용*/
+  /*
+		listAccuracy
+		musicNo : 음원번호
+		musicFileStorePath : 음원경로
+		musicImagePath : 음원이미지경로
+		musicTitle : 제목
+		musicSinger : 가수
+	*/
+	ArrayList<MusicFile> listAccuracy = (ArrayList<MusicFile>)session.getAttribute("listAccuracy");
+	ArrayList<MusicFile> listPopular = (ArrayList<MusicFile>)session.getAttribute("listPopular");
+	ArrayList<MusicFile> listPopularLocation = ((ArrayList<MusicFile>)session.getAttribute("listPopularLocation"));
 %>
 <!DOCTYPE html>
 <html>
@@ -230,23 +243,19 @@
 <body>
 	<%@ include file="../common/menubar.jsp" %>
 
-
     <div class="wrapperMypage">
         <div class="content">
 
         <div class="header">
-
             <div class="header-1">
                 <b style="margin: auto; text-align: center; color: #444; font-size: larger;">마이페이지</b>
-            </div>
-
-            
-            </div>
+            </div>    
+        </div>
         
         <div class="main">
 
             <div class="main-1">
-                <img src="resources/image/열불이.png" alt="">
+                <br>
                 <br>
                 <b>유저 이름</b>
                 <br>
@@ -562,7 +571,7 @@
                         	content += "<tr>"                 
                         				 + "<td>" + friendList[i].memberId + "</td>"
                             			 + "<td>" + friendList[i].memberName + "</td>"
-                                         + "<td>" + "<button type=" + "'button'" + " class=" + "'btn btn-danger'" + ">친구 삭제</button>" + "<input type=" + "'hidden'" +  " id=" + "'friendNo'" + " value=" + "'" + friendList[i].locationNo +"'" + ">" 
+                                         + "<td>" + "<button type=" + "'button'" + " class=" + "'btn btn-danger deleteFriend'" + ">친구 삭제</button>" + "<input type=" + "'hidden'" +  " id=" + "'friendNo'" + " value=" + "'" + friendList[i].locationNo +"'" + ">" 
                                          + "<input type=" + "'hidden'" +  " id=" + "'memberNo'" + " value=" + "'" + friendList[i].memberNo +"'" + ">"
                                          + "</td>"
                             		 + "</tr>"
@@ -578,7 +587,7 @@
         })
 
         //친구삭제 스크립트
-        $(document).on("click", ".btn-danger", function() {
+        $(document).on("click", ".deleteFriend", function() {
 
             //console.log($(this).siblings("#friendNo").val());
             let booleanMsg = confirm("친구 삭제하시겠습니까?");
@@ -626,5 +635,7 @@
         })
 
     </script>
+
+    <%@ include file="../play/playBar.jsp" %>
 </body>
 </html>
