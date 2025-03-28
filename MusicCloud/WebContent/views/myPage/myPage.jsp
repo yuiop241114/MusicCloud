@@ -236,7 +236,7 @@
 
     /*정기 구독 결재 내역*/
     #subscribeTable b{
-        font-size: medium;
+        font-size: small;
     }
 </style>
 </head>
