@@ -29,6 +29,7 @@ public class MemberDao {
 			prop.loadFromXML( new FileInputStream(queryFilePath));
 		} catch (IOException e) {
 			e.printStackTrace();
+			
 		}
 	}
 	
@@ -131,6 +132,30 @@ public class MemberDao {
 			pstmt.setString(7, m.getGender());
 			pstmt.setInt(8, m.getAge());
 			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	
+	/**
+	 * @param conn
+	 * @return
+	 * 설명 : 회원가입 시 최근들은 음원에 회원 번호, 회원의 지역 번호 추가 Dao
+	 */
+	public int insertRecentMusic(Connection conn, int locationNo) {
+		//insert
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertRecentMusic");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, locationNo);
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

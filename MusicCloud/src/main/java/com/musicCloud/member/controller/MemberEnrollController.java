@@ -48,7 +48,6 @@ public class MemberEnrollController extends HttpServlet {
 
 		Member m = new Member(locationNo, memberId, memberPwd, memberName, memberAlias, email, gender, age);
 		
-		//서비스부터 시작
 		int result = new MemberSerivce().insertMember(m);
 		if(result > 0) {
 			//성공
