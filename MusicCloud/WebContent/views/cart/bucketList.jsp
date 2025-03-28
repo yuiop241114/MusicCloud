@@ -129,7 +129,7 @@
                     </thead>
                     <tbody>
                         <% 
-                            if(c.getMusicNoTotal() != null){
+                            if(c != null){
                                 String[] mList = c.getMusicNoTotal().split(",");
                                 for(int i=0; i<mList.length; i++){
                                 
