@@ -193,46 +193,5 @@
     </div>
     
     <%@ include file="../play/playBar.jsp" %>
-
-    <script>
-        //음원 클릭시 음원 정보를 비동기로 가져오고 플레이바 활성화
-        /*
-            musicNo : 음원번호
-            musicFileStorePath : 음원 경로
-            musicImagePath : 이미지 경로
-            musicTitle : 음원명
-            musicSinger : 가수명
-            musicCount : 조회수
-            like : 좋아요
-            dislike : 싫어요
-            lyrics : 가사
-        */
-        $(document).on("click", "#accuracyDiv", function(){
-            $.ajax({
-                url: "musicSelect",
-                data: {
-                    musicNo: $(this).find("input[type='hidden']").val(),
-                },
-                success: function(mf) {
-                    const audio = document.getElementById('music_source');
-                    const playBarWrapper = document.querySelector('.playBarWrapper');
-                    const playButton = document.querySelector('.playBtn');
-                    const pauseButton = document.querySelector('.pauseBtn');
-                    
-                    audio.src = mf.musicFileStorePath;
-                    $(".music_title").html(mf.musicTitle + "<br>" + mf.musicSinger);
-                    playBarWrapper.style.display = 'block';
-                    audio.play();
-                    playButton.style.display = 'none';
-                    pauseButton.style.display = 'block';
-                },
-                error: function() {
-                    console.log("선택음원 ajax 실패");
-                }
-            });
-
-        } )
-
-    </script>
 </body>
 </html>

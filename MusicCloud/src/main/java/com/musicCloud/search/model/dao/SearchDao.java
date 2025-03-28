@@ -219,6 +219,34 @@ public class SearchDao {
 		}
 		return result;
 	}
+	
+	
+	/**
+	 * @param conn
+	 * @param memberNo
+	 * @param musicNo
+	 * @return
+	 * 설명 : 음원 실행시 현재 음원을 최근 감상한 음원으로 갱신 Dao
+	 */
+	public int updateRecentMusic(Connection conn, int memberNo, int musicNo) {
+		//update 
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateRecentMusic");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, musicNo);
+			pstmt.setInt(2, memberNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
 }
 
 

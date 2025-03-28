@@ -74,4 +74,22 @@ public class SearchService {
 		}
 		return result;
 	}
+	
+	/**
+	 * @param memberNo
+	 * @param musicNo
+	 * @return
+	 * 설명 : 음원 실행시 현재 음원을 최근 감상한 음원으로 갱신 서비스 메소드
+	 */
+	public int updateRecentMusic(int memberNo, int musicNo) {
+		Connection conn = getConnection();
+		int result = new SearchDao().updateRecentMusic(conn, memberNo, musicNo);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
 }

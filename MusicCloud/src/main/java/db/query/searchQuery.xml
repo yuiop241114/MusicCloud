@@ -70,4 +70,10 @@
 		   SET MUSIC_COUNT = MUSIC_COUNT + 1
 		 WHERE MUSIC_NO = ?
 	</entry>
+	
+	<entry key="updateRecentMusic">
+		UPDATE RECENT_MUSIC
+		   SET MUSIC_NO = ?
+		 WHERE MEMBER_NO = ?
+	</entry>
 </properties>

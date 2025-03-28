@@ -188,6 +188,7 @@
 						<a href="<%= request.getContextPath()%>/memberEnrollForm">회원가입</a> | <a href="<%= contentPath%>/idSearchForm">아이디 찾기</a> | <a href="<%= contentPath%>/pwdSearchForm">비밀번호 찾기</a>
 					<%}else { %>
 						<div id="login-info">
+							<input type="hidden" id="memberNo" value="<%= loginMember.getMemberNo()%>">
 							<strong><%= loginMember.getMemberAlias()%> 회원 로그인 중</strong>
 							<br><br>
 							<img src="resources/image/logoutIcon.png" alt="">
@@ -195,7 +196,7 @@
 						</div>
 					<%} %>
        </div>
-
+       
 			<% if(loginMember == null){%>
 	      <form action="" class="search-bar">
            <input type="text" id="search-box" name="search" required>
