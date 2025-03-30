@@ -128,6 +128,53 @@
         font-weight: bold;
         padding: 5px;
     }
+
+    /*토스트바*/
+    #snackbar {
+    visibility: hidden; /* Hidden by default. Visible on click */
+    min-width: 250px; /* Set a default minimum width */
+    margin-left: -125px; /* Divide value of min-width by 2 */
+    background-color: #1587d0; /* Black background color */
+    color: #fff; /* White text color */
+    text-align: center; /* Centered text */
+    border-radius: 2px; /* Rounded borders */
+    padding: 16px; /* Padding */
+    position: fixed; /* Sit on top of the screen */
+    z-index: 1; /* Add a z-index if needed */
+    left: 50%; /* Center the snackbar */
+    bottom: 30px; /* 30px from the bottom */
+    border-radius: 5px;
+    }
+
+    /* Show the snackbar when clicking on a button (class added with JavaScript) */
+    #snackbar.show {
+    visibility: visible; /* Show the snackbar */
+    /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+    However, delay the fade out process for 2.5 seconds */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    }
+
+    /* Animations to fade the snackbar in and out */
+    @-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+    }
+
+    @keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+    }
+
+    @-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+    }
+
+    @keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+    }
 </style>
 </head>
 <body>
@@ -203,6 +250,8 @@
         </div>
 
     </div>
+
+    <div id="snackbar"></div>
     
     <%@ include file="../play/playBar.jsp" %>
 
@@ -213,11 +262,23 @@
                 data:{
                     musicNo:$(".musicAccuracyDiv").find("input[type='hidden']").val(),
                 },
-                success:function(result){
-                    if(result > 0){
-                        toast("플레이 리스트 추가 성공");
-                    }else{
+                success:function(a){ 
+                    var x = document.getElementById("snackbar");                  
+                    if(a.result === 0){
+                        $("#snackbar").text("이미 등록된 음원 입니다");
+                        //토스트바 div show로 변경
+                        x.className = "show";
 
+                        //3초 후 사라지게 설정
+                        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+                    }else{
+                        $("#snackbar").text("장바구니 등록 성공");
+
+                        //토스트바 div show로 변경
+                        x.className = "show";
+
+                        //3초 후 사라지게 설정
+                        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
                     }
                 },
                 error:function(){

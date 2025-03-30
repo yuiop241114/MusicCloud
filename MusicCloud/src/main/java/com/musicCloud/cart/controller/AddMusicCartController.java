@@ -34,10 +34,11 @@ public class AddMusicCartController extends HttpServlet {
 		Member m = (Member)request.getSession().getAttribute("loginMember");
 		
 		int result = new CartService().addCart(musicNo, m.getMemberNo());
-		
+		System.out.println("Controller result : " + result);
 		JSONObject o = new JSONObject();
+		o.put("result", result);
 		response.setContentType("application/json; charset=utf-8");
-		response.getWriter().print(result);
+		response.getWriter().print(o);
 	}
 
 	/**
