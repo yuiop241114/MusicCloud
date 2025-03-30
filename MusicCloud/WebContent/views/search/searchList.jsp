@@ -205,5 +205,26 @@
     </div>
     
     <%@ include file="../play/playBar.jsp" %>
+
+    <script>
+        $(".cartImg").click(function() {
+            $.ajax({
+                url:"addCart",
+                data:{
+                    musicNo:$(".musicAccuracyDiv").find("input[type='hidden']").val(),
+                },
+                success:function(result){
+                    if(result > 0){
+                        toast("플레이 리스트 추가 성공");
+                    }else{
+
+                    }
+                },
+                error:function(){
+                    console.log("장바구니 추가 ajax 실패")
+                }
+            })
+        });
+    </script>
 </body>
 </html>

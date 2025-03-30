@@ -14,12 +14,49 @@ public class CartService {
 	/**
 	 * @param memberNo
 	 * @return
-	 * 설명 : 회원 반호로 장바구니 정보 조회 서비스 메소드
+	 * 설명 : 회원 번호로 장바구니 정보 조회 서비스 메소드
 	 */
 	public Cart cartList(int memberNo) {
 		Connection conn = getConnection();
 		Cart c =  new CartDao().cartList(conn, memberNo);
 		close(conn);
 		return c;
+	}
+	
+	/**
+	 * @param musicNo
+	 * @param memberNo
+	 * @return
+	 * 설명 : 음원 장바구니에 추가하는 서비스 메소드
+	 */
+	public int addCart(int musicNo, int memberNo) {
+		Connection conn = getConnection();
+		Cart c = cartList(memberNo);
+		
+		//음원 번호 중에 겹치는 음원번호가 있는지 없는지 확인
+		int musicFilter = 0;
+		String[] list = c.getMusicNoTotal().split(",");
+		for(String i : list) {
+			if(Integer.parseInt(i) == musicNo) { 
+				musicFilter = 0;
+			}else {
+				musicFilter = 1;
+			}
+		}
+		
+		//음원 종합 문자열를 가져와서 가져온 음원번호 추가 후 db에 update
+		int result = 0;
+		if(musicFilter > 0) {
+			String musicList = c.getMusicNoTotal() + "," + musicNo;
+			
+			result = new CartDao().addCart(conn, musicList, memberNo);
+			if(result > 0) {
+				commit(conn);
+			}else {
+				rollback(conn);
+			}
+			close(conn);
+		}
+		return result;
 	}
 }

@@ -9,7 +9,10 @@
 		  FROM CART
 		 WHERE MEMBER_NO = ? 
 	</entry>
-	<entry key="">
+	<entry key="addCart">
+		UPDATE CART
+		   SET MUSIC_NO_TOTAL = ?
+		 WHERE MEMBER_NO = ?
 	</entry>
 	<entry key="">
 	</entry>

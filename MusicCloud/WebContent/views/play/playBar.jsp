@@ -116,7 +116,6 @@
             dislike : 싫어요
             lyrics : 가사
         */
-        console.log($("#memberNo").val())
         $(document).on("click", "#accuracyDiv", function(){
             $.ajax({
                 url: "musicSelect",
