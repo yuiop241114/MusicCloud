@@ -334,4 +334,23 @@ public class MemberDao {
 		}
 		return m;
 	}
+	
+	public int insertCart(Connection conn, int memberNo) {
+		//insert
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertCart");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memberNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
 }

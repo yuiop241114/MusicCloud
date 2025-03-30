@@ -35,20 +35,31 @@ public class CartService {
 		
 		//음원 번호 중에 겹치는 음원번호가 있는지 없는지 확인
 		int musicFilter = 0;
-		String[] list = c.getMusicNoTotal().split(",");
-		for(String i : list) {
-			if(Integer.parseInt(i) == musicNo) { 
-				musicFilter = 0;
-				break;
-			}else {
-				musicFilter = 1;
+		
+		if(c.getMusicNoTotal() != null) { //장바구니에 음원이 존재하는 경우
+			String[] list = c.getMusicNoTotal().split(",");
+			for(String i : list) {
+				if(Integer.parseInt(i) == musicNo) { 
+					musicFilter = 0;
+					break;
+				}else {
+					musicFilter = 1;
+				}
 			}
+		}else { //장바구니에 등록된 음원이 없는 경우
+			musicFilter = 1;
 		}
+		
 		
 		//음원 종합 문자열를 가져와서 가져온 음원번호 추가 후 db에 update
 		int result = 0;
+		String musicList = "";
 		if(musicFilter > 0) {
-			String musicList = c.getMusicNoTotal() + "," + musicNo;
+			if(c.getMusicNoTotal() != null) { //장바구니에 음원이 존재하는 경우
+				musicList = c.getMusicNoTotal() + "," + musicNo;
+			}else { //장바구니에 등록된 음원이 없는 경우
+				musicList = musicNo + ""; //등록된 음원이 없으면 , 없이 한개의 번호만 추가
+			}
 			
 			result = new CartDao().addCart(conn, musicList, memberNo);
 			if(result > 0) {

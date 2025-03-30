@@ -45,7 +45,9 @@ public class MemberSerivce {
 		Connection conn = getConnection();
 		int result = new MemberDao().insertMember(conn, m); //회원가입
 		int result2 = new MemberDao().insertRecentMusic(conn, m.getLocationNo()); //최근들은음원 테이블에 회원번호, 지역번호 추가
-		if(result > 0 && result2 > 0) {
+		Member m2 = new MemberDao().idCheck(conn, m.getEmail(), m.getMemberName());
+		int result3 = new MemberDao().insertCart(conn, m2.getMemberNo()); //장바구니 기본 정보 추가
+		if(result * result2 * result3 > 0) {
 			commit(conn);
 		}else {
 			rollback(conn);
