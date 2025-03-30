@@ -44,7 +44,6 @@ public class CartService {
 				musicFilter = 1;
 			}
 		}
-		System.out.println("musicFilter : " + musicFilter);
 		
 		//음원 종합 문자열를 가져와서 가져온 음원번호 추가 후 db에 update
 		int result = 0;
@@ -59,7 +58,6 @@ public class CartService {
 			}
 			close(conn);
 		}
-		System.out.println("result : " + result);
 		return result * musicFilter;
 	}
 }
