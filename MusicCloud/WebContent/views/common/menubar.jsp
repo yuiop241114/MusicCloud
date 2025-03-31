@@ -256,6 +256,9 @@
 			<% session.removeAttribute("alertMsg"); %>
 		<%}%>
 	
+
+	<div id="snackbar"></div>
+
 	<script>
 	    $(function(){
 	    		$.ajax({
@@ -282,12 +285,43 @@
 	                $("#side-btn-list").slideUp();
 	            }
 	        });
+
+			$(".cartImg").click(function() {
+				$.ajax({
+					url:"addCart",
+					data:{
+						musicNo:$(".musicAccuracyDiv").find("input[type='hidden']").val(),
+					},
+					success:function(a){ 
+						var x = document.getElementById("snackbar");                  
+						if(a.result === 0){
+							$("#snackbar").text("이미 등록된 음원 입니다");
+							//토스트바 div show로 변경
+							x.className = "show";
+
+							//3초 후 사라지게 설정
+							setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+						}else{
+							$("#snackbar").text("장바구니 등록 성공");
+
+							//토스트바 div show로 변경
+							x.className = "show";
+
+							//3초 후 사라지게 설정
+							setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+						}
+					},
+					error:function(){
+						console.log("장바구니 추가 ajax 실패")
+					}
+				})
+			});
+
 	    });
 
 		document.getElementById("search-btn-member-null").addEventListener("click", function(){
 			alert("로그인 후 이용가능합니다")
 		});
-		
 	</script>
 
 

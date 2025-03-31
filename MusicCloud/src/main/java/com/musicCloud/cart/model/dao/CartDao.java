@@ -24,6 +24,12 @@ public class CartDao {
 		}
 	}
 	
+	/**
+	 * @param conn
+	 * @param memberNo
+	 * @return
+	 * 설명 : 회원 번호로 장바구니 정보 조회 Dao
+	 */
 	public Cart cartList(Connection conn, int memberNo) {
 		//select
 		Cart c = null;
@@ -48,5 +54,32 @@ public class CartDao {
 			close(pstmt);
 		}
 		return c;
+	}
+	
+	/**
+	 * @param conn
+	 * @param musicList
+	 * @param memberNo
+	 * @return
+	 * 설명 : 장바구니에 음원 추가 Dao
+	 */
+	public int addCart(Connection conn, String musicList, int memberNo) {
+		//update
+		int result = 0;
+		PreparedStatement pstmt = null; 
+		String sql = prop.getProperty("addCart");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, musicList);
+			pstmt.setInt(2, memberNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
 	}
 }

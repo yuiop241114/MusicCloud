@@ -4,6 +4,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
+	/*
+		cartNo : 장바구니번호
+		memberNo : 회원번호
+		musicNoTotal : 음원 번호 종합 문자열
+	*/
 	Cart c = (Cart)session.getAttribute("cart");
 	/*
 		fileList
