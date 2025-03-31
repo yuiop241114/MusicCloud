@@ -117,6 +117,14 @@
             lyrics : 가사
         */
         $(document).on("click", ".musicImg", function(){
+        	if($("#memberNo").val() === "noneLogin"){ //비로그인일 경우
+        		$("#snackbar").text("로그인 후 이용 가능합니다");
+						//토스트바 div show로 변경
+						document.getElementById("snackbar").className = "show";
+		
+						//3초 후 사라지게 설정
+						setTimeout(function(){ document.getElementById("snackbar").className = document.getElementById("snackbar").className.replace("show", ""); }, 3000);
+        	}else{
             $.ajax({
                 url: "musicSelect",
                 data: {
@@ -140,8 +148,10 @@
                     console.log("선택음원 ajax 실패");
                 }
             });
+        	}
 
-        } )
+        })
+        
         //음원 재생바 커스텀 
         const audio = document.getElementById('music_source');
         const playButton = document.querySelector('.playBtn');

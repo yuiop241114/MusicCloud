@@ -12,7 +12,18 @@
 		  JOIN MUSIC_FILE MF ON (ML.MUSIC_NO = MF.MUSIC_NO)
 		 WHERE ML.MUSIC_STATUS = 'Y'
 	</entry>
-	<entry key="">
+	<entry key="mainPopularMusic">
+		SELECT 
+		       ML.MUSIC_NO MNO
+		     , ML.MUSIC_TITLE MTITLE
+		     , ML.MUSIC_SINGER MSINGER 
+		     , MF.MUSIC_IMAGE_PATH || MF.MUSIC_IMAGE_EDIT_NAME IMAGE_PATH
+		     , ML.MUSIC_COUNT MUSIC_COUNT
+		  FROM MUSIC_LIST ML
+		  JOIN MUSIC_FILE MF ON (ML.MUSIC_NO = MF.MUSIC_NO)
+		 WHERE ML.MUSIC_STATUS = 'Y'
+		 ORDER 
+		    BY ML.MUSIC_COUNT DESC
 	</entry>
 	<entry key="">
 	</entry>
