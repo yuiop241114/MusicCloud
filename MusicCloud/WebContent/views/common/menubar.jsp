@@ -71,7 +71,7 @@
 		background-color: #1587d0;
 		width: 80%;
 		line-height: 40px;
-		margin-top: 40px
+		margin-top: 40px;
 	}
 	#login-box a{
 		color: black;
@@ -173,6 +173,10 @@
 	#side-btn-list img{
 	    width: 80%;
 	}
+	#side-btn-list a {
+    color: white; /* 링크 텍스트를 하얀색으로 변경 */
+    text-decoration: none; /* 링크에 밑줄을 없애기 */
+    }
 
 	/*퀵메뉴 각 페이지 이동 a 태그*/
 	#side-btn-list a{
@@ -234,7 +238,7 @@
 					</tr>
 					<tr>
 							<th><img src="resources/image/cartlogo.jpg" alt=""></th>
-							<th>게시판</th>
+							<th><a href="<%= contentPath %>/views/board/boardList.jsp">게시판</a></th>
 					</tr>
 					<tr>
 							<th><img src="resources/image/cartlogo.jpg" alt=""></th>
@@ -323,7 +327,6 @@
 			alert("로그인 후 이용가능합니다")
 		});
 	</script>
-
 
 </body>
 </html>

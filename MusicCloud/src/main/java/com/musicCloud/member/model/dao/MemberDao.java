@@ -68,6 +68,7 @@ public class MemberDao {
 						      , rset.getInt("report_count")
 						      , rset.getString("status")
 						      , rset.getString("pf_status")
+ 
 						      );
 			}
 		} catch (SQLException e) {

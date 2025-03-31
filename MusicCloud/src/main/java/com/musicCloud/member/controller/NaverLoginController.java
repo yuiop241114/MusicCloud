@@ -48,7 +48,8 @@ public class NaverLoginController extends HttpServlet {
 		String gender = (String)request.getAttribute("gender");
 		String birthday = (String)request.getAttribute("birthday");
 		String birthyear = (String)request.getAttribute("birthyear");
-		String mobile = (String)request.getAttribute("mobile");
+		String mobile = (String)request.getAttribute("mobile"); 
+		
 		/*
 		System.out.println(uniqueId);
     	System.out.println(nickName);
