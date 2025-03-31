@@ -40,13 +40,20 @@ public class MyPageFriendInsertController extends HttpServlet {
 			insertInfo = request.getParameter("memberAlias");
 		}
 		
-		int result = new MyPageService().friendInsert(memberNo, insertInfo);
-		
-		if(result > 0) {
-			session.setAttribute("alertMsg", "친구 추가 성공하였습니다");
-			response.sendRedirect(request.getContextPath() + "/myPageForm");
+		//친구 중복 체크
+		int friendFilter = new MyPageService().friendFilter(memberNo, insertInfo);
+		if(friendFilter == 0) { 
+			int result = new MyPageService().friendInsert(memberNo, insertInfo);
+			
+			if(result > 0) {
+				session.setAttribute("alertMsg", "친구 추가 성공하였습니다");
+				response.sendRedirect(request.getContextPath() + "/myPageForm");
+			}else {
+				session.setAttribute("alertMsg", "친구 추가 실패하였습니다");
+				response.sendRedirect(request.getContextPath() + "/myPageForm");
+			}
 		}else {
-			session.setAttribute("alertMsg", "친구 추가 실패하였습니다");
+			session.setAttribute("alertMsg", "이미 존재하는 친구 입니다");
 			response.sendRedirect(request.getContextPath() + "/myPageForm");
 		}
 	}

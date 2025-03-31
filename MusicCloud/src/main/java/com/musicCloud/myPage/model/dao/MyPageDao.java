@@ -221,7 +221,6 @@ public class MyPageDao {
 			close(rset);
 			close(pstmt);
 		}
-		System.out.println(result);
 		return result;
 	}
 	
@@ -251,6 +250,52 @@ public class MyPageDao {
 			close(pstmt);
 		}
 		return result;
+	}
+	
+	/**
+	 * @param conn
+	 * @param memberNo
+	 * @param insertInfo
+	 * @return
+	 * 설명 : 친구 추가전 중복체크 Dao
+	 */
+	public int friendFilter(Connection conn, int memberNo, String insertInfo) {
+		//select
+		int countId = 1;
+		int countAlias = 1;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		//아이디로 중복체크
+		String friendFilterId = prop.getProperty("friendFilterId");
+		//별칭으로 중복체크
+		String friendFilterAlias = prop.getProperty("friendFilterAlias");
+		
+		try {
+			//아이디로 먼저 중복체크
+			pstmt = conn.prepareStatement(friendFilterId);
+			pstmt.setString(1, insertInfo);
+			pstmt.setInt(2, memberNo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				countId = rset.getInt("IC");
+			}
+			
+			if(countId == 0) { //추가된 친구가 아니라면 별칭으로 중복체크 진행
+				pstmt = conn.prepareStatement(friendFilterAlias);
+				pstmt.setString(1, insertInfo);
+				pstmt.setInt(2, memberNo);
+				rset = pstmt.executeQuery();
+				if(rset.next()) {
+					countAlias = rset.getInt("AC");
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return countId + countAlias;
 	}
 	
 	
