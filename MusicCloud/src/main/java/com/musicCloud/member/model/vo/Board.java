@@ -7,9 +7,40 @@ public class Board {
 	private int boardCount;
 	private String boardEnrollDate;
 	private int memberNo;
+	//게시판 전체 조회시 사용
+	private String memberAlias;
 	
 	public Board() {}
 
+	/**
+	 * @param boardNo
+	 * @param boardTitle
+	 * @param boardCount
+	 * @param boardEnrollDate
+	 * @param memberNo
+	 * @param memberAlias
+	 * 전체 매개변수 생성자
+	 */
+	public Board(int boardNo, String boardTitle, int boardCount, String boardEnrollDate, int memberNo,
+			String memberAlias) {
+		super();
+		this.boardNo = boardNo;
+		this.boardTitle = boardTitle;
+		this.boardCount = boardCount;
+		this.boardEnrollDate = boardEnrollDate;
+		this.memberNo = memberNo;
+		this.memberAlias = memberAlias;
+	}
+
+
+	
+	/**
+	 * @param boardNo
+	 * @param boardTitle
+	 * @param boardCount
+	 * @param boardEnrollDate
+	 * @param memberNo
+	 */
 	public Board(int boardNo, String boardTitle, int boardCount, String boardEnrollDate, int memberNo) {
 		super();
 		this.boardNo = boardNo;
@@ -17,6 +48,16 @@ public class Board {
 		this.boardCount = boardCount;
 		this.boardEnrollDate = boardEnrollDate;
 		this.memberNo = memberNo;
+	}
+
+	
+	
+	public String getMemberAlias() {
+		return memberAlias;
+	}
+
+	public void setMemberAlias(String memberAlias) {
+		this.memberAlias = memberAlias;
 	}
 
 	public int getBoardNo() {
@@ -62,7 +103,8 @@ public class Board {
 	@Override
 	public String toString() {
 		return "Board [boardNo=" + boardNo + ", boardTitle=" + boardTitle + ", boardCount=" + boardCount
-				+ ", boardEnrollDate=" + boardEnrollDate + ", memberNo=" + memberNo + "]";
+				+ ", boardEnrollDate=" + boardEnrollDate + ", memberNo=" + memberNo + ", memberAlias=" + memberAlias
+				+ "]";
 	}
 
 }

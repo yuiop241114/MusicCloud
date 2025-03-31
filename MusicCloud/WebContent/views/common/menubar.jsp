@@ -238,7 +238,7 @@
 					</tr>
 					<tr>
 							<th><img src="resources/image/cartlogo.jpg" alt=""></th>
-							<th><a href="<%= contentPath %>/views/board/boardList.jsp">게시판</a></th>
+							<th><a href="<%= contentPath %>/boardList">게시판</a></th>
 					</tr>
 					<tr>
 							<th><img src="resources/image/cartlogo.jpg" alt=""></th>

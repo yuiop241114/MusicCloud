@@ -1,22 +1,37 @@
 package com.musicCloud.member.model.dao;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 import com.musicCloud.member.model.vo.Board;
 
 public class BoardDao {
+	
+	private Properties prop = new Properties();
+	
+	public BoardDao() {
+		
+		String sqlPath = BoardDao.class.getResource("/db/query/boardQuery.xml").getPath();
+		try {
+			prop.loadFromXML( new FileInputStream(sqlPath));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
     // 게시글 목록 조회
     public List<Board> getAllBoards(Connection conn) throws SQLException {
         List<Board> list = new ArrayList<>();
-        String query = "SELECT * FROM board";
+        String sql = prop.getProperty("getAllBoards");
         
-        try (PreparedStatement pstmt = conn.prepareStatement(query);
+        try (PreparedStatement pstmt = conn.prepareStatement(sql);
              ResultSet rs = pstmt.executeQuery()) {
             
             while (rs.next()) {
@@ -24,12 +39,12 @@ public class BoardDao {
                 board.setBoardNo(rs.getInt("board_no"));
                 board.setBoardTitle(rs.getString("board_title"));
                 board.setBoardCount(rs.getInt("board_count"));
-                board.setBoardEnrollDate(rs.getString("board_enroll_date"));
+                board.setBoardEnrollDate(rs.getString("board_date"));
                 board.setMemberNo(rs.getInt("member_no"));
+                board.setMemberAlias(rs.getString("member_alias"));
                 list.add(board);
             }
         }
-        
         return list;
     }
 

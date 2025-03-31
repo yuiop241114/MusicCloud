@@ -1,8 +1,13 @@
+<%@page import="com.musicCloud.member.model.vo.Board"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
+<%
+	List<Board> list = (List<Board>)request.getAttribute("boardList");
+%>
 <meta charset="UTF-8">
 <title>MusicCloud</title>
 <style>
@@ -123,15 +128,15 @@ pageEncoding="UTF-8"%>
                 </tr>
             </thead>
             <tbody>
-                <% for (int i = 10; i >= 1; i--) { %>
+                <% for (int i = 0; i<list.size(); i++) { %>
                 <tr>
-                    <td><%= i %></td>
+                    <td><%= list.get(i).getBoardNo() %></td>
                     <td>
-                        <a href="<%= contentPath %>/views/board/boardList3.jsp">게시판 제목</a>
+                        <a href="<%= contentPath %>/views/board/boardList3.jsp"><%= list.get(i).getBoardTitle() %></a>
                     </td>
-                    <td><%= (int)(Math.random() * 100) %></td>
-                    <td>25/03/<%= 30 - i %></td>
-                    <td>user<%= i %></td>
+                    <td><%= list.get(i).getBoardCount()%></td>
+                    <td><%= list.get(i).getBoardEnrollDate() %></td>
+                    <td><%= list.get(i).getMemberAlias()%></td>
                 </tr>
                 <% } %>
             </tbody>

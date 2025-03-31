@@ -22,9 +22,12 @@ public class BoardListController extends HttpServlet {
         List<Board> boardList = boardService.getAllBoards();
         
         request.setAttribute("boardList", boardList);
-        request.getRequestDispatcher("/WEB-INF/views/board/boardList.jsp").forward(request, response);
+        request.getRequestDispatcher("views/board/boardList.jsp").forward(request, response);
+        
+        request.setAttribute("boardList", boardList);
+        request.getRequestDispatcher("views/board/boardList2.jsp").forward(request, response);
     }
-
+    
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
