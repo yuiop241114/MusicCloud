@@ -1,5 +1,24 @@
+<%@page import="com.musicCloud.common.vo.MusicFile"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.musicCloud.cart.model.vo.Cart"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	/*
+		cartNo : 장바구니번호
+		memberNo : 회원번호
+		musicNoTotal : 음원 번호 종합 문자열
+	*/
+	Cart c = (Cart)session.getAttribute("cart");
+	/*
+		fileList
+		musicNo : 음원명
+		musicImagePath : 이미지경로
+		musicCategoryNo : 음원 장르
+		musicTitle : 음원명
+		musicSinge : 가수명
+	*/
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,368 +26,150 @@
 <title>Insert title here</title>
 
 <style>
-    .wrapper{
+    /*전체 div*/
+    .cart-wrapper{
+        width: 1500px;
+        height: 1000px;
+        margin: auto;
+    }
+    /*장바구니 제목*/
+    .cart-title{
+        width: 1180px;
+		height: 100px;
+		border-radius: 5px;
+		margin-left: 30px;
+		margin-bottom: 10px;
+		background-color: rgb(233, 233, 233);
+    }
+    .cart-title h4{
+        font-weight: bold;
+		line-height: 100px;
+		margin-left: 20px;
+		color: #1587d0;
+		margin-top: 5px;
+    }
+
+    /*장바구니 출력 div*/
+    .cart-content{
+        width: 1200px;
+        float: left;
+        margin-left: 30px;
+        margin-top: 10px;
+    }
+    .cart-content-div{
+        width: 98.5%;
+    }  
+
+    /*음원 정보 테이블*/
+    .content-table{
+        width: 100%;
+        border-left: none;
+        border-right: none;
+    } 
+    .content-table th, .content-table td{
+        border-left: none;
+        border-right: none;
+        border-radius: 5px;
+        padding: 5px;
+    }
+    .content-table>thead{
+        background-color: rgb(233, 233, 233);
+        text-align: center;
+    }
+    .content-table>tbody>tr{
+        border: 1px solid #1587d0;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+    }
+    .content-table>tbody>tr>td{ width: 90%;}
+
+    /*음원 정보 div*/
+    .musicAccuracyDiv{
+        height: 200px;
+    }
+    .content-table button{
+        width: 80%;
+        height: 50px;
         border: none;
+        border-radius: 5px;
+        display: block;
+        margin: auto;
+        background-color: #1587d0;
+        color: white;   
     }
-.main{
-    width: 1200px;
-    
-    
+    /*음원 이미지*/
+    .musicAccuracyDiv{
+        width: 100%;
+        display: flex;
     }
-.bucketList-header-1{
-    padding: 10px 0;
-    float: left;
-}
-
-.bucketList-header-2{
-    float: right;
-}
-
-button#product {
-    border-radius: 10px; 
-    background: transparent; 
-    border: 2px solid #1587d0;
-    color: #1587d0; 
-    padding: 8px 12px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-button#product:hover {
-    background: #8a2be220; 
-}
-
-select {
-    color: #1587d0; 
-    background: #d8bfd880; 
-    border: 1px solid #1587d0;
-    padding: 5px;
-    border-radius: 5px; 
-    cursor: pointer;
-    
-}
-.bucketList-footer{
-    height: 100px;
-}
-
-.bucketList-footer-1{
-    float: left;
-    width: 50%;
-}
-.bucketList-footer-2{
-    float: left;
-    width: 50%;
-    padding: 2rem;
-    text-align: right;
-}
-.bucketList-title {
-    width: 100%;
-    overflow: hidden; 
-    border-bottom: 2px solid #1587d0; 
-    font-weight: bold;
-    padding: 10px 0;
-    margin-top: 30px;
-}
-
-.bucketList-product-name,
-.bucketList-price,
-.bucketList-addRemove {
-    float: left; 
-    text-align: center; 
-    
-}
-.bucketList-product-name { width: 40%; text-align: center; } 
-.bucketList-price { width: 30%; text-align: center;}
-.bucketList-addRemove { width: 30%; text-align: center;}
-
-img{
-    border-radius: 5px;
-}
+    .musicAccuracyDiv #music-img{
+        width: 25%;
+        text-align: center;
+    }
+    #music-img img{
+        height: 100%;
+        padding: 10px;
+    }
+    .musicAccuracyDiv #music-text{
+        width: 50%;
+        padding-top: 50px;
+    }
 </style>
 </head>
 <body>
- <%@ include file="../common/menubar.jsp" %>
-    <br><br><br>
-    
-    <div class="wrapper">
-        <div class="main">
-        <div class="bucketList-header">
-
-            
-            <div class="bucketList-header-1">
-                <span style="font-size: 20px; font-weight:  bold;">뮤직클라우드 장바구니</span>
-            </div>
-
-            <div class="bucketList-header-2">
-
-                <button id="product">선택상품보관</button>
-                <button id="product">선택상품삭제</button>
-                <select name="" id="select">
-                    <option value="">최근담은순</option>
-                    <option value="">최근담은순</option>
-                    <option value="">최근담은순</option>
-                </select>
-            </div>
-
+    <%@ include file="../common/menubar.jsp" %>
+    <div class="cart-wrapper">
+        <div class="cart-title">
+            <h4>장바구니</h4>
         </div>
 
-        <div class="bucketList" style="background-color:  #c5ddff;;">
-            <div class="bucketList-title">
-
-               <div class="bucketList-product-name" >
-                상품명
-               </div>
-
-               <div class="bucketList-price" >
-
-                가격
-               </div>
-
-             
-
-               <div class="bucketList-addRemove">
-               보관/삭제
-               
-               <input type="checkbox" id="selectAll" style="width: 20px; height: 20px;" onclick="toggleCheckboxes(this)">
+        <div class="cart-content">
+            <div class="cart-content-div">
+                <table class="content-table">
+                    <thead>
+                        <tr>
+                            <th colspan="2">음원</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% 
+                            if(c != null){
+                                String[] mList = c.getMusicNoTotal().split(",");
+                                for(int i=0; i<mList.length; i++){
+                                
+                                    for(MusicFile mf : fileList){
+                                        if(mf.getMusicNo() == Integer.parseInt(mList[i])){
+                        %>
+                                    <tr>
+                                        <td>
+                                            <div class="musicAccuracyDiv">
+                                                <div id="music-img">
+                                                    <img src="<%= mf.getMusicImagePath()%>">
+                                                </div>
+                                                <div id="music-text">
+                                                    <b><%=  mf.getMusicTitle()%></b> 
+                                                    <br> 
+                                                    <b><%= mf.getMusicSinger() %></b>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <button type="button">삭제</button>
+                                        </td>
+                                    </tr>
+                        <%			  			 }
+                                    }
+                                    
+                                }
+                            }
+                        %>
+                    </tbody>
+                </table>
             </div>
-                </div>
-                
-        
-        </div>
-<!-- html jsp for문으로 -->
-        <div class="bucketList">
-            <div class="bucketList-title">
-
-                <div class="bucketList-product-name">
-                    <img src="../../resources/image/열불이.png" style="padding: 2rem; height: 200px; width: 200px; float: left;">
-                    <span style="color: rgb(92, 92, 248); display: inline-block; vertical-align: left ;">[차은우의 플레이리스트]</span>
-                    <b style="display: block;">즉시 이용 가능</b>
-                </div>
-                
-
-               <div class="bucketList-product-name">
-
-              </div>
-
-               <div class="bucketList-price">
-
-                <b>정가 : 1,000원</b>
-                <br>
-                <b style="color: crimson;">판매가 : 1,000원원</b>
-               </div>
-
-               
-            
-                
-                <div class="bucketList-addRemove">
-                    
-                    <input type="checkbox" class="productCheckbox" style="width: 20px; height: 20px;">
-                </div>
-                
-             
-            </div>
-            </div>
-            <!-- html jsp for문으로 -->
-
-            <!-- html jsp for문으로 -->
-        <div class="bucketList">
-            <div class="bucketList-title">
-
-                <div class="bucketList-product-name">
-                    <img src="../../resources/image/열불이.png" style="padding: 2rem; height: 200px; width: 200px; float: left;">
-                    <span style="color: rgb(92, 92, 248); display: inline-block; vertical-align: left ;">[차은우의 플레이리스트]</span>
-                    <b style="display: block;">즉시 이용 가능</b>
-                </div>
-                
-
-               <div class="bucketList-product-name">
-
-              </div>
-
-               <div class="bucketList-price">
-
-                <b>정가 : 1,000원</b>
-                <br>
-                <b style="color: crimson;">판매가 : 1,000원원</b>
-               </div>
-
-               
-            
-                
-                <div class="bucketList-addRemove">
-                    
-                    <input type="checkbox" class="productCheckbox" style="width: 20px; height: 20px;">
-                </div>
-                
-             
-            </div>
-            </div>
-            <!-- html jsp for문으로 -->
-
-
-
-            <!-- html jsp for문으로 -->
-        <div class="bucketList">
-            <div class="bucketList-title">
-
-                <div class="bucketList-product-name">
-                    <img src="../../resources/image/열불이.png" style="padding: 2rem; height: 200px; width: 200px; float: left;">
-                    <span style="color: rgb(92, 92, 248); display: inline-block; vertical-align: left ;">[차은우의 플레이리스트]</span>
-                    <b style="display: block;">즉시 이용 가능</b>
-                </div>
-                
-
-               <div class="bucketList-product-name">
-
-              </div>
-
-               <div class="bucketList-price">
-
-                <b>정가 : 1,000원</b>
-                <br>
-                <b style="color: crimson;">판매가 : 1,000원원</b>
-               </div>
-
-               
-            
-                
-                <div class="bucketList-addRemove">
-                    
-                    <input type="checkbox" class="productCheckbox" style="width: 20px; height: 20px;">
-                </div>
-                
-             
-            </div>
-            </div>
-            <!-- html jsp for문으로 -->
-
-
-
-            <!-- html jsp for문으로 -->
-        <div class="bucketList">
-            <div class="bucketList-title">
-
-                <div class="bucketList-product-name">
-                    <img src="../../resources/image/열불이.png" style="padding: 2rem; height: 200px; width: 200px; float: left; border-radius: 10px;">
-                    <span style="color: rgb(92, 92, 248); display: inline-block; vertical-align: left ;">[차은우의 플레이리스트]</span>
-                    <b style="display: block;">즉시 이용 가능</b>
-                </div>
-                
-
-               <div class="bucketList-product-name">
-
-              </div>
-
-               <div class="bucketList-price">
-
-                <b>정가 : 1,000원</b>
-                <br>
-                <b style="color: crimson;">판매가 : 1,000원원</b>
-               </div>
-
-               
-            
-                
-                <div class="bucketList-addRemove">
-                    
-                    <input type="checkbox" class="productCheckbox" style="width: 20px; height: 20px;">
-                </div>
-                
-             
-            </div>
-            </div>
-            <!-- html jsp for문으로 -->
-
-
-            <!-- html jsp for문으로 -->
-        <div class="bucketList">
-            <div class="bucketList-title">
-
-                <div class="bucketList-product-name">
-                    <img src="../../resources/image/열불이.png" style="padding: 2rem; height: 200px; width: 200px; float: left;">
-                    <span style="color: rgb(92, 92, 248); display: inline-block; vertical-align: left ;">[차은우의 플레이리스트]</span>
-                    <b style="display: block;">즉시 이용 가능</b>
-                </div>
-                
-
-               <div class="bucketList-product-name">
-
-              </div>
-
-               <div class="bucketList-price">
-
-                <b>정가 : 1,000원</b>
-                <br>
-                <b style="color: crimson;">판매가 : 1,000원원</b>
-               </div>
-
-               
-            
-                
-                <div class="bucketList-addRemove">
-                    
-                    <input type="checkbox" class="productCheckbox" style="width: 20px; height: 20px;">
-                </div>
-            </div>
-            </div>
-            <!-- html jsp for문으로 -->
-
-
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <div class="bucketList-footer" style="background-color: #c5ddff;">
-            <div class="bucketList-footer-1">
-                <br>
-            
-                <b style="font-size: 20px; padding: 2rem;">총 상품가격: 5000원 (총 7개중 5개)</b>
-
-                <br>
-
-                <b style="font-size: 12px; color: brown; padding: 2rem;">즉시 사용 가능</b>
-
-            </div>
-            <div class="bucketList-footer-2">
-
-
-                <button style="color: white; background-color: rgb(255, 0, 140); border-radius: 10px; padding: 10px 20px; border: none; font-size: 16px; cursor: pointer;">
-                    이 장바구니의 선택상품 주문
-                  </button>
-            </div>
-
         </div>
 
     </div>
-
-
-
-
-
-    </div>
-
-    <script>
-
-      
-
-        function toggleCheckboxes(source) {
-        let checkboxes = document.querySelectorAll('.productCheckbox'); 
-        checkboxes.forEach(checkbox => {
-            checkbox.checked = source.checked;
-        });
-    }
-
-    </script>
+   
 </body>
 </html>

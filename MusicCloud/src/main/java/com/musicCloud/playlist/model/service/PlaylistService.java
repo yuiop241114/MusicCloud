@@ -23,10 +23,14 @@ public class PlaylistService {
 		return list;
 	}
 	
-	public ArrayList<MusicFile> selectAllMusic() {
-		Connection conn = getConnection();
-		ArrayList<MusicFile> list = new PlayListDao().selectAllMusic(conn);
-		close(conn);
-		return list;
-	}
+	/**
+	 * @return
+	 * 설명 : 모든 음원의 표지 출력 정보 조회 서비스 메소드
+	 */
+//	public ArrayList<MusicFile> selectAllMusic() {
+//		Connection conn = getConnection();
+//		ArrayList<MusicFile> list = new PlayListDao().selectAllMusic(conn);
+//		close(conn);
+//		return list;
+//	}
 }

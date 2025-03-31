@@ -24,7 +24,16 @@
 	  lyrics : 음원 가사
 	  status : 음원 상태
 	*/
-	ArrayList<MusicFile> fileList = (ArrayList<MusicFile>)session.getAttribute("fileList");
+	/*
+		fileList
+		musicNo : 음원명
+		musicImagePath : 이미지경로
+		musicCategoryNo : 음원 장르
+		musicTitle : 음원명
+		musicSinge : 가수명
+*/
+	
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -34,18 +43,21 @@
 <style>
 	/*전체를 감싸는 div*/
 	.playlistForm{
-		width: 1400px;
+		width: 1500px;
 		margin: auto;
 	}
 	/**/
 	#playlistTitle{
-		border: 1px solid #1587d0;
 		width: 1180px;
+		height: 100px;
 		border-radius: 5px;
 		margin-left: 30px;
 		margin-bottom: 10px;
+		background-color: rgb(233, 233, 233)
 	}
 	#playlistTitle h4{
+		font-weight: bold;
+		line-height: 100px;
 		margin-left: 20px;
 		color: #1587d0;
 		margin-top: 5px;
@@ -119,7 +131,7 @@
 								<img src="<%
 										for(MusicFile f : fileList){
 											if(Integer.parseInt(musicNum[i % musicNum.length]) == f.getMusicNo()){
-									%> <%= f.getMusicImagePath() + f.getMusicImageEditName()%>
+									%> <%= f.getMusicImagePath()%>
 									<%
 											}
 										}
@@ -130,7 +142,7 @@
 
 						<!-- 플레이리스트 제목-->
 						<div class="playlistContent">
-							<b><%= loginMember.getMemberAlias()%>님의 <%= p.getPlaylistName()%></b>
+							<b><%= p.getPlaylistTag()%></b>
 						</div>
 
 					</div>

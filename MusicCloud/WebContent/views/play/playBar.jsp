@@ -7,9 +7,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- 메테리얼 아이콘 -->
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
 <style>
     .playBarWrapper{
         margin: auto;
@@ -119,12 +116,11 @@
             dislike : 싫어요
             lyrics : 가사
         */
-        console.log($("#memberNo").val())
-        $(document).on("click", "#accuracyDiv", function(){
+        $(document).on("click", ".musicImg", function(){
             $.ajax({
                 url: "musicSelect",
                 data: {
-                    musicNo: $(this).find("input[type='hidden']").val(),
+                    musicNo: $(".musicAccuracyDiv").find("input[type='hidden']").val(),
                     memberNo: $("#memberNo").val(),
                 },
                 success: function(mf) {

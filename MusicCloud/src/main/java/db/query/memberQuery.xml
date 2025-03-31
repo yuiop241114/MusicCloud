@@ -118,4 +118,17 @@
 		   AND MEMBER_NAME = ?
 		   AND STATUS = 'Y'
 	</entry>
+	<entry key="insertCart">
+		INSERT 
+		  INTO CART
+		  (
+		    CART_NO
+		  , MEMBER_NO
+		  )
+		  VALUES
+		  (
+		    SEQ_CART_NO.NEXTVAL
+		  , ?
+		  )
+	</entry>
 </properties>

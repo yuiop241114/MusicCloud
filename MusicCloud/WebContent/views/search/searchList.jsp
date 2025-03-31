@@ -40,7 +40,7 @@
 <head>
 <meta charset="UTF-8">
 <title>검색 결과</title>
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=shopping_cart_checkout" />
 <style>
     /*전체 Div*/
     #searchListDiv{
@@ -114,6 +114,12 @@
     .cartImg{
         width: 30%;
         height: 100%;
+        color: white;
+        text-align: center;
+        padding: 8px;
+    }
+    .material-symbols-outlined{
+        font-size: 40px;
     }
     .musicText{
         width: 70%;
@@ -121,6 +127,53 @@
         color: white;
         font-weight: bold;
         padding: 5px;
+    }
+
+    /*토스트바*/
+    #snackbar {
+    visibility: hidden; /* Hidden by default. Visible on click */
+    min-width: 250px; /* Set a default minimum width */
+    margin-left: -125px; /* Divide value of min-width by 2 */
+    background-color: #1587d0; /* Black background color */
+    color: #fff; /* White text color */
+    text-align: center; /* Centered text */
+    border-radius: 2px; /* Rounded borders */
+    padding: 16px; /* Padding */
+    position: fixed; /* Sit on top of the screen */
+    z-index: 1; /* Add a z-index if needed */
+    left: 50%; /* Center the snackbar */
+    bottom: 30px; /* 30px from the bottom */
+    border-radius: 5px;
+    }
+
+    /* Show the snackbar when clicking on a button (class added with JavaScript) */
+    #snackbar.show {
+    visibility: visible; /* Show the snackbar */
+    /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+    However, delay the fade out process for 2.5 seconds */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    }
+
+    /* Animations to fade the snackbar in and out */
+    @-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+    }
+
+    @keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+    }
+
+    @-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+    }
+
+    @keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
     }
 </style>
 </head>
@@ -143,7 +196,9 @@
                           	    <%= listAccuracy.get(i).getMusicTitle()%> <br>
                           	    <%= listAccuracy.get(i).getMusicSinger()%>
                             </div>
-                            <div class="cartImg"></div>
+                            <div class="cartImg">
+                                <span class="material-symbols-outlined">shopping_cart_checkout</span>
+                            </div>
                         </div>
                     </div>
                 <% } %>
@@ -164,7 +219,9 @@
                           	    <%= listPopular.get(i).getMusicTitle()%> <br>
                           	    <%= listPopular.get(i).getMusicSinger()%>
                             </div>
-                            <div class="cartImg"></div>
+                            <div class="cartImg">
+                                <span class="material-symbols-outlined">shopping_cart_checkout</span>
+                            </div>
                         </div>
                     </div>
                 <% } %>
@@ -183,7 +240,9 @@
                           	    <%= listPopularLocation.get(i).getMusicTitle()%> <br>
                           	    <%= listPopularLocation.get(i).getMusicSinger()%>
                             </div>
-                            <div class="cartImg"></div>
+                            <div class="cartImg">
+                                <span class="material-symbols-outlined">shopping_cart_checkout</span>
+                            </div>
                         </div>
                     </div>
                 <% } %>
@@ -191,7 +250,10 @@
         </div>
 
     </div>
+
+    <!-- <div id="snackbar"></div> -->
     
     <%@ include file="../play/playBar.jsp" %>
+
 </body>
 </html>

@@ -1,3 +1,5 @@
+<%@page import="com.musicCloud.common.vo.MusicFile"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="org.json.simple.JSONObject"%>
 <%@page import="org.json.simple.parser.JSONParser"%>
 <%@page import="com.musicCloud.member.model.vo.Member"%>
@@ -7,14 +9,18 @@
 	String contentPath = request.getContextPath();
 	Member loginMember = (Member)session.getAttribute("loginMember");
 	String alertMsg = (String)session.getAttribute("alertMsg");
-	
+	ArrayList<MusicFile> fileList = (ArrayList<MusicFile>)session.getAttribute("fileList");
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>MusicCloud</title>
+<!-- 메테리얼 아이콘 -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 
+			
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 
 <!-- jQuery library -->
@@ -179,6 +185,7 @@
 
 	</style> 
 <body>
+	
 	<div class="wrapper">
 			<a href="<%= contentPath%>"><img src="resources/image/mainlogo.png" id="logo"></a>
 
@@ -249,9 +256,28 @@
 			<% session.removeAttribute("alertMsg"); %>
 		<%}%>
 	
+
+	<div id="snackbar"></div>
+
 	<script>
-			//퀵 메뉴 스크립트
 	    $(function(){
+	    		$.ajax({
+	    			url : "selectMusicInfo",
+	    			data : {},
+	    			success:function(fileList){
+							/*
+								fileList
+								musicNo : 음원명
+		 						musicImagePath : 이미지경로
+								musicCategoryNo : 음원 장르
+		 						musicTitle : 음원명
+		 						musicSinge : 가수명
+							*/
+						},
+	    			error:function(){},
+	    		})
+	    	
+					//퀵 메뉴 스크립트
 	        $("#side-btn").click(function(){
 	            if($("#side-btn-list").css('display') == 'none'){
 	                $("#side-btn-list").slideDown();
@@ -259,12 +285,43 @@
 	                $("#side-btn-list").slideUp();
 	            }
 	        });
+
+			$(".cartImg").click(function() {
+				$.ajax({
+					url:"addCart",
+					data:{
+						musicNo:$(".musicAccuracyDiv").find("input[type='hidden']").val(),
+					},
+					success:function(a){ 
+						var x = document.getElementById("snackbar");                  
+						if(a.result === 0){
+							$("#snackbar").text("이미 등록된 음원 입니다");
+							//토스트바 div show로 변경
+							x.className = "show";
+
+							//3초 후 사라지게 설정
+							setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+						}else{
+							$("#snackbar").text("장바구니 등록 성공");
+
+							//토스트바 div show로 변경
+							x.className = "show";
+
+							//3초 후 사라지게 설정
+							setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+						}
+					},
+					error:function(){
+						console.log("장바구니 추가 ajax 실패")
+					}
+				})
+			});
+
 	    });
 
 		document.getElementById("search-btn-member-null").addEventListener("click", function(){
 			alert("로그인 후 이용가능합니다")
 		});
-		
 	</script>
 
 
