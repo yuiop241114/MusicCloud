@@ -71,7 +71,7 @@
 		background-color: #1587d0;
 		width: 80%;
 		line-height: 40px;
-		margin-top: 40px
+		margin-top: 40px;
 	}
 	#login-box a{
 		color: black;
@@ -234,7 +234,7 @@
 					</tr>
 					<tr>
 							<th><img src="resources/image/cartlogo.jpg" alt=""></th>
-							<th>게시판</th>
+							<th><a href="<%= contentPath %>/views/board/boardList.jsp">게시판</a></th>
 					</tr>
 					<tr>
 							<th><img src="resources/image/cartlogo.jpg" alt=""></th>

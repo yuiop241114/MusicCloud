@@ -36,6 +36,7 @@ public class MemberIdCheckController extends HttpServlet {
 		}else {
 			//중복 아이디 존재
 			response.getWriter().print("fail");
+
 		}
 	}
 

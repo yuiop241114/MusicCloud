@@ -13,6 +13,16 @@ public class Member {
 	private String email;
 	private String gender;
 	private int age;
+<<<<<<< HEAD
+	private String status;
+	private Date enrollDate;
+	private int reportCount;
+	
+	public Member() {}
+	
+	public Member(int memberNo, int locationNo, String memberId, String memberPwd, String memberName, String email,
+			String gender, int age, String status, Date enrollDate, int reportCount) {
+=======
 	private Date enrollDate;
 	private int reportCount;
 	private String status;
@@ -23,6 +33,9 @@ public class Member {
 	public Member(int memberNo, int locationNo, String memberId, String memberPwd, String memberName,
 			String memberAlias, String email, String gender, int age, Date enrollDate, int reportCount, String status,
 			String pfStatus) {
+	public Member(int memberNo, int locationNo, String memberId, String memberPwd, String memberName, String email,
+			String gender, int age, Date enrollDate, int reportCount, String status, String pfStatus) {
+>>>>>>> main
 		super();
 		this.memberNo = memberNo;
 		this.locationNo = locationNo;
@@ -33,6 +46,33 @@ public class Member {
 		this.email = email;
 		this.gender = gender;
 		this.age = age;
+<<<<<<< HEAD
+		this.status = status;
+		this.enrollDate = enrollDate;
+		this.reportCount = reportCount;
+	}
+
+	public int getMemberNo() {
+		return memberNo;
+	}
+
+	public void setMemberNo(int memberNo) {
+		this.memberNo = memberNo;
+	}
+
+	public int getLocationNo() {
+		return locationNo;
+	}
+
+	public void setLocationNo(int locationNo) {
+		this.locationNo = locationNo;
+	}
+
+	public String getMemberId() {
+		return memberId;
+	}
+
+=======
 		this.enrollDate = enrollDate;
 		this.reportCount = reportCount;
 		this.status = status;
@@ -125,6 +165,7 @@ public class Member {
 		return memberId;
 	}
 
+>>>>>>> main
 	public void setMemberId(String memberId) {
 		this.memberId = memberId;
 	}
@@ -177,6 +218,17 @@ public class Member {
 		this.age = age;
 	}
 
+<<<<<<< HEAD
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+=======
+>>>>>>> main
 	public Date getEnrollDate() {
 		return enrollDate;
 	}
@@ -192,6 +244,8 @@ public class Member {
 	public void setReportCount(int reportCount) {
 		this.reportCount = reportCount;
 	}
+<<<<<<< HEAD
+=======
 
 	public String getStatus() {
 		return status;
@@ -208,11 +262,17 @@ public class Member {
 	public void setPfStatus(String pfStatus) {
 		this.pfStatus = pfStatus;
 	}
+>>>>>>> main
 
 	@Override
 	public String toString() {
 		return "Member [memberNo=" + memberNo + ", locationNo=" + locationNo + ", memberId=" + memberId + ", memberPwd="
 				+ memberPwd + ", memberName=" + memberName + ", email=" + email + ", gender=" + gender + ", age=" + age
+<<<<<<< HEAD
+				+ ", status=" + status + ", enrollDate=" + enrollDate + ", reportCount=" + reportCount + "]";
+	}
+}
+=======
 				+ ", enrollDate=" + enrollDate + ", reportCount=" + reportCount + ", status=" + status + ", pfStatus="
 				+ pfStatus + "]";
 	}
@@ -220,3 +280,4 @@ public class Member {
 	}
 
 	
+>>>>>>> main
