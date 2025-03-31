@@ -60,7 +60,7 @@ public class MyPageService {
 	/**
 	 * @param memberNo
 	 * @return
-	 * 친구 리스트(친구가 최근들은 음원) 가져오는
+	 * 친구 리스트(친구가 최근들은 음원) 가져오는 서비스 메소드
 	 */
 	public ArrayList<Member> friendList(int memberNo){
 		Connection conn = getConnection();
@@ -107,6 +107,19 @@ public class MyPageService {
 		}
 		close(conn);
 		return result;
+	}
+	
+	/**
+	 * @param memberNo
+	 * @param insertInfo
+	 * @return
+	 * 설명 : 친구 추가 전 중복되는지 확인하는 서비스 메소드
+	 */
+	public int friendFilter(int memberNo, String insertInfo) {
+		Connection conn = getConnection();
+		int friendCount = new MyPageDao().friendFilter(conn, memberNo, insertInfo);
+		close(conn);
+		return friendCount;
 	}
 	
 	

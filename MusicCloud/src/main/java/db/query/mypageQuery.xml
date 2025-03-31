@@ -54,7 +54,7 @@
 		             , ML.MUSIC_TITLE AS "MUSIC_TITLE"
 		             , ML.MUSIC_SINGER AS "MUSIC_SINGER"
 		          FROM RECENT_MUSIC R
-		          JOIN MUSIC_LIST ML ON(R.MUSIC_NO = ML.MUSIC_NO)
+		          LEFT JOIN MUSIC_LIST ML ON(R.MUSIC_NO = ML.MUSIC_NO)
 		       ) MUSIC
 		    ON (F.FRIEND_NO = MUSIC.MEMBER_NO)
 		  JOIN MEMBER M ON(F.FRIEND_NO = M.MEMBER_NO)
@@ -85,6 +85,22 @@
 		SELECT MEMBER_NO
 		  FROM MEMBER 
 		 WHERE MEMBER_ALIAS = ?
+	</entry>
+	
+	<entry key="friendFilterId">
+		SELECT COUNT(*) IC
+		  FROM FRIEND_LIST FL
+		  JOIN MEMBER M ON(FL.FRIEND_NO = M.MEMBER_NO)
+		 WHERE MEMBER_ID = ?
+		   AND FL.MEMBER_NO = ?
+	</entry>
+	
+	<entry key="friendFilterAlias">
+		SELECT COUNT(*) AC
+		  FROM FRIEND_LIST FL
+		  JOIN MEMBER M ON(FL.FRIEND_NO = M.MEMBER_NO)
+		 WHERE MEMBER_ALIAS = ?
+		   AND FL.MEMBER_NO = ?
 	</entry>
 	
 	<entry key="deleteFriend">
