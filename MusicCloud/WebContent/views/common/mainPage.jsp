@@ -423,6 +423,7 @@
                                 </div>
                                 <div class="cartImg">
                                     <span class="material-symbols-outlined">shopping_cart_checkout</span>
+                                    <input type="hidden" value="\${pList[i].musicNo}">
                                 </div>
                             </div>
                         </div>`
