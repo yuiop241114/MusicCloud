@@ -128,10 +128,10 @@
                 </div>
 
                 <b>실명</b>
-                <input type="text" placeholder="실명" name="memberAlias">
+                <input type="text" placeholder="실명" name="memberName">
 
                 <b>별칭</b>
-                <input type="text" placeholder="별칭" name="memberName">
+                <input type="text" placeholder="별칭" name="memberAlias">
 
                 <b>이메일</b>
                 <input type="email" placeholder="이메일" name="memberEmail">
