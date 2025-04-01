@@ -78,7 +78,7 @@
     <!-- musicAccuracyDiv : 음원 전체 div 클래스명 -->
     <div class="playBarWrapper">
 
-        <audio preload controls id="music_source" src="" type="audio/mp3"></audio>
+        <audio preload id="music_source" src="" type="audio/mp3"></audio>
         <div class="progress-bar">
             <div class="progress"></div>
         </div>
@@ -128,7 +128,7 @@
             $.ajax({
                 url: "musicSelect",
                 data: {
-                    musicNo: $(".musicAccuracyDiv").find("input[type='hidden']").val(),
+                    musicNo: $(this).find("input[type='hidden']").val(),
                     memberNo: $("#memberNo").val(),
                 },
                 success: function(mf) {

@@ -143,8 +143,10 @@
 		
                 <% for(int i=0; i<listAccuracy.size(); i++) { %>
                     <div class="musicAccuracyDiv" id="accuracyDiv">
-                        <input type="hidden" value="<%= listAccuracy.get(i).getMusicNo()%>">
-                        <div class="musicImg"><img src="<%= contentPath + "/" + listAccuracy.get(i).getMusicImagePath()%>" alt=""></div>
+                        <div class="musicImg">
+                            <img src="<%= contentPath + "/" + listAccuracy.get(i).getMusicImagePath()%>" alt="">
+                            <input type="hidden" value="<%= listAccuracy.get(i).getMusicNo()%>">
+                        </div>
                         <div class="musicInfo">
                             <div class="musicText">
                           	    <%= listAccuracy.get(i).getMusicTitle()%> <br>
