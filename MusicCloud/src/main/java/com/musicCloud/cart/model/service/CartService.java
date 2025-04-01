@@ -50,7 +50,6 @@ public class CartService {
 			musicFilter = 1;
 		}
 		
-		
 		//음원 종합 문자열를 가져와서 가져온 음원번호 추가 후 db에 update
 		int result = 0;
 		String musicList = "";
@@ -69,6 +68,7 @@ public class CartService {
 			}
 			close(conn);
 		}
+		
 		return result * musicFilter;
 	}
 }

@@ -60,4 +60,40 @@ public class CommonDao {
 		}
 		return list;
 	}
+	
+	
+	/**
+	 * @param conn
+	 * @return
+	 * 설명 : 인기순 음원 표지 출력 데이터 조회 Dao
+	 */
+	public ArrayList<MusicFile> mainPopularMusic(Connection conn){
+		//select
+		ArrayList<MusicFile> list = new ArrayList<MusicFile>();
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("mainPopularMusic");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				list.add(
+						  new MusicFile(
+								  	     rset.getInt("MNO")
+								  	     , rset.getString("IMAGE_PATH")
+								       , rset.getString("msinger")
+								       , rset.getString("mtitle")
+								       , rset.getInt("music_count")
+								       )
+						);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			close(rset);
+		}
+		return list;
+	}
 }
