@@ -118,7 +118,7 @@
 		   AND MEMBER_NAME = ?
 		   AND STATUS = 'Y'
 	</entry>
-<<<<<<< HEAD
+
 	
 	<entry key="selectAllMember">
 		SELECT *
@@ -135,7 +135,7 @@
 	<entry key="deleteMember">
 		UPDATE MEMBER
 		   SET STATUS = 'N'
-		 WHERE MEMBER_NO IN (?)
+		 WHERE MEMBER_NO IN ( ? )
 		 
 	</entry>
 	
@@ -143,7 +143,8 @@
 		UPDATE MEMBER
 		   SET STATUS = 'Y'
 		 WHERE MEMBER_NO IN ( ? )
-=======
+	</entry>
+
 	<entry key="insertCart">
 		INSERT 
 		  INTO CART
@@ -156,6 +157,6 @@
 		    SEQ_CART_NO.NEXTVAL
 		  , ?
 		  )
->>>>>>> 71c814fde26525231da0c9524214a3e867cbb4dc
+
 	</entry>
 </properties>

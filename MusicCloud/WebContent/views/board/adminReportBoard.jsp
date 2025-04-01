@@ -251,7 +251,7 @@
 	            if (confirm("복구하시겠습니까?")) {
 	                $.ajax({
 	                    type: "post",
-	                    url: "adminInsertMember.bo",
+	                    url: "ReportInsert.bo",
 	                    data: { members: selectedBoards.join(",") }, // 배열을 문자열로 변환
 	                    success: function (response2) {
 	                        if (response2.trim() === "success") {

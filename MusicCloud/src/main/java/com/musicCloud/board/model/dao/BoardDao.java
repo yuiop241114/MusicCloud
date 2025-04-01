@@ -161,19 +161,19 @@ public class BoardDao {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		
-		String baseSql = prop.getProperty("deleteBoard");
-		
-		String placeholders = String.join(",", Collections.nCopies(boardReportTitle.length, "?"));
-		String sql = baseSql.replace("?", placeholders);
-		
 		try {
-			pstmt = conn.prepareStatement(sql);
+			String baseSql = prop.getProperty("deleteBoard");
 			
-			for(int i = 0; i<boardReportTitle.length; i++) {
-				pstmt.setInt(i + 1, Integer.parseInt(boardReportTitle[i]));
-			}
+			String placeholders = String.join(",", Collections.nCopies(boardReportTitle.length, "?"));
+			String sql = baseSql.replace("?", placeholders);
 			
-			result = pstmt.executeUpdate();
+				pstmt = conn.prepareStatement(sql);
+				
+				for(int i = 0; i<boardReportTitle.length; i++) {
+					pstmt.setInt(i + 1, Integer.parseInt(boardReportTitle[i]));
+				}
+				
+				result = pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -183,6 +183,13 @@ public class BoardDao {
 		return result;
 		
 		
+	}
+	
+	public int admininsertBoards(Connection conn, String[] boardReportTitle) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		return result;
 	}
 	
 	/**

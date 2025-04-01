@@ -81,7 +81,7 @@ SELECT
 		 WHERE Board_NO IN (?)
 	</entry>
 	
-	<entry key="">
+	<entry key="insertBoard">
 		UPDATE Board
 		   SET Board_STATUS = 'Y'
 		 WHERE Board_NO IN (?)

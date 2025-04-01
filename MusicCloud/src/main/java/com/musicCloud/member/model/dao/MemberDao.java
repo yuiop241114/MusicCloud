@@ -338,7 +338,7 @@ public class MemberDao {
 		}
 		return m;
 	}
-<<<<<<< HEAD
+
 
 
 	/**
@@ -499,7 +499,7 @@ public class MemberDao {
 	}
 	
 
-=======
+
 	
 	public int insertCart(Connection conn, int memberNo) {
 		//insert
@@ -519,5 +519,5 @@ public class MemberDao {
 		}
 		return result;
 	}
->>>>>>> 71c814fde26525231da0c9524214a3e867cbb4dc
+
 }
