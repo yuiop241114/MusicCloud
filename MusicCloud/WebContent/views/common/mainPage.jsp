@@ -415,8 +415,7 @@
                     if(pList != null){
                         for(let i=0; i<pList.length; i++){
                         	content += `<div class="musicAccuracyDiv">
-                            <input type="hidden" value="\${pList[i].musicNo}">
-                            <div class="musicImg"><img src="\${pList[i].musicImagePath}" alt=""></div>
+                            <div class="musicImg"><img src="\${pList[i].musicImagePath}" alt=""><input type="hidden" value="\${pList[i].musicNo}"></div>
                             <div class="musicInfo">
                                 <div class="musicText">
                                 \${pList[i].musicTitle} <br>

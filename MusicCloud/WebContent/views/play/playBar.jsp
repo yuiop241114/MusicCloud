@@ -128,7 +128,7 @@
             $.ajax({
                 url: "musicSelect",
                 data: {
-                    musicNo: $(".musicAccuracyDiv").find("input[type='hidden']").val(),
+                    musicNo: $(this).find("input[type='hidden']").val(),
                     memberNo: $("#memberNo").val(),
                 },
                 success: function(mf) {
