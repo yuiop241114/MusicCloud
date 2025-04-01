@@ -1,11 +1,11 @@
-package com.musicCloud.member.model.service;
+package com.musicCloud.board.model.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
-import com.musicCloud.member.model.dao.BoardDao;
-import com.musicCloud.member.model.vo.Board;
+import com.musicCloud.board.model.dao.BoardDao;
+import com.musicCloud.board.model.vo.Board;
 import static com.musicCloud.common.JDBCTemplate.*;
 
 public class BoardService {
@@ -64,6 +64,8 @@ public class BoardService {
         }
         return result;
     }
+    
+    
 
     // 게시글 삭제
     public int deleteBoard(int boardNo) {
@@ -97,5 +99,12 @@ public class BoardService {
             close(conn);
         }
         return board;
+    }
+    
+    public int selectListCount() {
+    	Connection conn = getConnection();
+    	int result = 0;
+    	
+    	result = new BoardDao().selectListCount(conn);
     }
 }

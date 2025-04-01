@@ -1,4 +1,4 @@
-package com.musicCloud.member.controller;
+package com.musicCloud.board.controller;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.musicCloud.member.model.service.BoardService;
-import com.musicCloud.member.model.vo.Board;
+import com.musicCloud.board.model.service.BoardService;
+import com.musicCloud.board.model.vo.Board;
 
 @WebServlet("/boardInsert")
 public class BoardInsertController extends HttpServlet {

@@ -1,4 +1,4 @@
-package com.musicCloud.member.model.dao;
+package com.musicCloud.board.model.dao;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -10,7 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-import com.musicCloud.member.model.vo.Board;
+import com.musicCloud.board.model.vo.Board;
+import static com.musicCloud.common.JDBCTemplate.*;
 
 public class BoardDao {
 	
@@ -53,13 +54,21 @@ public class BoardDao {
         String query = "INSERT INTO board (board_title, board_count, board_enroll_date, member_no) VALUES (?, ?, ?, ?)";
         int result = 0;
         
+        	
         try (PreparedStatement pstmt = conn.prepareStatement(query)) {
             pstmt.setString(1, board.getBoardTitle());
             pstmt.setInt(2, board.getBoardCount());
             pstmt.setString(3, board.getBoardEnrollDate());
             pstmt.setInt(4, board.getMemberNo());
             result = pstmt.executeUpdate();
+            close(pstmt);
+                       
         }
+        
+        
+        
+        
+        
         
         return result;
     }
@@ -115,4 +124,21 @@ public class BoardDao {
         
         return board;
     }
+
+    public int selectListCount(Connection conn) {
+        String query = "SELECT COUNT(*) FROM board";
+        int count = 0;
+
+        try (PreparedStatement pstmt = conn.prepareStatement(query);
+             ResultSet rs = pstmt.executeQuery()) {
+            if (rs.next()) {
+                count = rs.getInt(1); 
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return count;
+    }	
+	
 }

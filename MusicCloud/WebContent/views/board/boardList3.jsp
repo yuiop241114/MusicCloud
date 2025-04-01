@@ -1,13 +1,16 @@
+<%@page import="com.musicCloud.board.model.vo.Board"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <title>음원 사이트 입력 폼</title>
+
 <style>
   .blue-box {
     width: 900px;
-    padding: 20px;
+    padding: 30px;
     background-color: #e5efff;
     border-radius: 10px;
     margin: 20px auto;
@@ -22,7 +25,6 @@
     font-weight: bold;
     text-align: center;
     margin-bottom: 15px;
-    margin-left: -30px;
   }
 
   .input-field {
@@ -32,7 +34,6 @@
     border-radius: 5px;
     margin-bottom: 15px;
     font-size: 16px;
-    margin-left: -30px;
   }
 
   .large-textarea {
@@ -44,13 +45,44 @@
     font-size: 16px;
   }
 
+  .section-title {
+    text-align: center;
+    background-color: #1e73be;
+    color: white;
+    padding: 12px;
+    border-radius: 5px;
+    font-weight: bold;
+    margin: 30px auto;
+    width: fit-content;
+  }
+
+  .image-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .img-logo {
+    width: 200px;
+    height: 150px;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.1s ease-in-out;
+    cursor: pointer;
+  }
+
+  .img-logo:active {
+    transform: scale(0.95);
+  }
+
   .comment-section {
     margin-top: 20px;
-    text-align: center; /* 가운데 정렬을 위한 설정 */
+    text-align: center;
   }
 
   .comment-box {
-    width: 80%; /* 기존 100%에서 줄임 */
+    width: 80%;
     height: 120px;
     padding: 15px;
     border: 1px solid #ccc;
@@ -77,35 +109,6 @@
   .button-container button:hover {
     background-color: #135a96;
   }
-
-  /* 이미지 스타일 */
-  .img-logo {
-    width: 200px;
-    height: 150px;
-    margin: 10px;
-    border-radius: 5px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  }
-
-  /* 음원 및 플레이리스트 제목 중앙 정렬 */
-  .section-title {
-    text-align: center;
-    background-color: #1e73be;
-    color: white;
-    padding: 12px;
-    border-radius: 5px;
-    font-weight: bold;
-    margin: 30px auto;
-    width: fit-content;
-  }
-
-  /* 이미지 컨테이너 중앙 정렬 */
-  .image-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
 </style>
 
 <script>
@@ -120,10 +123,10 @@
 <%@ include file="../common/menubar.jsp" %>
 
 <div class="blue-box">
-  <div class="title-container">제목: 30자를 넘겨선 안됩니다. VARCHAR(90)</div>
+  <div class="title-container">제목: 30자를 넘겨선 안됩니다.</div>
   <input type="text" class="input-field" placeholder="제목을 입력하세요">
 
-  <div class="title-container">작성일: SYSDATE 작성자: user_ID 들어가게끔</div>
+  <div class="title-container">작성일: </div>
 
   <div class="content-container">파일첨부 및 음원 이미지</div>
   <textarea class="large-textarea" placeholder="내용을 입력하세요. (Max 500자)"></textarea>

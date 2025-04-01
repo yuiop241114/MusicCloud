@@ -1,4 +1,4 @@
-package com.musicCloud.member.model.vo;
+package com.musicCloud.board.model.vo;
 
 public class Board {
 	

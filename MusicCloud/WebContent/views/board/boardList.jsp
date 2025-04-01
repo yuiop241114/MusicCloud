@@ -1,13 +1,14 @@
-<%@page import="com.musicCloud.member.model.vo.Board"%>
+<%@page import="com.musicCloud.board.model.vo.Board"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
+<%
+	List<Board> list = (List<Board>)request.getAttribute("boardList");
+
+%>
 <!DOCTYPE html>
 <html>
 <head>
-<%
-	List<Board> list = (List<Board>)request.getAttribute("boardList");
-%>
 <meta charset="UTF-8">
 <title>MusicCloud</title>
 <style>
@@ -111,7 +112,7 @@ pageEncoding="UTF-8"%>
     
     <div class="board-container">
         <!-- 등록 버튼 클릭 시 글 작성 페이지로 이동 -->
-        <button class="register-btn" onclick="location.href='<%= contentPath %>/views/board/boardList2.jsp'">등록</button>
+        <button class="register-btn" onclick="location.href='<%= contentPath %>/boardEnroll'">등록</button>
 
         <div class="board-title">
             <span>통합게시판</span>
@@ -132,11 +133,11 @@ pageEncoding="UTF-8"%>
                 <tr>
                     <td><%= list.get(i).getBoardNo() %></td>
                     <td>
-                        <a href="<%= contentPath %>/views/board/boardList3.jsp"><%= list.get(i).getBoardTitle() %></a>
+                        <a href="<%= contentPath %>/boardDetail"><%= list.get(i).getBoardTitle() %></a>
                     </td>
                     <td><%= list.get(i).getBoardCount()%></td>
                     <td><%= list.get(i).getBoardEnrollDate() %></td>
-                    <td><%= list.get(i).getMemberAlias()%></td>
+                    <td><%= list.get(i).getMemberAlias() %></td>
                 </tr>
                 <% } %>
             </tbody>
