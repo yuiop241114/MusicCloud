@@ -55,7 +55,7 @@ public class AdminMemberListController extends HttpServlet {
         ArrayList<Member> list = new ArrayList<Member>();
         list = new BoardService().adminMemberList(pi);
         		
-        System.out.println("회원 리스트 개수: " + (list != null ? list.size() : "null"));
+        // System.out.println("회원 리스트 개수: " + (list != null ? list.size() : "null"));
         // ↑위에 회원리스트 DB에 저장된대로 6개 찍힘
         
         // 6. 데이터 JSP로 전달
@@ -65,7 +65,7 @@ public class AdminMemberListController extends HttpServlet {
 
         
         // 7. 페이지 이동 (경로 확인 필요)
-        System.out.println("Forwarding to: views/board/adminBoard.jsp");
+        
         request.getRequestDispatcher("views/board/adminBoard.jsp").forward(request, response);
     }
 

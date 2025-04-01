@@ -438,7 +438,6 @@ public class MemberDao {
 	        String placeholders = String.join(",", Collections.nCopies(memberId.length, "?"));
 	        String sql = baseSql.replace("?", placeholders);
 	        
-	        System.out.println(sql); // 쿼리 확인용 출력
 	
 	        pstmt = conn.prepareStatement(sql);
 	
@@ -448,7 +447,7 @@ public class MemberDao {
 	        }
 	        // 업데이트 실행
 	        result = pstmt.executeUpdate();
-	        System.out.println(result);
+
 	        
 	        
 
@@ -477,8 +476,6 @@ public class MemberDao {
 	        // `?`를 memberId 개수만큼 반복하여 동적 쿼리 생성
 	        String placeholders = String.join(",", Collections.nCopies(memberId.length, "?"));
 	        String sql = baseSql.replace("?", placeholders);
-	        
-	        System.out.println(sql); // 쿼리 확인용 출력
 	
 	        pstmt = conn.prepareStatement(sql);
 	
@@ -488,7 +485,7 @@ public class MemberDao {
 	        }
 	        // 업데이트 실행
 	        result = pstmt.executeUpdate();
-	        System.out.println(result);
+	        
 	        
 	    } catch (SQLException e) {
 	        e.printStackTrace();
