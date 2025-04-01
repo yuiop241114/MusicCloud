@@ -30,7 +30,6 @@ public class MusicPlayInfoController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int musicNo = Integer.parseInt(request.getParameter("musicNo"));
-		System.out.println(musicNo);
 		int memberNo = Integer.parseInt(request.getParameter("memberNo"));
 		
 		int countResult = new SearchService().increaseCount(musicNo); //조회수 증가
