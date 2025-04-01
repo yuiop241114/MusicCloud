@@ -37,13 +37,11 @@ public class PlaylistFormController extends HttpServlet {
 		HttpSession session = request.getSession();
 		Member m = (Member)session.getAttribute("loginMember");
 		
-		//개인 플레이 리스트 조회 
-		ArrayList<PlayList> playlist = new PlaylistService().selectAllPlaylist(m.getMemberNo());
-		ArrayList<MusicFile> fileList = new PlaylistService().selectAllMusic();
 
 		if(session.getAttribute("loginMember") != null) {
+			//개인 플레이 리스트 조회 
+			ArrayList<PlayList> playlist = new PlaylistService().selectAllPlaylist(m.getMemberNo());
 			session.setAttribute("playlist", playlist);
-			session.setAttribute("fileList", fileList);
 			request.getRequestDispatcher("views/play/playList.jsp").forward(request, response);
 		}else {
 			session.setAttribute("alertMsg", "로그인 후 이용 가능합니다");

@@ -148,6 +148,30 @@ public class MemberDao {
 	
 	/**
 	 * @param conn
+	 * @return
+	 * 설명 : 회원가입 시 최근들은 음원에 회원 번호, 회원의 지역 번호 추가 Dao
+	 */
+	public int insertRecentMusic(Connection conn, int locationNo) {
+		//insert
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertRecentMusic");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, locationNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	
+	/**
+	 * @param conn
 	 * @param id
 	 * @return
 	 * 설명 : 아이디 중복 체크를 한 Count 조회 Dao
@@ -314,6 +338,7 @@ public class MemberDao {
 		}
 		return m;
 	}
+<<<<<<< HEAD
 
 
 	/**
@@ -474,4 +499,25 @@ public class MemberDao {
 	}
 	
 
+=======
+	
+	public int insertCart(Connection conn, int memberNo) {
+		//insert
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertCart");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memberNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+>>>>>>> 71c814fde26525231da0c9524214a3e867cbb4dc
 }

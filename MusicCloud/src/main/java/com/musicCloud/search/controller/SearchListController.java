@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.musicCloud.common.vo.MusicFile;
 import com.musicCloud.search.model.service.SearchService;
@@ -25,7 +26,6 @@ public class SearchListController extends HttpServlet {
      */
     public SearchListController() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -33,32 +33,24 @@ public class SearchListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		
-		// 서블릿에서 데이터 설정
-		String search = request.getParameter("search"); // 클라이언트에서 넘어온 검색어
+		String search = request.getParameter("search"); // 검색어
 		int locationNo = Integer.parseInt(request.getParameter("locationNo"));
+		HttpSession session = request.getSession();
 		
-		request.setAttribute("search", search);
 		ArrayList<MusicFile> listAccuracy = new SearchService().searchListAccuracy(search);
-		
-		ArrayList<MusicFile> listPopular = new SearchService().searchListPoupular(search);
-		
+		ArrayList<MusicFile> listPopular = new SearchService().searchListPoupular(search);		
 		ArrayList<MusicFile> listPopularLocation = new SearchService().searchListPopularLocation(search, locationNo);
 		
-		System.out.println(search+"위치는 searchListController 들어옴");
-		request.setAttribute("listAccuracy", listAccuracy);
+//		for(MusicFile l : listAccuracy) {
+//			System.out.println(l);
+//		}
 		
-		request.setAttribute("listPopular", listPopular);
-		request.setAttribute("listPopularLocation", listPopularLocation);
+		request.setAttribute("search", search);
+		session.setAttribute("listAccuracy", listAccuracy);
+		session.setAttribute("listPopular", listPopular);
+		session.setAttribute("listPopularLocation", listPopularLocation);
 			
-		// 검색 결과 JSP로 포워드
-		RequestDispatcher dispatcher = request.getRequestDispatcher("views/search/searchList.jsp");
-		dispatcher.forward(request, response);
-		
-		System.out.println(request.getContextPath());
-		
-	
-		
+		request.getRequestDispatcher("views/search/searchList.jsp").forward(request, response);
 	} 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

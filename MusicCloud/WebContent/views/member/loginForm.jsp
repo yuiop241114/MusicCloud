@@ -11,7 +11,7 @@
 
 <%
     String clientId = "DTkHU3VbjmkxYRkognp3";//애플리케이션 클라이언트 아이디값";
-    String redirectURI = URLEncoder.encode("http://localhost:8118/music/views/common/naverCallback.jsp", "UTF-8");
+    String redirectURI = URLEncoder.encode("http://192.168.20.55:8118/music/views/common/naverCallback.jsp", "UTF-8");
     SecureRandom random = new SecureRandom();
     String state = new BigInteger(130, random).toString();
     String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
@@ -37,6 +37,16 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <style>
+	@font-face {
+	font-family: 'SUITE-Regular';
+	src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	}
+	body{
+		font-family: 'SUITE-Regular';
+	}
+
 	.wrapper{
 		text-align: center;
 	}
@@ -129,8 +139,8 @@
 
 			<div style="margin-bottom: 10px;">
 				<a href="<%= request.getContextPath()%>/memberEnrollForm">회원가입</a> |
-				<a href="">아이디 찾기</a> |
-				<a href="">비밀번호 찾기</a>
+				<a href="<%= contentPath%>/idSearchForm">아이디 찾기</a> |
+				<a href="<%= contentPath%>/pwdSearchForm">비밀번호 찾기</a>
 			</div>
 
 			<div class="api-login">

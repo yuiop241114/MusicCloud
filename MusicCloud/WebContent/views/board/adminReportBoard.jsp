@@ -200,9 +200,9 @@
 	
 	<script>
 	    $(document).ready(function () {
-	        let selectedMembers = [];
+	        let selectedBoards = [];
 	        
-	        $("#deleteBoard").click(function () {
+	        $("#deleteBoards").click(function () {
 	 
 	            selectedBoards = [];
 	            $("input[type=checkbox]:checked").each(function(){
@@ -217,7 +217,7 @@
 	            if (confirm("정말 삭제하시겠습니까?")) {
 	                $.ajax({
 	                    type: "POST",
-	                    url: "MemberDelete.bo",
+	                    url: "ReportDelete.bo",
 	                    data: { members: selectedBoards.join(",") }, // 배열을 문자열로 변환
 	                    success: function (response1) {
 	                        if (response1.trim() === "success") {

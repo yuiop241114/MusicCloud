@@ -1,3 +1,5 @@
+<%@page import="com.musicCloud.common.vo.MusicFile"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="org.json.simple.JSONObject"%>
 <%@page import="org.json.simple.parser.JSONParser"%>
 <%@page import="com.musicCloud.member.model.vo.Member"%>
@@ -7,14 +9,18 @@
 	String contentPath = request.getContextPath();
 	Member loginMember = (Member)session.getAttribute("loginMember");
 	String alertMsg = (String)session.getAttribute("alertMsg");
-	
+	ArrayList<MusicFile> fileList = (ArrayList<MusicFile>)session.getAttribute("fileList");
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>MusicCloud</title>
+<!-- 메테리얼 아이콘 -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 
+			
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 
 <!-- jQuery library -->
@@ -27,6 +33,16 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 	
 <style>
+	@font-face {
+	font-family: 'SUITE-Regular';
+	src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	}
+	body{
+		font-family: 'SUITE-Regular';
+	}
+
 	.wrapper{
 	  box-sizing: border-box;
 		width: 1500px;
@@ -167,18 +183,67 @@
 		color: gray;
 	}
 
-	
+	/*토스트바*/
+	#snackbar {
+    visibility: hidden; /* Hidden by default. Visible on click */
+    min-width: 250px; /* Set a default minimum width */
+    margin-left: -125px; /* Divide value of min-width by 2 */
+    background-color: #1587d0; /* Black background color */
+    color: #fff; /* White text color */
+    text-align: center; /* Centered text */
+    border-radius: 2px; /* Rounded borders */
+    padding: 16px; /* Padding */
+    position: fixed; /* Sit on top of the screen */
+    z-index: 1; /* Add a z-index if needed */
+    left: 50%; /* Center the snackbar */
+    bottom: 30px; /* 30px from the bottom */
+    border-radius: 5px;
+    }
+
+    /* Show the snackbar when clicking on a button (class added with JavaScript) */
+    #snackbar.show {
+    visibility: visible; /* Show the snackbar */
+    /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+    However, delay the fade out process for 2.5 seconds */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    }
+
+    /* Animations to fade the snackbar in and out */
+    @-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+    }
+
+    @keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+    }
+
+    @-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+    }
+
+    @keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+    }
+
 	</style> 
 <body>
+	
 	<div class="wrapper">
 			<a href="<%= contentPath%>"><img src="resources/image/mainlogo.png" id="logo"></a>
 
        <div id="login-box">   
 					<% if(loginMember == null){ %>
+					<input type="hidden" id="memberNo" value="noneLogin">
 						<h1><button type="button" onclick="location.href='<%= contentPath%>/loginForm'" class="btn btn-primary btn-lg" id="login-btn">뮤직 클라우드 로그인</button></h1>
 						<a href="<%= request.getContextPath()%>/memberEnrollForm">회원가입</a> | <a href="<%= contentPath%>/idSearchForm">아이디 찾기</a> | <a href="<%= contentPath%>/pwdSearchForm">비밀번호 찾기</a>
 					<%}else { %>
 						<div id="login-info">
+							<input type="hidden" id="memberNo" value="<%= loginMember.getMemberNo()%>">
 							<strong><%= loginMember.getMemberAlias()%> 회원 로그인 중</strong>
 							<br><br>
 							<img src="resources/image/logoutIcon.png" alt="">
@@ -189,7 +254,7 @@
 						</div>
 					<%} %>
        </div>
-
+       
 			<% if(loginMember == null){%>
 	      <form action="" class="search-bar">
            <input type="text" id="search-box" name="search" required>
@@ -203,6 +268,8 @@
          <% } %>
        </form>
   </div>
+
+	<hr>
 
 	<div id="navigator-div">
 		<div class="navigator">
@@ -240,10 +307,28 @@
 			<% session.removeAttribute("alertMsg"); %>
 		<%}%>
 	
+
+	<div id="snackbar"></div>
+
 	<script>
-			//퀵 메뉴 스크립트
 	    $(function(){
+	    		$.ajax({
+	    			url : "selectMusicInfo",
+	    			data : {},
+	    			success:function(fileList){
+							/*
+								fileList
+								musicNo : 음원명
+		 						musicImagePath : 이미지경로
+								musicCategoryNo : 음원 장르
+		 						musicTitle : 음원명
+		 						musicSinge : 가수명
+							*/
+						},
+	    			error:function(){},
+	    		})
 	    	
+					//퀵 메뉴 스크립트
 	        $("#side-btn").click(function(){
 	            if($("#side-btn-list").css('display') == 'none'){
 	                $("#side-btn-list").slideDown();
@@ -251,12 +336,55 @@
 	                $("#side-btn-list").slideUp();
 	            }
 	        });
+
+	    $(document).on("click", ".cartImg", function(){ //장바구니 아이콘 클릭 시
+	    	if($("#memberNo").val() === "noneLogin"){ //비로그인일 경우
+        		$("#snackbar").text("로그인 후 이용 가능합니다");
+						//토스트바 div show로 변경
+						document.getElementById("snackbar").className = "show";
+		
+						//3초 후 사라지게 설정
+						setTimeout(function(){ document.getElementById("snackbar").className = document.getElementById("snackbar").className.replace("show", ""); }, 3000);
+        }else{ //회원일 경우
+				    	$.ajax({
+							url:"addCart",
+							data:{
+								musicNo:$(".musicAccuracyDiv").find("input[type='hidden']").val(),
+							},
+							success:function(a){ 
+								var x = document.getElementById("snackbar");                  
+								if(a.result === 0){
+									$("#snackbar").text("이미 등록된 음원 입니다");
+									//토스트바 div show로 변경
+									x.className = "show";
+			
+									//3초 후 사라지게 설정
+									setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+								}else{
+									$("#snackbar").text("장바구니 등록 성공");
+			
+									//토스트바 div show로 변경
+									x.className = "show";
+			
+									//3초 후 사라지게 설정
+									setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+								}
+							},
+							error:function(){
+								console.log("장바구니 추가 ajax 실패")
+							}
+						})
+        	}
+	    	
+	    	})//장바구니 아이콘 클릭 시
+				
 	    });
 
 		document.getElementById("search-btn-member-null").addEventListener("click", function(){
 			alert("로그인 후 이용가능합니다")
 		});
-		
 	</script>
+
+
 </body>
 </html>

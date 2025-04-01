@@ -1,5 +1,7 @@
 package com.musicCloud.common.vo;
 
+import java.util.Date;
+
 public class MusicFile {
 
 	    private int musicNo;
@@ -20,6 +22,14 @@ public class MusicFile {
 	    private String lyrics;
 	    private String status;
 	    
+	    //음원 댓글 관련 컬럼
+	    private int commentNo;
+	    private int commentMemberNo;
+	    private String commentContent;
+	    private int commentLike;
+	    private int commentDislike;
+	    private Date commentDate;
+	    
 	    
 	    public MusicFile() {}
 		public MusicFile(int musicNo, String musicFileOriginName, String musicFileEditName, String musicFileStorePath,
@@ -34,33 +44,62 @@ public class MusicFile {
 			this.musicImagePath = musicImagePath;
 		}
 		
-	    
-	    //정확도순 뽑기용임
-	    public MusicFile(int musicNo, String musicFileOriginName, String musicFileEditName, String musicImageEditName,
-				String musicImagePath) {
+		/**
+		 * @param musicNo
+		 * @param musicFileStorePath
+		 * @param musicImagePath
+		 * @param musicTitle
+		 * @param musicSinger
+		 * 설명 : 정확도 음원 정보 저장 생성자
+		 */
+		public MusicFile(int musicNo, String musicFileStorePath, String musicImagePath, String musicTitle,
+				String musicSinger) {
 			super();
 			this.musicNo = musicNo;
-			this.musicFileOriginName = musicFileOriginName;
-			this.musicFileEditName = musicFileEditName;
-			this.musicImageEditName = musicImageEditName;
-			this.musicImagePath = musicImagePath;
-		}
-		
-	
-		//인기순 뽑기용
-		public MusicFile(int musicNo, String musicFileOriginName, String musicFileEditName, String musicFileStorePath,
-				String musicImageOriginName, String musicImageEditName) {
-			super();
-			this.musicNo = musicNo;
-			this.musicFileOriginName = musicFileOriginName;
-			this.musicFileEditName = musicFileEditName;
 			this.musicFileStorePath = musicFileStorePath;
-			this.musicImageOriginName = musicImageOriginName;
-			this.musicImageEditName = musicImageEditName;   // 인기순 숫자를 담아야해서 String 으로 변환 필요
+			this.musicImagePath = musicImagePath;
+			this.musicTitle = musicTitle;
+			this.musicSinger = musicSinger;
+		}
+		
+		/**
+		 * @param musicNo
+		 * @param musicImagePath
+		 * @param musicTitle
+		 * @param musicSinger
+		 * @param musicCount
+		 * 설명 : 인기순 음원 정보 저장 생성자
+		 */
+		public MusicFile(int musicNo, String musicImagePath, String musicTitle, String musicSinger, int musicCount) {
+			super();
+			this.musicNo = musicNo;
+			this.musicImagePath = musicImagePath;
+			this.musicTitle = musicTitle;
+			this.musicSinger = musicSinger;
+			this.musicCount = musicCount;
 		}
 		
 		
-
+		
+		/**
+		 * @param musicNo
+		 * @param musicFileOriginName : 지역이름 담을 변수
+		 * @param musicImagePath
+		 * @param musicTitle
+		 * @param musicSinger
+		 * @param musicCount
+		 * 설명 : 지역별 인기 순위 정보 저장 생성자
+		 */
+		public MusicFile(int musicNo, String musicFileOriginName, String musicImagePath, String musicTitle,
+				String musicSinger, int musicCount) {
+			super();
+			this.musicNo = musicNo;
+			this.musicFileOriginName = musicFileOriginName;
+			this.musicImagePath = musicImagePath;
+			this.musicTitle = musicTitle;
+			this.musicSinger = musicSinger;
+			this.musicCount = musicCount;
+		}
 		/**
 		 * @param musicNo
 		 * @param musicFileOriginName
@@ -102,6 +141,89 @@ public class MusicFile {
 		}
 		
 		
+		/**
+		 * @param musicNo
+		 * @param musicFileStorePath
+		 * @param musicImagePath
+		 * @param musicTitle
+		 * @param musicSinger
+		 * @param musicCount
+		 * @param like
+		 * @param dislike
+		 * @param lyrics
+		 * 설명 : 음원 재생용 정보 담는 생성자
+		 */
+		public MusicFile(int musicNo, String musicFileStorePath, String musicImagePath, String musicTitle,
+				String musicSinger, int musicCount, int like, int dislike, String lyrics) {
+			super();
+			this.musicNo = musicNo;
+			this.musicFileStorePath = musicFileStorePath;
+			this.musicImagePath = musicImagePath;
+			this.musicTitle = musicTitle;
+			this.musicSinger = musicSinger;
+			this.musicCount = musicCount;
+			this.like = like;
+			this.dislike = dislike;
+			this.lyrics = lyrics;
+		}
+		
+		
+		/**
+		 * @param musicNo
+		 * @param musicImagePath
+		 * @param musicCategoryNo
+		 * @param musicTitle
+		 * @param musicSinger
+		 * 설명 : 모든 음원 표지 출력 데이터 저장 생성자
+		 */
+		public MusicFile(int musicNo, String musicImagePath, int musicCategoryNo, String musicTitle,
+				String musicSinger) {
+			super();
+			this.musicNo = musicNo;
+			this.musicImagePath = musicImagePath;
+			this.musicCategoryNo = musicCategoryNo;
+			this.musicTitle = musicTitle;
+			this.musicSinger = musicSinger;
+		}
+		
+		
+		
+		public int getCommentNo() {
+			return commentNo;
+		}
+		public void setCommentNo(int commentNo) {
+			this.commentNo = commentNo;
+		}
+		public int getCommentMemberNo() {
+			return commentMemberNo;
+		}
+		public void setCommentMemberNo(int commentMemberNo) {
+			this.commentMemberNo = commentMemberNo;
+		}
+		public String getCommentContent() {
+			return commentContent;
+		}
+		public void setCommentContent(String commentContent) {
+			this.commentContent = commentContent;
+		}
+		public int getCommentLike() {
+			return commentLike;
+		}
+		public void setCommentLike(int commentLike) {
+			this.commentLike = commentLike;
+		}
+		public int getCommentDislike() {
+			return commentDislike;
+		}
+		public void setCommentDislike(int commentDislike) {
+			this.commentDislike = commentDislike;
+		}
+		public Date getCommentDate() {
+			return commentDate;
+		}
+		public void setCommentDate(Date commentDate) {
+			this.commentDate = commentDate;
+		}
 		public int getMusicCategoryNo() {
 			return musicCategoryNo;
 		}
@@ -212,8 +334,12 @@ public class MusicFile {
 					+ ", musicImageOriginName=" + musicImageOriginName + ", musicImageEditName=" + musicImageEditName
 					+ ", musicImagePath=" + musicImagePath + ", musicCategoryNo=" + musicCategoryNo + ", musicTitle="
 					+ musicTitle + ", musicSinger=" + musicSinger + ", musicCount=" + musicCount + ", like=" + like
-					+ ", dislike=" + dislike + ", lyrics=" + lyrics + ", status=" + status + "]";
+					+ ", dislike=" + dislike + ", lyrics=" + lyrics + ", status=" + status + ", commentNo=" + commentNo
+					+ ", commentMemberNo=" + commentMemberNo + ", commentContent=" + commentContent + ", commentLike="
+					+ commentLike + ", commentDislike=" + commentDislike + ", commentDate=" + commentDate + "]";
 		}
+		
+		
 }
 	    
 	

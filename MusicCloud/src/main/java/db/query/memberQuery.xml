@@ -58,6 +58,20 @@
 		  )
 	</entry>
 	
+	<entry key="insertRecentMusic">
+		INSERT 
+		  INTO RECENT_MUSIC
+		  (
+		    MEMBER_NO
+		  , LOCATION_NO
+		  )
+		  VALUES
+		  (
+		    SEQ_MEMBER_NO.CURRVAL
+		  , ?
+		  )
+	</entry>
+	
 	<entry key="memberIdCheck">
 		SELECT COUNT(*) AS "COUNT"
 		  FROM MEMBER
@@ -104,6 +118,7 @@
 		   AND MEMBER_NAME = ?
 		   AND STATUS = 'Y'
 	</entry>
+<<<<<<< HEAD
 	
 	<entry key="selectAllMember">
 		SELECT *
@@ -128,5 +143,19 @@
 		UPDATE MEMBER
 		   SET STATUS = 'Y'
 		 WHERE MEMBER_NO IN ( ? )
+=======
+	<entry key="insertCart">
+		INSERT 
+		  INTO CART
+		  (
+		    CART_NO
+		  , MEMBER_NO
+		  )
+		  VALUES
+		  (
+		    SEQ_CART_NO.NEXTVAL
+		  , ?
+		  )
+>>>>>>> 71c814fde26525231da0c9524214a3e867cbb4dc
 	</entry>
 </properties>
