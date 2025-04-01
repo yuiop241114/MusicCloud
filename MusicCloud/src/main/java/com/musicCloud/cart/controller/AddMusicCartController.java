@@ -35,6 +35,7 @@ public class AddMusicCartController extends HttpServlet {
 		
 		int result = new CartService().addCart(musicNo, m.getMemberNo());
 		JSONObject o = new JSONObject();
+		
 		o.put("result", result);
 		response.setContentType("application/json; charset=utf-8");
 		response.getWriter().print(o);

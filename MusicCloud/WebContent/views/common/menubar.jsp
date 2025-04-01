@@ -346,7 +346,7 @@
 				    	$.ajax({
 							url:"addCart",
 							data:{
-								musicNo:$(".musicAccuracyDiv").find("input[type='hidden']").val(),
+								musicNo:$(this).find("input[type='hidden']").val(),
 							},
 							success:function(a){ 
 								var x = document.getElementById("snackbar");                  
