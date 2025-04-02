@@ -6,6 +6,8 @@ import java.util.List;
 
 import com.musicCloud.board.model.dao.BoardDao;
 import com.musicCloud.board.model.vo.Board;
+import com.musicCloud.board.model.vo.PageInfo;
+
 import static com.musicCloud.common.JDBCTemplate.*;
 
 public class BoardService {
@@ -102,9 +104,17 @@ public class BoardService {
     }
     
     public int selectListCount() {
-    	Connection conn = getConnection();
-    	int result = 0;
-    	
-    	result = new BoardDao().selectListCount(conn);
+        Connection conn = getConnection();
+        int listCount = boardDao.selectListCount(conn);
+        close(conn);
+        return listCount;
     }
+    
+    public List<Board> selectList(PageInfo pi) {
+        Connection conn = getConnection();
+        List<Board> list = boardDao.selectList(conn, pi);
+        close(conn);
+        return list;
+    }
+    
 }

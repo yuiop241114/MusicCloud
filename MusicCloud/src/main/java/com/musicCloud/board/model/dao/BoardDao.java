@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.Properties;
 
 import com.musicCloud.board.model.vo.Board;
+import com.musicCloud.board.model.vo.PageInfo;
+
 import static com.musicCloud.common.JDBCTemplate.*;
 
 public class BoardDao {
@@ -64,12 +66,7 @@ public class BoardDao {
             close(pstmt);
                        
         }
-        
-        
-        
-        
-        
-        
+
         return result;
     }
 
@@ -126,7 +123,7 @@ public class BoardDao {
     }
 
     public int selectListCount(Connection conn) {
-        String query = "SELECT COUNT(*) FROM board";
+        String query = "SELECT COUNT(*) FROM BOARD";
         int count = 0;
 
         try (PreparedStatement pstmt = conn.prepareStatement(query);
@@ -139,6 +136,37 @@ public class BoardDao {
         }
 
         return count;
-    }	
+    }
 	
+    public List<Board> selectList(Connection conn, PageInfo pi) {
+        List<Board> list = new ArrayList<>();
+        String sql = "SELECT * FROM ( "
+                   + "SELECT ROWNUM RNUM, B.* FROM (SELECT * FROM BOARD ORDER BY BOARD_NO DESC) B "
+                   + ") WHERE RNUM BETWEEN ? AND ?";
+
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+            int endRow = startRow + pi.getBoardLimit() - 1;
+
+            pstmt.setInt(1, startRow);
+            pstmt.setInt(2, endRow);
+
+            try (ResultSet rs = pstmt.executeQuery()) {
+                while (rs.next()) {
+                    Board board = new Board();
+                    board.setBoardNo(rs.getInt("BOARD_NO"));
+                    board.setBoardTitle(rs.getString("BOARD_TITLE"));
+                    board.setBoardCount(rs.getInt("BOARD_COUNT"));
+                    board.setBoardEnrollDate(rs.getString("BOARD_ENROLL_DATE"));
+                    board.setMemberNo(rs.getInt("MEMBER_NO"));
+                    list.add(board);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return list;
+    }
+    
 }
