@@ -140,7 +140,7 @@
 							<td>회원번호</td>
 							<td>게시글제목</td>
 							<td>글작성자</td>
-							<td>활성상태</td>
+							<td>활동상태</td>
 							<td rowspan="<%= list.size() + 1%>" id="btnTd"><button type="button" id="adminInsertBoard" class="btn-success">Y</button></td>
 							<td rowspan="<%= list.size() + 1%>" id="btnTd"><button type="button" id="adminDeleteBoard" class="btn-danger">X</button></td>
 							

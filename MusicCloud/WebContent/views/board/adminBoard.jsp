@@ -162,9 +162,9 @@
 								<!-- join 해서 Member/vo/Member에서 작성자 아이디, 닉네임 가져오기 -->
 								<td style="text-align: center;"><input type="checkbox" class="check" value="<%= m.getMemberNo() %>"></td>
 								<td><%= m.getMemberNo() %></td>
-								<td><%= m.getMemberName() %></td>
-								<td><%= m.getMemberId() %></td>
 								<td><%= m.getEnrollDate() %></td>
+								<td><%= m.getMemberId() %></td>
+								<td><%= m.getMemberName() %></td>
 								<td><%= m.getStatus()%></td>
 							</tr>
 							<% } %>
