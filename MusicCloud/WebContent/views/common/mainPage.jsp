@@ -409,7 +409,6 @@
             $.ajax({
                 url: "mainPopularMusic",
                 success:function(pList){
-                    console.log(pList)
                     let content = "";
                     if(pList != null){
                         for(let i=0; i<pList.length; i++){

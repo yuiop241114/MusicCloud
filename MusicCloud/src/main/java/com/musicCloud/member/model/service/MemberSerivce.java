@@ -124,6 +124,19 @@ public class MemberSerivce {
 	}
 	
 	/**
+	 * @param alias
+	 * @return
+	 * 설명 : 회원가입시 별칭 중복확인 서비스 메소드
+	 */
+	public int memberAliasCheck(String alias) {
+		Connection conn = getConnection();
+		int result = new MemberDao().memberAliasCheck(conn, alias);
+		close(conn);
+		return result;
+	}
+	
+	
+	/**
 	 * @return
 	 * 설명 : 관리자에서 회원 전체정보 조회
 	 */	

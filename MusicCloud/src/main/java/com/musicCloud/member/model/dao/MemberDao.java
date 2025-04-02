@@ -339,6 +339,37 @@ public class MemberDao {
 		}
 		return m;
 	}
+	
+	
+	/**
+	 * @param conn
+	 * @param alias
+	 * @return
+	 * 설명 : 회원가입 시 별칭 중복 확인 Dao
+	 */
+	public int memberAliasCheck(Connection conn, String alias) {
+		//해당 별칭을 가지고 있는지 확인하기 위해 count로 조회
+		int result = 0;
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("memberAliasCheck");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, alias);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				result = rset.getInt("count");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return result;
+	}
 
 
 

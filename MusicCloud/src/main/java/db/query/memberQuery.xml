@@ -159,4 +159,10 @@
 		  )
 
 	</entry>
+	
+	<entry key="memberAliasCheck">
+		SELECT COUNT(*) AS "COUNT"
+		  FROM MEMBER
+		 WHERE MEMBER_ALIAS = ?
+	</entry>
 </properties>
