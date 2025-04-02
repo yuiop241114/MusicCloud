@@ -1,0 +1,136 @@
+    /* 전체 컨테이너 */
+body {
+    
+    font-family: Arial, sans-serif;
+    background-color: #f0e6f7;
+    margin: 0;
+    padding-top: 60px;
+    
+}
+
+.container {
+    width: 70%px;
+    margin: 5px;
+    background-color: #f8f3fc;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid #d3b5e5;
+    /* 여기까지 전체 컨테이너 */
+}
+/* 헤더 스타일 */
+header {
+    top: 0;
+    background-color: #007bff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-radius: 10px;
+}
+/* 로고 */
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+/* 메뉴스타일 */
+menu button {
+
+    background-color: #007bff;
+    border: none;
+    color: white;
+    font-size: 16px;
+    margin: 0 10px;
+    cursor: pointer;
+}
+/* 로그인상태 */
+.login-box {
+    text-align: right;
+    margin: right;
+}
+
+/* 로그아웃 */
+.logout {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+/* 라벨태그 */
+label {
+    display: block;
+    margin: 10px 0 0px
+    font-weight bold;
+}
+/* 텍스트박스 */
+input, textarea {
+    width: 80%;
+    padding: 7px;
+    margin-top: 15px;
+    border: 1px solid #ccc;
+}
+/* 업로드파일 미리보기 */
+.file-preview {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+/* 업로드 파일공간 */
+.upload-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+/* 업로드 파일 버튼*/
+.upload-btn {
+    background-color: #7a5ca8;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+/* 체크박스 스타일 */
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+
+/* 회원관리 페이지 스타일*/
+#membertable {
+    width: 82%;
+    border-collapse: collapse;
+    table-layout: fixed; /* 고정된 크기 설정 */
+}
+
+#membertable th, #membertable td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+}
+
+#membertable input {
+    width: 100%; /* 입력 필드를 셀 크기에 맞춤 */
+    padding: 5px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+.delete-btn {
+    background: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 5px;
+}
+
+.delete-btn:hover {
+    background: darkred;
+}

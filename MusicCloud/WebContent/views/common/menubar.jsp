@@ -251,6 +251,9 @@
 							<strong><%= loginMember.getMemberAlias()%> 회원 로그인 중</strong>
 							<br><br>
 							<img src="resources/image/logoutIcon.png" alt="">
+							<% if(loginMember.getMemberId().equals("admin")){%>
+								<a href="<%= contentPath%>/Admin.bo">관리자 페이지로 이동</a>
+							<%}%>
 							<a href="<%= contentPath%>/logout">로그아웃</a>
 						</div>
 					<%} %>

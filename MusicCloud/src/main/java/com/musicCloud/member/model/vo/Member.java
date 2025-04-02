@@ -41,7 +41,21 @@ public class Member {
 	}
 
 
-
+	public Member(int memberNo, int locationNo, String memberId, String memberPwd, String memberName, String email,
+			String gender, int age, Date enrollDate, int reportCount, String status) {
+		super();
+		this.memberNo = memberNo;
+		this.locationNo = locationNo;
+		this.memberId = memberId;
+		this.memberPwd = memberPwd;
+		this.memberName = memberName;
+		this.email = email;
+		this.gender = gender;
+		this.age = age;
+		this.enrollDate = enrollDate;
+		this.reportCount = reportCount;
+		this.status = status;
+	}
 
 	/**
 	 * @param locationNo
@@ -67,6 +81,7 @@ public class Member {
 		this.age = age;
 	}
 	
+
 	
 	/**
 	 * @param memberNo
@@ -107,6 +122,7 @@ public class Member {
 		this.memberId = memberId;
 		this.memberName = memberName;
 	}
+
 
 	public int getMemberNo() {
 		return memberNo;
