@@ -38,7 +38,7 @@
     }
     /*전체 div*/
     #enroll-form{
-
+        
     }
     #enroll-form>a>img{
         display: block;

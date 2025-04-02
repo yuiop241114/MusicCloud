@@ -9,5 +9,6 @@
 <body>
 
 	<%@ include file="views/common/mainPage.jsp" %>
+
 </body>
 </html>

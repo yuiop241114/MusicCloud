@@ -118,6 +118,33 @@
 		   AND MEMBER_NAME = ?
 		   AND STATUS = 'Y'
 	</entry>
+
+	
+	<entry key="selectAllMember">
+		SELECT *
+		  FROM MEMBER
+		 ORDER
+		 	BY MEMBER_NO DESC
+	</entry>
+	
+	<entry key="selectMemberCount">
+		SELECT COUNT(*) AS "C"
+		  FROM MEMBER
+	</entry>
+	
+	<entry key="deleteMember">
+		UPDATE MEMBER
+		   SET STATUS = 'N'
+		 WHERE MEMBER_NO IN ( ? )
+		 
+	</entry>
+	
+	<entry key="adminInsertMember">
+		UPDATE MEMBER
+		   SET STATUS = 'Y'
+		 WHERE MEMBER_NO IN ( ? )
+	</entry>
+
 	<entry key="insertCart">
 		INSERT 
 		  INTO CART
@@ -130,5 +157,6 @@
 		    SEQ_CART_NO.NEXTVAL
 		  , ?
 		  )
+
 	</entry>
 </properties>

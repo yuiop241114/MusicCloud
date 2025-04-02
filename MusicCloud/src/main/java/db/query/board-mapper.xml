@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="adminMemberList">
+	SELECT *
+	FROM (
+		SELECT ROWNUM RNUM, M.*
+		FROM(
+			SELECT 
+		       	   MEMBER_NO
+				 , LOCATION_NO
+				 , MEMBER_ID
+				 , MEMBER_PWD
+				 , MEMBER_NAME
+				 , MEMBER_ALIAS
+				 , EMAIL
+				 , GENDER
+				 , AGE
+				 , ENROLL_DATE
+				 , REPORT_COUNT
+				 , STATUS
+				 , PF_STATUS
+	  		FROM MEMBER
+			) M
+			
+		 )
+	WHERE RNUM BETWEEN ? AND ?
+	
+	</entry>
+	
+	<entry key="adminBoardList">
+		SELECT 
+		        b.*, 
+		        m.member_id, m.member_name, m.member_name
+		  FROM Board b
+		  JOIN Member m ON b.member_no = m.member_no
+	</entry>
+	
+	<entry key="adminBoardCount">
+		SELECT COUNT(*) AS "C"
+		  FROM BOARD
+	</entry>
+	
+	<entry key="adminReportList"> <!-- 이거 폐기 -->
+		SELECT R.*
+		  FROM REPORT_DETAIL R
+		  JOIN MEMBER M ON M.MEMBER_NO = R.MEMBER_NO
+	</entry>
+	
+	<entry key="adminMusicCount">
+		SELECT COUNT(*) AS "Music"
+		  FROM MUSIC_BOARD
+	</entry>
+	
+	
+	<entry key="adminBoardListView">
+SELECT
+       B.BOARD_NO AS boardNo
+     , B.MEMBER_NO AS memberNo
+     , M.MEMBER_NAME AS memberName
+     , M.MEMBER_ALIAS AS memberAlias
+     , B.BOARD_TITLE AS boardTitle
+     , B.BOARD_CONTENT AS boardContent
+     , B.BOARD_COUNT AS boardCount
+     , B.BOARD_ENROLL_DATE AS boardEnrollDate
+     , B.BOARD_CATEGORY AS boardCategory
+     , B.BOARD_STATUS AS boardStatus
+     , R.MEMBER_NO AS memberNo
+     , R.REPORT_NO AS reportNo
+     , R.REPORT_MEMBER_NO AS reportMemberNo
+     , R.REPORT_DATE AS reportDate
+  FROM BOARD B
+  JOIN MEMBER M ON (B.MEMBER_NO = M.MEMBER_NO)
+  JOIN REPORT_DETAIL R ON (B.MEMBER_NO = R.MEMBER_NO)
+	</entry>
+
+	
+	<entry key="adminDeleteBoard">
+		UPDATE Board
+		   SET Board_STATUS = 'N'
+		 WHERE Board_NO IN (?)
+	</entry>
+	
+	<entry key="adminInsertBoard">
+		UPDATE Board
+		   SET Board_STATUS = 'Y'
+		 WHERE Board_NO IN (?)
+	</entry>
+	
+	
+</properties>

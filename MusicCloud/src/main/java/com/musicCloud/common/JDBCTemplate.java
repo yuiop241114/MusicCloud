@@ -12,13 +12,13 @@ import java.util.Properties;
 public class JDBCTemplate {
 	
 	/**
-	 * Connection 객체 생성 메소드
+	 * Connection 
 	 */
 	public static Connection getConnection() {
 		
 		Connection conn = null;
 		
-		//driver 등록 정보가 들어 있는 파일 경로 저장 후 읽어 들이는 구문
+		//driver 
 		Properties prop = new Properties();
 		String driverFilePath = JDBCTemplate.class.getResource("/db/driver/driver.properties").getPath();
 		try {
@@ -29,14 +29,14 @@ public class JDBCTemplate {
 		}
 		
 		try {
-			//DB 연결 구문
+			//DB 
 			Class.forName(prop.getProperty("driver"));
 			conn = DriverManager.getConnection(
 												prop.getProperty("url")
 											  , prop.getProperty("username")
 											  , prop.getProperty("password")
 											  );
-			//autocommit 해제 
+			//autocommit 
 			conn.setAutoCommit(false);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -47,7 +47,7 @@ public class JDBCTemplate {
 	}
 	
 	/**
-	 * commit 메소드
+	 * commit 
 	 */
 	public static void commit(Connection conn) {
 		try {
@@ -62,7 +62,7 @@ public class JDBCTemplate {
 	
 	/**
 	 * @param conn
-	 * rollback 메소드
+	 * rollback 
 	 */
 	public static void rollback(Connection conn) {
 		try {
@@ -77,7 +77,7 @@ public class JDBCTemplate {
 	
 	/**
 	 * @param conn
-	 * Connection 객체 반납 메소드
+	 * Connection 
 	 */
 	public static void close(Connection conn) {
 		try {
@@ -92,7 +92,7 @@ public class JDBCTemplate {
 	
 	/**
 	 * @param pstmt
-	 * [Prepared]Statement 객체 반납 메소드
+	 * [Prepared]Statement 
 	 */
 	public static void close(PreparedStatement pstmt) {
 		try {
@@ -107,7 +107,7 @@ public class JDBCTemplate {
 	
 	/**
 	 * @param rset
-	 * ResultSet 객체 반납 메소드
+	 * ResultSet 
 	 */
 	public static void close(ResultSet rset) {
 		try {

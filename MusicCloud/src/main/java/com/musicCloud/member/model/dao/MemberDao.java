@@ -7,7 +7,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Properties;
+
+import org.apache.catalina.util.ParameterMap;
 
 import static com.musicCloud.common.JDBCTemplate.*;
 
@@ -335,6 +339,165 @@ public class MemberDao {
 		}
 		return m;
 	}
+
+
+
+	/**
+	 * @param conn
+	 * @return Member
+	 * 설명 : 멤버 전체조회
+	 */
+	public ArrayList<Member> selectAllMember(Connection conn) {
+		
+		ArrayList<Member> m = new ArrayList<Member>();
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("selectAllMember");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				m.add(new Member(
+						  rset.getInt("member_no")
+						, rset.getInt("location_no")
+						, rset.getString("member_id")
+						, rset.getString("member_pwd")
+						, rset.getString("member_name")
+						, rset.getString("member_alias")
+						, rset.getString("email")
+						, rset.getString("gender")
+						, rset.getInt("age")
+						, rset.getDate("enroll_date")
+						, rset.getInt("report_count")
+						, rset.getString("status")
+						, rset.getString("pf_status")
+						));
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		
+		
+		return m;
+	}
+
+
+	/**
+	 * @param conn
+	 * @return Member
+	 * 설명 : 멤버 전체 카운트
+	 */
+	public int selectMemberCount(Connection conn) {
+		int result = 0;
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("selectMemberCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				result = rset.getInt("C");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		
+		return result;
+	}
+
+
+	/**
+	 * @param conn
+	 * @param memberId
+	 * @return
+	 * 설명 : 관리자의 회원관리 테이블에서 DB STATUS객체를 N으로 돌리기
+	 */
+	public int deleteMember(Connection conn, String[] memberId) {
+        PreparedStatement pstmt = null;
+        int result = 0;
+	
+	    try {
+	        // 기존 DELETE가 아닌 UPDATE 쿼리로 변경
+	        String baseSql = prop.getProperty("deleteMember");
+	        
+	        // `?`를 memberId 개수만큼 반복하여 동적 쿼리 생성
+	        String placeholders = String.join(",", Collections.nCopies(memberId.length, "?"));
+	        String sql = baseSql.replace("?", placeholders);
+	        
+	
+	        pstmt = conn.prepareStatement(sql);
+	
+	        // ?에 실제 값 바인딩
+	        for (int i = 0; i < memberId.length; i++) {
+	            pstmt.setInt(i + 1, Integer.parseInt(memberId[i])); // MEMBER_ID는 String이므로 setString 사용
+	        }
+	        // 업데이트 실행
+	        result = pstmt.executeUpdate();
+
+	        
+	        
+
+	        
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        close(pstmt); // 리소스 정리
+	    }
+	    return result;
+	}
+	
+	/**
+	 * @param conn
+	 * @param memberId
+	 * @return 관리자페이지 Member Status Y로 돌리기
+	 */
+	public int adminInsertMember(Connection conn, String[] memberId) {
+		PreparedStatement pstmt = null;
+        int result = 0;
+	
+	    try {
+	        // 기존 DELETE가 아닌 UPDATE 쿼리로 변경
+	        String baseSql = prop.getProperty("adminInsertMember");
+	        
+	        // `?`를 memberId 개수만큼 반복하여 동적 쿼리 생성
+	        String placeholders = String.join(",", Collections.nCopies(memberId.length, "?"));
+	        String sql = baseSql.replace("?", placeholders);
+	
+	        pstmt = conn.prepareStatement(sql);
+	
+	        // ?에 실제 값 바인딩
+	        for (int i = 0; i < memberId.length; i++) {
+	            pstmt.setInt(i + 1, Integer.parseInt(memberId[i])); // MEMBER_ID는 String이므로 setString 사용
+	        }
+	        // 업데이트 실행
+	        result = pstmt.executeUpdate();
+	        
+	        
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        close(pstmt); // 리소스 정리
+	    }
+	    return result;
+	}
+	
+
+
 	
 	public int insertCart(Connection conn, int memberNo) {
 		//insert
@@ -354,4 +517,5 @@ public class MemberDao {
 		}
 		return result;
 	}
+
 }

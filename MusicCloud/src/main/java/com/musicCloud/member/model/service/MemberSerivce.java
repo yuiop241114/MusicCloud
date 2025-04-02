@@ -122,4 +122,61 @@ public class MemberSerivce {
 		close(conn);
 		return m;
 	}
+	
+	/**
+	 * @return
+	 * 설명 : 관리자에서 회원 전체정보 조회
+	 */	
+	public ArrayList<Member> selectAllMember() {
+		Connection conn = getConnection();
+		ArrayList<Member> m = new MemberDao().selectAllMember(conn);
+		
+		close(conn);
+		return m;
+	}
+	
+	/**
+	 * @return
+	 * 설명 : 관리자에서 회원 전체 정보 카운트
+	 */
+	public int selectMemberCount() {
+		Connection conn = getConnection();
+		int result = new MemberDao().selectMemberCount(conn);
+		
+		close(conn);
+		return result;
+	}
+
+	 /**
+	 * @param memberId
+	 * @return
+	 * 설명 : 관리자에서 특정 회원 DB삭제
+	 */
+	public int deleteMembers(String[] memberId) {
+	        Connection conn = getConnection();
+	        int result = new MemberDao().deleteMember(conn, memberId);
+
+	        if (result > 0) {
+	        	commit(conn);
+	        }else{
+	        	rollback(conn);
+	        }
+
+	        close(conn);
+	        return result;
+	    }
+	
+	public int adminInsertMembers(String[] memberId) {
+		Connection conn = getConnection();
+		int result = new MemberDao().adminInsertMember(conn, memberId);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		return result;
+	}
 }
