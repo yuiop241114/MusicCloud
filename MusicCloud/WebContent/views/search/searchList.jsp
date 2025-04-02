@@ -154,6 +154,7 @@
                             </div>
                             <div class="cartImg">
                                 <span class="material-symbols-outlined">shopping_cart_checkout</span>
+                                <input type="hidden" value="<%= listAccuracy.get(i).getMusicNo()%>">
                             </div>
                         </div>
                     </div>
@@ -168,8 +169,10 @@
             <div class="searchContentDiv" id="listPopular">
             	<% for(int i=0; i<listPopular.size(); i++) { %>
                     <div class="musicAccuracyDiv" id="accuracyDiv">
-                        <input type="hidden" value="<%= listPopular.get(i).getMusicNo()%>">
-                        <div class="musicImg"><img src="<%= contentPath + "/" + listPopular.get(i).getMusicImagePath()%>" alt=""></div>
+                        <div class="musicImg">
+                            <img src="<%= contentPath + "/" + listPopular.get(i).getMusicImagePath()%>" alt="">
+                            <input type="hidden" value="<%= listPopular.get(i).getMusicNo()%>">
+                        </div>
                         <div class="musicInfo">
                             <div class="musicText">
                           	    <%= listPopular.get(i).getMusicTitle()%> <br>
@@ -177,6 +180,7 @@
                             </div>
                             <div class="cartImg">
                                 <span class="material-symbols-outlined">shopping_cart_checkout</span>
+                                <input type="hidden" value="<%= listPopular.get(i).getMusicNo()%>">
                             </div>
                         </div>
                     </div>
@@ -189,8 +193,10 @@
             <div class="searchContentDiv" id="listPopularLocation">
             	<% for(int i=0; i<listPopularLocation.size(); i++) { %>
                     <div class="musicAccuracyDiv" id="accuracyDiv">
-                        <input type="hidden" value="<%= listPopularLocation.get(i).getMusicNo()%>">
-                        <div class="musicImg"><img src="<%= contentPath + "/" + listPopularLocation.get(i).getMusicImagePath()%>" alt=""></div>
+                        <div class="musicImg">
+                            <img src="<%= contentPath + "/" + listPopularLocation.get(i).getMusicImagePath()%>" alt="">
+                            <input type="hidden" value="<%= listPopularLocation.get(i).getMusicNo()%>">
+                        </div>
                         <div class="musicInfo">
                             <div class="musicText">
                           	    <%= listPopularLocation.get(i).getMusicTitle()%> <br>
@@ -198,6 +204,7 @@
                             </div>
                             <div class="cartImg">
                                 <span class="material-symbols-outlined">shopping_cart_checkout</span>
+                                <input type="hidden" value="<%= listPopularLocation.get(i).getMusicNo()%>">
                             </div>
                         </div>
                     </div>

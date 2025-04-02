@@ -41,9 +41,13 @@ public class SearchListController extends HttpServlet {
 		ArrayList<MusicFile> listPopular = new SearchService().searchListPoupular(search);		
 		ArrayList<MusicFile> listPopularLocation = new SearchService().searchListPopularLocation(search, locationNo);
 		
-//		for(MusicFile l : listAccuracy) {
-//			System.out.println(l);
-//		}
+		for(MusicFile l : listPopular) {
+			System.out.println(l);
+		}
+		
+		for(MusicFile l : listPopularLocation) {
+			System.out.println(l);
+		}
 		
 		request.setAttribute("search", search);
 		session.setAttribute("listAccuracy", listAccuracy);

@@ -134,7 +134,7 @@
                     </thead>
                     <tbody>
                         <% 
-                            if(c != null){
+                            if(c.getMusicNoTotal() != null){ //오류 수정
                                 String[] mList = c.getMusicNoTotal().split(",");
                                 for(int i=0; i<mList.length; i++){
                                 

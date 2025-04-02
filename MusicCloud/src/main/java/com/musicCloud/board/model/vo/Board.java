@@ -24,9 +24,32 @@ public class Board {
 	private int reportMemberNo;
 	private String reportDate;
 	
+	private int boardCount;
+	//private String boardEnrollDate;
+	//게시판 전체 조회시 사용
+	private String memberAlias;
+	
 	public Board() {}
 
-	
+	/**
+	 * @param boardNo
+	 * @param boardTitle
+	 * @param boardCount
+	 * @param boardEnrollDate
+	 * @param memberNo
+	 * @param memberAlias
+	 * 전체 매개변수 생성자
+	 */
+	public Board(int boardNo, String boardTitle, int boardCount, String boardEnrollDate, int memberNo,
+			String memberAlias) {
+		super();
+		this.boardNo = boardNo;
+		this.boardTitle = boardTitle;
+		this.boardCount = boardCount;
+		this.enrollDate = boardEnrollDate;
+		this.memberNo = memberNo;
+		this.memberAlias = memberAlias;
+	}
 
 
 	
@@ -61,7 +84,14 @@ public class Board {
 	}
 
 
-
+	public Board(int boardNo, String boardTitle, int boardCount, String boardEnrollDate, int memberNo) {
+		super();
+		this.boardNo = boardNo;
+		this.boardTitle = boardTitle;
+		this.boardCount = boardCount;
+		this.enrollDate = boardEnrollDate;
+		this.memberNo = memberNo;
+	}
 
 
 	public int getReportNo() {
@@ -103,6 +133,14 @@ public class Board {
 	public void setMemberName(String memberName) {
 		this.memberName = memberName;
 	}
+	
+	public String getMemberAlias() {
+		return memberAlias;
+	}
+
+	public void setMemberAlias(String memberAlias) {
+		this.memberAlias = memberAlias;
+	}
 
 	public int getBoardNo() {
 		return boardNo;
@@ -119,6 +157,22 @@ public class Board {
 	public void setPlaylistNo(int playlistNo) {
 		this.playlistNo = playlistNo;
 	}
+	public String getBoardTitle() {
+		return boardTitle;
+	}
+
+	public void setBoardTitle(String boardTitle) {
+		this.boardTitle = boardTitle;
+	}
+
+	public int getBoardCount() {
+		return boardCount;
+	}
+
+	public void setBoardCount(int boardCount) {
+		this.boardCount = boardCount;
+	}
+
 
 	public int getMemberNo() {
 		return memberNo;
@@ -136,13 +190,6 @@ public class Board {
 		this.musicNo = musicNo;
 	}
 
-	public String getBoardTitle() {
-		return boardTitle;
-	}
-
-	public void setBoardTitle(String boardTitle) {
-		this.boardTitle = boardTitle;
-	}
 
 	public String getBoardContent() {
 		return boardContent;
@@ -184,28 +231,17 @@ public class Board {
 		this.boardStatus = boardStatus;
 	}
 
-
-
-
-
 	@Override
 	public String toString() {
 		return "Board [boardNo=" + boardNo + ", playlistNo=" + playlistNo + ", memberNo=" + memberNo + ", musicNo="
 				+ musicNo + ", boardTitle=" + boardTitle + ", boardContent=" + boardContent + ", boardcount="
 				+ boardcount + ", enrollDate=" + enrollDate + ", status=" + status + ", category=" + category
 				+ ", boardStatus=" + boardStatus + ", memberId=" + memberId + ", memberName=" + memberName
-				+ ", reportNo=" + reportNo + ", reportMemberNo=" + reportMemberNo + ", reportDate=" + reportDate + "]";
+				+ ", reportNo=" + reportNo + ", reportMemberNo=" + reportMemberNo + ", reportDate=" + reportDate
+				+ ", boardCount=" + boardCount + ", memberAlias=" + memberAlias + "]";
 	}
 
-	
-
-	
-
-	
-
-	
 
 
-	
-	
+
 }

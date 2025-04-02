@@ -20,6 +20,7 @@ public class Member {
 	
 	public Member() {}
 
+
 	public Member(int memberNo, int locationNo, String memberId, String memberPwd, String memberName,
 			String memberAlias, String email, String gender, int age, Date enrollDate, int reportCount, String status,
 			String pfStatus) {
