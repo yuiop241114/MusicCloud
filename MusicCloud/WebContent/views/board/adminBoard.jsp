@@ -126,7 +126,7 @@
 		
 			<div id="menuBox">
 				<menu>
-					<a href="<%=contentPath %>/views/common/mainPage.jsp" id="menutext">메인페이지</a>
+					<a href="<%=contentPath %>" id="menutext">메인페이지</a>
 					<a href="">음원관리</a>
 					<a href="<%=contentPath %>/Admin.bo?cpage=1" id="menutext">회원관리</a>
 					<a href="<%=contentPath %>/AdminReport.bo?cpage=1" id="menutext">게시글관리</a>
