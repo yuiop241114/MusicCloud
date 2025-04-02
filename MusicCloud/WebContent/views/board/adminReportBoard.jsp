@@ -72,7 +72,7 @@
 	}
 
 	#mTable{
-		width: 80%;
+		width: 90%;
 		border-color: #1587d0;
 		border-left: none;
         border-right: none;
@@ -84,6 +84,9 @@
         border-right: none;
 		text-align: center;
 		height: 40px;
+	}
+	#mTable>tr>td+td{
+		width: 70px;
 	}
 	
 	/* 회원삭제 버튼 속성 */
@@ -135,37 +138,38 @@
        
         <div id="ReportBoardListBox">
 				<table id="mTable" align="center" border="1">
-						<tr>
-							<td>게시글선택</td>
-							<td>회원번호</td>
-							<td>게시글제목</td>
-							<td>글작성자</td>
-							<td>활동상태</td>
-							<td rowspan="<%= list.size() + 1%>" id="btnTd"><button type="button" id="adminInsertBoard" class="btn-success">Y</button></td>
-							<td rowspan="<%= list.size() + 1%>" id="btnTd"><button type="button" id="adminDeleteBoard" class="btn-danger">X</button></td>
-							
-						</tr>
+					<tr>
+						<td>게시글선택</td>
+						<td>게시글번호</td>
+						<td>회원번호</td>
+						<td>게시글제목</td>
+						<td>글작성자</td>
+						<td>활동상태</td>
+						<td rowspan="<%= list.size() + 1%>" id="btnTd"><button type="button" id="adminInsertBoard" class="btn-success">Y</button></td>
+						<td rowspan="<%= list.size() + 1%>" id="btnTd"><button type="button" id="adminDeleteBoard" class="btn-danger">X</button></td>	
+					</tr>
 
-						<!-- case1. 내역이 없을경우 -->
-						<% if(list.isEmpty()) { %>
+					
+					<!-- case1. 내역이 없을경우 -->
+					<% if(list.isEmpty()) { %>
+					<tr>
+						<td colspan="5" align="center"></td>
+					</tr>
+					<% } else { %>
+
+					<!-- case2. 내역이 있는경우 -->
+					<% for(Board b:list) { %>
 						<tr>
-							<td colspan="5" align="center"></td>
+							<!-- 게시글 카테고리 가져오기 -->
+							<td style="text-align: center;"><input type="checkbox" class="check" value="<%= b.getBoardNo() %>"></td>
+							<td><%= b.getBoardNo() %></td>
+							<td><%= b.getMemberNo() %></td>
+							<td><%= b.getBoardTitle() %></td>
+							<td><%= b.getMemberName() %></td>
+							<td><%= b.getBoardStatus()%></td>
 						</tr>
-						<% } else { %>
-	
-						<!-- case2. 내역이 있는경우 -->
-						<% for(Board b:list) { %>
-							<tr>
-								<!-- 게시글 카테고리 가져오기 -->
-								<td style="text-align: center;"><input type="checkbox" class="check" value="<%= b.getMemberNo() %>"></td>
-								<td><%= b.getMemberNo() %></td>
-								<td><%= b.getBoardTitle() %></td>
-								<td><%= b.getMemberName() %></td>
-								<td><%= b.getBoardStatus()%></td>
-							</tr>
-							<% } %>
 						<% } %>
-
+					<% } %>
 				</table>
 			
 				<br> <br>
