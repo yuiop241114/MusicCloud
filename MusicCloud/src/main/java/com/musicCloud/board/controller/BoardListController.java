@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.musicCloud.board.model.service.BoardService;
 import com.musicCloud.board.model.vo.Board;
-import com.musicCloud.board.model.vo.PageInfo;
+import com.musicCloud.common.model.vo.PageInfo;
 
 @WebServlet("/boardList")
 public class BoardListController extends HttpServlet {
@@ -43,7 +43,7 @@ public class BoardListController extends HttpServlet {
         
         PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
         
-        ArrayList<Board> list = (ArrayList<Board>) boardService.selectList(pi);
+        List<Board> list = boardService.selectList(pi);
         
         request.setAttribute("pi", pi);
         request.setAttribute("list", list);

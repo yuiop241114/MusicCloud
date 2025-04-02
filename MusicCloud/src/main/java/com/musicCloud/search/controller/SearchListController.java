@@ -41,13 +41,42 @@ public class SearchListController extends HttpServlet {
 		ArrayList<MusicFile> listPopular = new SearchService().searchListPoupular(search);		
 		ArrayList<MusicFile> listPopularLocation = new SearchService().searchListPopularLocation(search, locationNo);
 		
-		for(MusicFile l : listPopular) {
-			System.out.println(l);
+		//음원명, 가수명
+		//일정 길이가 넘어갈 경우 뒷부분을 ...으로 대체
+		for(MusicFile m : listAccuracy) {
+			if(m.getMusicTitle().length() >= 20) {
+				String str1 = m.getMusicTitle().substring(0, 18);
+				m.setMusicTitle(str1.concat("..."));
+			}
+			if(m.getMusicSinger().length() >= 20) {
+				String str2 = m.getMusicSinger().substring(0,18);
+				m.setMusicSinger(str2.concat("..."));
+			}
 		}
 		
-		for(MusicFile l : listPopularLocation) {
-			System.out.println(l);
+		for(MusicFile m : listPopular) {
+			if(m.getMusicTitle().length() >= 20) {
+				String str1 = m.getMusicTitle().substring(0, 18);
+				m.setMusicTitle(str1.concat("..."));
+			}
+			if(m.getMusicSinger().length() >= 20) {
+				String str2 = m.getMusicSinger().substring(0,18);
+				m.setMusicSinger(str2.concat("..."));
+			}
 		}
+		
+		for(MusicFile m : listPopularLocation) {
+			if(m.getMusicTitle().length() >= 20) {
+				String str1 = m.getMusicTitle().substring(0, 18);
+				m.setMusicTitle(str1.concat("..."));
+			}
+			if(m.getMusicSinger().length() >= 20) {
+				String str2 = m.getMusicSinger().substring(0,18);
+				m.setMusicSinger(str2.concat("..."));
+			}
+		}
+		
+		
 		
 		request.setAttribute("search", search);
 		session.setAttribute("listAccuracy", listAccuracy);

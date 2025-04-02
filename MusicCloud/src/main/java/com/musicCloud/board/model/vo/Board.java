@@ -50,8 +50,6 @@ public class Board {
 		this.memberNo = memberNo;
 		this.memberAlias = memberAlias;
 	}
-
-
 	
 	/**
 	 * @param boardNo

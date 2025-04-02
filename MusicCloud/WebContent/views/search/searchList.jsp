@@ -175,7 +175,7 @@
                         </div>
                         <div class="musicInfo">
                             <div class="musicText">
-                          	    <%= listPopular.get(i).getMusicTitle()%> <br>
+                                <%= listPopular.get(i).getMusicTitle()%> <br>
                           	    <%= listPopular.get(i).getMusicSinger()%>
                             </div>
                             <div class="cartImg">

@@ -87,5 +87,18 @@ SELECT
 		 WHERE Board_NO IN (?)
 	</entry>
 	
+	<entry key ="getAllBoards">
+		SELECT
+		       BOARD_NO
+		     , BOARD_TITLE
+		     , BOARD_COUNT
+		     , TO_CHAR(BOARD_ENROLL_DATE, 'YY/MM/DD') BOARD_DATE
+		     , MEMBER_NO
+		     , MEMBER_ALIAS
+		  FROM BOARD
+		  JOIN MEMBER USING (MEMBER_NO)
+		 WHERE BOARD_STATUS = 'Y'
+	</entry>
+	
 	
 </properties>

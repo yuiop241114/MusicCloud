@@ -116,17 +116,6 @@ public class BoardService {
 	}
 	*/
 
-
-
-	
-	
-	
-	
-
-
-
-
-
     
 
     // 게시글 목록 조회

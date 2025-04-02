@@ -136,7 +136,7 @@ pageEncoding="UTF-8"%>
                         <a href="<%= contentPath %>/boardDetail"><%= list.get(i).getBoardTitle() %></a>
                     </td>
                     <td><%= list.get(i).getBoardCount()%></td>
-                    <td><%= list.get(i).getBoardEnrollDate() %></td>
+                    <td><%= list.get(i).getEnrollDate() %></td>
                     <td><%= list.get(i).getMemberAlias() %></td>
                 </tr>
                 <% } %>
