@@ -67,7 +67,7 @@
 	}
 
 	/* 관리자 페이지 테이블 속성 */
-	#memberListBox{
+	#ReportBoardListBox{
 		width: 90%;
 	}
 
@@ -86,7 +86,7 @@
 		height: 40px;
 	}
 	
-	/* 글삭제 버튼 속성 */
+	/* 회원삭제 버튼 속성 */
 	#adminDeleteBoard {
 		width: 40%;
 		color: white;
@@ -96,7 +96,6 @@
 		height: 45px;
 		
 	}
-	/* 글복구 버튼 속성*/
 	#adminInsertBoard{
 		width: 40%;
 		color: white;
@@ -121,11 +120,11 @@
 		<div id="title">관리자페이지-게시글삭제</div>
 	</div>
 	<br>
-    <div class="wrapper">
+    <div class="wrapperAdmin">
 
-        <menu>
+        <menu id="menuBox">
             <a href="<%=contentPath %>/views/common/mainPage.jsp" id="menutext">메인페이지</a>
-			<a href="<%=contentPath %>/views/board/adminMusicList.jsp" id="menutext">음원관리</a>
+			<a href="">음원관리</a>
 			<a href="<%=contentPath %>/Admin.bo?cpage=1" id="menutext">회원관리</a>
 			<a href="<%=contentPath %>/AdminReport.bo?cpage=1" id="menutext">게시글관리</a>
             <a href="" id="menutext">유료 컨텐츠 관리</a>
