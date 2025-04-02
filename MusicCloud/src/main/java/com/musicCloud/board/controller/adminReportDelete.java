@@ -33,6 +33,7 @@ public class adminReportDelete extends HttpServlet {
 		String Boards = request.getParameter("boards");
 		String[] boardReportDelete = Boards.split(",");
 		
+		
 		int result = new BoardService().admindeleteBoards(boardReportDelete);
 		
 		response.setContentType("text/plain");
