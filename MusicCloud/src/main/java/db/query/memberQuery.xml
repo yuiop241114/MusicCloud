@@ -58,6 +58,20 @@
 		  )
 	</entry>
 	
+	<entry key="insertRecentMusic">
+		INSERT 
+		  INTO RECENT_MUSIC
+		  (
+		    MEMBER_NO
+		  , LOCATION_NO
+		  )
+		  VALUES
+		  (
+		    SEQ_MEMBER_NO.CURRVAL
+		  , ?
+		  )
+	</entry>
+	
 	<entry key="memberIdCheck">
 		SELECT COUNT(*) AS "COUNT"
 		  FROM MEMBER
@@ -103,5 +117,18 @@
 		 WHERE EMAIL = ?
 		   AND MEMBER_NAME = ?
 		   AND STATUS = 'Y'
+	</entry>
+	<entry key="insertCart">
+		INSERT 
+		  INTO CART
+		  (
+		    CART_NO
+		  , MEMBER_NO
+		  )
+		  VALUES
+		  (
+		    SEQ_CART_NO.NEXTVAL
+		  , ?
+		  )
 	</entry>
 </properties>

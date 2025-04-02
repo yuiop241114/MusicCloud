@@ -20,6 +20,7 @@ public class Member {
 	
 	public Member() {}
 
+
 	public Member(int memberNo, int locationNo, String memberId, String memberPwd, String memberName,
 			String memberAlias, String email, String gender, int age, Date enrollDate, int reportCount, String status,
 			String pfStatus) {
@@ -38,6 +39,8 @@ public class Member {
 		this.status = status;
 		this.pfStatus = pfStatus;
 	}
+
+
 
 
 	/**
@@ -62,6 +65,47 @@ public class Member {
 		this.email = email;
 		this.gender = gender;
 		this.age = age;
+	}
+	
+	
+	/**
+	 * @param memberNo
+	 * @param locationNo
+	 * @param memberId
+	 * @param memberName
+	 * @param memberAlias
+	 * @param email
+	 * @param gender
+	 * @param age
+	 * 설명 : 마이페이지에서 회원정보 수정 시 정보를 담을 생성자
+	 */
+	public Member(int memberNo, int locationNo, String memberId, String memberName, String memberAlias, String email,
+			String gender, int age) {
+		super();
+		this.memberNo = memberNo;
+		this.locationNo = locationNo;
+		this.memberId = memberId;
+		this.memberName = memberName;
+		this.memberAlias = memberAlias;
+		this.email = email;
+		this.gender = gender;
+		this.age = age;
+	}
+	
+	
+
+	/**
+	 * @param memberNo
+	 * @param memberId
+	 * @param memberName
+	 * 설명 : 친구 리스트 정보를 가져오기 위한 생성자(회원번호, 친구이름, 최근재생음악)
+	 */
+	public Member(int memberNo, int locationNo, String memberId, String memberName) {
+		super();
+		this.memberNo = memberNo;
+		this.locationNo = locationNo;
+		this.memberId = memberId;
+		this.memberName = memberName;
 	}
 
 	public int getMemberNo() {

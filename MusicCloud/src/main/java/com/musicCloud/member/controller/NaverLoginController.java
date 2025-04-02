@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.musicCloud.member.model.service.MemberSerivce;
 import com.musicCloud.member.model.vo.Member;
@@ -47,7 +48,7 @@ public class NaverLoginController extends HttpServlet {
 		String gender = (String)request.getAttribute("gender");
 		String birthday = (String)request.getAttribute("birthday");
 		String birthyear = (String)request.getAttribute("birthyear");
-		String mobile = (String)request.getAttribute("mobile");
+		String mobile = (String)request.getAttribute("mobile"); 
 		
 		/*
 		System.out.println(uniqueId);
@@ -60,24 +61,33 @@ public class NaverLoginController extends HttpServlet {
     	System.out.println(birthyear);
     	System.out.println(mobile);
     	*/
-    	
     	NaverMember naver = new NaverMember(uniqueId, nickName, name, email, age, gender, birthday, birthyear, mobile);
     	//나이 계산을 위한 이번년도 출력
     	Date today = new Date();
     	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy");
     	
+    	//요청처리
     	int result = new MemberSerivce().memberIdCheck(uniqueId); //아이디로 select 절에서 count 개수 가져 오는 메소드
     	Member m = null;
+    	HttpSession session = request.getSession();
+    	
     	if(result <= 0) {
-    		//네이버로 로그인한 전적이 없는 경우
-    		//DB에 정보저장
-    		new MemberSerivce().insertMember( new Member( 1, uniqueId, "1", name, nickName, email, gender, Integer.parseInt(dateFormat.format(today)) -  Integer.parseInt(birthyear) ) );
+			//네이버로 로그인한 전적이 없는 경우
+			//DB에 정보저장
+			new MemberSerivce().insertMember( new Member( 1, uniqueId, "sociallogin", name, nickName, email, gender, Integer.parseInt(dateFormat.format(today)) -  Integer.parseInt(birthyear) ) );
     	}
-    	//로그인을 위한 정보를 가져옴
-    	m = new MemberSerivce().loginMember(uniqueId, "1");
-		//System.out.println(m);
-    	request.getSession().setAttribute("loginMember", m);
-    	response.sendRedirect(request.getContextPath());
+    	
+		//로그인을 위한 정보를 가져옴
+    	m = new MemberSerivce().loginMember(uniqueId, "sociallogin");
+    	
+    	//탈퇴되어 status 가 N 이라 로그인 정보를 못가지고 오는 경우
+    	if(m == null) {
+    		session.setAttribute("alertMsg", "탈퇴처리된 회원입니다");
+    		response.sendRedirect(request.getContextPath());
+    	}else {
+    		session.setAttribute("loginMember", m);
+    		response.sendRedirect(request.getContextPath());
+    	}
 	}
 
 	/**

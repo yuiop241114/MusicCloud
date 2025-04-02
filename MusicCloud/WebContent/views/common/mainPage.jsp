@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=shopping_cart_checkout" />
 <style>
     #mainPage-border{
         width: 1500px;
@@ -19,7 +20,7 @@
     .mainList {
         border: 1px solid #1587d0;
         width: 100%;
-        height: 300px;
+        height: 350px;
         border-radius: 10px;
         margin-bottom: 20px;
     }	
@@ -35,43 +36,70 @@
         color: black;
     }
     /*음원 리스트 div*/
-    /*전체 div*/
-    #music{
-        display: flex;
-        justify-content: space-evenly
-    }
-    /*음원 정보 전체 div*/
-    .music_detail{
-        box-sizing: border-box;
-        width: 200px;
-        height: 250px;
-    }
-    /*음원 이미지*/
-    .music_img{
-        border: 1px solid #1587d0;
-        border-radius: 10px;
-    }
-    .music_img>img{
+    #musicList_content{
         width: 100%;
-        height: 200px;
-    }
-    /*음원 정보*/
-    .music_comment{
+        height: 85%;
+        /*가로 무한 스크롤*/
         display: flex;
-        margin-top: 5px;
+        overflow-x: scroll;
+        width: 100%;
+        white-space: nowrap;
+    
     }
-    .music_info{
-        width: 70%;
+    .musicAccuracyDiv *{
+        box-sizing: border-box;
     }
-    .music_cart_icon{
-        width: 30%;
+    .musicAccuracyDiv:hover{
+        cursor: pointer;
     }
-    .music_cart_icon img{
-        width: 80%;
-        height: 80%;
-        margin: auto;
+    .musicAccuracyDiv{
+        width: 230px;
+        height: 90%;
+        margin-top: 22px;
+
+        /*가로 무한 스크롤*/
+        flex: 0 0 auto;
+        margin: 10px;
     }
 
+    /*음원 이미지*/
+    .musicImg{
+        width: 100%;
+        height: 75%;
+    }
+    .musicImg img{
+        display: block;
+        width: 90%;
+        height: 95%;
+        margin: auto;
+        border-radius: 5px;
+    }
+    /*음원 정보*/
+    .musicInfo{
+        width: 100%;
+        height: 25%;
+        display: flex;
+        background-color: #1587d0;
+        border-radius: 5px;
+    }
+    .cartImg{
+        width: 30%;
+        height: 100%;
+        color: white;
+        text-align: center;
+        padding: 8px;
+    }
+    .material-symbols-outlined{
+        font-size: 40px;
+    }
+    .musicText{
+        width: 70%;
+        height: 100%;
+        color: white;
+        font-weight: bold;
+        padding: 5px;
+    }
+   
     /*추천 플레이 리스트(class="mainList" id="music_payment")*/
     /*제목*/
     #payment_title{
@@ -122,7 +150,6 @@
         border-radius: 30px;
         margin-top: 25%;
     }
-
 
     /*게시판 미리보기 리스트 class="mainList" id="board"*/
     #mainPage_boardTitle{
@@ -217,58 +244,11 @@
                 <a href="">인기순</a> / 
                 <a href="">지역별</a>
             </div>
-            <div id="music">
-                <div class="music_detail">
-                    <div class="music_img"><img src="resources/image/mainlogo.png" alt=""></div>
-                    <div class="music_comment">
-                        <div class="music_info">제목 <br> 가수명</div>
-                        <div class="music_cart_icon">
-                            <img src="resources/image/cartlogo.jpg" alt="">
-                        </div>
-                    </div>
-                </div>
 
-                <div class="music_detail">
-                    <div class="music_img"><img src="resources/image/mainlogo.png" alt=""></div>
-                    <div class="music_comment">
-                        <div class="music_info">제목 <br> 가수명</div>
-                        <div class="music_cart_icon">
-                            <img src="resources/image/cartlogo.jpg" alt="">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="music_detail">
-                    <div class="music_img"><img src="resources/image/mainlogo.png" alt=""></div>
-                    <div class="music_comment">
-                        <div class="music_info">제목 <br> 가수명</div>
-                        <div class="music_cart_icon">
-                            <img src="resources/image/cartlogo.jpg" alt="">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="music_detail">
-                    <div class="music_img"><img src="resources/image/mainlogo.png" alt=""></div>
-                    <div class="music_comment">
-                        <div class="music_info">제목 <br> 가수명</div>
-                        <div class="music_cart_icon">
-                            <img src="resources/image/cartlogo.jpg" alt="">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="music_detail">
-                    <div class="music_img"><img src="resources/image/mainlogo.png" alt=""></div>
-                    <div class="music_comment">
-                        <div class="music_info">제목 <br> 가수명</div>
-                        <div class="music_cart_icon">
-                            <img src="resources/image/cartlogo.jpg" alt="">
-                        </div>
-                    </div>
-                </div>
-
+            <div id="musicList_content">
+                
             </div>
+        
         </div>
     
 
@@ -414,13 +394,48 @@
                 </div>
             </div>
             
-
             </div>
         </div>
     </div>
 
     <br><br><br><br><br><br><br><br><br><br>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     
+    <script>
+        $(function(){
+            //음원 인기순
+            $.ajax({
+                url: "mainPopularMusic",
+                success:function(pList){
+                    console.log(pList)
+                    let content = "";
+                    if(pList != null){
+                        for(let i=0; i<pList.length; i++){
+                        	content += `<div class="musicAccuracyDiv">
+                            <div class="musicImg"><img src="\${pList[i].musicImagePath}" alt=""><input type="hidden" value="\${pList[i].musicNo}"></div>
+                            <div class="musicInfo">
+                                <div class="musicText">
+                                \${pList[i].musicTitle} <br>
+                                \${pList[i].musicSinger}
+                                </div>
+                                <div class="cartImg">
+                                    <span class="material-symbols-outlined">shopping_cart_checkout</span>
+                                    <input type="hidden" value="\${pList[i].musicNo}">
+                                </div>
+                            </div>
+                        </div>`
+                        }
+                        $("#musicList_content").html(content)
+                    }
+                    
+                },
+                error:function(){ console.log("인기순 음원 ajax 실패")}
+            })
+        })
+    </script>
+
+    <%@ include file="../play/playBar.jsp" %>
 </body>
 </html>

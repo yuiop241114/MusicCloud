@@ -23,6 +23,16 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <style>
+    @font-face {
+	font-family: 'SUITE-Regular';
+	src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	}
+	body{
+		font-family: 'SUITE-Regular';
+	}
+
     input{
         border-radius: 5px;
     }
@@ -118,21 +128,21 @@
                 </div>
 
                 <b>실명</b>
-                <input type="text" placeholder="실명" name="memberAlias">
+                <input type="text" placeholder="실명" name="memberName">
 
                 <b>별칭</b>
-                <input type="text" placeholder="별칭" name="memberName">
+                <input type="text" placeholder="별칭" name="memberAlias">
 
                 <b>이메일</b>
                 <input type="email" placeholder="이메일" name="memberEmail">
 
                 <b>생년월일</b>
-                <input type="date" name="ageDate"> 
+                <input type="date" name="ageDate" required> 
 
                 <b>성별</b>
                 <select name="gender">
                   <option value="M">남자</option>
-                  <option value="W">여자</option>
+                  <option value="F">여자</option>
                 </select>
 
                 <b>거주 지역</b>
