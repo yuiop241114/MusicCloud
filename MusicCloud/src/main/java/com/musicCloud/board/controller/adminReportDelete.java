@@ -12,7 +12,7 @@ import com.musicCloud.board.model.service.BoardService;
 /**
  * Servlet implementation class adminReportDelete
  */
-@WebServlet("/ReportDelete.bo")
+@WebServlet("/adminDeleteBoard.bo")
 public class adminReportDelete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -28,10 +28,12 @@ public class adminReportDelete extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String Boards = request.getParameter("boards");
-		String[] boardReportTitle = Boards.split(",");
 		
-		int result = new BoardService().deleteBoards(boardReportTitle);
+		request.setCharacterEncoding("utf-8");
+		String Boards = request.getParameter("boards");
+		String[] boardReportDelete = Boards.split(",");
+		
+		int result = new BoardService().admindeleteBoards(boardReportDelete);
 		
 		response.setContentType("text/plain");
 		response.setCharacterEncoding("UTF-8");

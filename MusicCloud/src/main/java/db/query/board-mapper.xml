@@ -75,13 +75,13 @@ SELECT
 	</entry>
 
 	
-	<entry key="deleteBoard">
+	<entry key="adminDeleteBoard">
 		UPDATE Board
 		   SET Board_STATUS = 'N'
 		 WHERE Board_NO IN (?)
 	</entry>
 	
-	<entry key="insertBoard">
+	<entry key="adminInsertBoard">
 		UPDATE Board
 		   SET Board_STATUS = 'Y'
 		 WHERE Board_NO IN (?)

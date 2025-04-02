@@ -7,10 +7,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.musicCloud.board.model.service.BoardService;
+import com.musicCloud.member.model.service.MemberSerivce;
+
 /**
  * Servlet implementation class adminReportInsert
  */
-@WebServlet("/ReportInsert.bo")
+@WebServlet("/adminInsertBoard.bo")
 public class adminReportInsert extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -27,8 +30,20 @@ public class adminReportInsert extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
-		
+		request.setCharacterEncoding("utf-8");
+		String boards = request.getParameter("boards"); // "1,2,3" 형태
+		String[] boardReportInsert = boards.split(",");
+
+        int result = new BoardService().admininsertBoards(boardReportInsert);
+
+        response.setContentType("text/plain");
+        response.setCharacterEncoding("UTF-8");
+
+        if (result > 0) {
+            response.getWriter().write("success");
+        } else {
+            response.getWriter().write("fail");
+        }
 	}
 
 	/**

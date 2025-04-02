@@ -68,9 +68,23 @@ public class BoardService {
 		return result;
 	}
 	
-	public int deleteBoards(String[] boardReportTitle) {
+	public int admindeleteBoards(String[] boardReportDelete) {
 		Connection conn = getConnection();
-		int result = new BoardDao().deleteBoards(conn, boardReportTitle);
+		int result = new BoardDao().admindeleteBoards(conn, boardReportDelete);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		return result;
+	}
+	
+	public int admininsertBoards(String[] boardReportInsert) {
+		Connection conn = getConnection();
+		int result = new BoardDao().admininsertBoards(conn, boardReportInsert);
 		
 		if(result > 0) {
 			commit(conn);
@@ -83,14 +97,6 @@ public class BoardService {
 	}
 
 
-	public int adminMusicCount() {
-		Connection conn = getConnection();
-		int result = new BoardDao().adminMusicCount(conn);
-		
-		
-		close(conn);
-		return result;
-	}
 
 
 	

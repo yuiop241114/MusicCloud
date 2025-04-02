@@ -157,20 +157,20 @@ public class BoardDao {
 	 * @param boardReportTitle
 	 * @return 게시글 삭제 메소드
 	 */
-	public int deleteBoards(Connection conn, String[] boardReportTitle) {
+	public int admindeleteBoards(Connection conn, String[] boardReportDelete) {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		
 		try {
-			String baseSql = prop.getProperty("deleteBoard");
+			String baseSql = prop.getProperty("adminDeleteBoard");
 			
-			String placeholders = String.join(",", Collections.nCopies(boardReportTitle.length, "?"));
+			String placeholders = String.join(",", Collections.nCopies(boardReportDelete.length, "?"));
 			String sql = baseSql.replace("?", placeholders);
 			
 				pstmt = conn.prepareStatement(sql);
 				
-				for(int i = 0; i<boardReportTitle.length; i++) {
-					pstmt.setInt(i + 1, Integer.parseInt(boardReportTitle[i]));
+				for(int i = 0; i<boardReportDelete.length; i++) {
+					pstmt.setInt(i + 1, Integer.parseInt(boardReportDelete[i]));
 				}
 				
 				result = pstmt.executeUpdate();
@@ -185,9 +185,31 @@ public class BoardDao {
 		
 	}
 	
-	public int admininsertBoards(Connection conn, String[] boardReportTitle) {
+	public int admininsertBoards(Connection conn, String[] boardReportInsert) {
 		PreparedStatement pstmt = null;
 		int result = 0;
+		
+		try {
+			String baseSql = prop.getProperty("adminInsertBoard");
+			
+			String placeholders = String.join(",", Collections.nCopies(boardReportInsert.length, "?"));
+			String sql = baseSql.replace("?", placeholders);
+			
+				pstmt = conn.prepareStatement(sql);
+				
+				for(int i = 0; i<boardReportInsert.length; i++) {
+					pstmt.setInt(i + 1, Integer.parseInt(boardReportInsert[i]));
+				}
+				
+				result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		
 		
 		return result;
 	}

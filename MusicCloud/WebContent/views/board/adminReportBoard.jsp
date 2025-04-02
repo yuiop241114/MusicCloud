@@ -87,7 +87,7 @@
 	}
 	
 	/* 글삭제 버튼 속성 */
-	#admindeleteReport {
+	#adminDeleteBoard {
 		width: 40%;
 		color: white;
 		cursor: pointer;
@@ -97,7 +97,7 @@
 		
 	}
 	/* 글복구 버튼 속성*/
-	#admininsertReport{
+	#adminInsertBoard{
 		width: 40%;
 		color: white;
 		cursor: pointer;
@@ -142,8 +142,8 @@
 							<td>게시글제목</td>
 							<td>글작성자</td>
 							<td>활성상태</td>
-							<td rowspan="<%= list.size() + 0%>" id="btnTd"><button type="button" id="admininsertReport" class="btn-success">Y</button></td>
-							<td rowspan="<%= list.size() + 0%>" id="btnTd"><button type="button" id="admindeleteReport" class="btn-danger">X</button></td>
+							<td rowspan="<%= list.size() + 1%>" id="btnTd"><button type="button" id="adminInsertBoard" class="btn-success">Y</button></td>
+							<td rowspan="<%= list.size() + 1%>" id="btnTd"><button type="button" id="adminDeleteBoard" class="btn-danger">X</button></td>
 							
 						</tr>
 
@@ -157,7 +157,7 @@
 						<!-- case2. 내역이 있는경우 -->
 						<% for(Board b:list) { %>
 							<tr>
-								<!-- join 해서 Board/vo/Report에서 작성자 아이디, 닉네임 가져오기 -->
+								<!-- 게시글 카테고리 가져오기 -->
 								<td style="text-align: center;"><input type="checkbox" class="check" value="<%= b.getMemberNo() %>"></td>
 								<td><%= b.getMemberNo() %></td>
 								<td><%= b.getBoardTitle() %></td>
@@ -202,7 +202,7 @@
 	    $(document).ready(function () {
 	        let selectedBoards = [];
 	        
-	        $("#deleteBoards").click(function () {
+	        $("#adminDeleteBoard").click(function () {
 	 
 	            selectedBoards = [];
 	            $("input[type=checkbox]:checked").each(function(){
@@ -217,8 +217,8 @@
 	            if (confirm("정말 삭제하시겠습니까?")) {
 	                $.ajax({
 	                    type: "POST",
-	                    url: "ReportDelete.bo",
-	                    data: { members: selectedBoards.join(",") }, // 배열을 문자열로 변환
+	                    url: "adminDeleteBoard.bo",
+	                    data: { boards: selectedBoards.join(",") }, // 배열을 문자열로 변환
 	                    success: function (response1) {
 	                        if (response1.trim() === "success") {
 	                            alert("게시글 삭제 완료!");
@@ -251,8 +251,8 @@
 	            if (confirm("복구하시겠습니까?")) {
 	                $.ajax({
 	                    type: "post",
-	                    url: "ReportInsert.bo",
-	                    data: { members: selectedBoards.join(",") }, // 배열을 문자열로 변환
+	                    url: "adminInsertBoard.bo",
+	                    data: { boards: selectedBoards.join(",") }, // 배열을 문자열로 변환
 	                    success: function (response2) {
 	                        if (response2.trim() === "success") {
 	                            alert("게시글 복구 완료!");
