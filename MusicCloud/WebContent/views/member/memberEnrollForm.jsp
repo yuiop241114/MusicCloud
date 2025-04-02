@@ -71,13 +71,13 @@
 
     div{ margin-bottom: 10px;}
 
-    #idMsg *, #pwdMsg *{
+    #idMsg *, #pwdMsg *, #aliasMsg *{
         display: none;
     }
-    #idMsg>div, #pwdMsg>div{
+    #idMsg>div, #pwdMsg>div, #aliasMsg>div{
     	color: #28a745;
     }
-    #idMsg>div+div, #pwdMsg>div+div{
+    #idMsg>div+div, #pwdMsg>div+div, #aliasMsg>div+div{
     	color: #dc3545;
     }
     
@@ -131,7 +131,11 @@
                 <input type="text" placeholder="실명" name="memberName">
 
                 <b>별칭</b>
-                <input type="text" placeholder="별칭" name="memberAlias">
+                <input type="text" placeholder="별칭" oninput="memberAliasCheck()" id="memberAlias" name="memberAlias">
+                <div id="aliasMsg">
+                    <div>사용가능한 별칭 입니다</div>
+                    <div>중복되는 별칭 입니다</div>
+                </div>
 
                 <b>이메일</b>
                 <input type="email" placeholder="이메일" name="memberEmail">
@@ -184,13 +188,13 @@
             }
         }
 
+        
    		//아이디 중복체크
    		function memberIdCheck(){
    				$.ajax({
    	   				url:"memberIdCheck",
    	   				data:{ memberId:$("#memberId").val() },
    	   				success:function(result){
-                        console.log(result);
    	   					let massage = "";
    	   					if(result == "success"){
                             //성공
@@ -203,10 +207,42 @@
    	   						$("#idMsg>div+div").css("display", "block");
                             $("button").attr("type","submit").attr("disabled","disabled");
                         }
+   	   					if($("#memberId").val() === ""){
+   	   					$("#idMsg>div").css("display", "none");
+	   						$("#idMsg>div+div").css("display", "none");
+   	   					}
    	   				},
    	   				error:function(){},
    	   			})
    			}
+   		
+   		
+   		//별칭 중복 체크
+   		function memberAliasCheck(){
+   			$.ajax({
+   				url:"memberAliasCheck",
+   				data:{ memberAlias : $("#memberAlias").val()},
+   				success:function(result){
+	   					let massage = "";
+	   					if(result == "success"){
+                        //성공
+	   						$("#aliasMsg>div").css("display", "block");
+	   						$("#aliasMsg>div+div").css("display", "none");
+                        $("button").attr("type","submit").removeAttr("disabled");
+	   					}else{
+                        //실패
+                        $("#aliasMsg>div").css("display", "none");
+	   						$("#aliasMsg>div+div").css("display", "block");
+                        $("button").attr("type","submit").attr("disabled","disabled");
+                    }
+	   					if($("#memberAlias").val() === ""){
+	   						$("#aliasMsg>div").css("display", "none");
+	   						$("#aliasMsg>div+div").css("display", "none");
+	   					}
+	   				},
+	   				error:function(){},
+   			})
+   		}
    		
    	</script>
 </body>
