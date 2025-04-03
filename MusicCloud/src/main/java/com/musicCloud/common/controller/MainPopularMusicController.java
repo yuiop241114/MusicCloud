@@ -36,7 +36,6 @@ public class MainPopularMusicController extends HttpServlet {
 		
 		//가수명, 음원명 너무 길면 자르는 조건문
 		for(MusicFile m : list) {
-			System.out.println(m);
 			if(m.getMusicTitle().length() >= 20) {
 				String str1 = m.getMusicTitle().substring(0, 19);
 				m.setMusicTitle(str1.concat("...")); 
@@ -50,7 +49,6 @@ public class MainPopularMusicController extends HttpServlet {
 				m.setMusicSinger(str2.concat("..."));
 			}
 		}
-		System.out.println(list.get(10).getMusicTitle().getBytes().length);
 		
 		response.setContentType("application/json; charset=utf-8");
 		new Gson().toJson(list, response.getWriter());
