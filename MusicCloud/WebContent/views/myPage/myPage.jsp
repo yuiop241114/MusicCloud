@@ -323,9 +323,14 @@
                                 </tr>
                                 <tr>
                                     <th>성별</th>
-                                    <td><select name="gender">
-                                        <option value="M">남자</option>
-                                        <option value="F">여자</option>
+                                    <td><select name="gender" value="<%= loginMember.getGender()%>">
+                                    	<%if(loginMember.getGender().equals("M")){ %>
+	                                        <option value="M" selected>남자</option>
+	                                        <option value="F">여자</option>
+                                    	<%}else{ %>
+                                    		<option value="M">남자</option>
+	                                        <option value="F" selected>여자</option>
+                                    	<%} %>
                                     </select></td>
                                 </tr>
                                 <tr>
