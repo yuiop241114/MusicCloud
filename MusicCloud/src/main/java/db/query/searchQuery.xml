@@ -33,7 +33,7 @@
 	
 	<entry key="searchPopularLocationList">
 		SELECT 
-		       MUSIC_NO
+		       DISTINCT MUSIC_NO
 		     , MUSIC_TITLE
 		     , MUSIC_SINGER
 		     , MUSIC_IMAGE_PATH || MUSIC_IMAGE_EDIT_NAME IMAGE_PATH
