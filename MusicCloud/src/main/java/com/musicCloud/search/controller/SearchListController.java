@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.musicCloud.common.vo.MusicFile;
+import com.musicCloud.member.model.service.MemberSerivce;
+import com.musicCloud.member.model.vo.Location;
 import com.musicCloud.search.model.service.SearchService;
 
 /**
@@ -40,13 +42,16 @@ public class SearchListController extends HttpServlet {
 		ArrayList<MusicFile> listAccuracy = new SearchService().searchListAccuracy(search);
 		ArrayList<MusicFile> listPopular = new SearchService().searchListPoupular(search);		
 		ArrayList<MusicFile> listPopularLocation = new SearchService().searchListPopularLocation(search, locationNo);
-		
+		ArrayList<Location> locationList = new MemberSerivce().selectAllLocation();
 		//음원명, 가수명
 		//일정 길이가 넘어갈 경우 뒷부분을 ...으로 대체
 		for(MusicFile m : listAccuracy) {
 			if(m.getMusicTitle().length() >= 20) {
 				String str1 = m.getMusicTitle().substring(0, 18);
 				m.setMusicTitle(str1.concat("..."));
+			}else if(m.getMusicTitle().getBytes().length >= 36){ //한글로 30바이트 = 10글자
+				String str1 = m.getMusicTitle().substring(0, 11);
+				m.setMusicTitle(str1.concat("...")); 
 			}
 			if(m.getMusicSinger().length() >= 20) {
 				String str2 = m.getMusicSinger().substring(0,18);
@@ -58,7 +63,11 @@ public class SearchListController extends HttpServlet {
 			if(m.getMusicTitle().length() >= 20) {
 				String str1 = m.getMusicTitle().substring(0, 18);
 				m.setMusicTitle(str1.concat("..."));
+			}else if(m.getMusicTitle().getBytes().length >= 36){ //한글로 30바이트 = 10글자
+				String str1 = m.getMusicTitle().substring(0, 11);
+				m.setMusicTitle(str1.concat("...")); 
 			}
+			
 			if(m.getMusicSinger().length() >= 20) {
 				String str2 = m.getMusicSinger().substring(0,18);
 				m.setMusicSinger(str2.concat("..."));
@@ -69,7 +78,11 @@ public class SearchListController extends HttpServlet {
 			if(m.getMusicTitle().length() >= 20) {
 				String str1 = m.getMusicTitle().substring(0, 18);
 				m.setMusicTitle(str1.concat("..."));
+			}else if(m.getMusicTitle().getBytes().length >= 36){ //한글로 30바이트 = 10글자
+				String str1 = m.getMusicTitle().substring(0, 11);
+				m.setMusicTitle(str1.concat("...")); 
 			}
+			
 			if(m.getMusicSinger().length() >= 20) {
 				String str2 = m.getMusicSinger().substring(0,18);
 				m.setMusicSinger(str2.concat("..."));
@@ -77,7 +90,11 @@ public class SearchListController extends HttpServlet {
 		}
 		
 		
-		
+		for(Location l :locationList) {
+			if(l.getLocationNo() == locationNo ) {
+				request.setAttribute("locationName", l.getLocationName());
+			}
+		}
 		request.setAttribute("search", search);
 		session.setAttribute("listAccuracy", listAccuracy);
 		session.setAttribute("listPopular", listPopular);

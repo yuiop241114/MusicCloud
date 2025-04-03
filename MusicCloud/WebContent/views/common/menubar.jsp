@@ -17,9 +17,8 @@
 <meta charset="UTF-8">
 <title>MusicCloud</title>
 <!-- 메테리얼 아이콘 -->
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+ 
 			
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 
@@ -166,12 +165,16 @@
 			background-color: #1587d0;
 			margin-top: 5px;
 			color: white;
+			overflow: hidden;
 	}
 	#side-btn-list th{
 	    height: 50px;
 	}
 	#side-btn-list img{
-	    width: 80%;
+			display: block;
+			text-align: center;	
+			margin-left: 10px;
+			width: 100%;
 	}
 	#side-btn-list a {
     color: white; /* 링크 텍스트를 하얀색으로 변경 */
@@ -280,23 +283,33 @@
 			<button type="button" id="side-btn" class="btn btn-primary btn-lg">퀵 메뉴</button>
 			<table id="side-btn-list">
 					<tr>
-							<th width="30%"><img src="resources/image/cartlogo.jpg" alt=""></th>
+							<th width="30%">
+								<img src="resources/image/list.png" alt="">
+							</th>
 							<th width="70%">전체음원목록</th>
 					</tr>
 					<tr>
-							<th><img src="resources/image/cartlogo.jpg" alt=""></th>
+							<th>
+								<img src="resources/image/mypage.png" alt="">
+							</th>
 							<th><a href="<%= contentPath%>/myPageForm">마이페이지</a></th>
 					</tr>
 					<tr>
-							<th><img src="resources/image/cartlogo.jpg" alt=""></th>
+							<th>
+								<img src="resources/image/board.png" alt="">
+							</th>
 							<th><a href="<%= contentPath %>/boardList">게시판</a></th>
 					</tr>
 					<tr>
-							<th><img src="resources/image/cartlogo.jpg" alt=""></th>
+							<th>
+								<img src="resources/image/cart.png" alt="">
+							</th>
 							<th><a href="<%= contentPath%>/cartForm">장바구니</a></th>
 					</tr>
 					<tr>
-							<th><img src="resources/image/cartlogo.jpg" alt=""></th>
+							<th>
+								<img src="resources/image/playList.png" alt="">
+							</th>
 							<th><a href="<%= contentPath%>/playlistForm">플레이리스트</a></th>
 					</tr>
 			</table>

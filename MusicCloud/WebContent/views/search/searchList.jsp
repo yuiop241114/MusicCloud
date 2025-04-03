@@ -1,3 +1,4 @@
+<%@page import="com.musicCloud.member.model.vo.Location"%>
 <%@page import="com.musicCloud.common.vo.MusicFile"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -34,6 +35,8 @@
 		musicCount : 인기 카운트
 	*/
 	ArrayList<MusicFile> listPopularLocation = ((ArrayList<MusicFile>)session.getAttribute("listPopularLocation"));
+	
+	String locationName = (String)request.getAttribute("locationName");
 %>
 <!DOCTYPE html>
 <html>
@@ -189,7 +192,7 @@
         </div>
 
         <div class="resultDiv">
-            <div><h2>지역별 순위</h2></div>
+            <div><h2><%= locationName %> 음원 재생 순위</h2></div>
             <div class="searchContentDiv" id="listPopularLocation">
             	<% for(int i=0; i<listPopularLocation.size(); i++) { %>
                     <div class="musicAccuracyDiv" id="accuracyDiv">

@@ -89,7 +89,11 @@
         text-align: center;
         padding: 8px;
     }
-    .material-symbols-outlined{
+    
+    /* .material-symbols-outlined{
+        font-size: 40px;
+    } */
+    #cart{
         font-size: 40px;
     }
     .musicText{
@@ -416,11 +420,11 @@
                             <div class="musicImg"><img src="\${pList[i].musicImagePath}" alt=""><input type="hidden" value="\${pList[i].musicNo}"></div>
                             <div class="musicInfo">
                                 <div class="musicText">
-                                \${pList[i].musicTitle} <br>
-                                \${pList[i].musicSinger}
+                                \${pList[i].musicTitle} <br> 
+                                \${pList[i].musicSinger} 
                                 </div>
                                 <div class="cartImg">
-                                    <span class="material-symbols-outlined">shopping_cart_checkout</span>
+                                    <span class="material-symbols-outlined" id="cart">shopping_cart_checkout</span>
                                     <input type="hidden" value="\${pList[i].musicNo}">
                                 </div>
                             </div>
