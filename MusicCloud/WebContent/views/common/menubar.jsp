@@ -17,7 +17,7 @@
 <meta charset="UTF-8">
 <title>MusicCloud</title>
 <!-- 메테리얼 아이콘 -->
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
  
 			
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
