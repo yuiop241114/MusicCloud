@@ -89,7 +89,11 @@
         text-align: center;
         padding: 8px;
     }
-    .material-symbols-outlined{
+    
+    /* .material-symbols-outlined{
+        font-size: 40px;
+    } */
+    #cart{
         font-size: 40px;
     }
     .musicText{
@@ -420,7 +424,7 @@
                                 \${pList[i].musicSinger} 
                                 </div>
                                 <div class="cartImg">
-                                    <span class="material-symbols-outlined">shopping_cart_checkout</span>
+                                    <span class="material-symbols-outlined" id="cart">shopping_cart_checkout</span>
                                     <input type="hidden" value="\${pList[i].musicNo}">
                                 </div>
                             </div>
