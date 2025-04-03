@@ -108,6 +108,7 @@
         text-align: center;
     }
     #music-img img{
+        width: 80%;
         height: 100%;
         padding: 10px;
     }

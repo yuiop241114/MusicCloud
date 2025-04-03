@@ -33,6 +33,20 @@ public class MainPopularMusicController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//인기순 음원
 		ArrayList<MusicFile> list = new CommonService().mainPopularMusic();
+		
+		//가수명, 음원명 너무 길면 자르는 조건문
+		for(MusicFile m : list) {
+			if(m.getMusicTitle().length() >= 20) {
+				String str1 = m.getMusicTitle().substring(0, 18);
+				m.setMusicTitle(str1.concat("...")); 
+				
+			}
+			if(m.getMusicSinger().length() >= 20) {
+				String str2 = m.getMusicSinger().substring(0, 18);
+				m.setMusicSinger(str2.concat("..."));
+			}
+		}
+		
 		response.setContentType("application/json; charset=utf-8");
 		new Gson().toJson(list, response.getWriter());
 	}
