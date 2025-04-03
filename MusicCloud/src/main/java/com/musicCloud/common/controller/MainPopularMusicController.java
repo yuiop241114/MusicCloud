@@ -44,6 +44,7 @@ public class MainPopularMusicController extends HttpServlet {
 				String str1 = m.getMusicTitle().substring(0, 11);
 				m.setMusicTitle(str1.concat("...")); 
 			}
+			
 			if(m.getMusicSinger().length() >= 20) {
 				String str2 = m.getMusicSinger().substring(0, 18);
 				m.setMusicSinger(str2.concat("..."));
