@@ -73,7 +73,6 @@ SELECT
   JOIN MEMBER M ON (B.MEMBER_NO = M.MEMBER_NO)
   JOIN REPORT_DETAIL R ON (B.MEMBER_NO = R.MEMBER_NO)
 	</entry>
-
 	
 	<entry key="adminDeleteBoard">
 		UPDATE Board
