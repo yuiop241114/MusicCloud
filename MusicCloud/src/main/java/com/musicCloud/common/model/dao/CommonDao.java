@@ -82,8 +82,8 @@ public class CommonDao {
 						  new MusicFile(
 								  	     rset.getInt("MNO")
 								  	     , rset.getString("IMAGE_PATH")
+								  	     , rset.getString("mtitle")
 								       , rset.getString("msinger")
-								       , rset.getString("mtitle")
 								       , rset.getInt("music_count")
 								       )
 						);

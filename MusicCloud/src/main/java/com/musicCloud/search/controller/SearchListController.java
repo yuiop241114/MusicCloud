@@ -47,6 +47,9 @@ public class SearchListController extends HttpServlet {
 			if(m.getMusicTitle().length() >= 20) {
 				String str1 = m.getMusicTitle().substring(0, 18);
 				m.setMusicTitle(str1.concat("..."));
+			}else if(m.getMusicTitle().getBytes().length >= 36){ //한글로 30바이트 = 10글자
+				String str1 = m.getMusicTitle().substring(0, 11);
+				m.setMusicTitle(str1.concat("...")); 
 			}
 			if(m.getMusicSinger().length() >= 20) {
 				String str2 = m.getMusicSinger().substring(0,18);
@@ -58,7 +61,11 @@ public class SearchListController extends HttpServlet {
 			if(m.getMusicTitle().length() >= 20) {
 				String str1 = m.getMusicTitle().substring(0, 18);
 				m.setMusicTitle(str1.concat("..."));
+			}else if(m.getMusicTitle().getBytes().length >= 36){ //한글로 30바이트 = 10글자
+				String str1 = m.getMusicTitle().substring(0, 11);
+				m.setMusicTitle(str1.concat("...")); 
 			}
+			
 			if(m.getMusicSinger().length() >= 20) {
 				String str2 = m.getMusicSinger().substring(0,18);
 				m.setMusicSinger(str2.concat("..."));
@@ -69,7 +76,11 @@ public class SearchListController extends HttpServlet {
 			if(m.getMusicTitle().length() >= 20) {
 				String str1 = m.getMusicTitle().substring(0, 18);
 				m.setMusicTitle(str1.concat("..."));
+			}else if(m.getMusicTitle().getBytes().length >= 36){ //한글로 30바이트 = 10글자
+				String str1 = m.getMusicTitle().substring(0, 11);
+				m.setMusicTitle(str1.concat("...")); 
 			}
+			
 			if(m.getMusicSinger().length() >= 20) {
 				String str2 = m.getMusicSinger().substring(0,18);
 				m.setMusicSinger(str2.concat("..."));

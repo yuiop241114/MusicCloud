@@ -36,16 +36,21 @@ public class MainPopularMusicController extends HttpServlet {
 		
 		//가수명, 음원명 너무 길면 자르는 조건문
 		for(MusicFile m : list) {
+			System.out.println(m);
 			if(m.getMusicTitle().length() >= 20) {
-				String str1 = m.getMusicTitle().substring(0, 18);
+				String str1 = m.getMusicTitle().substring(0, 19);
 				m.setMusicTitle(str1.concat("...")); 
 				
+			}else if(m.getMusicTitle().getBytes().length >= 36){ //한글로 30바이트 = 10글자
+				String str1 = m.getMusicTitle().substring(0, 11);
+				m.setMusicTitle(str1.concat("...")); 
 			}
 			if(m.getMusicSinger().length() >= 20) {
 				String str2 = m.getMusicSinger().substring(0, 18);
 				m.setMusicSinger(str2.concat("..."));
 			}
 		}
+		System.out.println(list.get(10).getMusicTitle().getBytes().length);
 		
 		response.setContentType("application/json; charset=utf-8");
 		new Gson().toJson(list, response.getWriter());

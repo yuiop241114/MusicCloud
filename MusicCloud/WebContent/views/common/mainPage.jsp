@@ -416,8 +416,8 @@
                             <div class="musicImg"><img src="\${pList[i].musicImagePath}" alt=""><input type="hidden" value="\${pList[i].musicNo}"></div>
                             <div class="musicInfo">
                                 <div class="musicText">
-                                \${pList[i].musicTitle} <br>
-                                \${pList[i].musicSinger}
+                                \${pList[i].musicTitle} <br> 
+                                \${pList[i].musicSinger} 
                                 </div>
                                 <div class="cartImg">
                                     <span class="material-symbols-outlined">shopping_cart_checkout</span>
