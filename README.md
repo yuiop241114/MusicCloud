@@ -27,11 +27,11 @@
   <h2>프로젝트 구현 기능</h2>
 
   <div id="fnIntro">
-    <b><회원가입/b>
+    <b>회원가입</b>
     <p></p>
     </div>
   <div id="fnIntro">
-    <b><회원가입/b>
+    <b>회원가입</b>
     <p></p>
   </div>
 </div>
