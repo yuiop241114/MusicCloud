@@ -1,4 +1,5 @@
 
+
 <img src="./MusicCloud/WebContent/resources/image/mainlogo.png" width="300" height="200"/>
 <!-- Heading -->
 <h1>MusicCloud</h1>
@@ -36,6 +37,9 @@
 | -  **JSP** | -  **JavaScript** |
 | -  **JQuery** | -  **NAVER API** |
 
+## 프로젝트 구현할 목표 및 세부기능 리스트
+
+<img src="MusicCloud/WebContent/resources/image/source.PNG" width="600" height="300">
 
 
   <br>
