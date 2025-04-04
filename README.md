@@ -36,7 +36,9 @@
 | -  **JSP** | -  **JavaScript** |
 | -  **JQuery** | -  **NAVER API** |
 
-## 개발 진행 과정
+## 프로젝트 구현할 목표 및 세부기능 리스트
+
+<img src="MusicCloud/WebContent/resources/image/source.PNG" width="600" height="300">
 
   <br>
   <h2>프로젝트 구현 기능</h2>
