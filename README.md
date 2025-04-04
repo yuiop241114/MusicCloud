@@ -1,3 +1,4 @@
+
 <img src="./MusicCloud/WebContent/resources/image/mainlogo.png" width="300" height="200"/>
 <!-- Heading -->
 <h1>MusicCloud</h1>
@@ -25,7 +26,16 @@
 
   <br>
 
-  <h2>사용 기술</h2>
+
+## 작업환경
+| 작업환경 및 개발도구들 |  |
+| :--:| :--: |
+| -  **Window 10, GitHub, Notion** | -  **Eclipse** |
+| -  **SQL DEVELOPER** | -  **HTML** |
+| -  **CSS** | -  **JAVA** |
+| -  **JSP** | -  **JavaScript** |
+| -  **JQuery** | -  **NAVER API** |
+
 
   <br>
   <h2>프로젝트 구현 기능</h2>
