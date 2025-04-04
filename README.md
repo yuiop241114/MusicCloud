@@ -139,7 +139,7 @@
 <img src="./MusicCloud/WebContent/resources/image/플레이리스트.PNG">
 
 <h4>음원 재생</h4>
-<img src="./MusicCloud/WebContent/resources/image/음원 재생.PNG">
+<img src="./MusicCloud/WebContent/resources/image/음원재생.png">
 
 <h4>검색 결과</h4>
 <img src="./MusicCloud/WebContent/resources/image/검색결과.PNG">
