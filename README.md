@@ -28,7 +28,7 @@
 
 
 ## 작업환경
-| 작업환경 및 개발도구들 |  |
+| 작업환경 개발도구들 |  |
 | :--:| :--: |
 | -  **Window 10, GitHub, Notion** | -  **Eclipse** |
 | -  **SQL DEVELOPER** | -  **HTML** |
@@ -36,6 +36,7 @@
 | -  **JSP** | -  **JavaScript** |
 | -  **JQuery** | -  **NAVER API** |
 
+## 개발 진행 과정
 
   <br>
   <h2>프로젝트 구현 기능</h2>
@@ -102,6 +103,36 @@
     </tr>
   </table>
 
+<br>
 
+<h2>프로젝트 결과</h2>
+<h4>메인페이지</h4>
+<img src="./MusicCloud/WebContent/resources/image/메인페이지.png" width="600" height="700">
+
+<h4>로그인 페이지</h4>
+<img src="./MusicCloud/WebContent/resources/image/로그인.png" width="600" height="400">
+
+<h4>회원가입</h4>
+<img src="./MusicCloud/WebContent/resources/image/회원가입.PNG" width="600" height="700">
+
+<h4>아이디 찾기</h4>
+<img src="./MusicCloud/WebContent/resources/image/아이디찾기.PNG" width="600" height="700">
+
+<h4>비밀번호 찾기</h4>
+<img src="./MusicCloud/WebContent/resources/image/비밀번호 찾기.PNG" width="600" height="700">
+<img src="./MusicCloud/WebContent/resources/image/비밀번호찾기2.PNG" width="600" height="700">
+
+<h4>마이페이지</h4>
+<img src="./MusicCloud/WebContent/resources/image/마이페이지1.png">
+<img src="./MusicCloud/WebContent/resources/image/마이페이지2.png">
+<img src="./MusicCloud/WebContent/resources/image/마이페이지3.png">
+<img src="./MusicCloud/WebContent/resources/image/마이페이지4.png">
+<img src="./MusicCloud/WebContent/resources/image/마이페이지5.png">
+
+<h4>회원가입</h4>
+<img src="./MusicCloud/WebContent/resources/image/mainlogo.png" width="600" height="400">
+
+<h4>회원가입</h4>
+<img src="./MusicCloud/WebContent/resources/image/mainlogo.png" width="600" height="400">
 </div>
 
