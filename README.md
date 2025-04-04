@@ -107,20 +107,20 @@
 
 <h2>프로젝트 결과</h2>
 <h4>메인페이지</h4>
-<img src="./MusicCloud/WebContent/resources/image/메인페이지.png" width="600" height="700">
+<img src="./MusicCloud/WebContent/resources/image/메인페이지.png">
 
 <h4>로그인 페이지</h4>
-<img src="./MusicCloud/WebContent/resources/image/로그인.png" width="600" height="400">
+<img src="./MusicCloud/WebContent/resources/image/로그인.png">
 
 <h4>회원가입</h4>
-<img src="./MusicCloud/WebContent/resources/image/회원가입.PNG" width="600" height="700">
+<img src="./MusicCloud/WebContent/resources/image/회원가입.PNG">
 
 <h4>아이디 찾기</h4>
-<img src="./MusicCloud/WebContent/resources/image/아이디찾기.PNG" width="600" height="700">
+<img src="./MusicCloud/WebContent/resources/image/아이디찾기.PNG">
 
 <h4>비밀번호 찾기</h4>
-<img src="./MusicCloud/WebContent/resources/image/비밀번호 찾기.PNG" width="600" height="700">
-<img src="./MusicCloud/WebContent/resources/image/비밀번호찾기2.PNG" width="600" height="700">
+<img src="./MusicCloud/WebContent/resources/image/비밀번호 찾기.PNG">
+<img src="./MusicCloud/WebContent/resources/image/비밀번호찾기2.PNG">
 
 <h4>마이페이지</h4>
 <img src="./MusicCloud/WebContent/resources/image/마이페이지1.png">
@@ -129,10 +129,23 @@
 <img src="./MusicCloud/WebContent/resources/image/마이페이지4.png">
 <img src="./MusicCloud/WebContent/resources/image/마이페이지5.png">
 
-<h4>회원가입</h4>
-<img src="./MusicCloud/WebContent/resources/image/mainlogo.png" width="600" height="400">
+<h4>게시판</h4>
+<img src="./MusicCloud/WebContent/resources/image/게시판.PNG">
 
-<h4>회원가입</h4>
-<img src="./MusicCloud/WebContent/resources/image/mainlogo.png" width="600" height="400">
+<h4>장바구니</h4>
+<img src="./MusicCloud/WebContent/resources/image/장바구니.PNG">
+
+<h4>플레이 리스트</h4>
+<img src="./MusicCloud/WebContent/resources/image/플레이리스트.PNG">
+
+<h4>음원 재생</h4>
+<img src="./MusicCloud/WebContent/resources/image/음원 재생.PNG">
+
+<h4>검색 결과</h4>
+<img src="./MusicCloud/WebContent/resources/image/검색결과.PNG">
+
+<h4>관리자 페이지</h4>
+<img src="./MusicCloud/WebContent/resources/image/회원삭제.png">
+<img src="./MusicCloud/WebContent/resources/image/게시글삭제.png">
 </div>
 
