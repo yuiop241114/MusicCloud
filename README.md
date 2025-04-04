@@ -142,7 +142,7 @@
 <img src="./MusicCloud/WebContent/resources/image/음원재생.png">
 
 <h4>검색 결과</h4>
-<img src="./MusicCloud/WebContent/resources/image/검색결과.PNG">
+<img src="./MusicCloud/WebContent/resources/image/검색결과.png">
 
 <h4>관리자 페이지</h4>
 <img src="./MusicCloud/WebContent/resources/image/회원삭제.png">
