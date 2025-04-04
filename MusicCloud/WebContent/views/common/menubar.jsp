@@ -1,3 +1,4 @@
+<%@page import="com.musicCloud.playlist.model.vo.PlayList"%>
 <%@page import="com.musicCloud.common.vo.MusicFile"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="org.json.simple.JSONObject"%>
@@ -344,7 +345,7 @@
 						},
 	    			error:function(){},
 	    		})
-	    	
+	    		
 					//퀵 메뉴 스크립트
 	        $("#side-btn").click(function(){
 	            if($("#side-btn-list").css('display') == 'none'){
