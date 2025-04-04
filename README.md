@@ -1,3 +1,3 @@
-![image](http://192.168.20.55:8118/music/resources/image/mainlogo.png)
+<!-- Heading -->
 # MusicCloud
 ##프로젝트 설명
