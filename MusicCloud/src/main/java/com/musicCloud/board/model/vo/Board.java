@@ -38,7 +38,6 @@ public class Board {
 	 * @param boardEnrollDate
 	 * @param memberNo
 	 * @param memberAlias
-	 * 전체 매개변수 생성자
 	 */
 	public Board(int boardNo, String boardTitle, int boardCount, String boardEnrollDate, int memberNo,
 			String memberAlias) {

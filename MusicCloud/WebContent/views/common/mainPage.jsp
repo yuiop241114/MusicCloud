@@ -1,5 +1,12 @@
+<%@page import="com.musicCloud.playlist.model.vo.PlayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	//playlistNo : 플레이리스트번호, memberNo : 회원번호, playlistName : 플레이리스트 이름
+	//playlistTag : 플레이리스트 태그, payment_status : 결제 여부
+	ArrayList<PlayList> playlist2 = (ArrayList<PlayList>)session.getAttribute("pList");
+	System.out.println(playlist2);
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -190,6 +197,13 @@
     }
 
     /*플레이 리스트 미리보기 class="mainList" id="playList"*/
+    /*플레이리스트 나열 div*/
+    #playList_list{
+        display: flex;
+        justify-content: center;
+        gap: 50px;
+    }
+
     #playList_mainTitle{
         background-color: #1587d0;
         color: white;
@@ -201,38 +215,39 @@
         margin-top: 10px;
         border-radius: 5px;
     }
-    /*플레이리스트 나열 div*/
-    #playList_list{
-        display: flex;
-        justify-content: space-between;
-    }
-    /*플레이리스트 div*/
-    .playList_detail{
-        width: 25%;
-    }
-    /*플레이리스트 이미지*/
-    #playList_img{
-        width: 150px;
-        height: 150px;
-        margin: auto;
-        margin-top: 40px;
-    }
-    #playList_img>*{
-        display: flex;
-        height: 50%;
-    }
-    
-    #img_upper img{
-        width: 50%;
-    }
-    #img_lower img{
-        width: 50%;
-    }
-    /*플레이리스트 제목*/
-    #playList_content{
-        margin-top: 10px;
-        text-align: center;
-    }
+
+    .personPlaylist:hover{
+		cursor: pointer;
+	}
+	.personPlaylist{
+		border: 1px solid skyblue;
+		width: 250px;
+		height: 250px;
+		border-radius: 5px;
+		overflow: hidden;
+        margin-top: 20px;
+
+	}
+	.personPlaylist b{
+		font-size: small;
+	}
+	.playlistImg{
+		display: flex;
+		flex-wrap: wrap;
+		width: 100%;
+		height: 80%;
+	}
+	.playlistImg>img{
+		width: 50%;
+		height: 50%;
+	}
+	.playlistContent{
+		width: 100%;
+		height: 20%;
+		text-align: center;
+		font-size: large;
+		line-height: 45px;
+	}
     
     
 </style>
@@ -260,7 +275,7 @@
             <div id="payment_title"><b>오늘의 추천 플레이 리스트</b></div>
 
             <div id="payment_info">
-                <div id="payment_img">연예인 이미지 첨부</div>
+                <!-- <div id="payment_img">연예인 이미지 첨부</div>
                 <div id="payment_cotent">
                     <div>차은우가 이번달에 가장 많이 들은 플레이 리스트</div>
                 </div>
@@ -270,7 +285,8 @@
                 </div>
                 <div id="payment_btn">
                     <button class="btn btn-light">결제 후 확인 가능</button>
-                </div>
+                </div> -->
+                <img src="resources/image/연예인플레이리스트.PNG" alt="" style="width: 100%; height: 80%; margin-top: 30px">
             </div>
         </div>
     
@@ -290,45 +306,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th>1</th>
-                            <th>제목1</th>
-                            <th>11</th>
-                            <th>25/01/01</th>
-                            <th>관리자</th>
-                        </tr>
-
-                        <tr>
-                            <th>2</th>
-                            <th>제목2</th>
-                            <th>22</th>
-                            <th>25/02/02</th>
-                            <th>관리자</th>
-                        </tr>
-
-                        <tr>
-                            <th>3</th>
-                            <th>제목3</th>
-                            <th>33</th>
-                            <th>25/03/03</th>
-                            <th>관리자</th>
-                        </tr>
-
-                        <tr>
-                            <th>3</th>
-                            <th>제목3</th>
-                            <th>33</th>
-                            <th>25/03/03</th>
-                            <th>관리자</th>
-                        </tr>
-
-                        <tr>
-                            <th>3</th>
-                            <th>제목3</th>
-                            <th>33</th>
-                            <th>25/03/03</th>
-                            <th>관리자</th>
-                        </tr>
+                        
                     </tbody>
                 </table>
             </div>
@@ -341,61 +319,41 @@
 
             <div id="playList_list">
 
-                <div class="playList_detail">
-                    <div id="playList_img">
-                        <div id="img_upper">
-                            <img src="resources/image/mainlogo.png" alt="" id="playList_img_1">
-                            <img src="resources/image/mainlogo.png" alt="" id="playList_img_2">
-                        </div>
-                        <div id="img_lower">
-                            <img src="resources/image/mainlogo.png" alt="" id="playList_img_3">
-                            <img src="resources/image/mainlogo.png" alt="" id="playList_img_4">
-                        </div>
-                    </div>
-                    <div id="playList_content"><b>플레이 리스트 제목</b></div>
-                </div>
-    
-                <div class="playList_detail">
-                    <div id="playList_img">
-                        <div id="img_upper">
-                            <img src="resources/image/mainlogo.png" alt="" id="playList_img_1">
-                            <img src="resources/image/mainlogo.png" alt="" id="playList_img_2">
-                        </div>
-                        <div id="img_lower">
-                            <img src="resources/image/mainlogo.png" alt="" id="playList_img_3">
-                            <img src="resources/image/mainlogo.png" alt="" id="playList_img_4">
-                        </div>
-                    </div>
-                    <div id="playList_content"><b>플레이 리스트 제목</b></div>
-                </div>
-    
-                <div class="playList_detail">
-                    <div id="playList_img">
-                        <div id="img_upper">
-                            <img src="resources/image/mainlogo.png" alt="" id="playList_img_1">
-                            <img src="resources/image/mainlogo.png" alt="" id="playList_img_2">
-                        </div>
-                        <div id="img_lower">
-                            <img src="resources/image/mainlogo.png" alt="" id="playList_img_3">
-                            <img src="resources/image/mainlogo.png" alt="" id="playList_img_4">
-                        </div>
-                    </div>
-                    <div id="playList_content"><b>플레이 리스트 제목</b></div>
-                </div>
+               <%if(playlist2 != null) {%>
+				<%
+					String[] musicNum = null;
+					//소유한 플레이 리스트 만큼 반복
+					for(PlayList p : playlist2){
+						musicNum = p.getPlayListMusicTotal().split(",");
+				%>
+					<div class="personPlaylist">
 
-                <div class="playList_detail">
-                    <div id="playList_img">
-                        <div id="img_upper">
-                            <img src="resources/image/mainlogo.png" alt="" id="playList_img_1">
-                            <img src="resources/image/mainlogo.png" alt="" id="playList_img_2">
-                        </div>
-                        <div id="img_lower">
-                            <img src="resources/image/mainlogo.png" alt="" id="playList_img_3">
-                            <img src="resources/image/mainlogo.png" alt="" id="playList_img_4">
-                        </div>
-                    </div>
-                    <div id="playList_content"><b>플레이 리스트 제목</b></div>
-                </div>
+						<!-- 음원 이미지(4개고정) -->
+						<div class="playlistImg">
+							<%for(int i=0; i<4; i++){%>
+								<img src="<%
+										for(MusicFile f : fileList){
+											if(Integer.parseInt(musicNum[i % musicNum.length]) == f.getMusicNo()){
+									%> <%= f.getMusicImagePath()%>
+									<%
+											}
+										}
+									%>">
+									
+							<%} //음원이미지반복문끝부분%>
+						</div>
+
+						<!-- 플레이리스트 제목-->
+						<div class="playlistContent">
+							<b><%= p.getPlaylistTag()%></b>
+						</div>
+
+					</div>
+				<%}//플레이리스트 개수 만큼 반복문 끝부분%>
+			<%}else{%>
+				<h2>플레이 리스트가 없습니다</h2>
+			<%} %>                    
+                
             </div>
             
             </div>
@@ -409,6 +367,20 @@
     
     <script>
         $(function(){
+        	//플레이리스트 조회
+            if($("#memberNo").val() != "noneLogin"){
+                $.ajax({
+                    url: "mainPlaylist",
+                    data: { memberNo: $("#memberNo").val()},
+                    success:function(p){
+                            //세션에 저장함
+                    },
+                    error:function(){
+                        console.log("플레이 리스트 가져오는 ajax 실패");
+                    }
+                })
+            }
+        	
             //음원 인기순
             $.ajax({
                 url: "mainPopularMusic",
@@ -435,6 +407,32 @@
                     
                 },
                 error:function(){ console.log("인기순 음원 ajax 실패")}
+            })
+            
+            //최신 게시글 5개만 조회
+            $.ajax({
+            	url:"mainBoardList",
+            	success:function(list){
+            		let content = ""
+            		if(list != null){
+            			for(let i=0; i<list.length; i++){
+            				content += `
+            					<tr>
+            					<th>\${list[i].boardNo}</th>
+            					<th>\${list[i].boardTitle}</th>
+            					<th>\${list[i].boardCount}</th>
+            					<th>\${list[i].enrollDate}</th>
+            					<th>\${list[i].memberAlias}</th>
+            				</tr>`;
+            			}
+            			
+            		}
+            		$("#board_list tbody").html(content);
+            		
+            	},
+            	error:function(){
+            		console.log("최신 게시글 가져오는 ajax 실패");
+            	}
             })
         })
     </script>
