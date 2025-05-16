@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/yuiop241114/MusicCloud/WebContent/resources/image/mainlogo.png" width="300" height="200">
+<img src="./MusicCloud/WebContent/resources/image/mainlogo.png" width="300" height="200">
 <!-- Heading -->
 <h1>MusicCloud</h1>
 <div>
