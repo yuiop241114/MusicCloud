@@ -26,7 +26,7 @@
 | -  <strong>JSP</strong> | -  <strong>JavaScript</strong> |
 | -  <strong>JQuery</strong> | -  <strong>NAVER API</strong> |</p>
 <h2>프로젝트 구현할 목표 및 세부기능 리스트</h2>
-<img src="MusicCloud/WebContent/resources/image/source.PNG" width="600" height="300">
+<img src="https://raw.githubusercontent.com/yuiop241114/MusicCloud/main/MusicCloud/WebContent/resources/image/source.PNG" width="600" height="300">
   <h2>프로젝트 구현 기능</h2>
   <p></p><table border="1">
     <tbody><tr>
