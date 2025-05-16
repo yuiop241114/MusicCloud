@@ -1,51 +1,44 @@
-
-<img src="./MusicCloud/WebContent/resources/image/mainlogo.png" width="300" height="200"/>
+<img src="https://raw.githubusercontent.com/yuiop241114/MusicCloud/WebContent/resources/image/mainlogo.png" width="300" height="200">
 <!-- Heading -->
 <h1>MusicCloud</h1>
 <div>
   <h2>프로젝트 소개</h2>
-  <br>
+  
+
   <p>
     "오늘은 뭐 듣지?"라는 고민에서 출발하여, 친구 및 직장 동료들과 추천
 음악을 쉽게 공유하는 것을 목표로 하였습니다.
-    
-음악을 추천할 때, 단순히 한 곡씩 링크를 보내는 것이 아니라, 추천하고 싶은
+</p><p>음악을 추천할 때, 단순히 한 곡씩 링크를 보내는 것이 아니라, 추천하고 싶은
 음악의 리스트를 상대방에게 한번에 공유함으로써, 추천 음악 공유의
-간편함을 극대화하였습니다.
-
-플레이리스트에 게시판을 추가하여 단순히 음원을 공유하는 것뿐만 아니라,
+간편함을 극대화하였습니다.</p>
+<p>플레이리스트에 게시판을 추가하여 단순히 음원을 공유하는 것뿐만 아니라,
 사용자 간의 의견을 교환함으로써 해당 음원에 대해 다양한 관점에서 음악을
-즐길 수 있습니다.
-
-또한, Bugs, 멜론 등 기존 웹 음원 사이트에서는 복잡한 UI 로 인해 기능을
+즐길 수 있습니다.</p>
+<p>또한, Bugs, 멜론 등 기존 웹 음원 사이트에서는 복잡한 UI 로 인해 기능을
 찾기가 어려운 부분이 있어, 이를 개선하는 데 초점을 두었습니다.
 저희 조는 사용자의 입장에서 최대한 편리한 기능을 제공하고, 불편함을
-최소화하여 편리함을 극대화하는 것을 목표로 했습니다
+최소화하여 편리함을 극대화하는 것을 목표로 했습니다</p>
+  <p></p>
+  
 
-  </p>
-
-  <br>
-
-
-## 작업환경
-| 작업환경 개발도구들 |  |
+<h2>작업환경</h2>
+<p>| 작업환경 개발도구들 |  |
 | :--:| :--: |
-| -  **Window 10, GitHub, Notion** | -  **Eclipse** |
-| -  **SQL DEVELOPER** | -  **HTML** |
-| -  **CSS** | -  **JAVA** |
-| -  **JSP** | -  **JavaScript** |
-| -  **JQuery** | -  **NAVER API** |
-
-## 프로젝트 구현할 목표 및 세부기능 리스트
-
+| -  <strong>Window 10, GitHub, Notion</strong> | -  <strong>Eclipse</strong> |
+| -  <strong>SQL DEVELOPER</strong> | -  <strong>HTML</strong> |
+| -  <strong>CSS</strong> | -  <strong>JAVA</strong> |
+| -  <strong>JSP</strong> | -  <strong>JavaScript</strong> |
+| -  <strong>JQuery</strong> | -  <strong>NAVER API</strong> |</p>
+<h2>프로젝트 구현할 목표 및 세부기능 리스트</h2>
 <img src="MusicCloud/WebContent/resources/image/source.PNG" width="600" height="300">
+  
 
-  <br>
   <h2>프로젝트 구현 기능</h2>
   <table border="1">
-    <tr>
+    <tbody><tr>
       <th><b>회원가입</b></th>
-      <td><span>아이디 : 기존 회원과 중복 확인<br>
+      <td><span>아이디 : 기존 회원과 중복 확인
+
 비밀번호 : 영문(대문자 한개 이상), 숫자, 특수문자 포함한 8자 이상
 네이버 소셜 첫 로그인 시 자동 회원가입 
     </span></td>
@@ -103,51 +96,38 @@
 게시글 삭제 및 복구 처리
     </span></td>
     </tr>
-  </table>
+  </tbody></table>
 
-<br>
 
 <h2>프로젝트 결과</h2>
 <h4>메인페이지</h4>
 <img src="./MusicCloud/WebContent/resources/image/메인페이지.png">
-
 <h4>로그인 페이지</h4>
 <img src="./MusicCloud/WebContent/resources/image/로그인.png">
-
 <h4>회원가입</h4>
 <img src="./MusicCloud/WebContent/resources/image/회원가입.PNG">
-
 <h4>아이디 찾기</h4>
 <img src="./MusicCloud/WebContent/resources/image/아이디찾기.PNG">
-
 <h4>비밀번호 찾기</h4>
 <img src="./MusicCloud/WebContent/resources/image/비밀번호 찾기.PNG">
 <img src="./MusicCloud/WebContent/resources/image/비밀번호찾기2.PNG">
-
 <h4>마이페이지</h4>
 <img src="./MusicCloud/WebContent/resources/image/마이페이지1.png">
 <img src="./MusicCloud/WebContent/resources/image/마이페이지2.png">
 <img src="./MusicCloud/WebContent/resources/image/마이페이지3.png">
 <img src="./MusicCloud/WebContent/resources/image/마이페이지4.png">
 <img src="./MusicCloud/WebContent/resources/image/마이페이지5.png">
-
 <h4>게시판</h4>
 <img src="./MusicCloud/WebContent/resources/image/게시판.PNG">
-
 <h4>장바구니</h4>
 <img src="./MusicCloud/WebContent/resources/image/장바구니.PNG">
-
 <h4>플레이 리스트</h4>
 <img src="./MusicCloud/WebContent/resources/image/플레이리스트.PNG">
-
 <h4>음원 재생</h4>
 <img src="./MusicCloud/WebContent/resources/image/음원재생.png">
-
 <h4>검색 결과</h4>
 <img src="./MusicCloud/WebContent/resources/image/검색결과.png">
-
 <h4>관리자 페이지</h4>
 <img src="./MusicCloud/WebContent/resources/image/회원삭제.png">
 <img src="./MusicCloud/WebContent/resources/image/게시글삭제.png">
 </div>
-
