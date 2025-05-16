@@ -1,7 +1,7 @@
-<img src="https://raw.githubusercontent.com/yuiop241114/MusicCloud/main/MusicCloud/WebContent/resources/image/mainlogo.png" width="300" height="200"> 
+<img src="https://raw.githubusercontent.com/yuiop241114/MusicCloud/main/MusicCloud/WebContent/resources/image/mainlogo.png" width="300" height="200">
 
 # MusicCloud
-dasdadasdadasdsad
+
 ## 프로젝트 소개
 
 "오늘은 뭐 듣지?"라는 고민에서 출발하여, 친구 및 직장 동료들과 추천 음악을 쉽게 공유하는 것을 목표로 하였습니다.
