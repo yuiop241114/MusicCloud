@@ -1,10 +1,8 @@
-<img src="./MusicCloud/WebContent/resources/image/mainlogo.png" width="300" height="200">
+<img src="https://raw.githubusercontent.com/yuiop241114/MusicCloud/WebContent/resources/image/mainlogo.png" width="300" height="200">
 <!-- Heading -->
 <h1>MusicCloud</h1>
 <div>
   <h2>프로젝트 소개</h2>
-  
-
   <p>
     "오늘은 뭐 듣지?"라는 고민에서 출발하여, 친구 및 직장 동료들과 추천
 음악을 쉽게 공유하는 것을 목표로 하였습니다.
@@ -19,8 +17,6 @@
 저희 조는 사용자의 입장에서 최대한 편리한 기능을 제공하고, 불편함을
 최소화하여 편리함을 극대화하는 것을 목표로 했습니다</p>
   <p></p>
-  
-
 <h2>작업환경</h2>
 <p>| 작업환경 개발도구들 |  |
 | :--:| :--: |
@@ -31,74 +27,69 @@
 | -  <strong>JQuery</strong> | -  <strong>NAVER API</strong> |</p>
 <h2>프로젝트 구현할 목표 및 세부기능 리스트</h2>
 <img src="MusicCloud/WebContent/resources/image/source.PNG" width="600" height="300">
-  
-
   <h2>프로젝트 구현 기능</h2>
-  <table border="1">
+  <p></p><table border="1">
     <tbody><tr>
       <th><b>회원가입</b></th>
       <td><span>아이디 : 기존 회원과 중복 확인
-
-비밀번호 : 영문(대문자 한개 이상), 숫자, 특수문자 포함한 8자 이상
-네이버 소셜 첫 로그인 시 자동 회원가입 
-    </span></td>
-    </tr>
-    <tr>
-      <th><b>로그인 / ID
+<p>비밀번호 : 영문(대문자 한개 이상), 숫자, 특수문자 포함한 8자 이상
+네이버 소셜 첫 로그인 시 자동 회원가입
+</p></span></td>
+</tr>
+<tr>
+<th><b>로그인 / ID
 비밀번호 찾기</b></th>
-      <td><span>회원의 실명, 아이디, 이메일로 ID 및 비밀번호 찾기
+<td><span>회원의 실명, 아이디, 이메일로 ID 및 비밀번호 찾기
 일반회원은 아이디, 비밀번호 로그인 / 네이버 소셜 로그인은 네이버 아이디, 비밀번호로  로그인
-    </span></td>
-    </tr>
-    <tr>
-      <th><b>마이 페이지</b></th>
-      <td><span>회원 정보 조회 및 수정
+</span></td>
+</tr>
+<tr>
+<th><b>마이 페이지</b></th>
+<td><span>회원 정보 조회 및 수정
 친구 리스트 조회, 친구  추가 및 삭제, 친구의 최근 재생 음원 조회
 회원탈퇴 , 로그아웃
-    </span></td>
-    </tr>
-    <tr>
-      <th><b>음원 재생</b></th>
-      <td><span>음원 이미지 클릭 시 음원 재생
-조회수 증가 
-    </span></td>
-    </tr>
-    <tr>
-      <th><b>장바구니</b></th>
-      <td><span>음원 정보에 있는 장바구니 아이콘 클릭 시 장바구니에 해당 음원 저장
-    </span></td>
-    </tr>
-    <tr>
-      <th><b>플레이 리스트</b></th>
-      <td><span>로그인한 회원의 플레이 리스트 조회
-    </span></td>
-    </tr>
-    <tr>
-      <th><b>검색 결과</b></th>
-      <td><span>검색 키워드를 이용하여 정확순, 인기순, 지역별 음원 순위를 조회
-    </span></td>
-    </tr>
-    <tr>
-      <th><b>게시판</b></th>
-      <td><span>음원 및 플레이 리스트를 포함한 게시글을 작성하는 게시판
+</span></td>
+</tr>
+<tr>
+<th><b>음원 재생</b></th>
+<td><span>음원 이미지 클릭 시 음원 재생
+조회수 증가
+</span></td>
+</tr>
+<tr>
+<th><b>장바구니</b></th>
+<td><span>음원 정보에 있는 장바구니 아이콘 클릭 시 장바구니에 해당 음원 저장
+</span></td>
+</tr>
+<tr>
+<th><b>플레이 리스트</b></th>
+<td><span>로그인한 회원의 플레이 리스트 조회
+</span></td>
+</tr>
+<tr>
+<th><b>검색 결과</b></th>
+<td><span>검색 키워드를 이용하여 정확순, 인기순, 지역별 음원 순위를 조회
+</span></td>
+</tr>
+<tr>
+<th><b>게시판</b></th>
+<td><span>음원 및 플레이 리스트를 포함한 게시글을 작성하는 게시판
 전체 게시글 조회
-    </span></td>
-    </tr>
-    <tr>
-      <th><b>회원 관리</b></th>
-      <td><span>전체 회원 조회
+</span></td>
+</tr>
+<tr>
+<th><b>회원 관리</b></th>
+<td><span>전체 회원 조회
 회원 탈퇴 및 복구 처리
-    </span></td>
-    </tr>
-    <tr>
-      <th><b>게시글 관리</b></th>
-      <td><span>전체 게시글 조회
+</span></td>
+</tr>
+<tr>
+<th><b>게시글 관리</b></th>
+<td><span>전체 게시글 조회
 게시글 삭제 및 복구 처리
-    </span></td>
-    </tr>
+</span></td>
+</tr>
   </tbody></table>
-
-
 <h2>프로젝트 결과</h2>
 <h4>메인페이지</h4>
 <img src="./MusicCloud/WebContent/resources/image/메인페이지.png">
